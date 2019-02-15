@@ -1,0 +1,116 @@
+#identity-combine-prompt-title {
+    background: url('../images/frontpage/use_email_icons.png') no-repeat 10px -34px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+#identity-combine-prompt-title-container {
+    padding: 7px 5px;
+}
+
+.overlay-text {
+    font-size: 12px;
+}
+
+#combine-submit-button.new-button b {
+    background: transparent url(../images/shared_icons/buttons_small.png) no-repeat -6px -400px;
+    line-height: 40px;
+    text-align: center;
+    height: 50px;
+    font-size: 18px;
+    margin-right: 5px;
+    color: #fff;
+    background-position: -6px 0;
+}
+
+#combine-submit-button.new-button i {
+    background: transparent url(../images/shared_icons/buttons_small.png) no-repeat 0 -400px;
+    width: 6px;
+    height: 50px;
+}
+
+#combine-submit-button.new-button i {
+    background-position: 0 0;
+}
+
+#combine-submit-button.new-button:hover b {
+    background-position: -6px -50px;
+}
+
+#combine-submit-button.new-button:hover i {
+    background-position: 0 -50px;
+}
+
+#combine-submit-button {
+    margin-top: 10px;
+    float: right;
+    height: 50px;
+}
+
+a#donotcombine-link {
+    float: left;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: left;
+    max-width: 170px;
+    padding: 20px 0 0 0;
+}
+
+form#identity-combine-form {
+    margin-top: 15px;
+}
+
+#submit-section {
+    height: 55px;
+}
+
+#do-not-show-checkbox {
+    float: left;
+    padding: 5px 0 0 0;
+}
+
+.combine-illustration {
+    padding: 15px 10px 15px 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#plus-image {
+    padding: 22px 0 5px 8px;
+    position: relative;
+    left: -15px;
+}
+
+#plus-image.center {
+    left: 0;
+}
+
+.combine-provider-image{
+    position: relative;
+    z-index: 1;
+    left: -110px;
+    top: -13px;
+}
+
+.combine-provider-image.center{
+    left: -70px;
+    top: -10px;
+}
+
+.character-image{
+    position: relative;
+    z-index: 1;
+    left: -28px;
+    top: -6px;
+}
+
+.combine-illustration .combine-source {
+    float: left;
+    margin-right: -30px;
+}
+.combine-illustration .combine-target {
+    float: right;
+    margin-right: -5px;
+}

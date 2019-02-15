@@ -1,0 +1,299 @@
+[30-Jun-2016 15:07:08 America/Bogota] PHP Fatal error:  Call to undefined method uberUsers::IsUserOnline() in /home/hretro/public_html/myhabbo/guestbook_add.php on line 30
+[30-Jun-2016 17:19:23 America/Bogota] PHP Notice:  Undefined index: position_left in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[30-Jun-2016 17:19:23 America/Bogota] PHP Notice:  Undefined index: position_top in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[30-Jun-2016 17:19:23 America/Bogota] PHP Notice:  Undefined index: position_z in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[30-Jun-2016 17:21:50 America/Bogota] PHP Notice:  Undefined index: position_left in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[30-Jun-2016 17:21:50 America/Bogota] PHP Notice:  Undefined index: position_top in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[30-Jun-2016 17:21:50 America/Bogota] PHP Notice:  Undefined index: position_z in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[30-Jun-2016 17:22:27 America/Bogota] PHP Notice:  Undefined index: position_left in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[30-Jun-2016 17:22:27 America/Bogota] PHP Notice:  Undefined index: position_top in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[30-Jun-2016 17:22:27 America/Bogota] PHP Notice:  Undefined index: position_z in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[30-Jun-2016 17:22:29 America/Bogota] PHP Notice:  Undefined index: position_left in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[30-Jun-2016 17:22:29 America/Bogota] PHP Notice:  Undefined index: position_top in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[30-Jun-2016 17:22:29 America/Bogota] PHP Notice:  Undefined index: position_z in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[30-Jun-2016 17:22:39 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 21
+[30-Jun-2016 17:22:40 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 22
+[30-Jun-2016 17:22:40 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 32
+[30-Jun-2016 17:22:45 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 21
+[30-Jun-2016 17:22:45 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 22
+[30-Jun-2016 17:22:46 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 32
+[30-Jun-2016 17:22:47 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 21
+[30-Jun-2016 17:22:47 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 22
+[30-Jun-2016 17:22:47 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 32
+[30-Jun-2016 17:22:50 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 21
+[30-Jun-2016 17:22:50 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 22
+[30-Jun-2016 17:22:50 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 32
+[30-Jun-2016 17:23:53 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 21
+[30-Jun-2016 17:23:53 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 22
+[30-Jun-2016 17:23:53 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 32
+[30-Jun-2016 17:24:16 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 21
+[30-Jun-2016 17:24:16 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 22
+[30-Jun-2016 17:24:16 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-GuestbookWidget.tpl on line 32
+[01-Jul-2016 16:46:09 America/Bogota] PHP Notice:  Undefined variable: userId in /home/hretro/public_html/myhabbo/widget_add.php on line 214
+[01-Jul-2016 16:46:20 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-RatingWidget.tpl on line 32
+[01-Jul-2016 16:46:25 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-RatingWidget.tpl on line 32
+[01-Jul-2016 16:46:34 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-RatingWidget.tpl on line 32
+[01-Jul-2016 16:46:54 America/Bogota] PHP Notice:  Undefined variable: qryId in /home/hretro/public_html/nucleo/tpl/widget-RatingWidget.tpl on line 32
+[01-Jul-2016 16:46:59 America/Bogota] PHP Fatal error:  Call to undefined method uberUsers::IsUserOnline() in /home/hretro/public_html/myhabbo/guestbook_add.php on line 30
+[01-Jul-2016 19:32:12 America/Bogota] PHP Fatal error:  Call to undefined method uberUsers::IsUserOnline() in /home/hretro/public_html/myhabbo/guestbook_add.php on line 30
+[01-Jul-2016 19:32:52 America/Bogota] PHP Fatal error:  Call to undefined method uberUsers::IsUserOnline() in /home/hretro/public_html/myhabbo/guestbook_add.php on line 30
+[01-Jul-2016 19:35:19 America/Bogota] PHP Notice:  Undefined index: position_left in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[01-Jul-2016 19:35:19 America/Bogota] PHP Notice:  Undefined index: position_top in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[01-Jul-2016 19:35:19 America/Bogota] PHP Notice:  Undefined index: position_z in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[01-Jul-2016 19:35:28 America/Bogota] PHP Notice:  Undefined index: position_left in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[01-Jul-2016 19:35:28 America/Bogota] PHP Notice:  Undefined index: position_top in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[01-Jul-2016 19:35:28 America/Bogota] PHP Notice:  Undefined index: position_z in /home/hretro/public_html/myhabbo/widget_add.php on line 90
+[01-Jul-2016 19:35:37 America/Bogota] PHP Notice:  Undefined variable: userId in /home/hretro/public_html/myhabbo/widget_add.php on line 214
+[02-Jul-2016 09:43:55 America/Bogota] PHP Notice:  Undefined variable: inEdit in /home/hretro/public_html/myhabbo/widget_add.php on line 179
+[02-Jul-2016 13:37:07 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 13:37:07 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 13:37:14 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 13:37:14 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 15:55:50 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 15:55:50 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 15:56:26 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 15:56:26 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 15:56:45 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 15:56:45 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 15:56:57 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 15:56:57 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 15:57:41 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 15:57:41 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 16:50:23 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 16:50:23 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 16:50:42 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 16:50:42 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 17:07:41 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[02-Jul-2016 17:07:41 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[03-Jul-2016 12:23:15 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[03-Jul-2016 12:23:15 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[03-Jul-2016 13:16:48 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[03-Jul-2016 13:16:48 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[03-Jul-2016 13:17:09 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[03-Jul-2016 13:17:09 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[03-Jul-2016 13:17:09 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[03-Jul-2016 13:17:09 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[03-Jul-2016 13:17:09 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[03-Jul-2016 13:17:09 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[03-Jul-2016 13:17:10 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[03-Jul-2016 13:17:10 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[03-Jul-2016 13:17:10 America/Bogota] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[03-Jul-2016 13:17:10 America/Bogota] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[19-Jul-2016 23:48:57 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[19-Jul-2016 23:48:57 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[19-Jul-2016 23:49:35 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[19-Jul-2016 23:49:35 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[19-Jul-2016 23:49:49 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[19-Jul-2016 23:49:49 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[20-Jul-2016 02:03:18 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[20-Jul-2016 02:03:18 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[22-Jul-2016 15:59:20 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[22-Jul-2016 15:59:20 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/tag_add.php on line 16
+[22-Jul-2016 18:50:09 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:50:09 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:50:09 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:09 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:50:09 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:50:09 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 9
+[22-Jul-2016 20:50:09 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 9
+[22-Jul-2016 20:50:10 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:50:10 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:50:10 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:50:10 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:10 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:11 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:50:11 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:11 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:11 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:11 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:11 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:50:11 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:11 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:11 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:11 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:12 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:12 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:13 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:13 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:50:13 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:50:13 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:13 America/Sao_Paulo] PHP Notice:  Undefined index: pageNumber in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 24
+[22-Jul-2016 20:50:13 America/Sao_Paulo] PHP Notice:  Undefined index: searchString in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 25
+[22-Jul-2016 20:50:13 America/Sao_Paulo] PHP Notice:  Undefined index: widgetId in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 26
+[22-Jul-2016 20:50:13 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 20:50:14 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:50:14 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:50:14 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:50:14 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:14 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:14 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:14 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 9
+[22-Jul-2016 20:50:14 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 9
+[22-Jul-2016 20:50:15 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:50:15 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:50:15 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:15 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:15 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:50:15 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:50:15 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:15 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:16 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:50:16 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:16 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:16 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:16 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:16 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:16 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:46 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:46 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:50:46 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:50:47 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:50:47 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:50:47 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:50:47 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:50:47 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:47 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:48 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:48 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:48 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:50:48 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:48 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:49 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:49 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:50:50 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:50:50 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:57:18 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:18 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:57:18 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:57:19 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:57:19 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:57:19 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:57:19 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:57:19 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:19 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 20:57:19 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:57:19 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:57:19 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:57:20 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:20 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:57:20 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:57:20 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:57:20 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:20 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:57:21 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:21 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:57:21 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:21 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:57:21 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:21 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:57:21 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:57:22 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:26 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:57:26 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:57:26 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:57:27 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:57:27 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:57:27 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:27 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 20:57:27 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:57:27 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:57:28 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:28 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:57:28 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:57:28 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:28 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:57:29 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:29 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:57:29 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:57:29 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:29 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:57:30 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:57:30 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:30 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:57:30 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:30 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:57:30 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:57:30 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:57:59 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:00 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:58:00 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:58:00 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:58:00 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:00 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:01 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:01 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:02 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:02 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:02 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:02 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:58:02 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:58:03 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:03 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:03 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:58:03 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:03 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:04 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:04 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:19 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:19 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:58:19 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:58:20 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:58:20 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:20 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:20 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:20 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:22 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:22 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:33 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:33 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:58:33 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:58:34 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:58:34 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:58:34 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:58:34 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:58:34 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:34 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:35 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:58:35 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:35 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:35 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:35 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:35 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:35 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:36 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:36 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:39 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:39 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:58:39 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:58:40 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:58:40 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:40 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:41 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:41 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:58:41 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:58:41 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:59:06 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:59:06 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:59:06 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:59:07 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:59:07 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:59:07 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:59:07 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:59:07 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:59:08 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:59:08 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:59:08 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 20:59:08 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:59:08 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:59:09 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:59:09 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:59:09 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:59:10 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:59:13 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:59:13 America/Sao_Paulo] PHP Notice:  Undefined variable: gtfo in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 20:59:13 America/Sao_Paulo] PHP Fatal error:  Call to a member function cleanWord() on a non-object in /home/hretro/public_html/myhabbo/avatarlist_avatarinfo.php on line 10
+[22-Jul-2016 18:59:14 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 18:59:14 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:59:14 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40
+[22-Jul-2016 18:59:14 America/Chicago] PHP Notice:  Undefined variable: bypass in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 19
+[22-Jul-2016 20:59:14 America/Sao_Paulo] PHP Warning:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in /home/hretro/public_html/myhabbo/avatarlist_membersearchpaging.php on line 40

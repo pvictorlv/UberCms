@@ -1,0 +1,4 @@
+#tt {font-size: 11px; text-shadow: #000 0 2px 1px; position:absolute; display:block; background:url(../images/tooltip/tt_left.gif) top left no-repeat}
+#tttop {display:block; height:5px; margin-left:5px; background:url(../images/tooltip/tt_top.gif) top right no-repeat; overflow:hidden}
+#ttcont {display:block; padding:2px 12px 3px 7px; margin-left:5px; background:#000000; color:#FFFFFF}
+#ttbot {display:block; height:5px; margin-left:5px; background:url(../images/tooltip/tt_bottom.gif) top right no-repeat; overflow:hidden}

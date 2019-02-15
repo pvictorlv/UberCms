@@ -1,0 +1,134 @@
+body{
+	margin: 0;
+	background: #ddd url(../img/fondo.png);
+}
+div#cont_placagrupo{
+	margin: 20px auto;
+	width: 307px;
+	padding: 5px;
+	border-radius: 10px;
+	border: 1px solid #555;
+	background-color: #fff;
+}
+div#cont_placagrupo .prevplaca_box{
+	padding: 10px;
+	margin-bottom: 5px;
+	background-color: #ccc;
+	border-radius: 5px;
+	text-align: center;
+}
+div#cont_placagrupo div.cont_btx{
+	padding: 10px;
+	border-radius: 5px;
+	height: 64px;
+	width: 287px;
+	margin-bottom: 5px;
+}
+div#cont_placagrupo .base{
+	background-color: gray;
+}
+div#cont_placagrupo .comp{
+	background-color: orange;
+}
+div#cont_placagrupo #pgrupo, .boxpos, .boxcolor, .cont_btx{
+	background-image: -webkit-linear-gradient(transparent 50%, rgba(0,0,0,.1) 50%);
+	background-image: -moz-linear-gradient(transparent 50%, rgba(0,0,0,.1) 50%);
+	background-image: -o-linear-gradient(transparent 50%, rgba(0,0,0,.1) 50%);
+}
+div#cont_placagrupo div#pgrupo {
+	width: 42px;
+	height: 42px;
+	border-radius: 3px;
+	border: 1px solid gray;
+	box-shadow: inset 0 0 0 2px white;
+	background-Color: white;
+	float:left;
+	padding:10px;
+	margin-right: 20px;
+	position: relative;
+}
+div#cont_placagrupo div#pgrupo:hover {
+	background-Color: #ddd;
+}
+div#cont_placagrupo .imgprev{
+	width: 100%;
+	height: 100%;
+	background-repeat:no-repeat;
+	background-position:center;
+	cursor: pointer;
+}
+div#cont_placagrupo .flecha{
+	width: 25px;
+	height: 29px;
+	position: absolute;
+	top: 16px;
+	cursor: pointer;
+}
+div#cont_placagrupo .flecha:active{
+	top: 17px;
+}
+div#cont_placagrupo .izq{
+	background: url(../img/flecha-izq.gif) center;
+	left: -25%;
+}
+div#cont_placagrupo .der{
+	background: url(../img/flecha-der.gif) center;
+	right: -25%;
+}
+div#cont_placagrupo div#contgrupopos {
+	float:left;
+	width:66px;
+	height:66px;
+	margin-right: 5px;
+}
+div#cont_placagrupo div.boxpos {
+	width: 18px;
+	height: 18px;
+	float: left;
+	margin: 1px;
+	border-radius: 3px;
+	border: 1px solid black;
+	background-Color: white;
+	box-shadow: inset 0 0 0 1px white;
+	cursor: pointer;
+}
+div#cont_placagrupo div.deselect:hover{
+	background-Color: gray;
+}
+div#cont_placagrupo div.select{
+	background-Color: #222;
+}
+div#cont_placagrupo div#contgrupocolores {
+	width:132px;
+	height: 60px;
+	float:left;
+}
+div#cont_placagrupo div.boxcolor {
+	width: 18px;
+	height: 18px;
+	float:left;
+	margin: 1px;
+	border-radius: 3px;
+	border: 1px solid black;
+	cursor: pointer;
+}
+div#cont_placagrupo div.boxcolor:not(.b_select) {
+	box-shadow: inset 0 0 0 1px white;
+}
+div#cont_placagrupo div.boxcolor:hover{
+	box-shadow: inset 0 0 0 2px white;
+}
+div#cont_placagrupo .b_select{
+	box-shadow: inset 0 0 0 1px black;
+}
+div#cont_placagrupo .copy{
+	height: 40px;
+	background-color: #ccc;
+	border-radius: 5px;
+	line-height: 40px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align: center;
+	font-size: 11px;
+	font-weight: bold;
+	color: white;
+}

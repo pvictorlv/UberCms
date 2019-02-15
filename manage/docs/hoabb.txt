@@ -1,0 +1,491 @@
+MODERATOR GUIDELINES
+This document sets out the procedures and policies for out-of-hours moderation of Habbo Hotel
+www.habbohotel.com
+Last updated March 1, 2004	 
+
+
+
+CONTENTS
+
+1	INTRODUCTION	3
+		
+2	TOOLS AT YOUR DISPOSAL	4
+2.1	Hobba commands	4
+2.2	Hobbanet	4
+		
+3	SPECIFIC SITUATIONS REQUIRING INTERVENTION	9
+3.1	‘Hacked’ Habbo accounts	9
+3.2	Catalogue item related problems	11
+3.3	Cyber sex	12
+3.4	Harassment	13
+3.5	Landline scams	14
+3.6	Scam sites	15
+3.7	Mutant Habbos	15
+		
+4	WHAT TO DO IN NOVEL SITUATIONS	16
+		
+5	OUT OF SERVICE	17
+		
+6	A TYPICAL MODERATOR SHIFT	21
+		
+7	KEEPING IN CONTACT	22
+
+ 
+1 INTRODUCTION
+
+Habbo Hotel is unlike other chat sites and because of this, many of the situations and issues arising within the community are unique to Habbo Hotel. Specific policies and procedures have been set up for dealing with each situation, and as new behaviours emerge, new policies are drawn up and implemented. This document will be updated on a regular basis to take these into account.
+
+At any given time, at least twenty Hobbas (hotel guides recruited from within the community) are in established hotels. Newly launched hotels may not have that many. ‘Moderator’, a special Habbo name set up to provide advice and support to the Hobbas and Habbos, is online 24 hours GMT every day of the week in the UK site and limited times in other countries. Within office hours (9.30am GMT to 2:30pm GMT) the Moderator is a member of on-site Sulake staff ; outside these times he/she is a fully trained contracted moderator employed on behalf of Sulake - you!
+ 
+2 TOOLS AT YOUR DISPOSAL
+There are a variety of tools and methods at your disposal for managing the Habbo Hotel community. 
+
+2.1 Hobba commands
+The hotel guides – Hobbas – have been given six special commands to help them carry out their Hobba duties. These can also be used by anyone who has a staff badge (certain employees of Sulake).
+
+They are: chooser, alert, kick, ban, startlog and shutup. 
+
+Chooser allows Hobbas and staff to list all Habbos in a room. 
+
+By clicking on a Habbo name from the Chooser list, action can be taken to correct behaviour or educate a Habbo. 
+
+Alert is a particularly useful command, since the Habbo receiving the alert does not know who sent it and so thinks that they are being watched. Sometimes an alert is all it takes to bring a misbehaving Habbo under control. 
+
+Startlog can be useful for recording conversations when you are trying to get to the bottom of a dispute, or if you need to hand over to someone else before the dispute is settled. 
+
+Shutup silences a Habbo for two minutes and is used to stop Habbos flooding a room by saying the same thing repeatedly (usually to advertise a room). 
+
+Please see the Hobba Handbook for details on how to use the six commands.
+
+2.2 Hobbanet
+Located at http://www.habbohotel.com/housekeeping/extra/hobba/do/  this tool allows you to use your Hobba/Moderator commands remotely (i.e. when you are not in the same room as the Habbo), change room names and descriptions, and look up Hobba activity as well as which Habbos are banned and gives you access to the Hobba Forum.
+
+ 
+2.2.1 Logging on to the Hobbanet
+Your Habbo Staff name and the Habbo name ‘Moderator’ and you’re the appropriate password will give you access to the Hobbanet. Sulake staff will periodically change the password to ‘Moderator’, but you will be informed of this. For your information, only Habbos with rights (i.e. Hobbas, Super Hobbas, Moderator and Habbo Staff) can access the Hobbanet. In addition, even with rights, only those with secure passwords can get in. Occasionally new Hobbas have not paid heed to this piece of information and may ask you why they can't get in. They need to change their password to one that is between six and nine characters long, which contains at least one number and both upper and lowercase letters.
+
+
+
+ 
+2.2.2 Using the Hobbanet
+The Hobbanet is made up of several sections, the viewing of which is dependant upon the rights of the Hobba. 
+
+•	Newbie Hobbas can only see the Hobba Discussion Board
+•	Hobbas can see the Hobba Discussion Board and the Hobba Tools.
+•	Super Hobbas can see the Hobba Discussion Board, the Hobba Tools and the Super Hobba Tools.
+•	Moderator can see all of the above plus the Scam Detection Tool, the Hobba Tracking Tools, various other tools and the Payment Status Tool. 
+
+Some instructions on how to use the tools are included in each section of the Hobbanet. The remaining instructions will be either sent to you via email or communicated to you during training.
+
+
+
+2.2.2.1 Hobba Discussion Board
+This is a message board where Sulake staff and Hobbas post news and important information for the Hobbas and where they discuss pertinent issues. Please do not post on this board using the name - Moderator - this confuses matters, since the Habbo is operated by lots of different people. If you have a staff name, please feel free to post using that name.
+
+
+
+
+2.2.2.2 Hobba Tools
+Using the Hobbanet you can alert, kick and ban a Habbo without needing to be in the same room (or even in the hotel). You can also change room names, close and open rooms, and remove rights from users (except the owner) with the Hobba Tools. One important point to note - when issuing remote commands, no chat log is recorded, so it is very important to include a detailed reason for the command. In most cases, a reason is suggested in Section 3 below. 
+
+2.2.2.3 Super Hobba Tools
+These tools allow you to search for guest rooms by name and change the name and/or room description, and check up on Hobba Activity on specific dates, Habbos or by Hobba. You can also look up a Habbo to see if and why he/she is banned (it's usually the member using another Habbo who asks this). Mass ban and Mass alert are tools SuperHobbas may use as well. You may type in several Habbo names in these tools at once and take the necessary action.
+
+2.2.2.4 Scam Detection and Customer Service Tools
+These tools (only available to Moderator and Habbo Staff) let you look up a specific Habbo and see how many items of furniture they have bought, what current furniture they have or own, who has or bought furniture they own, who else uses the same computer as theirs (they have the same machine ID), all their Habbo names, as well as some other useful information. These tools are most useful when a Habbo says that his/her furni has been stolen and that they bought £10 worth - you can quickly see if they have bought items or not. You can also use it to look up Habbos by their ID number (Habbo Credits Code) - useful for those Habbos who try to scam the Habbo Credits Lines on Stickies (see 3.5).
+
+The Email Search Tool allows you to track a Habbo’s email address, and see what Habbo name the user originally registered with.
+
+Please ignore the Purchases/ Phone tool. It is for Finnish use only.
+
+The Customer Service Tools allow you to input problem reports as needed. You can cut and paste chat log clips associated with any bans or unbans. Also, any problems you think are noteworthy should be input in the problem report tool. Bug Reports are show all reports submitted by Habbos. Feedback messages allow you to search for CONTACT reports or feedback submitted by Habbos. 
+
+2.2.2.5 Hobba Tracking Tools
+Please do not click on the links in this section as it may result in crashing the hotel. This section is to be removed soon. The exception to this rule is the Calls for Help link, which allows you to look up particular calls for help by date or by Habbo name. You are free to use this tool and may find it very useful.
+
+
+ 
+3 SPECIFIC SITUATIONS REQUIRING INTERVENTION
+
+3.1 ‘Hacking’ Habbo accounts
+‘I’ve been hacked’ is a familiar cry heard across many community sites. Within Habbo Hotel, it is often uttered by Habbos, but it is safe to say that their accounts have not been hacked in the true sense of the word (Habbo Hotel goes to great lengths to ensure this can’t happen). 
+
+More often than not, the Habbo in question has given another Habbo access to their account, either unwittingly or because they have been duped into doing so by a dishonest Habbo. The most common ways in which this occur are:
+
+•	The Habbo told another Habbo their password
+•	The Habbo’s password is so obvious, another Habbo has guessed it
+•	Another Habbo has told them to change their password to something they specified
+•	Another Habbo has told them to change their email address to something they specified (then the 'hacker' uses the 'forgotten your password?' link to get the Habbo's password)
+•	The Habbo has entered their Habbo name and password on a ‘scam’ site (see ‘Scam sites’ below)
+
+Why do Habbos do this? Nine times out of ten, they have been told that if they change their password or tell it to someone etc, they will then get free Habbo Credits. Habbo Hotel spends a lot of time and energy educating Habbos about this, but kids build up trust quickly and are easily mislead. And what sort of Habbo wouldn’t want Habbo Credits for free? :)
+
+What to do
+First and foremost, read up about the scams at http://www.habbohotel.com/habbo/en/help/scam/. 
+
+You should only take action against 'hackers' if you have proof - you've seen the Habbo advertising a scam site or asking for passwords etc. If you are confident that the Habbo is indeed trying to get into other Habbos' accounts, follow the procedures laid out below.
+
+If a Habbo claims that they have been 'hacked', tell them to use the 'Help! I've been scammed!' form, which can be found at http://www.habbohotel.com/habbo/en/help/scam/scammed/ . We use the information that they provide in this form to ascertain whether they are who they say they are – i.e. the legitimate owner of the Habbo name in question. If we can verify their identity, we will give them their Habbo back (with a new password).
+
+If a Habbo is telling you about a scammer, tell them to submit a scam report using the 'Report a scam" form, found at http://www.habbohotel.com/habbo/en/help/scam/scamreport . These are collated weekly and Habbo Ltd staff bans any Habbos who have been reported several times.
+
+Advertising scam site
+•	Ban Habbo permanently (and apply a computer ban, but not IP ban)
+•	Reason "You have been banned for advertising/running a scam site"
+
+Asking for another Habbo's password
+•	Ban Habbo permanently (and apply a computer ban, but not an IP ban)
+•	Reason "You have been banned for trying to get into other Habbos' accounts (asking for passwords)"
+
+Telling a Habbo to change their password to something specific
+•	Ban Habbo permanently (and apply a computer ban, but not an IP ban)
+•	Reason "You have been banned for trying to get into other Habbos' accounts (suggesting passwords)"
+
+Telling a Habbo to change their email address to something specific
+•	Ban Habbo permanently (and apply a computer ban, but not an IP ban)
+•	Reason "You have been banned for trying to get into other Habbos' accounts (suggesting email addresses)"
+
+
+A WORD ABOUT MACHINE and IP BANS
+
+We generally do not use Machine bans because many Habbos use a public or shared
+Computer (for instance, at school). Placing a Machine ban on a perm-banned Habbo
+bans all users from that particular computer. However, there are times when we need to use a
+machine ban.
+
+When to use a Machine Ban
+When a Habbo keeps returning and causing trouble, it’s best to use a Machine ban. Using this
+feature will ban the computer for more than one hour. 
+
+When to use an IP Ban
+IP bans are tricky because many Habbos do not use broadband and those who do use
+broadband will not necessarily have a static IP address. An IP ban bans the particular IP the
+Habbo was logged into at the time of the offense. If they reboot their computer or modem, they
+will most likely be assigned a new IP address and an unsuspecting, innocent Habbo will not
+understand why he can not access Habbo.  If you find it necessary to use an IP ban, be sure to
+keep in mind that the IP ban will show up on the next user’s account assigned to that IP
+address. The user is not necessarily a problem user, in other words. If you need assistance,
+please ask the Head Hobba.
+ 
+3.2 Catalogue item related problems
+Habbos can enter any room in the hotel for free and even set up their own guest room. However, if they wish to furnish their room, they have to buy Habbo Credits and then use these to buy items from the Catalogue, found in all private rooms. As in the offline or real world, there is a subset of individuals that either cannot or do not want to pay for their own items and prefer to resort to illegal means of acquisition.
+
+The most common ways in which dishonest Habbos acquire Catalogue items without paying for them are:
+•	‘Hacking’ other Habbos’ accounts (see above).
+•	Persuading other Habbos to ‘buy’ a job from them, promising to pay them with further items if they carry out set duties (usually things like being a doctor in a medical centre, or a beautician in a beauty salon). They never do pay and can collect a lot of items in this way. 
+•	Making friends with another Habbo, and giving them rights to their room. Then the Habbo is persuaded to place items in the room. The next time they return, the dishonest Habbo removes their rights and thus they lose the items they had placed in the room.
+•	An honest Habbo places item(s) in a trading box and is persuaded to click ‘accept’ before the dishonest Habbo has placed their item(s).
+•	‘Selling’ rights to a desirable room by asking for an item, but then not giving rights in return.
+
+What to do
+As before, you must have proof that a Habbo is stealing furniture or acquiring it by other dishonest means (i.e. corroborating stories from different Habbos).
+
+Please ask any Habbos who claim to have had furniture stolen to use the 'Help! I've been scammed!' form, which can be found at http://www.habbohotel.com/habbo/en/help/scam/scammed/ . They should also submit a scam report, so that the Habbo in question can be dealt with (in cases when you don't have proof). The scam report form can be found at http://www.habbohotel.com/habbo/en/help/scam/scamreport/ .
+
+Charging for jobs, but then not 'paying' their staff as promised
+•	Ban the Habbo for 72 hours (but do not ban computer)
+•	Reason  "You have been banned for stealing furni (non-paying job)"
+
+Giving rights to another Habbo and then stealing the furni he/she puts in the room
+•	Ban the Habbo permanently (but do not ban computer)
+•	Reason "You have been banned for stealing furni"
+
+Tricking a Habbo into clicking 'accept' in trading box before placing own items in it
+•	Ban the Habbo permanently (but do not ban computer)
+•	Reason "You have been banned for stealing (dishonest trading)"
+
+Selling rights but not giving them on receipt of furni
+•	Ban Habbo for 72 hours (but do not ban computer)
+•	Reason "You have been banned for stealing (selling rights)"
+ 
+3.3 Cyber sex
+It is quite natural for teenagers to want to talk about sex and even experiment with virtual sex, where individuals talk through a sexual experience. Habbo Hotel recognises this, but because of the nature of the Internet and the hotel in particular (not to mention the current media and Government concern) we have a zero tolerance policy towards this type of behaviour.
+
+Why? Because Habbos don’t really know who they are talking to or who is ‘listening’. They may think they are having cyber sex with another 15 year old, but in reality that Habbo may be a vulnerable pre-teen. And any Habbos within earshot may be young too. Habbo Hotel caters to 14-20 year olds, but some Habbos are as young as 12 years old and it is inappropriate for them to be exposed to conversations of a sexual nature.
+
+There are five main areas that need policing with respect to cyber sex:
+•	private rooms purposely set up for cyber sex, with names like ‘horny ladies for you’ etc
+•	Habbos hassling others for cyber sex
+•	Habbos asking for furni in return for cyber sex
+•	Habbos indulging in cyber sex
+•	Habbos with mission statements or even Habbo names that suggest they are interested in cyber sex – such as ‘To bobba hot babes’ and ‘Ilovetobescrewed’
+
+What to do
+In the case of private room names and descriptions, both can be changed in the Hobbanet. 
+Hobbas are asked to explain to room owners why they should change the name and description. Hobbas report such rooms to Moderator to have the names amended if the room owner is uncooperative. However, if you see an unacceptable room name, please change it whether you have been asked to by a Hobba or not.
+
+If a room not only has an unacceptable name, but has Habbos inside it who are engaging in cyber sex, Hobbas are told to clear the room, so that it drops off the ‘popular rooms’ list on the Hotel Navigator. For details on how they do this, please see the Hobba Handbook.
+
+Unacceptable room names/descriptions
+•	Change the room name to ‘Unacceptable to Hotel Management:’
+•	Change description to ‘pls change immediately.’
+•	Note the room name and email to your Head Hobba, for possible inclusion in the Bobba Filter.
+•	If the room name is changed back by the owner, ban the owner for two hours
+•	Reason: "You have been banned for repeatedly using an unacceptable room name"
+
+Habbos asking for cyber sex, offering it or indulging in it
+•	Send them an alert saying "Cyber is not allowed in Habbo Hotel"
+•	If they carry on, ban them for two hours (but do not ban their computer)
+•	Reason: "You have been banned for cyber sex"
+
+Habbos with unacceptable names
+•	Ban them for 100,000 hours (do not ban their computer)
+•	Reason: "Your name is unacceptable.”
+•	Note name and email to your Head Hobba, for possible inclusion in the Bobba Filter.
+
+Habbos with unacceptable missions
+•	Speak to the Habbo directly and ask them to change it. 
+•	If this is not possible, or if they ignore your request ban them for two hours (but do not ban their computer)
+•	Reason: "Your mission is unacceptable, pls change immediately".
+
+3.4 Harassment
+Harassment can take several forms in Habbo Hotel, ranging from simple name-calling, being followed from room to room to being spammed via the Habbo Console with instant messages, emails or SMS. Habbos may also write unpleasant things about other Habbos on Stickie notes – the Habbo Hotel equivalent to toilet graffiti.
+
+What to do
+In the case of a Habbo who is being harassed via the Habbo Console the solution is simple – tell them to remove the offender from their Friends List. Once they have done this there is no way the offender can continue.
+
+If a Habbo has been foolish enough to give out their email address or phone number, there is not much Habbo Hotel can do, other than advise the Habbo to change their email address and/or set up a filter to delete emails from the individual concerned. Teens will be reluctant to do the former, since their email address is often an extension of themselves and thus very important. Teens will certainly not want to change their phone number, so all they can do is ignore any SMS they receive. 
+
+It is a good idea at this juncture to remind the Habbo why it is so important that they do not divulge their personal details – this is why Habbo Hotel created the Habbo Console in the first place.
+
+Offensive Stickie notes can be deleted by Habbo Hotel staff members, Moderator and Super Hobbas, but only from within the private rooms. It is thus a good idea to take the opportunity to read all the notes when you visit a room, deleting those that not only say unpleasant things about other Habbos, but also those that are generally offensive. 
+3.5 Landline scams
+One of the methods by which Habbos can buy Habbo Credits is to phone special landline numbers (there is a different number for each country) and enter their unique Habbo Credits Code. This code is actually their registration number and they can only see it when they open their Habbo Purse and go to the relevant page.
+
+A scam arose shortly after the introduction of this payment method, whereby a Habbo would tell another Habbo that if they run this number and entered a code they specified that they would get so many free Habbo Credits. The code they gave was of course their own Habbo Credits Code, so all that would happen would be that the duped Habbo would buy Habbo Credits for the scammer. 
+
+What to do
+
+Habbo advertising landline scam verbally
+•	Ban for 100,000 hours (ban computer too)
+•	Reason: "You have been banned for scamming the Habbo Credits Line’
+
+Landline scam on Stickie note
+•	Note the code number and use the Habbo Information Tool (in Scam Detection) to look up the Habbo's name.
+•	Ban for 100,000 hours (ban computer too)
+•	Reason: "You have been banned for scamming the Habbo Credits Line’
+2	Delete the Stickie3.6 Scam sites
+These are websites that have been set up by Habbos in order to harvest other Habbos' usernames and passwords. They usually claim to have found a way to give out free Habbo Credits and often use Habbo Hotel graphics to fool others into thinking that they are authorised by Habbo Hotel. Some even go as far to say that they are official Habbo Hotel sites. 
+
+The scam site owners use the information they harvest to log in as other Habbos (see ‘Hacking’ Habbo accounts above) and steal any items that they have bought from the Catalogue, or even just pretend to be that Habbo and upset the Habbo’s friends etc.
+
+Scam sites are usually advertised in the following ways:
+•	Word of mouth – Habbos go into different rooms in the hotel and shout out the URL to their scam site. Also, gullible Habbos who believe the scam tell their friends and word gets about that way.
+•	URL in missions
+•	Stickie notes – URLs are posted up on Stickie notes in private rooms 
+
+What to do
+Scam sites on Stickie notes
+•	Write down URL and send to your Head Hobba  (they will get site taken down)
+•	Delete Stickie note
+
+Habbo advertising scam site (in mission, by shouting)
+•	Ban Habbo for 100,000 hours (and computer too)
+•	Reason: "You have been banned for advertising/running a scam site"
+
+
+
+
+3.7  Mutant Habbos
+
+Mutant Habbos are no longer possible.
+ 
+4 WHAT TO DO IN NOVEL SITUATIONS
+In novel cases use common sense and ask yourself – is this Habbo acting in against the Habbo Way ( http://www.habbohotel.com/habbo/en/help/safety/terms/ ) and are his/her actions likely to offend or upset anyone else? If the answer is yes to either question, then you need to take some form of action.
+
+First, talk to the Habbo and explain why they can’t do what they are doing and that they will be removed from the hotel if they continue. In serious situations - and this is where common sense comes in – you may need to ban them, either for a short time or permanently, if his/her behaviour is likely to spoil the enjoyment of the hotel for others.
+
+If you are repeatedly encountering a situation not included in this document, please make the Becs (Becs@sulake.com) aware of it, so that she can set a policy for dealing with it in future.
+
+If at any time you are unsure as to what action you should take in a novel situation please contact your Head Hobba, either by email or phone in emergency situations only.  For more information about calling from the UK to the US or any country to another country please visit http://www.countrycallingcodes.com/
+
+You will be reimbursed for any calls to Mandy or the office.
+
+
+Sexual Harassment or Cyber Rape
+It is imperative that Moderators prioritise sexual harassment or cyber rape calls for help. Please send all suspicious logs to your Head Hobba and use the Habbo Problem Report link in the HK Admin tools to note important information regarding possible pedofiles, violent cyber rape, threats, etc. 
+
+Hobbas are often not comfortable dealing with these calls. This is a very serious matter and we expect Moderators to report any such problems, including the Habbo names involved. Ban all cyber rape offenders for 7 days.
+
+
+
+
+
+5 OUT OF SERVICE
+
+In the event of a serious technical problem with the hotel, a system called habbodown comes into play. Selected individuals (including the Moderators and staff at Sulake and Habbo Ltd) have access to a web-based form, where they can report critical disruptions to the service. While you are working a shift as Moderator it is your responsibility to report major problems promptly. 
+
+First check the STATUS TOOL - www.habbohotel.com/system_status.jsp
+If you see any RED TYPE, there is most likely a problem.
+
+The URL is http://www.sulake.com/habbodown (Username = Habbo, password = isdown). The content of this page is reproduced below - please familiarize yourself with what constitutes a habbodown situation:
+
+
+Habbo Hotel emergency situations
+This form is ONLY to be used for critical Habbo Hotel problems. 
+
+PROBLEM
+Frontpage not loading (cannot access the site).
+Do not report if your browser says "Domain habbohotel.com not found" (or similar) - the problem is most likely at your end.
+
+Shockwave files do not load.
+Report only if black Shockwave page with the Shockwave logo stays forever and you have rebooted your web browser and tried again.
+
+Cannot login or register
+Do not report if there are over 4000 people in the (UK) site - it is probably temporarily overloaded. But if a clear majority of these people are on the front page, the server is probably down, so please report it then!
+
+One or more public rooms down.
+Report if rooms are not visible on the front page or several rooms are empty although there are over 500 people in the hotel.
+
+Private rooms down
+Report if there are less than 100 people in private rooms or private rooms are not visible on the front page and you cannot access them.
+
+Credit card/Splash/ does not work.
+
+
+
+In the event that the habbodown URL is not working (this may happen if the Sulake servers are down), please send an email to habbodown@yahoogroups.com.
+
+These emails and the reports from the habbodown URL are read by Magenta, the Finnish company that runs the Habbo Hotel servers. However, outside their office hours (7am - 3pm GMT weekdays, but not bank holidays e.g. Christmas Day) you will need to ring them (+358 800 9 74837 or 1-800-351-8095 in the US) to let them know that a report has been filed. If this number is not answered, please call again after a couple of minutes. They will usually reboot the servers to solve the problem. 
+
+Once they have taken action to fix the problem they will send an email to everyone on the habbodown list (you are on this list using yourname@sulake.com). If the email from Magenta says that they were not able to fix the problem you must then phone Aapo at Sulake (+358 505 9 91 240). If you cannot get hold of Aapo at this number, try (+358 505 99 1240) next. Sulake will look at the habbodown emails and talk to Magenta direct, so you don't need to explain the problem. 
+
+Please do not use the habbodown system to report minor problems or Housekeeping problems - if the hotel is still functioning, use the Habbo Hotel bugs form in your HK Admin tools. Make sure you understand when to use the system (see above).
+
+To recap:
+1.	File a report at http://www.sulake.com/habbodown/ or email habbodown@yahoogroups.com
+2.	Ring Magenta to let them know a report has been filed (outside office hours)
+3.	Check your email to find out if Magenta were able to fix the problem
+4.	If Magenta could not fix the problem, ring Aapo at Sulake. 
+
+
+CHECKING THAT THE PAYMENT SYSTEMS ARE WORKING
+
+It is important that all payment systems are checked regularly so that problems are picked up early and revenue loss is minimised. Therefore the following checks should be carried out at the beginning of every shift.
+
+It is especially important to check that any offers we are running are working correctly - eg Habbos are receiving double Credits. 
+
+Using Housekeeping to make the checks
+1	Log into Housekeeping and go to Payment Status.
+
+2	This should take you to a Payment Systems page.
+ 
+3	This shows how long ago in minutes each payment system was last used.
+
+4	Money transfers and cash are categories you do not need to worry about as they are only dealt with in office hours. If a Habbo has a query about a cheque/money order they have sent, get them to fill in the Habbo Credits CONTACT form in the Guest Services Centre.
+
+5	The payment systems as they are called in the UK Housekeeping are explained below:
+
+
+Payment system	Category name in Housekeeping
+Habbo Credits Line (UK)	htk_singledrop
+Habbo Credits Line (Belgium)	Not Listed
+Habbo Credits Line (Spain)	Not Listed
+Habbo Credits Line (Germany)	Not Listed
+Habbo Credits Line  (Italy)	Not listed
+Credit cards	Creditscards_is (America and Canada only)
+Splash Plastic	splashplastic
+Orange SMS	sms_win_orange
+02 SMS	sms_wapmx_btcellnet
+Vodafone SMS	sms_wapmx_vodafone
+
+
+What to do when a payment system is not working
+If any of the payment systems do not show transactions over a long period of time (which you monitor on payment status), you then need to test them further. Please take into account that different payment systems will be affected by their relevant time zones.
+
+Habbo Credits Lines (first check our server is okay)
+If the UK line is not working, test it yourself (if you live in the UK) by phoning the relevant number and checking that you receive the Habbo Credits:
+
+10 Credits Habbo Credits Line	 0906 780 9988
+
+(we will either refund the cost of test calls you make in credits OR if you send us your phone bill – with test calls highlighted, we will refund them through expenses.)
+
+If you are not in the UK, you need to contact HTK to report the problem. 
+HTK 24 hours technical line – 0870 600 2313/2311 
+
+With the other lines, you’ll only really find out about them if you get a lot of complaints on your shift. Use your judgment, but if the problem can wait – email dany@sulake.com and cc Mandy@sulake.com with details  (which landline has the fault and as many details of the problem as you know) and she will deal with it the following day/after the weekend.
+
+If the problem is serious and cannot wait, you need to contact:
+
+All foreign lines: HTK. HTK 24 hours technical – 0870 600 2313/2311
+
+Splash Plastic  (first check our site is okay and connects to Splash Plastic’s html pages)
+If no transactions are showing on Splash Plastic, contact Splash Plastic to find out if there are problems. 
+Out of hours or at weekends – you can either contact the Splash Plastic Customer Service desk via email: csdesk@splashplastic.com, or if it’s a more serious technical issue, call Phil Caudwell, +44 (0)20 7535 8850
+
+Credit and debit cards
+If you think there is a problem or no transactions are showing on Internetsecure, please contact the Merchant Services Department:
+
+Email:	service@internetsecure.com
+Phone:	1-800-297-9482 International +011-905-469-6522	GTA: 905-469-6522
+(Mon-Fri 8am-6pm eastern time)
+
+During the evening or the weekend you can reach them by phoning and selecting option "7" from the main menu, which will automatically transfer your call to a cell phone carried by one of our merchant service representatives. This extended coverage is provided: 
+Monday to Friday 6:00pm - 10:30pm (eastern time)
+Saturday/Sunday & Holidays 8:00am - 10:30pm (eastern time)
+
+
+
+SMS
+
+If any of the SMS networks are not working, first test them mobile phone if you can. 
+
+If you do not receive the return SMS with the special code (or you are unable to test), you need to contact either WIN plc (Orange) or WAPMX (02 and Vodafone).
+
+Our WIN plc contacts are:
+
+Out of hours (weekend no): 01494 750 555 (or 500 or 591)or email operations@winplc.com
+
+Our WAPmx contact no:
+0845 666 7778 fs.tk
+
+There is no out of hours line for Wapmx but can call office line (above). If no one is there, email support@wapmx.com
+
+
+
+
+
+
+
+
+
+6  A TYPICAL MODERATOR SHIFT
+
+You should perform these tasks at the beginning of every shift:
+•	Check your email (name@sulake.com) to see if there are any issues outstanding from the previous shift.
+•	Check into the hotel as Moderator.
+•	Delete any Friend Requests (Moderator only has Hobbas and Habbo Staff on his/her Friends List).
+•	Go into your Habbo Purse and check that all the payment pages are loading up correctly.
+•	Check the Hotel Navigator for unacceptable room names.
+
+During a shift you should:
+•	Answer Console Messages from Hobbas who need help.
+•	Answer Calls for Help if the Hobbas are not able to (there may not be many online, or the hotel may be especially busy).
+•	'Patrol' the public rooms - Hobbas tend to stick to the guest rooms, but the public rooms are where the newbies often need help.
+•	Report any minor bugs using the bug report form in HK admin tools.
+•	Report any major problems using the habbodown system: http://www.sulake.com/habbodown
+
+At the end of your shift you should:
+•	Send any scam websites you came across to your Head Hobba
+•	Send any unacceptable Habbo/room names that you think should be included in the Bobba Filter to your Head Hobba
+•	Send a BRIEF email to your Head Hobba and fellow Moderators to report back on any issues that arose throughout your shift. This should include any outstanding issues that perhaps you were unable to resolve yourself, feedback on Hobbas, new bugs that you encountered on the site, scam sites, and anything else that you feel relevant.
+
+Example Shift Report (SR) Template:
+
+Tech Issues: 
+
+Habbo Issues:
+
+Hobba Issues:
+
+Kudos/Concerns/questions:
+
+Your signature
+
+
+ 
+7  KEEPING IN CONTACT
+
+All people using Moderator need to have a personal sulake email account set up on their computer: name@sulake.com  For assistance in setting this up, please contact your technical coordinator, Head Hobba or Country Manager.
+
+This is used to keep everyone up to date with any changes and for handing over shifts from one person to another. For help on how to set up this account, please ask your technical coordinator or Head Hobba, who will supply the password and settings.

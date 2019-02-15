@@ -1,0 +1,112 @@
+a.big-button {
+    background: transparent url(../images/embed/big_button.png) no-repeat scroll 0 0;
+    cursor: pointer;
+    display: block;
+    height: 184px;
+    overflow: hidden;
+    text-decoration: none;
+    width: 194px;
+    white-space: normal;
+    margin: 0;
+}
+
+a.big-button:hover {
+    background-position: 0 -184px;
+}
+
+#embed-content {
+    margin: 0 auto;
+    position: relative;
+    width: 700px;
+}
+
+#embed-content #fullscreen-button {
+    float: left;
+    margin: 0 0;
+}
+
+#embed-content #logged-in-content {
+    float: right;
+    width: 200px;
+}
+
+#embed-content #logged-in-content .roundedrect {
+    font-weight: normal;
+}
+
+#embed-content #signout {
+    float: right;
+    width: 90px;
+}
+
+#embed-content #signout a.userlink {
+    color:#FFFFFF;
+    font-weight: normal;
+}
+
+#embed-content #habbo-logo {
+    background-image: url(../images/embed/habbo_embed_logo.png);
+    border: 0 none;
+    float: left;
+    height: 35px;
+    width: 90px;
+}
+
+#embed-content #to-hotel {
+    padding-top: 10px;    
+	position: relative;
+	top: auto;
+	right: auto;
+}
+
+#embed-content a.big-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+#embed-content a.big-button table {
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: bold;
+    height: 188px;
+}
+
+#embed-content #image-content {
+    margin: 10px auto 6px auto;
+    position: relative;
+    clear: both;
+}
+
+#embed-content #enter-hotel-image-link {
+    cursor: pointer;
+    display: block;
+    height: 188px;
+    position: relative;
+    text-decoration: none;
+    width: 700px;
+    z-index: 0;
+}
+
+#embed-content div.rounded-container {
+    margin: 0;    
+}
+
+#embed-content div.roundedrect, #embed-content div.roundedrect-done {
+    padding: 3px 8px;
+    _padding: 3px 0;
+}
+
+#embed-content .roundedrect {
+    font-weight: bold;
+    text-align: center;
+}
+
+#embed-content .action-error {
+    margin-top: 20px;
+}
+
+#geoip-ad-embed {
+    margin-top: 6px;
+}

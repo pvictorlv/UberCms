@@ -1,0 +1,24 @@
+<?php
+
+//Input your Keyboard character in here
+//(UP) mean: (Do not remove (UP)
+//Tab mean: Tab key (Do not remove Tab)
+//BF mean: \ Key
+//CAP mean: Caps Lock key (Do not remove CAP)
+//ENTER mean: Enter key (Do not remove ENTER)
+//Shift mean: Shift key (Do not remove Shift)
+//Ctrl, Alt mean: Ctrl & Alt key
+//SPACE_BAR mean: Space Bar key (Do not remove SPACE_BAR)
+$keyboard=<<<CODE
+BF |,1 !,2 &quot;,3 #,4 $,5 %,6 &amp;,7 /,8 (,9 ),0 =,' ?,« »
+(UP)|,!,&quot;,#,$,%,&amp;,/,(,),=,?,»
+Tab,q,w,e é ë,r &#341;,t,y ý ÿ,u ú ü,i í ï,o õ ó ö,p,+ *
+(UP)Tab,Q,W,E É Ë,R &#340;,T,Y Ý,U Ú Ü,I Í Ï,O Õ Ó Ö,P,*
+CAP,a ã ä,s &#347;,d,f,g,h,j,k,l &#314;,ç,º ª,ENTER
+(UP)CAP,A Ã Á Ä,S &#346;,D,F,G,H,J,K,L &#313;,Ç,ª,ENTER
+Shift,z &#378;,x,c &#263;,v,b,n ñ &#324;,m,comma ;,. :,- _,Shift
+(UP)Shift,Z &#377;,X,C &#262;,V,B,N &#323; Ñ,M,;,:,_,Shift
+Ctrl,Alt,SPACE_BAR,Alt,Ctrl
+CODE;
+
+?>

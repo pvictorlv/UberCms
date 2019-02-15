@@ -1,0 +1,53 @@
+a.large-button {
+    cursor: pointer;
+    overflow:hidden;
+    text-decoration: none;
+    white-space: nowrap;
+    height: 46px;
+    margin: 0 0 5px 10px;
+    display: block;
+    float: right;
+    position: relative;
+}
+
+/* fixes large logo buttons on confirmation page on IE7 */
+a.large-button.logo-button {
+    float:none;
+}
+
+a.large-button.logo-button span {
+    width: 140px;
+}
+ 
+a.large-button span {
+    float: left;
+    height: 46px;
+    font-size: 20px;
+    margin-right: 3px;
+    background: transparent url(../images/button_large.png) no-repeat -4px 0;
+    color: #000 !important;
+    line-height: 42px;
+    text-align: center;
+    padding: 0 26px 0 30px;
+    min-width: 80px;
+}
+
+a.large-button span img {
+    border: none;
+    margin: 9px 0px;
+}
+
+a.large-button:hover { text-decoration: none; }
+a.large-button:hover span { background-position: -4px -46px; }
+a.large-button.disabled-button:hover span { background-position: -4px 0; }
+a.large-button:hover i { background-position: 0px -46px; }
+a.large-button.disabled-button:hover i { background-position: 0px 0px; }
+
+a.large-button i {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4px;
+    height: 46px;
+    background: transparent url(../images/button_large.png) no-repeat 0px 0px;
+}

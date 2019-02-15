@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config>
+	<asset-libraries>
+        <library url="hh_human_body.swf" />
+        <library url="hh_human_fx.swf" />
+        <library url="hh_human_item.swf" />
+        <library url="hh_human_50_body.swf" />
+        <library url="hh_human_50_fx.swf" />
+        <library url="hh_human_50_item.swf" />
+        <library url="hh_people_pool.swf" />
+	</asset-libraries>
+	<service-libraries />
+	<component-libraries />
+</config>

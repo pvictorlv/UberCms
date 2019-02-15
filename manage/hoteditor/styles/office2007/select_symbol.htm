@@ -1,0 +1,50 @@
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
+	<script language="JavaScript" type="text/javascript">	
+	function SetFormat(data) {	
+		self.parent.InsertSymbol(data);
+	}
+	</script>
+	
+	<style type=text/css>@import url(style.css);</style>		
+</head>
+<body leftmargin="0" rightmargin="0" marginwidth="0" marginheight="0" topmargin="0" bottommargin="0">
+<DIV style="overflow:auto;height:100%;width:100%">
+
+<table cellpadding="0" cellspacing="0" border="1" style="border-collapse: collapse" bordercolor="#C0C0C0" width="360">
+
+<script language=javascript>
+var array = new Array();
+array[0] ="&perp;,¢,£,¤,¥,¦,§,¨,¯,ª";
+array[1] ="«,»,®,©,°,±,²,³,´,µ";
+array[2] ="¶,·,¸,¹,º,¬,¼,½,¾,¿";
+array[3] ="Þ,ß,&alpha;,&delta;,&eta;,&iota;,&mu;,&pi;,&sigma;,&chi;";
+array[4] ="&Gamma;,&Lambda;,&Sigma;,&Psi;,&beta;,&theta;,&kappa;,&nu;,ϖ,&phi;";
+array[5] ="&psi;,&Delta;,&Xi;,&Omega;,&gamma;,&zeta;,&lambda;,&xi;,&rho;,&tau;";
+array[6] ="&omega;,&Theta;,&Pi;,&Phi;,&#8743;,&#8801;,&#8834;,&#8839;,&#8594;,&#8596;";
+array[7] ="&#8704;,&#8711;,±,&#8804;,&#8805;,&#8800;,&#8838;,&#8712;,&#8593;,&#8707;";
+array[8] ="&#8744;,&#8835;,&#8592;,&#8595;,&#8658;,&#1076;,&#8730;,&#8734;,&#8747;,&#8776;";
+array[9] ="&#9644;,&#9650;,&#9658;,&#9660;,&#9668;,&#9674;,&#9675;,&#9679;,&#9688;,&#9689;";
+array[10] ="&#9702;,&#9786;,&#9787;,&#9788;,&#9792;,&#9794;,&#9824;,&#9827;,&#9829;,&#9830;";
+array[11] ="&#9834;,&#9835;,&#9474;,&#9484;,&#9488;,&#9492;,&#9496;,&#9500;,&#9508;,&#9516;";
+array[12] ="&#9524;,&#9552;,&#9554;,&#9555;,&#9556;,&#9557;,&#9558;,&#9559;,&#9560;,&#9561;";
+array[13] ="&#9562;,&#9563;,&#9564;,&#9565;,&#9566;,&#9567;,&#9568;,&#9569;,&#9570;,&#9571;";
+array[14] ="&#9572;,&#9573;,&#9574;,&#9575;,&#9576;,&#9577;,&#9578;,&#9579;,&#9580;,&#9600;";
+array[15] ="&#9604;,&#9608;,&#9612;,&#9616;,&#9617;,&#9618;,&#9619;,&#9632;,&#9633;,&#9642;";
+
+document.writeln("<table class=Hoteditor_Select cellpadding=0 cellspacing=0 width=100%>\n");
+for (i=0;i<array.length;i++){
+	lineitem=array[i].split(",");
+	document.writeln("<tr>\n");
+	for (x=0;x<lineitem.length;x++){
+		document.writeln("<td width=20 height=20 style='CURSOR:hand;CURSOR:Pointer;font-size:20px;width:30px;height:30px' class=Hoteditor_Button align=center onmouseover=\"this.className='Hoteditor_Button_Over';\" onmouseout=\"this.className='Hoteditor_Button';\" onclick=\"SetFormat('" + lineitem[x] + "');\">" + lineitem[x] + "</td>\n");
+	}
+	document.writeln("</tr>\n");
+}
+</script>
+
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - uber@localhost" uuid="9df6b8d1-6307-4c46-a861-0061a928cd39">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <introspection-schemas>*:uber</introspection-schemas>
+    </data-source>
+  </component>
+</project>

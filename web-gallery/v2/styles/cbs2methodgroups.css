@@ -1,0 +1,83 @@
+.method-group.online.bestvalue {
+    background-repeat: no-repeat;
+    background-position: top left;
+    min-height: 180px;
+    padding-bottom: 13px;
+    background-color: #FDF6EC;
+    background-image: none;
+    border-color: #FF9900;
+}
+
+.method-group.online {
+    background-color: #FDF6EC;
+    background-image: none;
+    margin: 10px 0;
+    border-bottom: 1px solid #f90;
+    padding-bottom: 20px;
+}
+
+.method-group.online.oldstyle {
+    background: url("../images/newcredits/onlinemoney_crop.png") no-repeat scroll 26px 100% #FDF6EC;
+}
+
+.method-group.online #price-container {
+    float: right;
+}
+
+.method-group.online #price-container form {
+    margin: 0;
+    padding: 0;
+}
+
+.method-group.online .price {
+    position: absolute;
+    top: 65px;
+    left: 77px;
+    text-align: center;
+    width: 160px;
+    height: 160px;
+    overflow: hidden;
+    font-size: 11px;
+    background: url(../images/newcredits/blast_big.png) no-repeat;
+}
+
+.method-group.online .price b {
+    font-size: 27px;
+    margin-bottom: 5px;
+}
+
+.method-group.online .price b.from {
+    font-weight: normal;
+    font-size: 13px;
+    color: #FF9900;
+}
+
+
+.method-group.online .price[class] div div {
+    width: 160px;
+}
+
+.method-group.online #price-container {
+    padding-top: 16px;
+}
+
+.method-group.online #pricepoints ul {
+    margin-bottom: 20px;
+}
+
+.method-group.online #methods {
+    display: inline;
+    float: right;
+    max-width: 370px;
+    margin-left: 50px;
+    padding: 10px 25px 5px 10px;
+}
+
+.method-group.online #methods ul li {
+    margin-bottom: 10px;
+}
+
+.method-group.online #more-info {
+    float: right;
+    padding: 10px;
+}

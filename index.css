@@ -1,0 +1,143 @@
+body {
+background-image: url('../images/index/bg.png');
+background-color: #BCE0EE;
+font-size: 15px;
+font-family: Verdana;
+}
+
+a {
+font-weight:bolder;
+text-decoration:none;
+}
+
+input {
+padding: 6px;
+font-size: 15px;
+}
+
+input:focus {
+	background-color:#eee;
+}
+
+form {
+	padding-bottom:20px;
+}
+
+div.logo {
+ background-image: url('../images/index/logo.png');
+ background-repeat: no-repeat;
+ width: 241px;
+ height: 58px;
+ float: left;
+ margin: 20px;
+}
+
+div.column1 {
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+display: block;
+padding: 10px;
+color: white;
+background-color: #2D2D2D;
+box-shadow: 0 2px 30px #000;
+border: 2px solid #989898;
+height: 70px;
+}
+
+
+.LoginButton {
+	background: #33BB11;
+	border:thin black solid;
+	text-align: center;
+	padding:15px 5px 15px 5px;
+	width:160px;
+	float:right;
+    margin: -44px 0;
+	font-size:14px;
+	font-weight:bold;
+}
+
+.LoginButton:hover {
+	background: #33DD22;
+	border:thin black solid;
+	text-align: center;
+	padding:15px 5px 15px 5px;
+	width:160px;
+	float:right;
+	margin: -44px 0;
+	font-size:14px;
+	font-weight:bold;
+	cursor:pointer;
+}
+
+div.box_header {
+	text-align:center;
+	background: #797979;
+	padding: 6px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+
+#box {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  width: 600px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 2px 30px #000;
+  border: 2px solid #989898;
+  	opacity: 0.8;
+  margin: 0 0 0 340px;
+ }
+ 
+ div.frontpage{
+  background-image: url('../images/index/hotel_view2.png');
+  background-repeat: no-repeat;
+  height: 278px;
+  padding: 60px;
+ }
+ 
+ div.error {
+ background-color: #CB0505;
+padding: 10px;
+border-radius: 4px;
+box-shadow: 0 2px 30px #000;
+margin: 0 0 10px;
+}
+
+div.button {
+background: #606C88;
+background: -moz-linear-gradient(top, rgba(96, 108, 136, 1) 0%, rgba(63, 76, 107, 1) 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(96, 108, 136, 1)), color-stop(100%,rgba(63, 76, 107, 1)));
+background: -webkit-linear-gradient(top, rgba(96, 108, 136, 1) 0%,rgba(63, 76, 107, 1) 100%);
+background: -o-linear-gradient(top, rgba(96, 108, 136, 1) 0%,rgba(63, 76, 107, 1) 100%);
+background: -ms-linear-gradient(top, rgba(96, 108, 136, 1) 0%,rgba(63, 76, 107, 1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', endColorstr='#3f4c6b',GradientType=0 );
+background: linear-gradient(top, rgba(96, 108, 136, 1) 0%,rgba(63, 76, 107, 1) 100%);
+
+   -webkit-border-radius: 6px;
+   -moz-border-radius: 6px;
+    border-radius: 6px;
+	border:2px black solid;
+	text-align: center;
+	padding: 30px 14px 30px;
+	width:160px;
+	font-size:14px;
+	font-weight:bold;
+}
+
+div.button:hover {
+
+background: #1E3575;
+background: -moz-linear-gradient(top, #1E3575 24%, #0B2161 62%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(24%,#1E3575), color-stop(62%,#0B2161));
+background: -webkit-linear-gradient(top, #1E3575 24%,#0B2161 62%);
+background: -o-linear-gradient(top, #1E3575 24%,#0B2161 62%);
+background: -ms-linear-gradient(top, #1E3575 24%,#0B2161 62%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e3575', endColorstr='#0b2161',GradientType=0 );
+background: linear-gradient(top, #1E3575 24%,#0B2161 62%);
+	cursor:pointer;
+}

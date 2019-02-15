@@ -1,0 +1,207 @@
+.Hoteditor_Main_Border {
+	border: 1px solid #6593CF; 
+	background-color: #DBE6F3; 
+}
+
+.Hoteditor_TitleBar {
+	background-color: #BFDBFF; 
+	font-family: Verdana, Tahoma, Arial, sans-serif;
+	font-weight: bold;
+	color: black;
+	font-size: 10px;
+	height: 25px;
+	background-image: url(./title_background.gif);
+	background-position: top;
+	background-repeat: repeat-x;
+}
+
+.Hoteditor_iFrame {
+	border: 1px solid #6593CF; 
+}
+
+.Hoteditor_iTextarea {
+	border: 1px solid #6593CF; 
+	background-color:#F1F5FA;
+}
+
+.Hoteditor_DesignModeOn_TextColor {
+	color: green; 
+	font-weight: bold;
+}
+
+.Hoteditor_DesignModeOff_TextColor {
+	color: gray; 
+	font-weight: normal;
+}
+
+.Hoteditor_PopupLayer {
+	border: 1px solid #6593CF; 
+	border-collapse:collapse;
+}
+
+.Hoteditor_PopupLayer_Title {
+	background-color: #E0E0E0; 
+	color: black;
+	font-family: Verdana, Tahoma, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 10px;
+	height: 25px;
+	background-image: url(./title_background.gif);
+	background-position: top;
+	background-repeat: repeat-x;
+}
+
+.Hoteditor_Select {
+	border-collapse:collapse;
+	background-color: #DBE6F3;
+	color: black;
+	font-size: 11px;
+}
+
+.Hoteditor_Select_Over {
+	border: 1px solid #FFBD69;
+	background-color: #FCEEC1; 
+	color: #03568C;	
+	font-size: 11px;
+	background-image: url(./popup_over.gif);
+}
+
+.Hoteditor_SelectColor {
+	border:2px solid #6593CF;
+}
+
+.Hoteditor_SelectColor_Over {
+	border: 2px solid #F29536;
+}
+
+.Hoteditor_Button {
+	border: 1px solid #6593CF;
+	background-image: url(./button_background.gif);
+}
+
+.Hoteditor_Button_Over {
+	border: 1px solid #FFBD69;
+	background-color: #FCEEC1; 
+	background-image: url(./button_over.gif);
+	CURSOR: Pointer;
+}
+
+.Hoteditor_Button_Out {
+	border: 1px solid #6593CF;
+	background-image: url(./button_background.gif);
+}
+
+.Hoteditor_Calendar_Main_Border {
+	border: 1px solid #6593CF;
+}
+
+.Hoteditor_Calendar_Title_Background_Color {
+	background-color: #FCEEC1; 
+	background-image: url(./button_over.gif);
+	height: 20px;
+	border-width: 1px;
+	border-style: dashed;
+}
+
+.Hoteditor_Calendar_ToDay_Background_Color {
+	background-color: #FCEEC1; 
+	background-image: url(./button_over.gif);	
+	border-width: 1px;
+	border-style: dashed;
+}
+
+.Hoteditor_Calendar_NormalDay_Background_Color {
+	background-color: #DBE6F3;
+	border-width: 1px;
+	border-style: dashed;
+}
+
+.Hoteditor_Calendar_MouseOver {
+	background-color: #BFDBFF;
+	border-width: 1px;
+	border-style: solid;
+}
+
+
+hr {
+	border: 0px none;
+    width: 100%
+}
+
+hr.HR_Color { 
+	color: #6593CF;
+	background-color: #6593CF;
+	height: 1px;
+}
+
+/* Virtual Keyboard Style */
+
+.Hoteditor_normal_key {
+	width: 25px;
+	height: 22px;
+	border: 1px solid #FFBD69;
+	background-color: #FCEEC1;
+	font-family: Verdana, Arial, Helvetica, sans-serif ;
+	color: black;
+	font-size: 11px;
+	font-weight: normal;
+	cursor:hand;
+	cursor:pointer;
+}
+
+.Hoteditor_normal_key_over {
+	width: 25px;
+	height: 22px;
+	border: 1px solid #FFBD69;
+	background-color: #FFC06F;
+	background-image: url(./title_background.gif);
+	font-family: Verdana, Arial, Helvetica, sans-serif ;
+	color: black;
+	font-size: 11px;
+	font-weight: bold;
+	cursor:hand;
+	cursor:pointer;
+}
+
+.Hoteditor_main_key {	
+	height: 22px;
+	border: 1px solid #6593CF;
+	background-color: #DBE6F3;
+	font-family: Verdana, Arial, Helvetica, sans-serif ;
+	color: black;
+	font-size: 11px;
+	font-weight: normal;
+	cursor:hand;
+	cursor:pointer;
+}
+
+.Hoteditor_main_key_over {	
+	height: 22px;
+	border: 1px solid #FFBD69;
+	background-color: #FFC06F;
+	background-image: url(./title_background.gif);
+	font-family: Verdana, Arial, Helvetica, sans-serif ;
+	color: black;
+	font-size: 11px;
+	font-weight: normal;
+	cursor:hand;
+	cursor:pointer;
+}
+
+.Hoteditor_sub_key_over {
+	border: 1px solid #FFBD69;
+	background-color: #FFC06F;
+	font-family: Verdana, Arial, Helvetica, sans-serif ;
+	color: green;
+	font-size: 11px;
+	font-weight: bold;
+	cursor:hand;
+	cursor:pointer;
+}
+
+.Hoteditor_sub_key {
+	font-weight: bold;
+	cursor:hand;
+	cursor:pointer;
+	color: black;
+}

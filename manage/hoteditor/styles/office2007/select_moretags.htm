@@ -1,0 +1,47 @@
+<html>
+<head>
+	<script language="JavaScript" type="text/javascript">	
+	function SetFormat(data,option) {
+		self.parent.InsertCodeWrap(data,option);
+		self.parent.close_insert_pop();
+	}
+	</script>
+	
+	<style type=text/css>@import url(style.css);</style>		
+</head>
+<body leftmargin="0" rightmargin="0" marginwidth="0" marginheight="0" topmargin="0" bottommargin="0">
+<DIV style="overflow:auto;height:100%;width:100%">
+<script language=javascript>
+var array = new Array();
+array[0] ="html_tag.gif|HTML|";
+array[1] ="glow_tag.gif|GLOW|";//SMF Forum
+array[2] ="shadow_tag.gif|SHADOW|=red,left";//SMF Forum
+array[3] ="move_tag.gif|MOVE|";//SMF Forum
+array[4] ="pre.gif|PRE|";//SMF Forum
+array[5] ="tele.gif|TT|";//SMF Forum
+array[6] ="ftp.gif|FTP|";//SMF Forum
+
+var icon;
+var tag;
+var showtag;
+document.writeln("<table class=Hoteditor_Select cellpadding=0 cellspacing=0 width=100%>\n");
+for (i=0;i<array.length;i++){
+	iarray=array[i].split("\|");
+	icon =iarray[0];
+	tag =iarray[1];
+	option=iarray[2];
+	showtag="[" + tag + "]....[/" + tag + "]";
+	if(option==""){
+		set_tag= "'" + tag + "'" + ",''";
+	}
+	else{
+		set_tag= "'" + tag + "'" + ",'" + option + "'";
+	}
+	document.writeln("<tr><td height=30 nowrap><div STYLE='cursor:hand;cursor:pointer' onclick=\"SetFormat(" + set_tag + ");\" onMouseover=\"this.className='Hoteditor_Select_Over'\" onMouseout=\"this.className='Hoteditor_Select'\">&nbsp;<img align=absmiddle border=0 src=" + icon + "> <b><font face='Arial'>" + showtag + "</font></b></div></td></tr>\n\n");
+}
+document.writeln("<tr><td><br></td></tr>\n");
+document.writeln("</table>\n");
+</script>
+</DIV>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+<head>
+	<script language="JavaScript" type="text/javascript">	
+	function SetFormat(data) {		
+		self.parent.SetFontFormat(data,"fontname");
+		self.parent.close_insert_pop();
+	}
+	</script>
+	
+	<style type=text/css>@import url(style.css);</style>		
+</head>
+<body leftmargin="0" rightmargin="0" marginwidth="0" marginheight="0" topmargin="0" bottommargin="0">
+<DIV style="overflow:auto;height:100%;width:100%">
+<script language=javascript>
+var array = new Array();
+var Color_Title ="gray";
+array[0] ="Arial";
+array[1] ="Arial Black";
+array[2] ="Arial Narrow";
+array[3] ="Book Antiqua";
+array[4] ="Century Gothic";
+array[5] ="Comic Sans MS";
+array[6] ="Courier New";
+array[7] ="Fixedsys";
+array[8] ="Franklin Gothic Medium";
+array[9] ="Garamond";
+array[10] ="Georgia";
+array[11] ="Impact";
+array[12] ="Lucida Console";
+array[13] ="Lucida Sans Unicode";
+array[14] ="Microsoft Sans Serif";
+array[15] ="Palatino Linotype";
+array[16] ="System";
+array[17] ="Tahoma";
+array[18] ="Times New Roman";
+array[19] ="Trebuchet MS";
+array[20] ="Verdana";
+array[21] ="Wingdings";
+
+document.writeln("<table class=Hoteditor_Select cellpadding=0 cellspacing=0 width=100%>\n");
+for (i=0;i<array.length;i++){
+	document.writeln("<tr><td><div STYLE='cursor:hand;cursor:pointer' onclick=\"SetFormat('" + array[i] + "');\" class='Hoteditor_Select' onMouseover=\"this.className='Hoteditor_Select_Over'\" onMouseout=\"this.className='Hoteditor_Select'\"><font size=2 face='" + array[i] + "'><b><font color=" + Color_Title + ">" + array[i] + "</font></b><br>AaBbCcDd - 1234567890</font></div></td></tr>\n<tr><td height=15 ><hr class=HR_Color></td></tr>\n");
+}
+document.writeln("</table>\n");
+
+</script>
+	
+</DIV>
+</body>
+</html>

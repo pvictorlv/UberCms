@@ -1,0 +1,41 @@
+#header-container #header h1, body.process-template #header h1 {
+  background-repeat: no-repeat;  
+  background-position: -13px 100%;
+  margin-bottom: 5px;
+  padding-bottom: 23px; 
+}
+
+#enter-hotel {
+    padding: 28px 0;
+    width: 184px;
+    height: 49px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#new-personal-info .enter-hotel-btn {
+	position: absolute;
+	top: 1px;
+	right: 10px;
+	padding: 28px 0;
+}
+
+
+#badge-back {
+    position: absolute;
+    left: 90px;
+    top: 85px;    
+}
+
+body {
+	background-image: url(../v2/images/beach_bg.png);
+}
+
+div.welcome-intro {
+	background-image: url(../v2/images/welcome/beach_welcomeParty.gif);
+}
+
+##footer .footer-links { color: #808080; }
+##footer .footer-links a { color: #bebebe; }
+##footer .copyright { color: #727272; }     
+##footer .copyright a { color: #bebebe; }

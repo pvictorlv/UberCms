@@ -1,0 +1,131 @@
+#email-changed-notice {
+    position: absolute;
+    width: 383px;
+    z-index: 9001;
+    color: #fff;
+}
+
+#email-changed-notice-title {
+    text-align: center;
+    font-size: 16px;
+    padding: 7px 5px;
+    font-weight: bold;
+}
+
+#email-changed-notice-content div {
+    margin-top: 10px;
+}
+
+#email-changed-notice .email-address {
+	color: #66CCFF;
+    font-size: 18px;
+	font-weight: bold;
+    text-align: center;
+}
+
+#email-changed-notice input.email-address {
+	width: 340px;
+    border:1px solid #663333;
+    padding: 4px;    
+}
+
+#email-changed-notice-container {
+    background: transparent url(../images/frontpage/use_email_bg.png) no-repeat top left;
+    padding: 5px 20px;
+    overflow: hidden;
+}
+
+#email-changed-notice-container-bottom {
+    background: transparent url(../images/frontpage/use_email_bg.png) no-repeat bottom left; height: 10px;
+}
+
+.bottom-border  {
+    padding-bottom: 15px;
+    border-bottom: thin solid #313131;
+}
+
+#force-email-ok-button, #email-changed-submit-button {
+    margin-top: 10px;
+    float: right;
+    height: 50px;
+}
+
+#force-email-ok-button.new-button b, #email-changed-submit-button.new-button b {
+    background: transparent url(../images/shared_icons/buttons_small.png) no-repeat -6px -400px;
+    line-height: 40px;
+    text-align: center;
+    height: 50px;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+#email-changed-submit-button.new-button b {
+    background-position: -6px 0;
+}
+
+#force-email-ok-button.new-button i, #email-changed-submit-button.new-button i {
+    background: transparent url(../images/shared_icons/buttons_small.png) no-repeat 0 -400px;
+    width: 6px;
+    height: 50px;
+}
+
+#email-changed-submit-button.new-button i {
+    background-position: 0 0;
+}
+
+#force-email-ok-button.new-button:hover b {
+    background-position: -6px -450px;
+}
+
+#email-changed-submit-button.new-button:hover b {
+    background-position: -6px -50px;
+}
+
+#force-email-ok-button.new-button:hover i {
+    background-position: 0 -450px;
+}
+
+#email-changed-submit-button.new-button:hover i {
+    background-position: 0 -50px;
+}
+
+#email-changed-error-container {
+    margin-top: 5px;
+    color: #DA5A4C;
+}
+
+#email-changed-notice #email-changed-update-email.error {
+    background-color: #DA5A4C;
+}
+
+#email-changed-submit-button b {
+    color: #fff;
+}
+
+#email-changed-notice #email {
+    padding-top: 10px;
+}
+
+#email-changed-notice #email .checkbox {
+    padding: 5px;
+}
+
+#email-changed-notice .email-address.black {
+    color: #000;
+}
+
+#email-changed-notice .checkbox.error {
+    border: 2px solid #DA5A4C;
+}
+
+#email-changed-notice .checkbox a {
+    color: #33CCFF;
+}
+
+#email-changed-notice #terms-container {
+    margin-top: 10px;
+}
+
+#email-changed-notice-container form {
+    margin-top: 40px;
+}

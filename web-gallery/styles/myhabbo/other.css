@@ -1,0 +1,70 @@
+﻿div.es_dynamic_sticker_avatar {
+	width: 64px; height: 106px;
+}
+div.es_dynamic_sticker_avatar_pre {
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+div.es_dynamic_animator_sticker {
+	width: 180px; height: 144px;
+}
+div.es_dynamic_animator_sticker_pre {
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+
+div.w_highscoreswidget_pre {
+	background-image: url(http://img1.cdn1.habbo.com/habboweb/58_740cdda5150f14b5e2e3cf44ef1f496f/10/web-gallery/images/myhabbo/widgets/hiscores_preview.gif);
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+div.w_profilewidget_pre {
+	background-image: url(http://img1.cdn1.habbo.com/habboweb/58_740cdda5150f14b5e2e3cf44ef1f496f/10/web-gallery/images/myhabbo/widgets/profilewidget.gif);
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+div.w_friendswidget_pre {
+	background-image: url(http://img2.cdn1.habbo.com/habboweb/58_740cdda5150f14b5e2e3cf44ef1f496f/10/web-gallery/images/myhabbo/widgets/friends_preview.gif);
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+div.w_roomswidget_pre {
+	background-image: url(http://img1.cdn1.habbo.com/habboweb/58_740cdda5150f14b5e2e3cf44ef1f496f/10/web-gallery/images/myhabbo/widgets/rooms_preview.gif);
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+div.w_guestbookwidget_pre {
+	background-image: url(http://img2.cdn1.habbo.com/habboweb/58_740cdda5150f14b5e2e3cf44ef1f496f/10/web-gallery/images/myhabbo/widgets/guestbook_preview.gif);
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+div.w_groupinfowidget_pre {
+	background-image: url(http://img1.cdn1.habbo.com/habboweb/58_740cdda5150f14b5e2e3cf44ef1f496f/10/web-gallery/images/myhabbo/widgets/groupinfowidget.gif);
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+div.w_groupswidget_pre {
+	background-image: url(http://img2.cdn1.habbo.com/habboweb/58_740cdda5150f14b5e2e3cf44ef1f496f/10/web-gallery/images/myhabbo/widgets/groupswidget.gif);
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+div.w_memberwidget_pre {
+	background-image: url(http://img1.cdn1.habbo.com/habboweb/58_740cdda5150f14b5e2e3cf44ef1f496f/10/web-gallery/images/myhabbo/widgets/member_preview.gif);
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+div.w_ratingwidget_pre {
+	background-image: url(http://img4.cdn1.habbo.com/habboweb/58_740cdda5150f14b5e2e3cf44ef1f496f/10/web-gallery/images/myhabbo/widgets/rating_preview.gif);
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+div.w_traxplayerwidget_pre {
+	background-image: url(http://img4.cdn1.habbo.com/habboweb/58_740cdda5150f14b5e2e3cf44ef1f496f/10/web-gallery/images/myhabbo/widgets/trax_preview.gif);
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+div.w_habbomovieswidget_pre {
+	background-image: url(http://img2.cdn1.habbo.com/habboweb/58_740cdda5150f14b5e2e3cf44ef1f496f/10/web-gallery/images/myhabbo/widgets/movies_preview.gif);
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+div.w_userexpswidget_pre {
+	background-image: url(http://img1.cdn1.habbo.com/habboweb/58_740cdda5150f14b5e2e3cf44ef1f496f/10/web-gallery/images/myhabbo/widgets/hiscores_preview.gif);
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+div.w_badgeswidget_pre {
+	background-image: url(http://img3.cdn1.habbo.com/habboweb/58_740cdda5150f14b5e2e3cf44ef1f496f/10/web-gallery/images/myhabbo/widgets/badges_preview.gif);
+	background-repeat: no-repeat; background-position: 50% 50%;
+}
+
+div.commodity_stickienote_pre {
+	background-image: url(http://img1.cdn1.habbo.com/habboweb/58_740cdda5150f14b5e2e3cf44ef1f496f/10/web-gallery/images/myhabbo/stickies/note_thumbnail_store.gif);
+	background-repeat: no-repeat; background-position: 50% 50%;
+}

@@ -1,0 +1,159 @@
+<ifModule mod_php5.c>
+	php_value zlib.output_compression 16386
+	php_value register_globals off
+	php_value session.use_trans_sid 0
+	php_value default_charset iso-8859-1
+</ifModule>
+
+RewriteEngine on 
+
+
+ErrorDocument 400 /error.php?e=400
+ErrorDocument 401 /error.php?e=401
+ErrorDocument 403 /error.php?e=403
+ErrorDocument 404 /error.php?e=404
+ErrorDocument 500 /error.php?e=500 
+
+RedirectMatch 301 /habboweb/63_1dc60c6d6ea6e089c6893ab4e0541ee0/841/(.*) /$1
+
+RewriteRule ^quickregister/refresh_avatars(|/)$ quickregister/refresh_avatars.php
+RewriteRule ^register(|/)$ register.php
+
+RewriteRule habbo-imaging/avatar/(.*)\.gif$ /habbo-imaging/avatar.php?figure=$1
+RewriteRule habbo-imaging/avatarimage?figure=([^/]+)(|/)$ /habbo-imaging/avatar.php?figure=$1
+
+RewriteRule ^quickregister/refresh_avatars_female(|/)$ quickregister/refresh_avatars_female.php
+
+RewriteRule ^profile/profileupdate(|/)$ profile.php
+RewriteRule ^profile/emailupdate(|/)$ change_email.php
+RewriteRule ^quickregister/start/error/([^/]+)(|/)$ /register.php?stap=1&errors=$1
+
+RewriteRule ^community/publicistas(|/)$ /linces.php
+RewriteRule ^community/tags(|/)$ /tag.php
+RewriteRule ^editar_grupos(|/)$ /editar_grupos.php
+
+RewriteRule ^bots/editar(|/)$ /bots.php?editar
+RewriteRule ^bots(|/)$ /bots.php
+RewriteRule ^bots?editar(|/)$ /bots.php?editar
+
+RewriteRule ^myhabbo/save(|/)$ /myhabbo/save.php
+RewriteRule ^home/(.*)/startSession/(.*)$ /startSession.php?id=$2
+RewriteRule ^home/([^/]+)/id(|/)$ /home.php?qryId=$1
+RewriteRule ^home/([^/]+)(|/)$ /home.php?qryName=$1
+RewriteRule ^myhabbo/cancel/(.*)(|/)$ /myhabbo/cancel.php?id=$1
+RewriteRule ^myhabbo/(.*)/(.*)(|/)$ /myhabbo/$1_$2.php
+
+RewriteRule ^identity/useOrCreateAvatar/([^/]+)(|/)$ /identity.php?type=useOrCreateAvatar&param=$1
+RewriteRule ^identity/([^/]+)/error/([^/]+)(|/)$ /identity.php?type=$1&errors=$2
+RewriteRule ^identity/([^/]+)(|/)$ /identity.php?type=$1
+RewriteRule ^changeRLname/([^/]+)/code/([^/]+)(|/)$ /changeRLname.php?name=$1&code=$2
+
+RewriteRule ^groups/(.*)/id/BadgeUpdated ./grupos.php?id=$1&x=BadgeUpdated
+RewriteRule ^groups/(.*)/id/canceledit ./grupos.php?id=$1&do=canceledit
+RewriteRule ^groups/(.*)/id/edit ./groups.php?id=$1&do=edit 
+RewriteRule ^groups/(.*)/id ./groups.php?id=$1 
+RewriteRule ^groups/(.*) ./groups.php?id=$1
+
+RewriteRule ^shops/Tienda(|/)$ /vip.php
+RewriteRule ^shops/VIP(|/)$ /vip2.php
+RewriteRule ^shops/Raros(|/)$ /vip3.php
+RewriteRule ^shops/Placas(|/)$ /vip4.php
+
+RewriteRule ^pingsession(|/)$ /pingsession.php
+
+RewriteRule ^habboclub/habboclub_confirm(|/)$ /habblet/habboclub_confirm.php
+
+RewriteRule ^crossdomain.xml$ /crossdomain.php
+RewriteRule ^gamedata/external(|/)$ /externals.php
+
+RewriteRule ^security_check(|/)$ security_check.php
+RewriteRule ^profile(|/)$ /profile.php
+RewriteRule ^client(|/)$ /client.php
+RewriteRule ^flash_client_error(|/)$ /client_error.php
+RewriteRule ^client_error(|/)$ /client_error.php
+RewriteRule ^me(|/)$ /me.php
+RewriteRule ^me2(|/)$ /prueba.php
+RewriteRule ^login_popup(|/)$ /login-popup.php
+
+RewriteRule ^community(|/)$ /community.php
+RewriteRule ^community/staff(|/)$ /staff.php
+RewriteRule ^community/linces(|/)$ /linces.php
+
+RewriteRule ^help/faqsearch ./help.php
+RewriteRule ^help/(.*)$ ./help.php?id=$1
+RewriteRule ^help$ ./help.php
+
+RewriteRule ^vip$ ./vip.php
+
+RewriteRule ^index2$ ./index2.php
+
+RewriteRule ^papers/(.*)$ ./paper.php?page=$1
+
+
+RewriteRule ^credits(|/)$ /credits.php
+RewriteRule ^credits/pixels(|/)$ /pixels.php
+RewriteRule ^credits/club(|/)$ /habboclub.php
+RewriteRule ^habboclub(|/)$ /habboclub.php
+RewriteRule ^credits/habboclub(|/)$ /habboclub.php
+RewriteRule ^credits/uberclub(|/)$ /habboclub.php
+RewriteRule ^credits/uberclub/tryout(|/)$ /clubtryout.php
+RewriteRule ^credits/habboclub/tryout(|/)$ /clubtryout.php
+
+RewriteRule ^register(|/)$ /register.php
+RewriteRule ^register_submit(|/)$ /register.php?doSubmit
+RewriteRule ^register_messages(|/)$ /register-messages.php
+RewriteRule ^register/cancel(|/)$ /register-cancel.php
+RewriteRule ^register/welcome(|/)$ /welcome.php
+RewriteRule ^register/undefined(|/)$ /index.php
+RewriteRule ^account/changepassword(|/)$ /changepassword.php
+
+
+
+RewriteRule ^my_details(|/)$ /my_details.php
+RewriteRule ^change_password(|/)$ /change_password.php
+RewriteRule ^change_email(|/)$ /change_email.php
+
+RewriteRule ^vip/shop(|/)$ /vipshop.php
+RewriteRule ^vip/getpoints(|/)$ /vippoints.php
+
+RewriteRule ^account/policy-verify(|/)$ /policyver.php
+RewriteRule ^account/password/forgot(|/)$ /forgot.php
+RewriteRule ^account/submit(|/)$ /index.php
+RewriteRule ^account/logout(|/)$ /logout.php
+RewriteRule ^account/logout_ok(|/)$ /logout-ok.php
+RewriteRule ^account/disconnected(|/)$ /disconnected.php
+
+RewriteRule ^articles(|/)$ /article.php?mostRecent
+RewriteRule ^articles/archive(|/)$ /article.php?mostRecent&archiveMode
+RewriteRule ^articles/([^/]+)/in/archive(|/)$ /article.php?rel=$1&archiveMode
+RewriteRule ^articles/([^/]+)(|/)$ /article.php?rel=$1
+RewriteRule ^articles/category/([^/]+)(|/)$ /article.php?category=$1
+
+RewriteRule ^register/undefined/([^/]+)$ /me.php
+
+RewriteRule ^habblet/cproxy(|/)$ /habbletProxy.php
+RewriteRule ^habblet/ajax/([^/]+)(|/)$ /habbletAjax.php?cmd=$1
+RewriteRule ^habblet/([^/]+)(|/)$ /habblet.php?cmd=$1
+RewriteRule ^myhabbo/([^.]+)(|/)$ /myhabbo.php?cmd=$1
+RewriteRule ^minimail/loadMessage(|/)$ /minimail-view.php
+RewriteRule ^minimail/([^/]+)(|/)$ /minimail.php?cmd=$1
+
+RewriteRule ^my_details(|/)$ /my_details.php
+RewriteRule ^change_password(|/)$ /change_password.php
+RewriteRule ^change_email(|/)$ /change_email.php
+
+RewriteRule ^quickmenu/friends_all(|/)$ /quick-friends.php
+RewriteRule ^quickmenu/groups(|/)$ /quick-groups.php
+RewriteRule ^quickmenu/rooms(|/)$ /quick-rooms.php
+
+RewriteRule ^r=(.*)$ /refer.php?r=$1
+RewriteRule ^refer/(.*)$ /refer.php?r=$1
+RewriteRule ^referidos/(.*)$ /referidos.php?n=$1
+
+RewriteRule ^tag/search?tag=(.*)$ ./tags.php?search=$1 [QSA]
+RewriteRule ^tag/(.*)$ ./tags.php?search=$1 [QSA]
+RewriteRule ^tag$ ./tags.php [QSA]
+
+RewriteRule ^ricos(|/)$ /tops.php
+
+RewriteRule ^habblet/ajax/removeFeedItem ./habblet/ajax_removeFeedItem.php

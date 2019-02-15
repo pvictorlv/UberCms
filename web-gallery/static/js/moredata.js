@@ -1,0 +1,3 @@
+var MoreDataHelper=Class.create();MoreDataHelper.prototype={initialize:function(b,c,a){this.opened=false;this.toggleMoreDataId=b;this.moreDataContainerId=c;this.showMorePostfix=a;if($(this.toggleMoreDataId)){Event.observe($(this.toggleMoreDataId),"click",function(d){Event.stop(d);this.toggleMoreData()
+}.bind(this))}},toggleMoreData:function(){if(this.opened){new Effect.BlindUp($(this.moreDataContainerId));$(this.toggleMoreDataId).innerHTML=L10N.get("show.more."+this.showMorePostfix);$(this.toggleMoreDataId).removeClassName("less");this.opened=false}else{new Effect.BlindDown($(this.moreDataContainerId));
+$(this.toggleMoreDataId).addClassName("less");$(this.toggleMoreDataId).innerHTML=L10N.get("show.less."+this.showMorePostfix);this.opened=true}}};

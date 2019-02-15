@@ -1,0 +1,476 @@
+body {
+	background-color:#fff;
+	background-image:none;
+	padding:0 10px;	
+}
+
+#header { background: none }
+
+.register-container, .create-identity-container { background: transparent url(../images/registration/register_bg_top.png) no-repeat top left; }
+.register-container-bottom-end, .create-identity-container-bottom-end { background: transparent url(../images/registration/register_bg_bottom.png) no-repeat top left; } 
+.register-container-bottom, .create-identity-container-bottom { background: transparent url(../images/registration/register_bg_bottom.png) no-repeat bottom left; height: 10px }
+.signin-container { background: transparent url(../images/registration/signin_bg.png) no-repeat top left; }
+.signin-container-bottom { background: transparent url(../images/registration/signin_bg.png) no-repeat bottom left; height: 10px }
+.merge-signin-container { background: transparent url(../images/registration/signin_bg.png) no-repeat top left; }
+.merge-signin-container-bottom { background: transparent url(../images/registration/signin_bg.png) no-repeat bottom left; height: 10px }
+.merge-progress-container { background: transparent url(../images/registration/plain_bg.png) no-repeat top left; }
+.merge-progress-container-bottom { background: transparent url(../images/registration/plain_bg.png) no-repeat bottom left; height: 10px }
+.select-avatar-container { background: transparent url(../images/registration/register_bg2.png) no-repeat top left; }
+.select-avatar-container-bottom { background: transparent url(../images/registration/register_bg2.png) no-repeat bottom left; height: 10px }
+.phase-1 .register-container, .phase-1 .register-container-bottom { background-image: url(../images/registration/register_bg2.png); }
+
+.register-header, .signin-header, .select-avatar-header, .create-identity-header, .merge-signin-header, .merge-progress-header   { color: #fff; font-size: 16px; font-weight: bold; text-align: center; line-height: 42px; }
+
+body { background-image: url(../images/bg.png) }
+
+#header h1 { float: right }
+#header { width: auto }
+
+#header h1 { float: none; margin: 0; padding-top: 14px }
+#header p { padding-right: 50px; clear: both; margin-top: 16px; margin-right: 127px }
+#header h1 a { float: none; display: block }
+.register-content { padding: 0 18px;}
+.register-container-bottom-end.register-content { padding-top: 35px;}
+#merge-progress #content, #merge-signin #content, #signin #content { padding-right: 10px }
+.cb { margin-right: 0; }
+
+#footer { padding: 1em }
+
+/* form field and label styles */
+label {
+	display: block;
+	margin-bottom: 4px;
+	font-weight: bold;
+	width: 105px;
+	margin-right: 10px;
+	font-weight: normal;
+	padding-top: 3px;
+}
+#signin label { width: auto; }
+.rememberme-field label { display: inline; }
+#register-page p { padding: 0 }
+
+#register-page .field.tos label, #register-page .field-marketing label {
+	text-align: left;
+	width: auto;
+}
+#register-page fieldset {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#register-page label em,legend em {
+	display: none;
+}
+
+.field {
+	clear: left;
+	margin: 10px 0 17px 0;
+}
+
+.field-currentpassword {
+    margin-left: 10px;
+}
+
+.field-captcha {
+    margin-left: 10px;
+}
+
+#register-page .field.tos label,#register-page .field-marketing label {
+	margin-bottom: 15px;
+}
+
+.field-parent-email {
+	display: none;
+}
+
+.help, .error-message, textarea {
+	margin-bottom: 6px;	
+}
+
+p.help {
+	margin-top: 4px;
+	color: #a0a0a0;
+}
+
+input.text-field,input.password-field,select {
+	font-size: 11px;
+	padding: 4px;
+	border-style: solid;
+	border-color: #C6C6C6 #C6C6C6 #E3E3E3;
+	border-width: 1px;
+}
+
+input.text-field,input.password-field, textarea {
+	width: 260px;
+}
+
+#register-page #habbo-name {
+	width: 150px;
+	float: left;
+}
+
+.field .new-button { float: left; }
+.field .new-button b { padding:5px 9px 4px 12px; }
+
+input.checkbox-field {
+	margin-left: 0;
+	vertical-align: middle;
+}
+
+select {
+	border: none;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	background-color: #EAEAEA;
+	width: 88px;
+}
+
+.button {
+	margin-top: 16px;
+	clear: left;
+}
+
+/* error message styles */
+.error input,.error select {
+	border: 1px solid #e2001a;
+}
+
+.error-message {
+	color: #e2001a;
+}
+
+.error-messages-holder {
+	display: none;
+}
+
+.error-messages-holder ul {
+	padding: 0;
+	list-style: none;
+}
+
+.error-messages-holder ul li {
+	background: transparent url(../images/registration/exclamation.png) no-repeat left 50%;
+	line-height: 18px;
+	padding-left: 18px;
+}
+
+.error-messages-holder ul p {
+	margin: 3px 0;
+	padding: 0;
+}
+
+.error-messages-holder h3 {
+	color: #E2001A;
+	font-size: 13px;
+	margin: 5px 0;
+}
+
+.error-messages-holder {
+	display: block;
+	padding: 0px 10px;
+	background-color: #FFF4F2;
+	border: 1px solid #E2001A;
+	margin-top: 10px;
+}
+
+.state-error input.text-field,.state-error input.password-field {
+	border: 2px solid #E2001A;
+	background: #FFF4F2 url(../images/registration/exclamation.png) no-repeat scroll 99% 50%;
+}
+
+.state-error select {
+	background-color: #FFF4F2;
+	border: 2px solid #E2001A;
+}
+
+.state-error label#tos {
+	border: 2px solid #E2001A;
+	padding: 5px;
+}
+
+.state-error .help { /* color: #e2001a; */
+	
+}
+
+#error-message-position {
+	display: none;
+}
+
+.state-error #error-message-position {
+	display: block;
+	margin-bottom: 10px;
+}
+
+#captcha-container {
+    padding-top: 8px;
+	margin-top: 0;
+	text-align: left;
+}
+
+#register-page .field-captcha label {
+	float: none;
+	width: auto;
+	text-align: left;	
+}
+	
+#captcha-container img {
+	float: left;
+}
+
+#register-page #recaptcha_image {
+    float: left;	
+}
+#register-page #recaptcha_image img {
+    border: 1px solid #000;
+}
+
+#register-page #recaptcha_response_field, #register-page #captcha_response_field {
+	float: left;
+	font-size: 30px;
+	font-weight: bold;
+	margin-right: 5px;
+    padding: 11px 8px;
+    text-align: center;
+	width: 150px;
+}
+#register-page #recaptcha_response_field {
+    width: 196px;
+    font-size: 18px;	
+    padding: 17px 8px 18px 8px;
+}
+
+#avatar-choices { float: left; margin-left: 16px; }
+#selected-avatar {
+    background: transparent url(../images/registration/reg_stand.png) no-repeat bottom left;	
+    height: 157px;
+    width: 106px;
+    float: left; 
+    margin-top: 42px;
+    position: relative; 
+}
+
+#selected-avatar img {
+	position: absolute;
+	bottom: 36px;
+	left: 22px;
+}
+
+#selected-avatar h3 { position: absolute; top: -42px;}
+.field-avatar .selected {
+	border: 2px solid lightgreen;
+}
+.male-avatar, .female-avatar {
+    display: block;
+    float: left;
+    background: transparent url(../images/registration/reg_btn_0.png) no-repeat 0 0;
+    height: 61px;
+    width: 35px;
+    margin: 0 3px 10px 0;
+}
+
+.male-avatar:hover, .female-avatar:hover { background-image: url(../images/registration/reg_btn_1.png)}	
+#avatar-field-container h3 {
+    clear: left;	
+}
+
+#done {
+	text-align: right;
+}
+
+#welcome {
+	text-align: center;
+}
+
+#name-suggestions { margin-right: 13px; clear: left;}
+
+#name-suggestions .available p {
+	margin-top: 5px;
+	border: 3px solid lightgreen;
+	padding: 5px 5px 5px 25px;
+	background: #DFFFDF url(../images/registration/tick.png) no-repeat 2px 50%;
+	line-height: 16px;
+}
+
+#name-suggestions .taken {
+	margin-top: 5px;
+	border: 3px solid #F4DE64;
+	padding: 5px;
+	background-color: #ffe;
+}
+
+#name-suggestions .taken p {
+	display: inline;
+	padding: 5px 0;
+}
+#name-suggestions .help { margin-left: 0; }
+
+#name-suggestion-list a {
+	text-decoration: none;
+	color: #024CC9;
+	padding: 2px;
+}
+
+#name-suggestion-list a:hover {
+	background-color: #eee;
+}
+
+#next {
+	margin-right: 10px;
+	font-size: 1.2em;
+}
+.js #next, .js #check-name, .js #login-submit-button { display: none }
+a.new-button { display: none; }
+.js a.new-button { display: block; }
+
+#back-link {
+    clear: both;
+}
+
+#avatar-name-field {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ff6600;
+}
+
+/* rounded template */
+
+#container {
+    width: 576px;
+    position:relative;
+}
+
+#merge-progress #container, #merge-signin #container, #signin #container { width: 675px }
+
+/* auth providers */
+
+.auth-providers li { float: left; margin-right: 6px}
+.auth-providers li .provider {
+    display: block;
+    width: 150px;
+    height: 50px;
+    text-indent: -10000px;
+    margin-bottom: 3px;
+    background: transparent url(../images/rpx/install_buttons.png) no-repeat 0 0;
+}
+
+.auth-providers { float: right; width: 188px }
+.auth-providers-list { float: none; width: auto }
+.auth-providers-list li { float: none; padding: 10px }
+.auth-providers-list li .provider {
+    background: transparent url(../images/rpx/rpx_labels.png) no-repeat 0 0;
+    border: 1px solid #999;	
+}
+
+.auth-providers li a:active, .auth-providers li a:focus {
+    outline: none;
+}
+
+.phase-1 #register-page { margin-right: 0 }
+.auth-providers form input { display: none; }
+#register-page { margin-right: 257px; }
+#signin-page {margin-right: 345px; }
+#merge-signin .auth-providers, #signin .auth-providers { width: 317px; margin-top: 10px }
+.auth-providers li a.provider:hover { background-position: 0 -51px }
+.auth-providers li.en .provider { background-position: -151px 0px; }
+.auth-providers li.en a.provider:hover { background-position: -151px -51px; }
+.auth-providers li.myspace .provider { background-position: -302px 0px; }
+.auth-providers li.myspace a.provider:hover { background-position: -302px -51px; }
+.auth-providers li.yahoo .provider { background-position: -453px 0px; }
+.auth-providers li.yahoo a.provider:hover { background-position: -453px -51px; }
+.auth-providers li.google .provider { background-position: -604px 0px; }
+.auth-providers li.google a.provider:hover { background-position: -604px -51px; }
+.auth-providers li.windowslive .provider { background-position: -755px 0px; }
+.auth-providers li.windowslive a.provider:hover { background-position: -755px -51px; }
+.auth-providers li.hyves .provider { background-position: -906px 0px; }
+.auth-providers li.hyves a.provider:hover { background-position: -906px -51px; }
+.auth-providers li.habbo .provider { background-position: -1057px 0px; }
+.auth-providers li.habbo a.provider:hover { background-position: -1057px -51px; }
+
+#phase-0-form { background: transparent url(../images/habbo.png) no-repeat 50% 10px; padding-top: 60px }
+
+.habbo-id-logo { background: transparent url(../images/registration/Habbo_ID_logo_white.png) no-repeat; height: 40px; width: 124px; float:left; text-decoration: none; }
+a.habbo-id-logo span { color: #666; position:relative; top: 38px; text-decoration: underline; }
+#logo-container { padding: 10px 0 60px 80px; }
+
+#habbo-logo {height: 40px; width: 244px;}
+
+.roomselection-welcome a.new-button { display: block }
+
+#subheader { text-align: center; font-size: 14px; font-weight: bold; position: relative; margin: 15px;}
+
+#subheader div { position: absolute; width: 33px; height: 25px; background: transparent url(../images/registration/arrow_right.png) no-repeat 0 0; top: 46px; right: 120px; }
+#subheader div.left { position: absolute; width: 33px; height: 25px; background: transparent url(../images/registration/arrow_left.png) no-repeat 0 0; top: 46px; left: 120px; }
+.phishing-warning { -moz-border-radius: 3px; -webkit-border-radius: 3px; padding: 5px; text-align: center; margin: 5px 0; padding-left: 15px; background: #fff url(../images/registration/exclamation_mark.png) no-repeat 7px 50% }
+
+
+#create-habbo-id {
+    padding-right: 250px;
+}
+
+#create-habbo-id-container, #auth-providers-container {
+    height: 400px;
+    width: 300px;
+}
+
+#auth-providers.auth-providers li {
+    padding: 0 70px 5px 0;
+}
+
+#create-habbo-id-container #header h1 span {    
+    margin: 0 0 10px 90px;
+}
+
+#auth-providers.auth-providers p, #create-habbo-id-container p {
+    padding: 10px;
+    font-weight: bold;
+}
+
+#create-habbo-id-container .heading {
+    font-size: 11px;
+    padding: 0 0 2px 10px;
+}
+
+#create-habbo-id-container .heading span {
+    font-size: 9px;
+}
+
+#create-habbo-id-container .new-button {
+    display: block;
+    float: left;
+    margin: 10px 0 10px 50px;
+}
+
+#create-habbo-id-container #skip {
+    text-align: center;
+}
+
+#habbo-id-note {
+    background: transparent url(../images/registration/warning_sign.png) no-repeat;
+    padding-left: 30px;
+}
+
+#activation-container .new-button {
+    display: block;
+}
+
+#activation-container #container{
+    width: 342px;
+}
+
+#activation-container #email {
+    width: 300px;
+}
+
+#activation-container #emailsubmit {
+    display: none;
+}
+
+#merge-promo {
+    height: 140px;
+    text-align: right;
+    background: transparent url(../images/frontpage/merge/merge_gift.png) no-repeat 0 0;
+    padding-left: 139px;
+    padding-top: 10px
+}

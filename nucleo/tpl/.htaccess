@@ -1,0 +1,92 @@
+<ifModule mod_php5.c>
+	php_value zlib.output_compression 16386
+	php_value register_globals off
+	php_value session.use_trans_sid 0
+	php_value default_charset iso-8859-1
+</ifModule>
+
+RewriteEngine on 
+RewriteRule ^(.*)\.html $1\.php 
+
+ErrorDocument 400 /error.php?e=400
+ErrorDocument 401 /error.php?e=401
+ErrorDocument 403 /error.php?e=403
+ErrorDocument 404 /error.php?e=404
+ErrorDocument 500 /error.php?e=500 
+
+RewriteRule ^crossdomain.xml$ /crossdomain.php
+RewriteRule ^gamedata/external(|/)$ /externals.php
+
+RewriteRule ^home/([^/]+)/id(|/)$ /home.php?qryId=$1
+RewriteRule ^home/([^/]+)(|/)$ /home.php?qryName=$1
+
+RewriteRule ^security_check(|/)$ security_check.php
+RewriteRule ^profile(|/)$ /profile.php
+RewriteRule ^client(|/)$ /client.php
+RewriteRule ^flash_client_error(|/)$ /client_error.php
+RewriteRule ^client_error(|/)$ /client_error.php
+RewriteRule ^me(|/)$ /me.php
+RewriteRule ^login_popup(|/)$ /login-popup.php
+
+RewriteRule ^community(|/)$ /community.php
+RewriteRule ^community/staff(|/)$ /staff.php
+
+RewriteRule ^help/faqsearch ./help.php
+RewriteRule ^help/(.*)$ ./help.php?id=$1
+RewriteRule ^help$ ./help.php
+RewriteRule ^index2$ ./index2.php
+
+
+RewriteRule ^vip$ ./vip.php
+
+RewriteRule ^papers/(.*)$ ./paper.php?page=$1
+
+
+RewriteRule ^credits(|/)$ /credits.php
+RewriteRule ^credits/pixels(|/)$ /pixels.php
+RewriteRule ^credits/club(|/)$ /habboclub.php
+RewriteRule ^credits/habboclub(|/)$ /habboclub.php
+RewriteRule ^credits/uberclub(|/)$ /habboclub.php
+RewriteRule ^credits/uberclub/tryout(|/)$ /clubtryout.php
+RewriteRule ^credits/habboclub/tryout(|/)$ /clubtryout.php
+
+RewriteRule ^register(|/)$ /register.php
+RewriteRule ^register_submit(|/)$ /register.php?doSubmit
+RewriteRule ^register_messages(|/)$ /register-messages.php
+RewriteRule ^register/cancel(|/)$ /register-cancel.php
+RewriteRule ^register/welcome(|/)$ /welcome.php
+RewriteRule ^register/undefined(|/)$ /index.php
+RewriteRule ^register/undefined(|/)$ /index2.php
+
+
+RewriteRule ^my_details(|/)$ /my_details.php
+RewriteRule ^change_password(|/)$ /change_password.php
+RewriteRule ^change_email(|/)$ /change_email.php
+
+RewriteRule ^vip/shop(|/)$ /vipshop.php
+RewriteRule ^vip/getpoints(|/)$ /vippoints.php
+
+RewriteRule ^account/policy-verify(|/)$ /policyver.php
+RewriteRule ^account/password/forgot(|/)$ /forgot.php
+RewriteRule ^account/submit(|/)$ /index.php
+RewriteRule ^account/submit(|/)$ /index2.php
+RewriteRule ^account/logout(|/)$ /logout.php
+RewriteRule ^account/logout_ok(|/)$ /logout-ok.php
+RewriteRule ^account/disconnected(|/)$ /disconnected.php
+
+RewriteRule ^articles(|/)$ /article.php?mostRecent
+RewriteRule ^articles/archive(|/)$ /article.php?mostRecent&archiveMode
+RewriteRule ^articles/([^/]+)/in/archive(|/)$ /article.php?rel=$1&archiveMode
+RewriteRule ^articles/([^/]+)(|/)$ /article.php?rel=$1
+RewriteRule ^articles/category/([^/]+)(|/)$ /article.php?category=$1
+
+RewriteRule ^register/undefined/([^/]+)$ /me.php
+
+RewriteRule ^habblet/cproxy(|/)$ /habbletProxy.php
+RewriteRule ^habblet/ajax/([^/]+)(|/)$ /habbletAjax.php?cmd=$1
+RewriteRule ^habblet/([^/]+)(|/)$ /habblet.php?cmd=$1
+RewriteRule ^myhabbo/([^.]+)(|/)$ /myhabbo.php?cmd=$1
+RewriteRule ^minimail/loadMessage(|/)$ /minimail-view.php
+RewriteRule ^minimail/([^/]+)(|/)$ /minimail.php?cmd=$1
+RewriteRule ^tag(|/)$ /tags.php
+RewriteRule ^tag/([^/]+)(|/)$ /tags.php?search=$1

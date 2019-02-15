@@ -1,0 +1,31 @@
+#message-container { width: 390px; margin:0 auto; }
+#inner-message-container input.text-field { width: 300px; }
+#inner-message-container { overflow:hidden; padding: 5px 40px 0; }
+.identitymessage-container { background: transparent url(../images/login/attention_note_bar.png) no-repeat top left; }
+.identitymessage-container h1 { color  : #000; font-size: 14px; font-weight: bold; text-align: center; line-height: 42px; margin-bottom: 0}
+.identitymessage-container-bottom { background: transparent url(../images/login/attention_note_bar.png) no-repeat bottom left; height: 10px }
+#inner-message-container .new-button { display: block; }
+#inner-message-container #emailsubmit { display: none; }
+
+#inner-message-container .habbo-id-logo, .box-content .habbo-id-logo { background: transparent url(../images/registration/Habbo_ID_logo_white.png) no-repeat; height: 35px; width: 124px; float:right; text-decoration: none }
+#inner-message-container a.habbo-id-logo span, .box-content a.habbo-id-logo span { color: #666; position:relative; top: 38px; text-decoration: underline; }
+
+#skip-button { padding-top: 30px; width: 100%; }
+#proceed-button { padding-top: 60px; width: 100%; }
+
+#inner-message-container div.logo {
+    display: block;
+    width: 150px;
+    height: 50px;
+    float: right;
+    background: transparent url(../images/rpx/rpx_buttons.png) no-repeat 0 0;
+}
+
+#inner-message-container div.logo.twitter { background-position: -151px 0; }
+#inner-message-container div.logo.myspace { background-position: -302px 0; }
+#inner-message-container div.logo.yahoo { background-position: -453px 0; }
+#inner-message-container div.logo.google { background-position: -604px 0; }
+#inner-message-container div.logo.windowslive { background-position: -755px 0; }
+#inner-message-container div.logo.hyves { background-position: -906px 0; }
+
+.identitymessage-container p.help { color: #666; }

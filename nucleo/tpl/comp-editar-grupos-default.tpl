@@ -1,0 +1,1 @@
+<div class="habblet-container "><div class="cbb clearfix blue "><h2 class="title">Edição de grupos</h2><div class="box-content">Um sistema simples para editar o seu grupo, melhoraremos em breve!</div></div></div><script type="text/javascript">if (!$(document.body).hasClassName('process-template')) { Rounder.init(); }</script>

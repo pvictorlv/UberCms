@@ -1,0 +1,32 @@
+<html>
+<head>
+	<script language="JavaScript" type="text/javascript">	
+	function SetFormat(data) {
+		self.parent.SetFontFormat(data);
+		self.parent.close_insert_pop();
+	}
+	</script>
+	
+	<style type=text/css>@import url(style.css);</style>
+	<style type=text/css>@import url(style_popup_layer.css);</style>
+</head>
+<body leftmargin="0" rightmargin="0" marginwidth="0" marginheight="0" topmargin="0" bottommargin="0">
+<script language=javascript>
+var array = new Array();
+array[0] ="1";
+array[1] ="2";
+array[2] ="3";
+array[3] ="4";
+array[4] ="5";
+array[5] ="6";
+array[6] ="7";
+
+document.writeln("<table class=Hoteditor_Select cellpadding=0 cellspacing=0 width=100%>\n");
+for (i=0;i<array.length;i++){
+	document.writeln("<tr><td height=30 align=middle><div STYLE='cursor:hand;cursor:pointer' onclick=\"SetFormat('" + array[i] + "');\" onMouseover=\"this.className='Hoteditor_Select_Over'\" onMouseout=\"this.className='Hoteditor_Select'\"><b><font face='Arial' size=" + array[i] + ">" + array[i] + "</font></b></div></td></tr>\n\n");
+}
+document.writeln("<tr><td><br></td></tr>\n");
+document.writeln("</table>\n");
+</script>	
+</body>
+</html>

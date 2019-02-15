@@ -1,0 +1,26 @@
+body {
+	font-family: Verdana, Tahoma, Arial;
+	font-size: 10px;
+	color: black;
+	background-color: #DBE6F3;
+}
+
+a:link, a:active, a:visited {
+	color: #03568C;
+	text-decoration: underline;
+}
+a:hover {
+	color: #7F0000 !important;
+	text-decoration: underline;
+}
+
+hr {
+	border: 0px none;
+    width: 100%
+}
+
+hr.HR_Color { 
+	color: #CDCDCD;
+	background-color: #CDCDCD;
+	height: 1px;
+}

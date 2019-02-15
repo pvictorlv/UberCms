@@ -1,0 +1,106 @@
+#forced-email-login {
+    position: absolute;
+    width: 383px;
+    z-index: 9001;
+    color: #fff;
+}
+
+#forced-email-login-title {
+    text-align: center;
+    font-size: 18px;
+    padding: 7px 5px;
+    font-weight: bold;
+
+}
+
+#forced-email-login .email-address {
+	font-size: 18px;
+	font-weight: bold;
+    height: 30px;
+	width: 330px;
+    text-align: center;
+    color: gray;
+    border:1px solid #663333;
+}
+
+#forced-email-login-container {
+    background: transparent url(../images/frontpage/use_email_bg.png) no-repeat top left;
+    padding: 5px 20px;
+    overflow: hidden;
+}
+
+#forced-email-login-container-bottom {
+    background: transparent url(../images/frontpage/use_email_bg.png) no-repeat bottom left; height: 10px;
+}
+
+#forced-email-login #forced-email-login-content li {
+    padding: 15px 0;
+}
+
+#forced-email-login li.center {
+    text-align: center;
+}
+
+.bottom-border  {
+    padding-bottom: 15px;
+    border-bottom: thin solid #313131;
+}
+
+.bottom-top-border {
+    border-bottom: thin solid #313131;
+    border-top: thin solid #313131;
+}
+
+.bottom-top-dotted-border {
+    border-bottom: thin dotted #313131;
+    border-top: thin dotted #313131;
+}
+
+#forced-email-login #forced-email-login-content li div {
+    margin-right: 10px;
+    width: 18px;
+    height: 25px;
+    float: left;
+    background: transparent url(../images/frontpage/use_email_icons_old.png) no-repeat;
+}
+
+#forced-email-login #forced-email-login-content li div.force-email-notice-2 {
+    background-position: 1px 0;
+}
+
+#forced-email-login #forced-email-login-content li div.force-email-notice-1 {
+    background-position: -17px 0;
+}
+
+#forced-email-login #forced-email-login-content li div.force-email-notice {
+    background-position: -35px 0;
+}
+
+#force-email-ok-button {
+    margin-top: 10px;
+    float: right;
+    height: 50px;
+}
+
+#force-email-ok-button.new-button b {
+    background: transparent url(../images/shared_icons/buttons_small.png) no-repeat -6px -100px;
+    line-height: 40px;
+    text-align: center;
+    height: 50px;
+    font-size: 18px;
+    margin-right: 5px;
+}
+
+#force-email-ok-button.new-button i {
+    background: transparent url(../images/shared_icons/buttons_small.png) no-repeat 0 -100px;
+    width: 6px;
+    height: 50px;
+}
+
+#force-email-ok-button.new-button:hover b {
+    background-position: -6px -150px;
+}
+
+#force-email-ok-button.new-button:hover i {
+    background-position: 0 -150px;
+}

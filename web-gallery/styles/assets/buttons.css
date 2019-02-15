@@ -1,0 +1,140 @@
+.button {
+	padding: 0;
+	margin: 3px 3px 0 0;
+	text-align: center;
+	text-transform: uppercase;
+	cursor: pointer;
+	float: right;
+}
+.report-button, .animator-report-button {
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	float: right;	
+}
+
+.button .button-header {
+	padding-left: 4px;
+	height: 4px;
+	font-size: 1px;
+	line-height: 1px;
+}
+
+.button .button-header div {
+	height: 4px;
+}
+
+.button .button-body {
+	padding-left: 4px;
+}
+
+.button .button-content {
+	padding-bottom: 4px;
+	padding-right: 4px;
+	color: black;
+}
+
+/*** GREY ***/
+.button.grey .button-header {
+	background: url(../../images/myhabbo/buttons/button_grey_top_l.gif) no-repeat top left;
+}
+
+.button.grey .button-header div {
+	background: url(../../images/myhabbo/buttons/button_grey_top_r.gif) no-repeat top right;
+}
+
+.button.grey .button-body {
+	background: url(../../images/myhabbo/buttons/button_grey_btm_l.gif) no-repeat bottom left;
+}
+
+.button.grey .button-content {
+	background: url(../../images/myhabbo/buttons/button_grey_btm_r.gif) no-repeat bottom right;
+}
+
+/*** GREEN ***/
+.button.green .button-header {
+	background: url(../../images/myhabbo/buttons/button_green_top_l.gif) no-repeat top left;
+}
+
+.button.green .button-header div {
+	background: url(../../images/myhabbo/buttons/button_green_top_r.gif) no-repeat top right;
+}
+
+.button.green .button-body {
+	background: url(../../images/myhabbo/buttons/button_green_btm_l.gif) no-repeat bottom left;
+}
+
+.button.green .button-content {
+	background: url(../../images/myhabbo/buttons/button_green_btm_r.gif) no-repeat bottom right;
+}
+
+/*** RED ***/
+.button.red .button-header {
+	background: url(../../images/myhabbo/buttons/button_red_top_l.gif) no-repeat top left;
+}
+
+.button.red .button-header div {
+	background: url(../../images/myhabbo/buttons/button_red_top_r.gif) no-repeat top right;
+}
+
+.button.red .button-body {
+	background: url(../../images/myhabbo/buttons/button_red_btm_l.gif) no-repeat bottom left;
+}
+
+.button.red .button-content {
+	background: url(../../images/myhabbo/buttons/button_red_btm_r.gif) no-repeat bottom right;
+}
+
+/***  ***/
+
+.button.report {
+	float: left;
+}
+
+.button.edit {
+	float: right;
+}
+
+a.toolbutton {
+	float: left;
+	display: block;
+	height: 22px;
+	font-size: 10px;
+	color: black !important;
+	font-weight: bold;
+	text-decoration: none;
+	background-image: url(../../images/myhabbo/buttons/tools_left.gif);
+	background-repeat: no-repeat;
+	margin: 0 3px 0 0;
+	padding: 0 0 0 4px;
+	white-space: nowrap;
+}
+
+a.toolbutton span {
+	color: black !important;
+	float: left;
+	display: block;
+	height: 22px;
+	background-image: url(../../images/myhabbo/buttons/tools_right.gif);
+	background-repeat: no-repeat;
+	background-position: top right;
+	padding: 6px 24px 0 20px;
+	cursor: pointer;
+}
+
+a.toolbutton.disabled span {
+	color: #888 !important;
+}
+
+a.group-memberlist-button span, a.group-memberlist-button-disabled span {
+	padding-left: 11px;
+	padding-right: 15px;
+}
+
+a.group-memberlist-button-disabled b {
+	color: #999 !important;
+}
+
+#group-memberlist-button-close, #group-memberlist-button-close2, #join-button, #creategrp-button, #gethome-button {
+	float: right;
+}

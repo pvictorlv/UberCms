@@ -1,0 +1,78 @@
+#embed-topbar {
+    background: #3D3D3D none;
+    height: 35px;
+    left: 0;
+    padding: 0 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+#embed-topbar #fullscreen-button {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#fullscreen-button a.new-button {
+    float: left;
+    margin: 5px 0 5px 10px;
+}
+
+#embed-topbar #navi {
+    font-size: 11px;
+    clear: none;
+    margin: 0 auto;
+    padding-top: 8px;
+    text-align: center;
+    width: 600px;
+}
+
+#embed-topbar #navi a {
+    color: #BEBEBE;
+    margin: 8px 10px;
+    text-decoration: none;
+}
+
+#embed-topbar #navi a:hover {
+	text-decoration: underline;
+}
+
+#embed-topbar #navi span {
+    color: #666666;
+}
+
+#embed-topbar #right-buttons {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#right-buttons #signout-button {
+    float: left;
+    font-size: 12px;
+}
+
+#signout-button a.userlink {
+    color: #FFFFFF;
+    float: left;
+    margin: 8px 0;
+}
+
+#right-buttons h1 {
+    float: left;
+    margin: 8px 10px;
+    z-index: 2;
+}
+
+#right-buttons h1 a {
+    background: url(../images/popup/popup_topbar_habbologo.gif) no-repeat;
+    border: 0 none;
+    float: left;
+    height: 19px;
+    text-indent:-10000px;
+    width: 55px;
+}
+
+#right-buttons .fb-bookmark { margin: 4px 4px 0 0; }

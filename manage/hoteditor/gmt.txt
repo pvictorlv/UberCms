@@ -1,0 +1,360 @@
+Algeria|Algiers |1|
+Argentina|Buenos Aires|-3|
+Argentina|Cordoba |-3|
+Armenia|Jerevan |3|
+Australia|Adelaide|9.30|
+Australia|Brisbane|10|
+Australia|Broken Hill |10.30|
+Australia|Canberra|10|
+Australia|Christmas Island|7|
+Australia|Darwin|9.30|
+Australia|Hobart|10|
+Australia|Lord Howe Island|10.30|
+Australia|Melbourne |10|
+Australia|Perth |8|
+Australia|Sydney|10|
+Austria|Innsbruck |1|
+Austria|Salzburg|1|
+Austria|Vienna|1|
+Azerbaijan|Baku|3|
+Bahamas|Nassau|-5|
+Bangladesh|Dhaka |6|
+Belarus|Minsk |2|
+Belgium|Anvers|1|
+Belgium|Brussels|1|
+Bolivia|La Paz|-4|
+Brazil |Belem |-3|
+Brazil |Belo Horizonte|-3|
+Brazil |Brazilia|-3|
+Brazil |Fortaleza |-3|
+Brazil |Porto Alegre|-3|
+Brazil |Rio De Janeiro|-3|
+Brazil |Salvador|-3|
+Brazil |Sao Paulo |-3|
+Bulgaria |Burgas|2|
+Bulgaria |Sofia |2|
+Canada |Calgary |-7|
+Canada |Edmonton|-7|
+Canada |Montreal|-5|
+Canada |Ottawa|-5|
+Canada |Quebec|-5|
+Canada |Toronto |-5|
+Canada |Vancouver |-8|
+Canada |Winnipeg|-6|
+Chile|Santiago|-4|
+China|Beijing |8|
+China|Chengdu |8|
+China|Chongqing |8|
+China|Guangzhou |8|
+China|Harbin|8|
+China|Hong Kong |8|
+China|Mukden|8|
+China|Nanjing |8|
+China|Peking|8|
+China|Shanghai|8|
+China|Tientsin|8|
+China|Urumqi|8|
+China|Wuhan |8|
+China|Xi'An |8|
+Colombia |Barranquilla|-5|
+Colombia |Medellin|-5|
+Columbia |Santa Fe De Bogota|-5|
+Costa Rica|San Jose|-6|
+Cote D'Ivoire|Abidjan |0|
+Cuba |Havana|-5|
+Czechoslovakia |Brno|1|
+Czechoslovakia |Prague|1|
+Denmark|Alborg|1|
+Denmark|Copenhhagen |1|
+Dominican Republic |Santo Domingo |-4|
+Ecuador|Guayaquil |-5|
+Ecuador|Quito |-5|
+Egypt|Alexandria|2|
+Egypt|Cairo |2|
+El Salvador|San Salvador|-6|
+England|Birmingham|0|
+England|London|0|
+England|Manchester|0|
+England|Nottingham|0|
+Estonia|Tallin|2|
+Estonia|Tartu |2|
+Ethiopia |Adis Abeba|3|
+Finland|Helsinki|2|
+Finland|Rovaniemi |2|
+France |Bordeaux|1|
+France |Marseille |1|
+France |Nantes|1|
+France |Nice|1|
+France |Paris |1|
+France |Rouen |1|
+France |Toulouse|1|
+Georgia|Tbilisi |3|
+Germany|Berlin|1|
+Germany|Frankfurt |1|
+Germany|Hamburg |1|
+Germany|Munich|1|
+Greece |Athens|2|
+Greece |Salonika|2|
+Guatemala|Guatemala |-6|
+Haiti|Port-au-Prince|-5|
+Honduras |Tegucigalpa |-6|
+Hungary|Budapest|1|
+Hungary|Hodmezovasarhely|1|
+Iceland|Reykjavik |0|
+India|Bangalore |5.30|
+India|Bombay|5.30|
+India|Calcutta|5.30|
+India|Delhi |5.30|
+India|Madras|5.30|
+Iran |Tehran|3.30|
+Iraq |Baghdad |3|
+Ireland|Cork|0|
+Ireland|Dublin|0|
+Israel |Jerusalem |2|
+Israel |Tel Aviv|2|
+Italy|Bologna |1|
+Italy|Cagliari|1|
+Italy|Genova|1|
+Italy|Milan |1|
+Italy|Naples|1|
+Italy|Palermo |1|
+Italy|Rome|1|
+Jamaica|Kingston|-5|
+Japan|Nagoya|9|
+Japan|Osaka |9|
+Japan|Tokyo |9|
+Jordan |Amman |2|
+Kazakhstan|Alma-Ata|5|
+Kazakhstan|Celinograd|5|
+Kazakhstan|Semipalatinsk |5|
+Kenya|Nairobi |3|
+Kuwait |Al-Kuwayt |3|
+Latvia |Riga|2|
+Lebanon|Beirut|2|
+Liberia|Monrovia|0|
+Libya|Tripoli |1|
+Lituania |Kaunus|2|
+Lituania |Vilnius |2|
+Macedonia|Skopje|1|
+Madagascar|Antananarivo|3|
+Mexico |Acapulco|-6|
+Mexico |Cancun|-6|
+Mexico |Chihuahua |-6|
+Mexico |Ciudad Juarez |-6|
+Mexico |Culiacan|-7|
+Mexico |Durango |-6|
+Mexico |Ensenada|-8|
+Mexico |Guadalajara |-6|
+Mexico |Hermosillo|-7|
+Mexico |Leon|-6|
+Mexico |Matamoros |-6|
+Mexico |Mazatlan|-7|
+Mexico |Merida|-6|
+Mexico |Mexicali|-8|
+Mexico |Mexico City |-6|
+Mexico |Monterrey |-6|
+Mexico |Nogales |-7|
+Mexico |Nuevo Laredo|-6|
+Mexico |Puebla|-6|
+Mexico |San Luis Potosi |-6|
+Mexico |Tampico |-6|
+Mexico |Tijuana |-8|
+Mexico |Torreon |-6|
+Mexico |Veracruz|-6|
+Mongolia|Ulaanbaatar |8|
+Morocco|Casablanca|0|
+Morocco|Rabat |0|
+Myanmar|Yangon|6.30|
+Netherlands|Amsterdam |1|
+Netherlands|Rotterdam |1|
+New Guinea|Port Moresby|10|
+New Zealand|Auckland|12|
+New Zealand|Wellington|12|
+Nicaragua|Managua |-6|
+Nigeria|Lagos |1|
+Northern Ireland|Belfast |0|
+Norway|Bergen|1|
+Norway|Oslo|1|
+Norway|Trondheim |1|
+Pakistan|Karachi |5|
+Pakistan|Lahore|5|
+Panama|Panama|-5|
+Peru|Lima|-5|
+Philippines|Manila|8|
+Poland|Danzig|1|
+Poland|Krakow|1|
+Poland|Poznan|1|
+Poland|Warsaw|1|
+Portugal|Lisboa|0|
+Portugal|Lisbon|0|
+Portugal|Porto |0|
+Puerto Rico|San Juan|-4|
+Romania|Brasov|2|
+Romania|Bucharest |2|
+Russia|Archangel 'sk |3|
+Russia|Bransk|2|
+Russia|Chita |8|
+Russia|Irkutsk |7|
+Russia|Jakutsk |8|
+Russia|Jaroslavl |3|
+Russia|Jekaterinburg |4|
+Russia|Kaliningrad |3|
+Russia|Krasnojarsk |6|
+Russia|Moskow|3|
+Russia|Novgorod|3|
+Russia|Novosibirsk |6|
+Russia|Omsk|5|
+Russia|Perm|4|
+Russia|Samara|3|
+Russia|St. Petersburg|2|
+Russia|Tomsk |6|
+Russia|Tula|2|
+Russia|Tver|3|
+Saudi Arabia|Ar-Riyad|3|
+Saudi Arabia|Jiddah|3|
+Saudi Arabia|Makkah|3|
+Scotland|Aberdeen|0|
+Scotland|Edinburgh |0|
+Scotland|Glasgow |0|
+Senegal|Dakar |0|
+Singapore|Singapore |8|
+South Africa|Cape Town |2|
+South Africa|Johannesburg|2|
+South Africa|Pretoria|2|
+South Korea|Seoul |9|
+Spain|Barcelona |1|
+Spain|Bilbao|1|
+Spain|Madrid|1|
+Spain|Malaga|1|
+Spain|Sevilla |1|
+Spain|Zaragoza|1|
+Sudan|Khartoum|2|
+Sweden|Gothenburg|1|
+Sweden|Stockholm |1|
+Switzerland|Berne |1|
+Switzerland|Zurich|1|
+Syria|Damascus|2|
+Syria|Halab |2|
+Taiwan|T'Aipei |8|
+Tanzania|Dar es Salaam |3|
+Thailand|Bangkok |7|
+Tunisia|Tunis |1|
+Turkey|Adana |2|
+Turkey|Ankara|2|
+Turkey|Istanbul|2|
+Uganda|Kampala |3|
+Ukraine|Kharkiv |2|
+Ukraine|Kyyiv |2|
+Ukraine|Odesa |2|
+United States|Abilene |-6|
+United States|Akron |-5|
+United States|Albany|-5|
+United States|Albuquerque |-7|
+United States|Amarillo|-6|
+United States|Anchorage |-9|
+United States|Atlanta |-5|
+United States|Baltimore |-5|
+United States|Billings|-7|
+United States|Boise |-7|
+United States|Boston|-5|
+United States|Buffalo |-5|
+United States|Butte |-7|
+United States|Cedar Rapids|-6|
+United States|Charleston|-5|
+United States|Charlotte |-5|
+United States|Chicago |-6|
+United States|Cincinnati|-5|
+United States|Cleveland |-5|
+United States|Colorado Springs|-7|
+United States|Dallas|-6|
+United States|Dayton|-5|
+United States|Denver|-7|
+United States|Des Moines|-6|
+United States|Detroit |-5|
+United States|Duluth|-6|
+United States|El Paso |-7|
+United States|Eugene|-8|
+United States|Evansville|-6|
+United States|Fargo |-6|
+United States|Flint |-5|
+United States|Fort Wayne|-5|
+United States|Fort Worth|-6|
+United States|Gary|-6|
+United States|Grand Rapids|-5|
+United States|Great Falls |-7|
+United States|Hartford|-5|
+United States|Honolulu|-10|
+United States|Houston |-6|
+United States|Indianapolis|-5|
+United States|Jackson |-6|
+United States|Jacksonville|-5|
+United States|Kansas City |-6|
+United States|Knoxville |-5|
+United States|Lansing |-5|
+United States|Las Vegas |-8|
+United States|Lincoln |-6|
+United States|Little Rock |-6|
+United States|Los Angeles |-8|
+United States|Louisville|-5|
+United States|Lubbock |-6|
+United States|Memphis |-6|
+United States|Miami |-5|
+United States|Midland |-6|
+United States|Milwaukee |-6|
+United States|Minneapolis |-6|
+United States|Mobile|-6|
+United States|Moline|-6|
+United States|Montgomery|-6|
+United States|Nashville |-6|
+United States|New Orleans |-6|
+United States|New York|-5|
+United States|Newark|-5|
+United States|Norfolk |-5|
+United States|Oakland |-8|
+United States|Ogden |-7|
+United States|Oklahoma City |-6|
+United States|Omaha |-6|
+United States|Philadelphia|-5|
+United States|Phoenix |-7|
+United States|Pittsburgh|-5|
+United States|Portland|-8|
+United States|Providence|-5|
+United States|Pueblo|-7|
+United States|Rapid City|-7|
+United States|Reno|-8|
+United States|Richmond|-5|
+United States|Rochester |-5|
+United States|Rockford|-6|
+United States|Sacramento|-8|
+United States|Salem |-8|
+United States|Salt Lake City|-7|
+United States|San Antonio |-6|
+United States|San Bernardino|-8|
+United States|San Diego |-8|
+United States|San Francisco |-8|
+United States|Savannah|-5|
+United States|Seattle |-8|
+United States|Shreveport|-6|
+United States|Sioux Falls |-6|
+United States|Spokane |-8|
+United States|Springfield |-6|
+United States|St. Louis |-6|
+United States|St. Paul|-6|
+United States|Tacoma|-8|
+United States|Tampa |-5|
+United States|Topeka|-6|
+United States|Tucson|-7|
+United States|Tulsa |-6|
+United States|Washington|-5|
+United States|Wichita |-6|
+United States|Wichita Falls |-6|
+Uruguay|Montevideo|-3|
+Uzbekistan|Taskent |5|
+Venezuela|Caracas |-4|
+Venezuela|Maracaibo |-4|
+Vietnam|Ha Noi|7|
+Vietnam|Saigon|7|
+Wales|Cardiff |0|
+Yugoslavia|Belgrade|1|
+Zaire|Kinshasa|1|
+Zimbabwe|Harare|2|

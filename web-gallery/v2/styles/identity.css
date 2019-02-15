@@ -1,0 +1,196 @@
+body {
+    background-color: #fff;
+    background-image: none;
+}
+#container {
+    width: auto;
+    background-image: none;
+}
+
+#content {
+	margin: 0 auto;
+	position: relative;
+	width: 758px;
+	height: 533px;
+	background: transparent url(../images/embed/facebook/habbo_fb_app_bg.png) no-repeat top left;
+}
+
+#footer {
+	padding: 1em 0;
+}
+
+#facebook-friends { width: 285px; margin: 0; clear: both; max-height: 300px; overflow: hidden }
+#facebook-friends .i3 { padding: 7px 0 7px 12px; }
+
+
+
+#landing-container .mugshot-container {
+    padding-right: 2px;
+    width: 56px;
+    height: 115px;
+    background: transparent url(../images/embed/facebook/fb_habbo_bg_tall.png) no-repeat;
+}
+
+#landing-container .link-account, #landing-container .fullscreen-notice {
+    width: 285px;
+    margin-top: 10px;
+}
+#landing-container .link-account {
+    position: relative;
+}
+
+#landing-container .link-content, #landing-container .more-info-container {
+    padding: 7px 12px 7px 12px;
+    color: #000000;
+}
+#landing-container {
+    margin-left: 15px;
+    height: 495px;
+}
+
+#landing-container .existing-account-notice {
+    padding-top: 7px;    
+}
+
+#landing-container .link-content a, #landing-container .existing-account-notice {
+    color: #3B5998;
+}
+
+#landing-container .friend-info-container {
+    padding: 2px 2px;
+    width:58px;
+    float: left;
+    text-align: center;
+}
+
+#landing-container .friend-name {
+    font-size: 9px;
+    color: #A6A6A6;
+}
+
+#landing-container a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#landing-container .field a {
+	color: #FC6204;
+}
+
+#landing-container a:hover {
+    text-decoration: underline;
+}
+
+#landing-caption {
+    text-align: center;
+    color: #FFFFFF;
+    width: 100%;
+    font-weight: bold;
+    height: 35px;
+    line-height: 35px;
+    bottom: 0;
+    position: absolute;
+}
+
+#landing-container .logout-notice {
+    margin: 0 auto;
+    width: 400px;
+}
+
+#landing-container .error-message {
+    width: auto;
+    margin: 0 auto;
+}
+
+#landing-container .logout-notice .i3 {
+    padding: 0 22px;
+    text-align: center;
+}
+
+#landing-container #rpx-more-info {
+    width: 285px;
+}
+
+#landing-container #more_data_submit {
+    float: right;
+}
+
+#landing-container .header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #006a73;
+    padding-bottom: 10px;
+}
+
+#landing-container .subheader {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#landing-container .field {
+	clear: left;
+	margin: 7px 0;
+}
+
+#landing-container label {
+    margin-right: 10px;
+}
+
+input.text-field ,select {
+	font-size: 11px;
+	padding: 4px;
+	border-style: solid;
+	border-color: #C6C6C6 #C6C6C6 #E3E3E3;
+	border-width: 1px;
+}
+
+.state-error input.text-field {
+	border: 2px solid #E2001A;
+	background: #FFF4F2 url(../images/registration/exclamation.png) no-repeat scroll 99% 50%;
+}
+
+.state-error select {
+	background-color: #FFF4F2;
+	border: 2px solid #E2001A;
+}
+
+.error input,.error select {
+	border: 1px solid #e2001a;
+}
+
+.error-message {
+	color: #e2001a;
+}
+
+.error-messages-holder {
+	display: none;
+}
+
+.error-messages-holder ul {
+	padding: 0;
+	list-style: none;
+}
+
+.error-messages-holder ul li {
+	background: transparent url(../images/registration/exclamation.png) no-repeat left 50%;
+	padding-left: 18px;
+    padding-top: 10px;
+}
+
+.error-messages-holder h3 {
+	color: #E2001A;
+	font-size: 13px;
+	margin: 5px 0;
+}
+
+.error-messages-holder {
+	display: block;
+	padding: 0px 10px;
+	background-color: #FFF4F2;
+	border: 1px solid #E2001A;
+}
+
+#link-account { width: 500px; background-color: #fff; padding:0 18px; }
+#link-account #header { width: auto }
+#link-account #header h1 { float: right; margin: 0; padding-top: 14px }
+

@@ -1,0 +1,286 @@
+@font-face {
+    font-family: Volter;
+    src: url(/trax/fonts/Volter.ttf);
+}
+
+#editor-placeholder {
+    position: absolute;
+    width: 590px;
+    height: 333px;
+    background: url('/trax/img/base/placeholder.png') no-repeat center;
+    border-radius: 15px;
+}
+
+#close-button {
+    background: url("http://i.imgur.com/qsjqN27.png") no-repeat;
+    width: 9px;
+    height: 9px;
+    top: 5px;
+    left: 96%;
+    position: absolute;
+}
+#editor-title {
+    position: absolute;
+    width: 137px;
+    height: 15px;
+    color: white;
+    font: normal 9px Volter;
+    top: 4px;
+    left: 225px;
+    text-align: center;
+    line-height: 15px;
+}
+
+#chips-placeholder {
+    position: absolute;
+    width: 139px;
+    height: 117px;
+    background: url('/trax/img/base/chips.png') no-repeat center;
+    left: 17px;
+    top: 32px;
+    padding-top: 10px;
+}
+
+.chip-placeholder {
+    width: 80px;
+    height: 32px;
+    margin-left: 10px;
+    padding-left: 36px;
+    color: white;
+    font: normal 9px Volter;
+    line-height: 16px;
+    text-align: center;
+    cursor: pointer;
+    background: no-repeat 2px 2px;
+    margin-bottom: 4px;
+}
+
+.chip-placeholder:hover {
+    opacity: 0.5;
+}
+
+#chips-controller {
+    position: absolute;
+    width: 74px;
+    height: 24px;
+    background: url('/trax/img/base/chips_controller.png') no-repeat center;
+    left: 50px;
+    top: 159px;
+}
+
+#chips-controller-backward {
+    position: absolute;
+    width: 10px;
+    height: 16px;
+    left: 10px;
+    top: calc(50% - (16px / 2) - 1px);
+    background: url('/trax/img/base/chips_controller_backward_disabled.png') no-repeat center;
+    cursor: pointer;
+}
+
+#chips-controller-forward {
+    position: absolute;
+    width: 10px;
+    height: 16px;
+    right: 5px;
+    top: calc(50% - (16px / 2) - 1px);
+    background: url('/trax/img/base/chips_controller_forward_disabled.png') no-repeat center;
+    cursor: pointer;
+}
+
+#chips-controller-minpage {
+    position: absolute;
+    width: 13px;
+    height: 10px;
+    font: normal 9px Volter;
+    text-align: right;
+    color: rgb(150, 183, 198);
+    left: calc(50% - 13px - 5px);
+    top: calc(50% - (10px / 2) - 1px);
+}
+
+#chips-controller-dividerpage {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    font: normal 9px Volter;
+    text-align: right;
+    color: rgb(150, 183, 198);
+    left: calc(50% - (10px / 2));
+    top: calc(50% - (10px / 2) - 1px);
+}
+
+#chips-controller-maxpage {
+    position: absolute;
+    width: 13px;
+    height: 10px;
+    font: normal 9px Volter;
+    text-align: left;
+    color: rgb(150, 183, 198);
+    left: calc(50% + 5px);
+    top: calc(50% - (10px / 2) - 1px);
+}
+
+#chips-equipped-placeholder {
+    position: absolute;
+    width: 415px;
+    height: 113px;
+    top: 33px;
+    left: 158px;
+    padding-left: 10px;
+}
+
+.chips-equipped-placeholder {
+    position: relative;
+    float: left;
+    margin-right: 6px;
+    width: 97px;
+    height: 113px;
+    display: block;
+    z-index: 99;
+}
+
+.chips-equipped-title {
+    background: url('/trax/img/base/chip_equipped_title_unequipped.png') no-repeat center;
+    width: 89px;
+    height: 23px;
+    color: white;
+    font: normal 9px Volter;
+    line-height: 24px;
+    text-align: center;
+    overflow: hidden;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.chips-equipped-body {
+    background: url('/trax/img/base/chip_equipped_body.png') no-repeat center;
+    width: 75px;
+    height: 81px;
+    padding-left: 12px;
+    padding-right: 10px;
+    padding-top: 9px;
+    overflow: hidden;
+}
+
+.chips-equipped-sample {
+    display: block;
+    float: left;
+    width: 21px;
+    height: 21px;
+    background-color: red;
+    margin: 1px 1px 2px 2px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#chips-equipped-line {
+    position: absolute;
+    width: 80%;
+    height: 1px;
+    background-color: rgb(58, 77, 84);
+    border-bottom: 1px solid rgb(112, 151, 166);
+    top: calc(50% - 1px);
+    left: 0;
+    display: block;
+    z-index: 0;
+}
+
+#designer-placeholder {
+    background: url('/trax/img/base/designer_placeholder.png') no-repeat center;
+    position: absolute;
+    width: 555px;
+    height: 131px;
+    left: 19px;
+    top: 192px;
+}
+
+#designer-wrapper {
+    position: absolute;
+    width: 531px;
+    height: 103px;
+    top: 10px;
+    left: 19px;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+.designer-wrapper-row {
+    background: url('/trax/img/base/designer_wrapper_row.png') no-repeat center;
+    display: block;
+    width: 528px;
+    height: 21px;
+    margin-left: -1px;
+    margin-bottom: 1px;
+    z-index: 2;
+    padding: 2px 2px 2px 4px;
+}
+
+.designer-wrapper-cell {
+    position: relative;
+    width: 21px;
+    height: 21px;
+    display: block;
+    float: left;
+    border-radius: 6px;
+    z-index: 2;
+}
+
+.designer-wrapper-cell-seal {
+    position: relative;
+    display: block;
+    width: 3px;
+    height: 13px;
+    float: left;
+    margin-top: 3px;
+    margin-left: -1px;
+    margin-right: -1px;
+    z-index: 3;
+}
+
+#designer-row-label {
+    background: url('/trax/img/base/designer_row_label.png') no-repeat center;
+    position: absolute;
+    width: 8px;
+    height: 103px;
+    top: 10px;
+    left: 7px;
+}
+
+#designer-pointer {
+    background: url('/trax/img/base/designer_pointer.png') no-repeat center;
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: -2px;
+    width: 25px;
+    height: 118px;
+}
+
+#controls-wrapper {
+    position: absolute;
+    width: 205px;
+    height: 23px;
+    left: 353px;
+    top: 170px;
+}
+
+#controls-music-button {
+    background: url('/trax/img/base/button_play_default.png') no-repeat center;
+    position: relative;
+    float: left;
+    width: 56px;
+    height: 23px;
+    margin-right: 3px;
+    cursor: pointer;
+}
+
+#controls-save-button {
+    background: url('/trax/img/base/button_save_default.png') no-repeat center;
+    position: relative;
+    float: left;
+    width: 56px;
+    height: 23px;
+    cursor: pointer;
+}

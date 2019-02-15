@@ -1,0 +1,248 @@
+@charset "iso-8859-2";
+
+/* UberManage v1 */
+
+h1, h2, h3, ul, li, p { 
+	margin:0;
+	padding:0;
+        list-style: none;
+}
+
+* {
+    -moz-outline: none;
+}
+
+body {
+	background-color: #99cfe9;
+	font-family: Tahoma;
+	font-size: 11px;
+	color: #606060;
+}
+
+a, a:hover, a:link, a:visited{
+	font-family: Tahoma;
+	font-size: 11px;
+	color: #606060;
+	text-decoration: none;
+}
+
+img {
+	border: 0;
+}
+
+table {
+	font-size: 12px;
+}
+
+table thead {
+	font-weight: bold;
+}
+
+table td
+{
+	padding: 3px;
+}
+
+/* General Design for UberManage v1*/
+
+
+#container {
+	margin: 20px auto;
+	width: 832px;
+}
+
+#header {
+	background-image: url('header.png');
+	width: 832px;
+	height: 175px;
+	position: relative;
+}
+
+#banner {
+	background-image: url('banner.png');
+	overflow: hidden;
+	margin: 6px;
+	position: absolute;
+	width: 820px;
+	height: 130px;
+}
+
+#logo {
+	background-image: url('logo.png');
+	overflow: hidden;
+	height: 66px;
+	left: 46px;
+	position: absolute;
+	top: 45px;
+	width: 131px;
+}
+
+#slogan {
+	overflow: hidden;
+	left: 200px;
+	position: absolute;
+	top: 60px;
+	font-family: Arial;
+	font-size: 30px;
+	color: #2a2a2a;
+}
+
+#navigation {
+	background-image: url('navigation.png');
+	width: 820px;
+	height: 33px;
+	bottom: 6px;
+	left: 6px;
+	position: absolute;
+}
+
+#navigation li {
+	float: left;
+	padding: 5px;
+	margin-top: 5px;
+	margin-left: 15px;
+}
+
+#navigation li a {
+	display: block;
+	overflow: hidden;
+	color: #2a2a2a;
+	font-family: Verdana;
+	font-weight: bold;  
+}
+
+#menu li {
+	margin: 0px;
+}
+
+#menu li:hover {
+	background: #f6f7fe;
+}
+
+#menu li a {
+	display: block;
+	width: 100%;
+}
+
+h1, h2 {
+	background: #EFF0F9;
+	text-align: left;
+	font-family: sans-serif;
+	margin: 0;
+	font-size: 100%;
+	padding: 3px;
+}
+
+.plus {
+	float: right;
+	font-size: 8px;
+	font-weight: normal;
+	padding: 1px 4px 2px 4px;
+	margin: 0px 0px;
+	background: #f6f7fe;
+	color: #000;
+	border: 1px solid #b4b8d0;
+	cursor: pointer;
+}
+
+.plus:hover {
+	background: #f6f7fe;
+	border: 1px solid #c97;
+}
+
+ul.listmnu {
+	list-style: none;
+}
+
+.listmnu {
+	padding: 5px;
+	text-align: left;
+}
+
+#middle {
+	background-image: url('middle.png');
+	width: 832px;
+	overflow: hidden;
+}
+
+#top-flashmessage-ok {
+	background-color: #E0F8E0;
+	color: #088A08;
+}
+
+#top-flashmessage-error {
+	background-color: #F8E0E0;
+	color: #8A0808;
+}
+
+#top-flashmessage-ok,#top-flashmessage-error {
+	font-family: arial, san-serif;
+	border: 1px solid #2E2E2E;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
+.info_ubermanage {
+	background: #f4f4f4;
+	color: #000;
+	border: 1px solid #ccc;
+	padding: 10px;
+	height: 100%;
+
+}
+
+#left-column {
+	float: left;
+	width: 200px;
+	padding: 0px 6px;
+}
+
+#right-column {
+	float: left;
+	width: 610px;
+	padding: 0px 2px;
+}
+
+#right-column h3 {
+	font-family: Trebuchet MS;
+	font-size: 22px;
+	color: #37646F;
+}
+
+#right-column p {
+	float: left;
+	width: 534px;
+	padding: 0px 2px;
+}
+
+  .round {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    float: left;
+    padding: 8px;
+    margin: 2px 0 4px;
+    width: 522px;
+  }
+
+.left {
+    float: right;
+  }
+
+    img.left {
+      margin-left: 5px;
+    }
+
+#clear {
+	clear: both;
+}
+
+#bottom {
+	background-image: url('bottom.png');
+	width: 832px;
+	height: 6px;
+}
