@@ -1,0 +1,57 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono);
+
+#circle {
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, .3);
+    -webkit-box-shadow: 0 1px 0 1px rgba(0, 0, 0, .3);
+    -moz-box-shadow: 0 1px 0 1px rgba(0, 0, 0, .3);
+    border: 2px solid #336780;
+    border-radius: 32px;
+    height: 51px;
+    left: 12px;
+    position: absolute;
+    top: 11px;
+    width: 53px;
+    overflow: hidden;
+    z-index: 99;
+    background: #004160 122.5px 88px;
+}
+
+#userLook {
+    position: relative;
+    margin-top: -17px;
+    margin-left: -9px;
+    z-index: 100;
+    cursor: pointer;
+    -webkit-filter: drop-shadow(0 1px 0 #FFF) drop-shadow(0 -1px 0 #FFF) drop-shadow(1px 0 0 #FFF) drop-shadow(-1px 0 0 #FFF) drop-shadow(0 0 10px transparent);
+}
+
+#name {
+    position: absolute;
+    color: white;
+    font-weight: bold;
+    font-family: ubuntu, serif;
+    font-size: 16px;
+    height: 20px;
+    left: 75px;
+    top: 25px;
+    width: 120px;
+    z-index: 2;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .8), -1px -1px 1px rgba(0, 0, 0, .8), 1px -1px 1px rgba(0, 0, 0, .8), -1px 1px 1px rgba(0, 0, 0, .8);
+}
+
+#profilePic {
+    width: 125px;
+    height: 125px;
+    border-radius: 6px !important;
+    float: left;
+    background-size: cover;
+    background-position: center;
+}
+
+#profileHeader {
+    display: inline-block;
+}
+#profileInfo {
+    float: right;
+    margin-left: 10px;
+}

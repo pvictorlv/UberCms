@@ -20,26 +20,26 @@
 if (isset($_POST['placa']))  
 {
 $fid = preg_replace("/[^0-9]/", "", addslashes(trim($_POST['placa'])));
-$getBuyItem = dbquery("SELECT * FROM shop_badges WHERE enabled = '1' and id = '".$fid."' ORDER BY order_id ASC");
+$getBuyItem = db::query("SELECT * FROM shop_badges WHERE enabled = '1' and id = '".$fid."' ORDER BY order_id ASC");
 $itemtobuy = mysql_fetch_assoc($getBuyItem);
 $price = $itemtobuy['price'];
 $placaid = $itemtobuy['placa'];
 $caption = $itemtobuy['caption'];
-$getCoins = dbquery("SELECT * FROM users WHERE username = '".USER_NAME."'");
+$getCoins = db::query("SELECT * FROM users WHERE username = '".USER_NAME."'");
 $b = mysql_fetch_assoc($getCoins);
 $coins1 = $b['VIP_Coins'];
 $idusr = $b['id'];
 if($coins1>=$price){
 $final = $coins1-$price;
-dbquery("INSERT INTO user_badges (user_id, badge_id, badge_slot) values ('".$idusr."','".$placaid."','0')");
-dbquery("UPDATE users SET VIP_Coins='".$final."' WHERE username = '" .USER_NAME. "'");
+db::query("INSERT INTO user_badges (user_id, badge_id, badge_slot) values ('".$idusr."','".$placaid."','0')");
+db::query("UPDATE users SET VIP_Coins='".$final."' WHERE username = '" .USER_NAME. "'");
 echo "Ya tienes tu ".$caption." en el inventario, Felicidades!<br><a href='habbo-rank.zapto.org/Shops/Placas'>Seguir Comprando ></a>";
 }else{$error = "No tienes suficientes Coins para comprar ".$caption."<br><a href='http://habbo-rank.zapto.org/Shops/Placas'>Volver ></a>";echo $error;};
 
 }else{
 
 
-$getItems = dbquery("SELECT * FROM shop_badges WHERE enabled = '1' ORDER BY order_id ASC");
+$getItems = db::query("SELECT * FROM shop_badges WHERE enabled = '1' ORDER BY order_id ASC");
 $i=0;
 while ($item = mysql_fetch_assoc($getItems))
 {

@@ -11,11 +11,11 @@
                 <ul id="news-articlelist" class="articlelist" style="display: none">
                     <?php
 
-                    $getNews = dbquery("SELECT * FROM site_news ORDER BY id DESC LIMIT 10");
+                    $getNews = db::query("SELECT * FROM site_news ORDER BY id DESC LIMIT 10");
 
                     $oddEven = "odd";
 
-                    while ($n = $getNews->fetch_assoc()) {
+                    while ($n = $getNews->fetch(2)) {
                         if ($oddEven == "odd") {
                             $oddEven = "even";
                         } else {

@@ -7,22 +7,22 @@ require_once "global.php";
 $articleData = null;
 
 if (isset($_GET['mostRecent'])) {
-    $getData = dbquery("SELECT * FROM site_news ORDER BY timestamp DESC LIMIT 1");
+    $getData = db::query("SELECT * FROM site_news ORDER BY timestamp DESC LIMIT 1");
 
-    if ($getData->num_rows > 0) {
-        $articleData = $getData->fetch_assoc();
+    if ($getData->rowCount() > 0) {
+        $articleData = $getData->fetch(2);
     }
 } else if (isset($_GET['rel'])) {
-    $rel = filter($_GET['rel']);
+    $rel = ($_GET['rel']);
 
     if (strrpos($rel, '-') >= 1) {
         $bits = explode('-', $rel);
         $id = $bits[0];
 
-        $getData = dbquery("SELECT * FROM site_news WHERE id = '" . filter($id) . "' LIMIT 1");
+        $getData = db::query("SELECT * FROM site_news WHERE id = ? LIMIT 1", $id);
 
-        if ($getData->num_rows > 0) {
-            $articleData = $getData->fetch_assoc();
+        if ($getData->rowCount() > 0) {
+            $articleData = $getData->fetch(2);
         }
     }
 }
@@ -45,7 +45,7 @@ if (isset($_GET['archiveMode'])) {
 } else if (isset($_GET['category']) && is_numeric($_GET['category'])) {
     $mode = 'category';
     $newslist->SetParam('mode', 'category');
-    $newslist->SetParam('category_id', filter($_GET['category']));
+    $newslist->SetParam('category_id', ($_GET['category']));
 } else {
     $mode = 'recent';
     $newslist->SetParam('mode', 'recent');
@@ -65,7 +65,7 @@ if ($articleData != null) {
     $article->SetParam('news_article_id', $articleData['id']);
     $article->SetParam('news_article_title', clean($articleData['title']));
     $article->SetParam('news_article_date', 'Postada em ' . clean($articleData['datestr']));
-    $article->SetParam('news_category', '<a href="%www%/articles/category/' . $articleData['category_id'] . '">' . (dbquery("SELECT caption FROM site_news_categories WHERE id = '" . $articleData['category_id'] . "' LIMIT 1")->fetch_assoc()['caption']) . '</a>');
+    $article->SetParam('news_category', '<a href="%www%/articles/category/' . $articleData['category_id'] . '">' . (db::query("SELECT caption FROM site_news_categories WHERE id = ? LIMIT 1", $articleData['category_id'])->fetchColumn()) . '</a>');
     $article->SetParam('news_article_summary', clean($articleData['snippet']));
     $article->SetParam('news_article_body', clean($articleData['body'], true));
 

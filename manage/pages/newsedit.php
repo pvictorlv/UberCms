@@ -12,10 +12,10 @@ $data = null;
 
 if (isset($_GET['u']) && is_numeric($_GET['u'])) {
     $u = filter($_GET['u']);
-    $getData = dbquery("SELECT * FROM site_news WHERE id = '" . $u . "' LIMIT 1");
+    $getData = db::query("SELECT * FROM site_news WHERE id = '" . $u . "' LIMIT 1");
 
-    if ($getData->num_rows > 0) {
-        $data = $getData->fetch_assoc();
+    if ($getData->rowCount() > 0) {
+        $data = $getData->fetch(2);
     }
 }
 
@@ -35,7 +35,7 @@ if (isset($_POST['editor1'])) {
     if (strlen($title) < 1 || strlen($teaser) < 1 || strlen($content) < 1) {
         fMessage('error', 'Por favor, preencha todos os pontos');
     } else {
-        dbquery("UPDATE site_news SET title = '" . $title . "', category_id = '" . $category . "', topstory_image = '" . $topstory . "', body = '" . $content . "', snippet = '" . $teaser . "' WHERE id = '" . $data['id'] . "' LIMIT 1");
+        db::query("UPDATE site_news SET title = '" . $title . "', category_id = '" . $category . "', topstory_image = '" . $topstory . "', body = '" . $content . "', snippet = '" . $teaser . "' WHERE id = '" . $data['id'] . "' LIMIT 1");
         fMessage('ok', 'News article updated.');
 
         header("Location: index.php?_cmd=news");
@@ -95,9 +95,9 @@ require_once "top.php";
             <select name="category">
                 <?php
 
-                $getOptions = dbquery("SELECT * FROM site_news_categories ORDER BY caption ASC");
+                $getOptions = db::query("SELECT * FROM site_news_categories ORDER BY caption ASC");
 
-                while ($option = $getOptions->fetch_assoc()) {
+                while ($option = $getOptions->fetch(2)) {
                     echo '<option value="' . intval($option['id']) . '" ' . (($option['id'] == $data['category_id']) ? 'selected' : '') . '>' . ($option['caption']) . '</option>';
                 }
 

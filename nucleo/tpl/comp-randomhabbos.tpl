@@ -7,7 +7,7 @@
 
 <?php
 
-$getRandom = dbquery("SELECT id,username,look,motto,account_created,online FROM users ORDER BY RAND() LIMIT 18");
+$getRandom = db::query("SELECT id,username,look,motto,account_created,online FROM users ORDER BY RAND() LIMIT 18");
 $i = 0;
 
 while ($randomHabbo = mysql_fetch_assoc($getRandom))

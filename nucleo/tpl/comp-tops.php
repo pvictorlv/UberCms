@@ -7,8 +7,8 @@
                     <table width="100%">
                         <tr>
                             <?php
-                            $row = dbquery("SELECT look,username,credits FROM users WHERE rank < 5 ORDER BY credits DESC LIMIT 5");
-                            while ($sql = $row->fetch_assoc()){
+                            $row = db::query("SELECT look,username,credits FROM users WHERE rank < 5 ORDER BY credits DESC LIMIT 5");
+                            while ($sql = $row->fetch(2)){
 
                             ?>
 
@@ -43,8 +43,8 @@
                     <table width="100%">
                         <tr>
                             <?php
-                            $row = dbquery("SELECT look,username,activity_points FROM users WHERE rank < 5 ORDER BY activity_points DESC LIMIT 5");
-                            while ($sql = $row->fetch_assoc()){
+                            $row = db::query("SELECT look,username,activity_points FROM users WHERE rank < 5 ORDER BY activity_points DESC LIMIT 5");
+                            while ($sql = $row->fetch(2)){
                             ?>
                         <tr>
                             <td width="5px"></td>
@@ -76,10 +76,10 @@
                         <tr>
                             <?php
 
-                            $q = dbquery("SELECT * FROM users WHERE rank < 4 ORDER BY time_online DESC LIMIT 5");
+                            $q = db::query("SELECT * FROM users WHERE rank < 4 ORDER BY time_online DESC LIMIT 5");
                             $time = 60; // 60*60*24
 
-                            while ($row = $q->fetch_assoc()) {
+                            while ($row = $q->fetch(2)) {
                             ?>
 
                         <tr>

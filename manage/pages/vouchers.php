@@ -17,7 +17,7 @@ if (isset($_POST['v-code'])) {
     } else if (!is_numeric($vValue) || intval($vValue) <= 0 || intval($vValue) > 5000) {
         fMessage('error', 'Valor inválido de créditos. Deve ser um número entre 1 a 5000.');
     } else {
-        dbquery("INSERT INTO credit_vouchers (code,value) VALUES ('" . $vCode . "','" . intval($vValue) . "')");
+        db::query("INSERT INTO credit_vouchers (code,value) VALUES ('" . $vCode . "','" . intval($vValue) . "')");
         fMessage('ok', 'Voucher is now live and redeemable.');
     }
 }
@@ -49,9 +49,9 @@ require_once "top.php";
             </thead>
             <?php
 
-            $get = dbquery("SELECT code,value FROM credit_vouchers ORDER BY code ASC");
+            $get = db::query("SELECT code,value FROM credit_vouchers ORDER BY code ASC");
 
-            while ($user = $get->fetch_assoc()) {
+            while ($user = $get->fetch(2)) {
                 echo '<tr>';
                 echo '<td>' . $user['code'] . '</td>';
                 echo '<td>' . $user['value'] . ' credits</td>';

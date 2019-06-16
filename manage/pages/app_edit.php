@@ -17,7 +17,7 @@ $check = mysql_query("SELECT * FROM applications WHERE id = '$key' LIMIT 1") or 
 	
 		$rare = mysql_fetch_assoc($check);
 		$editor_mode = true;
-dbquery("UPDATE applications SET `appstatus` = '1'");
+db::query("UPDATE applications SET `appstatus` = '1'");
 }	
 
 
@@ -49,7 +49,7 @@ require_once "top.php";
 </tr>
 
 <tr>
-<td class='tablerow1'  width='40%'  valign='middle'><b>¿Ha sido Staff?</b><div class='graytext'>Si ha sido Staff alguna vez y en qué hoteles</div></td>
+<td class='tablerow1'  width='40%'  valign='middle'><b>ï¿½Ha sido Staff?</b><div class='graytext'>Si ha sido Staff alguna vez y en quï¿½ hoteles</div></td>
 <td class='tablerow2'  width='60%'  valign='middle'><input type='text' name='releasestate' value="<?php echo $rare['timezone']; ?>" size='30' maxlength='0'class='textinput'></td>
 </tr> 
 
@@ -59,7 +59,7 @@ require_once "top.php";
 </tr>
 
 <tr>
-<td class='tablerow1'  width='40%'  valign='middle'><b>Edad</b><div class='graytext'>¿Cuántos Años tiene?</div></td>
+<td class='tablerow1'  width='40%'  valign='middle'><b>Edad</b><div class='graytext'>ï¿½Cuï¿½ntos Aï¿½os tiene?</div></td>
 <td class='tablerow2'  width='60%'  valign='middle'><input type='text' name='category' value="<?php echo $rare['age']; ?>" size='1' maxlength='0'class='textinput'></td>
 </tr>
 
@@ -74,7 +74,7 @@ require_once "top.php";
 </tr>
 
 <tr>
-<td class='tablerow1'  width='40%'  valign='middle'><b>Administración</b><div class='graytext'>Conocimientos en la Administración</div></td>
+<td class='tablerow1'  width='40%'  valign='middle'><b>Administraciï¿½n</b><div class='graytext'>Conocimientos en la Administraciï¿½n</div></td>
 <td class='tablerow2'  width='60%'  valign='middle'><input type='text' name='category' value="<?php echo $rare['message1']; ?>" size='65' maxlength='0'class='textinput'></td>
 </tr>
 
@@ -84,7 +84,7 @@ require_once "top.php";
 </tr>
 
 <tr>
-<td class='tablerow1'  width='40%'  valign='middle'><b>Otros</b><div class='graytext'>Si el aplicante decidio añadir algo más, estará aquí.</div></td>
+<td class='tablerow1'  width='40%'  valign='middle'><b>Otros</b><div class='graytext'>Si el aplicante decidio aï¿½adir algo mï¿½s, estarï¿½ aquï¿½.</div></td>
 <td class='tablerow2'  width='60%'  valign='middle'><input type='text' name='category' value="<?php echo $rare['message3']; ?>" size='65' maxlength='0'class='textinput'></td>
 </tr>
 

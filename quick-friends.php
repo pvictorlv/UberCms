@@ -6,13 +6,13 @@ if (!LOGGED_IN) {
     exit;
 }
 
-$result = dbquery("SELECT `user_two_id` FROM `messenger_friendships` WHERE `user_one_id` = '" . USER_ID . "' LIMIT 15;");
-$num = $result->num_rows;
+$result = db::query("SELECT `user_two_id` FROM `messenger_friendships` WHERE `user_one_id` = '" . USER_ID . "' LIMIT 15;");
+$num = $result->rowCount();
 if ($num == 0) {
     echo "<ul>Nenhum amigo online!</ul>";
 } else {
     $friends = array("online" => array(), "offline" => array());
-    while ($row = $result->fetch_array()) {
+    while ($row = $result->fetch(1)) {
         if (uberUsers::Is_Online($row[0])) {
             $friends['online'][] = $users->Id2name($row[0]);
         } else {

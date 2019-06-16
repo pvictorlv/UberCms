@@ -2,21 +2,19 @@
 ob_start();
 require_once('../global.php');
 $my_id = USER_ID;
-$sql = dbquery("SELECT credits FROM users WHERE id = '" . USER_ID . "' LIMIT 1");
-$myrow = $sql->fetch_assoc();
+$credits = db::query("SELECT credits FROM users WHERE id = '" . USER_ID . "' LIMIT 1")->fetchColumn();
 
-$task = filter($_POST['task']);
-$selectedId = filter($_POST['selectedId']);
+$task = ($_POST['task']);
+$selectedId = ($_POST['selectedId']);
 
-$getItem = dbquery("SELECT * FROM site_shop_items WHERE id = '" . $selectedId . "' LIMIT 1");
+$getItem = db::query('SELECT * FROM site_shop_items WHERE id = ? LIMIT 1', $selectedId);
 
-if ($getItem->num_rows > 0) {
-    $row = $getItem->fetch_assoc();
+if ($getItem->rowCount() > 0) {
+    $row = $getItem->fetch(2);
 
-    if ($myrow['credits'] >= $row['price']) {
-        $newCredits = $myrow['credits'] - $row['price'];
-        dbquery("INSERT INTO site_inventory_items (userId, var, skin, type) VALUES ('" . $my_id . "', '', '" . $row['skin'] . "', '" . $row['type'] . "')");
-
+    if ($credits >= $row['price']) {
+        $newCredits = $credits - $row['price'];
+        db::query("INSERT INTO site_inventory_items (userId, var, skin, type) VALUES (?, '', '" . $row['skin'] . "', '" . $row['type'] . "')", $my_id);
         $users->EatCredits(USER_ID, $newCredits, false);
         $core->Mus('updatecredits', USER_ID);
 

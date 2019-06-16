@@ -12,8 +12,8 @@ if (!isset($qryId) && LOGGED_IN) {
     header('Location: ' . WWW . '/');
 }
 
-$get_em = dbquery("SELECT * FROM homes_items WHERE owner_id = '" . $qryId . "' AND type < 4 LIMIT 200");
-$row = $get_em->fetch_assoc();
+$get_em = db::query("SELECT * FROM homes_items WHERE owner_id = '" . $qryId . "' AND type < 4 LIMIT 200");
+$row = $get_em->fetch(2);
 ?>
 
 <div class="movable widget RatingWidget" id="widget-%id%" style=" left: %pos-x%px; top: %pos-y%px; z-index: %pos-z%;">
@@ -41,10 +41,10 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
             <div class="widget-content">
                 <div id="rating-main">
                     <?php
-                    $myvote = dbquery("SELECT COUNT(id) FROM homes_ratings WHERE user = '" . USER_ID . "' AND home_id = '$qryId'")->num_rows;
-                    $totalvote = dbquery("SELECT COUNT(id) FROM homes_ratings WHERE home_id = '$qryId'");
-                    $totalvotes = $totalvote->num_rows;
-                    $highvotes = dbquery("SELECT COUNT(*) FROM homes_ratings WHERE home_id = '$qryId' AND rating > 3");
+                    $myvote = db::query("SELECT COUNT(id) FROM homes_ratings WHERE user = '" . USER_ID . "' AND home_id = '$qryId'")->rowCount();
+                    $totalvote = db::query("SELECT COUNT(id) FROM homes_ratings WHERE home_id = '$qryId'");
+                    $totalvotes = $totalvote->rowCount();
+                    $highvotes = db::query("SELECT COUNT(*) FROM homes_ratings WHERE home_id = '$qryId' AND rating > 3");
                     $votestally = 5;
 
                     $x = $totalvotes;

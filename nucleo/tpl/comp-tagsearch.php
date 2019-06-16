@@ -37,10 +37,10 @@
                     } else {
                         $entered = filter($_GET['tag']);
                     }
-                    $override = dbquery("SELECT user_id FROM user_tags WHERE tag='$entered'");
-                    while ($row = $override->fetch_assoc()) {
-                        $test = dbquery("SELECT username,look,last_online,motto FROM users WHERE id='{$row['user_id']}'");
-                        while ($row = $test->fetch_assoc()) {
+                    $override = db::query("SELECT user_id FROM user_tags WHERE tag='$entered'");
+                    while ($row = $override->fetch(2)) {
+                        $test = db::query("SELECT username,look,last_online,motto FROM users WHERE id='{$row['user_id']}'");
+                        while ($row = $test->fetch(2)) {
                             ?>
                             <table border="0" width="100%">
                                 <tr>

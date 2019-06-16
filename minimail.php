@@ -22,11 +22,11 @@ switch (strtolower($cmd)) {
         $replyData = null;
 
         if (isset($_POST['messageId'])) {
-            $messageId = (int)filter($_POST['messageId']);
-            $getMessage = dbquery("SELECT subject,sender_id FROM site_minimail WHERE folder = 'inbox' AND id = '" . $messageId . "' AND receiver_id = '" . USER_ID . "' LIMIT 1");
+            $messageId = (int)$_POST['messageId'];
+            $getMessage = db::query("SELECT subject,sender_id FROM site_minimail WHERE folder = 'inbox' AND id = ? AND receiver_id = ? LIMIT 1", $messageId, USER_ID);
 
-            if ($getMessage->num_rows >= 1) {
-                $replyData = $getMessage->fetch_assoc();
+            if ($getMessage->rowCount() >= 1) {
+                $replyData = $getMessage->fetch(2);
             }
         }
 
@@ -35,7 +35,7 @@ switch (strtolower($cmd)) {
         $body = '';
 
         if ($replyData != null) {
-            $subject = 'RE: ' . filter($replyData['subject']);
+            $subject = 'RE: ' . ($replyData['subject']);
             $recipientIds[] = $replyData['sender_id'];
         } else {
             if (isset($_POST['recipientIds'])) {
@@ -43,12 +43,12 @@ switch (strtolower($cmd)) {
             }
 
             if (isset($_POST['subject'])) {
-                $subject = filter($_POST['subject']);
+                $subject = ($_POST['subject']);
             }
         }
 
         if (isset($_POST['body'])) {
-            $body = nl2br(uberCore::BBcode(filter($_POST['body'])));
+            $body = nl2br(uberCore::BBcode($_POST['body']));
         }
 
         $sub_len = strlen($subject);
@@ -57,15 +57,14 @@ switch (strtolower($cmd)) {
         }
 
         foreach ($recipientIds as $r) {
-            if (dbquery("SELECT NULL FROM users WHERE id = '" . (int)$r . "' LIMIT 1")->num_rows == 1
-                && dbquery("SELECT NULL FROM messenger_friendships WHERE user_one_id = '" . (int)$r . "' AND user_two_id = '" . USER_ID . "' LIMIT 1")->num_rows == 1
+            if (db::query("SELECT count(user_one_id) FROM messenger_friendships WHERE user_one_id = ? AND user_two_id = '" . USER_ID . "' LIMIT 1", $r)->fetchColumn() >= 1
             ) {
-                dbquery("INSERT INTO site_minimail (sender_id,receiver_id,folder,is_read,subject,date,isodate,timestamp,body) VALUES ('" . USER_ID . "','" . $r . "','inbox','0','" . $subject . "','" . date('d-M-Y H:i:s') . "','" . date('c') . "','" . time() . "','" . $body . "')");
+                db::query("INSERT INTO site_minimail (sender_id,receiver_id,folder,is_read,subject,date,isodate,timestamp,body) VALUES ('" . USER_ID . "',?,'inbox','0',?,'" . date('d-M-Y H:i:s') . "','" . date('c') . "','" . time() . "',?)", $r, $subject, $body);
             }
         }
 
-        dbquery("INSERT INTO site_minimail (sender_id,receiver_id,folder,is_read,subject,date,isodate,timestamp,body) VALUES ('" . USER_ID . "','" . USER_ID . "','sent','1','" . $subject . "','" . date('d-M-Y H:i:s') . "','" . date('c') . "','" . time() . "','" . ($body) . "')");
-        header('X-JSON: {"message":"El mensaje ha sido enviado.","totalMessages":' . dbquery("SELECT NULL FROM site_minimail WHERE folder = 'inbox'")->num_rows . '}');
+        db::query("INSERT INTO site_minimail (sender_id,receiver_id,folder,is_read,subject,date,isodate,timestamp,body) VALUES ('" . USER_ID . "','" . USER_ID . "','sent','1',?,'" . date('d-M-Y H:i:s') . "','" . date('c') . "','" . time() . "',?)", $subject, $body);
+        header('X-JSON: {"message":"El mensaje ha sido enviado.","totalMessages":' . db::query("SELECT count(id) FROM site_minimail WHERE folder = 'inbox'")->fetchColumn() . '}');
 
         $tpl->Init();
 
@@ -92,10 +91,10 @@ switch (strtolower($cmd)) {
         echo '/*-secure-' . LB;
         echo '[';
 
-        $getBuddies = dbquery("SELECT user_two_id FROM messenger_friendships WHERE user_one_id = '" . USER_ID . "'");
+        $getBuddies = db::query("SELECT user_two_id FROM messenger_friendships WHERE user_one_id = ?", USER_ID);
         $i = 0;
 
-        while ($buddy = $getBuddies->fetch_assoc()) {
+        while ($buddy = $getBuddies->fetch(2)) {
             if ($i > 0) {
                 echo ',';
             }
@@ -112,8 +111,8 @@ switch (strtolower($cmd)) {
 
     case 'emptytrash':
 
-        dbquery("DELETE FROM site_minimail WHERE folder = 'trash' AND receiver_id = '" . USER_ID . "'");
-        header('X-JSON: {"message":"Basura vacia!","totalMessages":' . dbquery("SELECT NULL FROM site_minimail WHERE folder = 'trash'")->num_rows . '}');
+        db::query("DELETE FROM site_minimail WHERE folder = 'trash' AND receiver_id = ?", USER_ID);
+        header('X-JSON: {"message":"Lixeira esvaziada!","totalMessages":0}');
 
         $tpl->Init();
 
@@ -131,11 +130,11 @@ switch (strtolower($cmd)) {
             exit;
         }
 
-        $messageId = (int)filter($_POST['messageId']);
-        $label = filter($_POST['label']);
+        $messageId = (int)($_POST['messageId']);
+        $label = ($_POST['label']);
 
-        dbquery("UPDATE site_minimail SET folder = 'inbox', is_read = '1' WHERE id = '" . $messageId . "' AND receiver_id = '" . USER_ID . "' LIMIT 1");
-        header('X-JSON: {"message":"Mensagem restaurada.","totalMessages":' . dbquery("SELECT NULL FROM site_minimail WHERE folder = '" . $label . "'")->num_rows . '}');
+        db::query("UPDATE site_minimail SET folder = 'inbox', is_read = '1' WHERE id = ? AND receiver_id = '" . USER_ID . "' LIMIT 1", $messageId);
+        header('X-JSON: {"message":"Mensagem restaurada.","totalMessages":' . db::query("SELECT count(id) FROM site_minimail WHERE folder = ?")->fetchColumn() . '}');
 
         $tpl->Init();
 
@@ -157,11 +156,11 @@ switch (strtolower($cmd)) {
         $label = filter($_POST['label']);
 
         if ($label == 'trash' || $label == 'sent') {
-            dbquery("DELETE FROM site_minimail WHERE id = '" . $messageId . "' AND receiver_id = '" . USER_ID . "' LIMIT 1");
-            header('X-JSON: {"message":"Mensaje Borrado","totalMessages":' . dbquery("SELECT NULL FROM site_minimail WHERE folder = '" . $label . "'")->num_rows . '}');
+            db::query("DELETE FROM site_minimail WHERE id = ? AND receiver_id = '" . USER_ID . "' LIMIT 1", $messageId);
+            header('X-JSON: {"message":"Mensagem apagada","totalMessages":' . db::query('SELECT count(id) FROM site_minimail WHERE folder = ?')->fetchColumn() . '}');
         } else {
-            dbquery("UPDATE site_minimail SET folder = 'trash', is_read = '1' WHERE id = '" . $messageId . "' AND receiver_id = '" . USER_ID . "' LIMIT 1");
-            header('X-JSON: {"message":"El mensaje ha sido enviado a la papelera. Se puede recuperar, si lo desea.","totalMessages":' . dbquery("SELECT NULL FROM site_minimail WHERE folder = '" . $label . "'")->num_rows . '}');
+            db::query("UPDATE site_minimail SET folder = 'trash', is_read = '1' WHERE id = ? AND receiver_id = '" . USER_ID . "' LIMIT 1", $messageId);
+            header('X-JSON: {"message":"A mensagem foi enviada para a lixeira. Você ainda pode recupera-la caso deseje.","totalMessages":' . db::query("SELECT count(id) FROM site_minimail WHERE folder = ?", $label)->fetchColumn() . '}');
         }
 
         $tpl->Init();

@@ -16,7 +16,7 @@ if (isset($_POST['edit'])) {
     $enabled = filter($_POST['enabled']);
     $url = filter($_POST['url']);
 
-    dbquery("UPDATE site_hotcampaigns SET image_url = '" . $image . "', caption = '" . $title . "', `desc` = '" . $descr . "', enabled = '" . $enabled . "', url = '" . $url . "' WHERE id = '" . $id . "' LIMIT 1");
+    db::query("UPDATE site_hotcampaigns SET image_url = '" . $image . "', caption = '" . $title . "', `desc` = '" . $descr . "', enabled = '" . $enabled . "', url = '" . $url . "' WHERE id = '" . $id . "' LIMIT 1");
     fMessage('ok', 'Updated campaign.');
 }
 
@@ -26,14 +26,14 @@ if (isset($_POST['add-new'])) {
     $descr = filter($_POST['descr']);
     $enabled = filter($_POST['enabled']);
     $url = filter($_POST['url']);
-    dbquery("INSERT INTO site_hotcampaigns (enabled,image_url,caption,`desc`,url) VALUES ('" . $enabled . "','" . $image . "','" . $title . "','" . $descr . "','" . $url . "')");
+    db::query("INSERT INTO site_hotcampaigns (enabled,image_url,caption,`desc`,url) VALUES ('" . $enabled . "','" . $image . "','" . $title . "','" . $descr . "','" . $url . "')");
     echo 1;
 
     fMessage('ok', 'Noticion Agregado');
 }
 
 if (isset($_GET['doDel']) && is_numeric($_GET['doDel'])) {
-    dbquery("DELETE FROM site_hotcampaigns WHERE id = '" . $_GET['doDel'] . "' LIMIT 1");
+    db::query("DELETE FROM site_hotcampaigns WHERE id = '" . $_GET['doDel'] . "' LIMIT 1");
     fMessage('ok', 'Deleted.');
     header("Location: index.php?_cmd=campaigns");
     exit;
@@ -67,9 +67,9 @@ require_once "top.php";
         <tbody>
         <?php
 
-        $getItems = dbquery("SELECT * FROM site_hotcampaigns ORDER BY order_id ASC");
+        $getItems = db::query("SELECT * FROM site_hotcampaigns ORDER BY order_id ASC");
 
-        while ($item = $getItems->fetch_assoc()) {
+        while ($item = $getItems->fetch(2)) {
             echo '<tr>
 	<form method="post">
 	<input type="hidden" name="edit" value="' . $item['id'] . '">

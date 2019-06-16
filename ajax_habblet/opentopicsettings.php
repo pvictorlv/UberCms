@@ -7,7 +7,7 @@ require '../global.php';
 if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['topicId']) && is_numeric($_POST['topicId'])) {
 	$groupId = $gtfo->cleanWord($_POST['groupId']);
 	$topicId = $gtfo->cleanWord($_POST['topicId']);
-	$checkTopic = dbquery("SELECT type,sticky,title FROM groups_forum_topics WHERE id = '".$topicId."' AND group_id = '".$groupId."' LIMIT 1;");
+	$checkTopic = db::query("SELECT type,sticky,title FROM groups_forum_topics WHERE id = '".$topicId."' AND group_id = '".$groupId."' LIMIT 1;");
 	
 	if($core->GetGroupPerm($groupId) < 2) {
 ?>	
@@ -24,7 +24,7 @@ die();
 <form action="#" method="post" id="topic-settings-form">
 	<div id="topic-name-area">
 	    	<div class="topic-name-input">
-	    		<span class="topic-name-text" id="topic_name_text">Asunto: (máx 32 caracteres)</span>
+	    		<span class="topic-name-text" id="topic_name_text">Asunto: (mï¿½x 32 caracteres)</span>
 	    	</div>
 	    	<div class="topic-name-input">
 	    		<input type="text" size="40" maxlength="32" name="topic_name" id="topic_name" onKeyUp="GroupUtils.validateGroupElements('topic_name', 32, 'myhabbo.topic.name.max.length.exceeded');" value="<?php write($TopicData['title']); ?>"/>
@@ -37,7 +37,7 @@ die();
 			<span class="topic-type-label">Tipo:</span>
 		</div>
 	    <div class="topic-type-input">
-	    	<input type="radio" name="topic_type" id="topic_open" value="0" <?php if(!$TopicData['type']) { echo 'checked="true"'; } ?> /> Público<br />
+	    	<input type="radio" name="topic_type" id="topic_open" value="0" <?php if(!$TopicData['type']) { echo 'checked="true"'; } ?> /> Pï¿½blico<br />
 			<input type="radio" name="topic_sticky" id="topic_normal" value="0" <?php if(!$TopicData['sticky']) { echo 'checked="true"'; } ?> /> Normal
 	    </div>
 	    <div class="topic-type-input">

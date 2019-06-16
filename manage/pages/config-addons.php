@@ -18,8 +18,8 @@ if (isset($_POST['ancho_xat']))
 	$pixeles = $_POST['pixeles'];
 	$radio = $_POST['radio'];
 	
-		dbquery("UPDATE configuracion SET ancho_xat='" . $ancho_xat . "',alto_xat='" . $alto_xat . "',id_xat='" . $id_xat . "'");
-		fMessage('ok', 'Configuración guardada.');
+		db::query("UPDATE configuracion SET ancho_xat='" . $ancho_xat . "',alto_xat='" . $alto_xat . "',id_xat='" . $id_xat . "'");
+		fMessage('ok', 'Configuraciï¿½n guardada.');
 		
 		header("Location: index.php?_cmd=config");
 		exit;
@@ -30,7 +30,7 @@ require_once "top.php";
 
 ?>			
 
-<h1>Configuración General</h1>
+<h1>Configuraciï¿½n General</h1>
 <form method="post">
 
 <br />
@@ -38,7 +38,7 @@ require_once "top.php";
 <div style="float: left;">
 
 <?php
-$getOptions = dbquery("SELECT * FROM configuracion LIMIT 1");
+$getOptions = db::query("SELECT * FROM configuracion LIMIT 1");
 $Config = mysql_fetch_array($getOptions);
 ?>
 
@@ -50,11 +50,11 @@ $Config = mysql_fetch_array($getOptions);
 <input type="text" value="<?php echo clean($Config['logo']); ?>" name="logo" size="50"  style="padding: 5px; font-size: 130%;"><br />
 <br />
 
-<strong>Créditos iniciales:</strong><br />
+<strong>Crï¿½ditos iniciales:</strong><br />
 <input type="text" value="<?php echo $Config['creditos']; ?>" name="creditos" size="50" style="padding: 5px; font-size: 130%;"><br />
 <br />
 
-<strong>Píxeles iniciales:</strong><br />
+<strong>Pï¿½xeles iniciales:</strong><br />
 <input type="text" value="<?php echo clean($Config['pixeles']); ?>" name="pixeles" size="50"  style="padding: 5px; font-size: 130%;"><br />
 <br />
 

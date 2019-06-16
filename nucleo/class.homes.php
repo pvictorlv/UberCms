@@ -2,26 +2,30 @@
 
 class HomesManager
 {
-    public static function HomeExists($linkType = 'user', $linkId)
+    public static function HomeExists($linkType, $linkId): bool
     {
-        return dbquery("SELECT NULL FROM homes WHERE link_type = '" . strtolower($linkType) . "' AND link_id = '" . (int)$linkId . "' LIMIT 1")->num_rows > 0;
+        return db::query("SELECT NULL FROM homes WHERE link_type = '" . strtolower($linkType) . "' AND link_id = ? LIMIT 1", $linkId)->rowCount() > 0;
     }
 
     public static function GetHomeId($linkType, $linkId)
     {
-        if (!HomesManager::HomeExists($linkType, $linkId)) {
+        if (!self::HomeExists($linkType, $linkId)) {
             return 0;
         }
 
-        return (int)dbquery("SELECT home_id FROM homes WHERE link_type = '" . strtolower($linkType) . "' AND link_id = '" . (int)$linkId . "' LIMIT 1")->fetch_assoc()['home_id'];
+        return (int)db::query("SELECT home_id FROM homes WHERE link_type = '" . strtolower($linkType) . "' AND link_id = ? LIMIT 1", $linkId)->fetchColumn();
     }
 
     public static function CreateHome($linkType, $linkId)
     {
-        dbquery("INSERT INTO homes (home_id,link_type,link_id,allow_display) VALUES ($linkId,'" . strtolower($linkType) . "','" . (int)$linkId . "','1')");
+        db::query("INSERT INTO homes (home_id,link_type,link_id,allow_display) VALUES (?,?,?,'1')",
+            $linkId, strtolower($linkType), $linkId);
 
-        $homeId = HomesManager::GetHomeId($linkType, $linkId);
-        $home = HomesManager::GetHome($homeId);
+        $homeId = self::GetHomeId($linkType, $linkId);
+        $home = self::GetHome($homeId);
+        if ($home === null) {
+            return;
+        }
 
         $home->AddItem('widget', 463, 39, 1, 'ProfileWidget', 'w_skin_defaultskin', $linkId);
         $home->AddItem('stickie', 42, 48, 2, 'Olá e bem-vindo a sua Habbo Home. Para começar, clique em Editar. Lá você vai encontrar o seu inventário e o catálogo. O inventário lista todos os elementos que podem ser colocados na sua página, incluindo etiquetas, fundos e widgets. O catálogo é onde você pode comprar novos itens. Verifique regularmente para encontrar novos itens.', 'n_skin_noteitskin', $linkId);
@@ -30,19 +34,18 @@ class HomesManager
         $home->AddItem('sticker', 341, 353, 6, 's_sticker_spaceduck', '', $linkId);
         $home->AddItem('sticker', 27, 32, 7, 's_needle_3', '', $linkId);
 
-        return $homeId;
     }
 
     public static function GetHomeDataRow($id)
     {
-        return dbquery("SELECT * FROM homes WHERE home_id = '" . $id . "' LIMIT 1")->fetch_assoc();
+        return db::query("SELECT * FROM homes WHERE home_id = ? LIMIT 1", $id)->fetch(2);
     }
 
     public static function GetHome($id)
     {
-        $data = HomesManager::GetHomeDataRow($id);
+        $data = self::GetHomeDataRow($id);
 
-        if ($data == null) {
+        if ($data === null) {
             return null;
         }
 
@@ -65,22 +68,23 @@ class Home
 
     public function AddItem($type, $x, $y, $z, $data, $skin, $ownerId)
     {
-        dbquery("INSERT INTO homes_items (home_id,type,x,y,z,data,skin,owner_id) VALUES ('" . $this->id . "','" . $type . "','" . $x . "','" . $y . "','" . $z . "','" . filter($data) . "','" . $skin . "','" . $ownerId . "')");
+        db::query('INSERT INTO homes_items (home_id,type,x,y,z,data,skin,owner_id) VALUES (?,?,?,?,?,?,?,?)',
+        $this->id, $type, $x, $y, $z, $data, $skin, $ownerId);
     }
 
     public function GetItems($id = false)
     {
         if (!$id) {
             $list = Array();
-            $get = dbquery("SELECT * FROM homes_items WHERE home_id = '" . $this->id . "' ORDER BY type ASC");
+            $get = db::query('SELECT * FROM homes_items WHERE home_id = ? ORDER BY type ASC', $this->id);
 
-            while ($item = $get->fetch_assoc()) {
+            while ($item = $get->fetch(2)) {
                 $list[] = new HomeItem($item['id'], $item['home_id'], $item['type'], $item['data'], $item['skin'], $item['x'], $item['y'], $item['z'], $item['owner_id']);
             }
         } else {
-            $get = dbquery("SELECT * FROM homes_items WHERE id = '" . $id . "' LIMIT 1");
+            $get = db::query("SELECT * FROM homes_items WHERE id = ? LIMIT 1", $id);
 
-            $item = $get->fetch_assoc();
+            $item = $get->fetch(2);
 
             $list = new HomeItem($item['id'], $item['home_id'], $item['type'], $item['data'], $item['skin'], $item['x'], $item['y'], $item['z'], $item['owner_id']);
 
@@ -127,10 +131,10 @@ class HomeItem
     public static function UpdateItem($skinId, $stickieId)
     {
 
-        dbquery("UPDATE homes_items SET skin = '" . $skinId . "' WHERE id = '" . $stickieId . "'");
+        db::query("UPDATE homes_items SET skin = ? WHERE id = ?", $skinId, $stickieId);
 
-        $sql = dbquery("SELECT * FROM homes_items WHERE id = '" . $stickieId . "'");
-        $item = $sql->fetch_assoc();
+        $sql = db::query("SELECT * FROM homes_items WHERE id = ?", $stickieId);
+        $item = $sql->fetch(2);
         $list = new HomeItem($item['id'], $item['home_id'], $item['type'], $item['data'], $item['skin'], $item['x'], $item['y'], $item['z'], $item['owner_id']);
 
         return $list->GetHtml();

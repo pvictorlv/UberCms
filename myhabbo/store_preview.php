@@ -3,12 +3,12 @@ ob_start();
 require_once('../global.php');
 $coins = $users->GetUserVar(USER_ID, 'credits', false);
 
-$productId = filter($_POST['productId']);
+$productId = ($_POST['productId']);
 
-$getPreview = dbquery("SELECT * FROM site_shop_items WHERE id = '" . $productId . "'");
+$getPreview = db::query("SELECT * FROM site_shop_items WHERE id = ?", $productId);
 
-if ($getPreview->num_rows > 0) {
-    $row = $getPreview->fetch_assoc();
+if ($getPreview->rowCount() > 0) {
+    $row = $getPreview->fetch(2);
 } else {
     exit;
 }

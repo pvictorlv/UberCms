@@ -55,9 +55,9 @@ function GenerateRoomOccupancy($usersNow, $usersMax)
 
                 <?php
 
-                $get = dbquery("SELECT id,users_now,users_max,caption,description,owner FROM rooms WHERE roomtype = 'private' ORDER BY users_now DESC LIMIT 5");
+                $get = db::query("SELECT id,users_now,users_max,caption,description,owner FROM rooms WHERE roomtype = 'private' ORDER BY users_now DESC LIMIT 5");
 
-                while ($room = $get->fetch_assoc()) {
+                while ($room = $get->fetch(2)) {
                     if ($eo == 'even') {
                         $eo = 'odd';
                     } else {
@@ -81,9 +81,9 @@ function GenerateRoomOccupancy($usersNow, $usersMax)
 
                         <?php
 
-                        $get = dbquery("SELECT id,users_now,users_max,caption,description,owner FROM rooms WHERE roomtype = 'private' ORDER BY users_now DESC LIMIT 5,10");
+                        $get = db::query("SELECT id,users_now,users_max,caption,description,owner FROM rooms WHERE roomtype = 'private' ORDER BY users_now DESC LIMIT 5,10");
 
-                        while ($room = $get->fetch_assoc()) {
+                        while ($room = $get->fetch(2)) {
                             if ($eo == 'even') {
                                 $eo = 'odd';
                             } else {

@@ -11,28 +11,28 @@ if (!LOGGED_IN) {
 }
 
 if (isset($_POST['motto']) && isset($_POST['showOnlineStatus']) && isset($_POST['followFriendMode']) && isset($_POST['accept_trading'])) {
-    dbquery("UPDATE users SET motto = '" . filter($_POST['motto']) . "' WHERE id = '" . USER_ID . "' LIMIT 1");
+    db::query("UPDATE users SET motto = '" . filter($_POST['motto']) . "' WHERE id = '" . USER_ID . "' LIMIT 1");
     if (isset($_POST['friendRequestsAllowed'])) {
-        dbquery("UPDATE users SET block_newfriends = '0' WHERE id = '" . USER_ID . "' LIMIT 1");
+        db::query("UPDATE users SET block_newfriends = '0' WHERE id = '" . USER_ID . "' LIMIT 1");
     } else {
-        dbquery("UPDATE users SET block_newfriends = '1' WHERE id = '" . USER_ID . "' LIMIT 1");
+        db::query("UPDATE users SET block_newfriends = '1' WHERE id = '" . USER_ID . "' LIMIT 1");
     }
 
     if ($_POST['showOnlineStatus'] == 'true') {
-        dbquery("UPDATE users SET hide_online = '0' WHERE id = '" . USER_ID . "' LIMIT 1");
+        db::query("UPDATE users SET hide_online = '0' WHERE id = '" . USER_ID . "' LIMIT 1");
     } else {
-        dbquery("UPDATE users SET hide_online = '1' WHERE id = '" . USER_ID . "' LIMIT 1");
+        db::query("UPDATE users SET hide_online = '1' WHERE id = '" . USER_ID . "' LIMIT 1");
     }
 
     if ($_POST['followFriendMode'] == '1') {
-        dbquery("UPDATE users SET hide_inroom = '0' WHERE id = '" . USER_ID . "' LIMIT 1");
+        db::query("UPDATE users SET hide_inroom = '0' WHERE id = '" . USER_ID . "' LIMIT 1");
     } else {
-        dbquery("UPDATE users SET hide_inroom = '1' WHERE id = '" . USER_ID . "' LIMIT 1");
+        db::query("UPDATE users SET hide_inroom = '1' WHERE id = '" . USER_ID . "' LIMIT 1");
     }
     if ($_POST['accept_trading'] == '1') {
-        dbquery("UPDATE users SET accept_trading = '1' WHERE id = '" . USER_ID . "' LIMIT 1");
+        db::query("UPDATE users SET accept_trading = '1' WHERE id = '" . USER_ID . "' LIMIT 1");
     } else {
-        dbquery("UPDATE users SET accept_trading = '0' WHERE id = '" . USER_ID . "' LIMIT 1");
+        db::query("UPDATE users SET accept_trading = '0' WHERE id = '" . USER_ID . "' LIMIT 1");
     }
 
 

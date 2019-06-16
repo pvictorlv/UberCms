@@ -12,23 +12,23 @@ if ($bypass == true) {
 
 if ($search == "") {
 
-    $sql = dbquery("SELECT userid FROM cms_homes_stickers WHERE id = '" . $widgetid . '\' LIMIT 1');
-    $row1 = $sql->fetch_assoc();
+    $sql = db::query("SELECT userid FROM cms_homes_stickers WHERE id = '" . $widgetid . '\' LIMIT 1');
+    $row1 = $sql->fetch(2);
     $user = $row1['userid'];
     $offset = $page - 1;
     $offset *= 20;
-    $sql = dbquery("SELECT * FROM messenger_friendships WHERE user_one_id = '" . $user . '\' OR user_two_id = \'' . $user . '\' LIMIT 20 OFFSET ' . $offset);
+    $sql = db::query("SELECT * FROM messenger_friendships WHERE user_one_id = '" . $user . '\' OR user_two_id = \'' . $user . '\' LIMIT 20 OFFSET ' . $offset);
     ?>
     <div class="avatar-widget-list-container">
         <ul id="avatar-list-list" class="avatar-widget-list">
             <?php
-            while ($friendrow = $sql->fetch_assoc()) {
+            while ($friendrow = $sql->fetch(2)) {
                 if ($friendrow['user_one_id'] == $user) {
                     $friendid = $friendrow['user_two_id'];
                 } else {
                     $friendid = $friendrow['user_one_id'];
                 }
-                $friend = dbquery("SELECT username,look,account_created FROM users WHERE id = '" . $friendid . '\' LIMIT 1')->fetch_assoc();
+                $friend = db::query("SELECT username,look,account_created FROM users WHERE id = '" . $friendid . '\' LIMIT 1')->fetch(2);
                 ?>
                 <li id="avatar-list-<?php echo $widgetid; ?>-<?php echo $friendid; ?>"
                     title="<?php echo $friend['username']; ?>">
@@ -57,8 +57,8 @@ if ($search == "") {
 
     <div id="avatar-list-paging">
         <?php
-        $sql = dbquery("SELECT * FROM messenger_friendships WHERE user_one_id = '" . $user . '\' OR user_two_id = \'' . $user . '\'');
-        $count = $sql->num_rows;
+        $sql = db::query("SELECT * FROM messenger_friendships WHERE user_one_id = '" . $user . '\' OR user_two_id = \'' . $user . '\'');
+        $count = $sql->rowCount();
         $at = $page - 1;
         $at *= 20;
         $at += 1;
@@ -90,18 +90,18 @@ if ($search == "") {
     </div>
 <?php } else {
 
-    $sql = dbquery("SELECT userid FROM cms_homes_stickers WHERE id = '" . $widgetid . '\' LIMIT 1');
-    $row1 = $sql->fetch_assoc();
+    $sql = db::query("SELECT userid FROM cms_homes_stickers WHERE id = '" . $widgetid . '\' LIMIT 1');
+    $row1 = $sql->fetch(2);
     $user = $row1['userid'];
     $offset = $page - 1;
     $offset *= 10;
-    $sql = dbquery("SELECT users.id,users.username,users.look,users.account_created FROM users,messenger_friendships WHERE messenger_friendships.user_one_id = users.id AND messenger_friendships.user_two_id = '" . $user . '\' AND users.username LIKE \'%' . $search . "%' LIMIT 10 OFFSET " . $offset);
-    $sql2 = dbquery("SELECT users.id,users.username,users.look,users.account_created FROM users,messenger_friendships WHERE messenger_friendships.user_two_id = users.id AND messenger_friendships.user_one_id = '" . $user . '\' AND users.username LIKE \'%' . $search . "%' LIMIT 10 OFFSET " . $offset);
+    $sql = db::query("SELECT users.id,users.username,users.look,users.account_created FROM users,messenger_friendships WHERE messenger_friendships.user_one_id = users.id AND messenger_friendships.user_two_id = '" . $user . '\' AND users.username LIKE \'%' . $search . "%' LIMIT 10 OFFSET " . $offset);
+    $sql2 = db::query("SELECT users.id,users.username,users.look,users.account_created FROM users,messenger_friendships WHERE messenger_friendships.user_two_id = users.id AND messenger_friendships.user_one_id = '" . $user . '\' AND users.username LIKE \'%' . $search . "%' LIMIT 10 OFFSET " . $offset);
     ?>
     <div class="avatar-widget-list-container">
         <ul id="avatar-list-list" class="avatar-widget-list">
             <?php
-            while ($friendrow = $sql->fetch_assoc()) {
+            while ($friendrow = $sql->fetch(2)) {
                 ?>
                 <li id="avatar-list-<?php echo $widgetid; ?>-<?php echo $friendrow['id']; ?>"
                     title="<?php echo $friendrow['username']; ?>">
@@ -120,7 +120,7 @@ if ($search == "") {
                     </p></li>
 
             <?php }
-            while ($friendrow = $sql2->fetch_assoc()) { ?>
+            while ($friendrow = $sql2->fetch(2)) { ?>
                 <li id="avatar-list-<?php echo $widgetid; ?>-<?php echo $friendrow['id']; ?>"
                     title="<?php echo $friendrow['username']; ?>">
                     <div class="avatar-list-open"><a href="#"
@@ -149,7 +149,7 @@ if ($search == "") {
 
     <div id="avatar-list-paging">
         <?php
-        $count = $sql->num_rows + $sql2->num_rows;
+        $count = $sql->rowCount() + $sql2->rowCount();
         $offset *= 2;
         $at = $page - 1;
         $at *= 20;

@@ -2,7 +2,7 @@
 ob_start();
 require_once('../global.php');
 
-$getCategorys = dbquery("SELECT * FROM site_items_categorys");
+$getCategorys = db::query("SELECT * FROM site_items_categorys");
 $getStickers = "";
 
 $coins = $users->GetUserVar(USER_ID, 'credits', false);
@@ -16,7 +16,7 @@ $coins = $users->GetUserVar(USER_ID, 'credits', false);
                         <div>Etiquetas</div>
                         <ul class="purchase-subcategory-list" id="main-category-items-1"><?php
                             $c = 0;
-                            while ($row = $getCategorys->fetch_assoc()) {
+                            while ($row = $getCategorys->fetch(2)) {
                                 ?>
                                 <li id="subcategory-1-<?php $c++;
                                 echo $row['id']; ?>-stickers" class="subcategory<?php if ($c == "1") {
@@ -25,7 +25,7 @@ $coins = $users->GetUserVar(USER_ID, 'credits', false);
                                     <div><?php echo $row['name']; ?></div>
                                 </li>
                                 <?php if ($c == "1") {
-                                    $getStickers = dbquery("SELECT * FROM site_shop_items WHERE categoryId = '" . $row['id'] . "'");
+                                    $getStickers = db::query("SELECT * FROM site_shop_items WHERE categoryId = '" . $row['id'] . "'");
                                 }
                             } ?>
                         </ul>

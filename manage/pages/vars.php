@@ -12,17 +12,17 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_admin'))
 
 if (isset($_POST['edit-no']))
 {
-	dbquery("UPDATE external_variables SET skey = '" . filter($_POST['key']) . "', sval = '" . filter($_POST['value'])	. "' WHERE skey = '" . filter($_POST['edit-no']) . "' LIMIT 1");
+	db::query("UPDATE external_variables SET skey = '" . filter($_POST['key']) . "', sval = '" . filter($_POST['value'])	. "' WHERE skey = '" . filter($_POST['edit-no']) . "' LIMIT 1");
 }
 
 if (isset($_POST['newkey']))
 {
-	dbquery("INSERT INTO external_variables (skey,sval) VALUES ('" . filter($_POST['newkey']) . "','" . filter($_POST['newval']) . "')");
+	db::query("INSERT INTO external_variables (skey,sval) VALUES ('" . filter($_POST['newkey']) . "','" . filter($_POST['newval']) . "')");
 }
 
 if (isset($_GET['doDel']))
 {
-	dbquery("DELETE FROM external_variables WHERE skey = '" . filter($_GET['doDel']) . "' LIMIT 1");
+	db::query("DELETE FROM external_variables WHERE skey = '" . filter($_GET['doDel']) . "' LIMIT 1");
 	fMessage('ok', 'Key removed.');
 	header("Location: index.php?_cmd=vars");
 	exit;
@@ -43,7 +43,7 @@ echo '<td>Valor</td>';
 echo '<td>Controles</td>';
 echo '</tr>';
 
-$get = dbquery("SELECT * FROM external_variables");
+$get = db::query("SELECT * FROM external_variables");
 
 while ($text = mysql_fetch_assoc($get))
 {

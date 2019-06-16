@@ -23,8 +23,8 @@ if (isset($_POST['ancho_xat']))
 	$alto_xat = $_POST['alto_xat'];
 	$id_xat = $_POST['id_xat'];
 	
-		dbquery("UPDATE configuracion SET ancho_xat='" . $ancho_xat . "',alto_xat='" . $alto_xat . "',id_xat='" . $id_xat . "'");
-		fMessage('ok', 'Configuración guardada.');
+		db::query("UPDATE configuracion SET ancho_xat='" . $ancho_xat . "',alto_xat='" . $alto_xat . "',id_xat='" . $id_xat . "'");
+		fMessage('ok', 'Configuraciï¿½n guardada.');
 		
 		header("Location: index.php?_cmd=addons-me");
 		exit;
@@ -37,10 +37,10 @@ if($Addon == 'Chat'){
 ?>
 
 <?php
-$getOptions = dbquery("SELECT * FROM configuracion LIMIT 1");
+$getOptions = db::query("SELECT * FROM configuracion LIMIT 1");
 $Config = mysql_fetch_array($getOptions);
 ?>
-<h1>Configuración del Chat</h1>
+<h1>Configuraciï¿½n del Chat</h1>
 <form method="post">
 
 <br />
@@ -61,7 +61,7 @@ $Config = mysql_fetch_array($getOptions);
 
 <h2>Ejemplo:</h2>
 <br><br>
-Tenemos este código:
+Tenemos este cï¿½digo:
 <br>
 <br>
 <textarea style="margin: 0px; width: 604px; height: 44px;"><embed src="http://www.xatech.com/web_gear/chat/chat.swf" quality="high" width="440" height="380" name="chat" FlashVars="id=159650001" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://xat.com/update_flash.shtml" /></textarea><br>

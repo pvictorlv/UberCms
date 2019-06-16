@@ -35,8 +35,8 @@ if (isset($_POST['skinId']) && isset($_POST['stickieId'])) {
                 break;
         }
         $skiId = 'n_skin_' . $skin;
-        $sql = dbquery("SELECT type,owner_id FROM homes_items WHERE id = '" . $_POST['stickieId'] . "' LIMIT 1");
-        $data = $sql->fetch_assoc();
+        $sql = db::query("SELECT type,owner_id FROM homes_items WHERE id = '" . $_POST['stickieId'] . "' LIMIT 1");
+        $data = $sql->fetch(2);
         if ($data['owner_id'] == USER_ID) {
             header('X-JSON: {"id":"' . $_POST['stickieId'] . '","cssClass":"' . $skiId . '","type":"' . $data['type'] . '"}');
             echo HomeItem::UpdateItem($skiId, $_POST['stickieId']);

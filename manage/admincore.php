@@ -3,6 +3,10 @@
 define('IN_HK', true);
 define('HK_WWW', WWW . '/manage');
 
+function filter($var) {
+    return $var;
+}
+
 function fMessage($type, $message)
 {
     if (isset($_SESSION['fmsg'])) {

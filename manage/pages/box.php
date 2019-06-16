@@ -10,7 +10,7 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_admin'))
 	exit;
 }
 
-$maintMode = mysql_result(dbquery("SELECT maintenance FROM site_config LIMIT 1"), 0);
+$maintMode = mysql_result(db::query("SELECT maintenance FROM site_config LIMIT 1"), 0);
 
 if (isset($_GET['switch']))
 {
@@ -21,7 +21,7 @@ if (isset($_GET['switch']))
 		$newState = "0";
 	}
 
-	dbquery("UPDATE site_config SET maintenance = '" . $newState . "' LIMIT 1");
+	db::query("UPDATE site_config SET maintenance = '" . $newState . "' LIMIT 1");
 	$maintMode = $newState;
 }
 
@@ -32,13 +32,13 @@ require_once "top.php";
 <h3><?php echo $pagename; ?></h3>
 Titulo:<br>
 <iframe name="prueba" src="../editor.php?fichero=nucleo/tpl/titulo.php" >
-Si lees esto, tu navegador no soporta iframes (Hasta IE4 los soporta, deberías actualizarte!)
+Si lees esto, tu navegador no soporta iframes (Hasta IE4 los soporta, deberï¿½as actualizarte!)
 </iframe>
 <br>
 <br>
 Contenido:<br>
 <iframe name="prueba" src="../editor.php?fichero=nucleo/tpl/contenido.php" >
-Si lees esto, tu navegador no soporta iframes (Hasta IE4 los soporta, deberías actualizarte!)
+Si lees esto, tu navegador no soporta iframes (Hasta IE4 los soporta, deberï¿½as actualizarte!)
 </iframe>
 
 <?php

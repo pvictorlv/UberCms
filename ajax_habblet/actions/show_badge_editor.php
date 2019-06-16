@@ -6,7 +6,7 @@ require '../../global.php';
 
 if(isset($_POST['groupId']) && is_numeric($_POST['groupId'])) {
 	$groupId = $gtfo->cleanWord($_POST['groupId']);
-	$sql = dbquery("SELECT id,badge FROM groups_details WHERE id = '".$groupId."' LIMIT 1;");
+	$sql = db::query("SELECT id,badge FROM groups_details WHERE id = '".$groupId."' LIMIT 1;");
 	
 if(mysql_num_rows($sql) == 0) {
 	die();
@@ -19,7 +19,7 @@ if($core->GetGroupPerm($groupId) < 2) {
 $data = mysql_fetch_array($sql);
 ?>
 <div id="badge-editor-flash">
-El editor de Placas necesita Flash Player. <a href="http://www.adobe.com/go/getflashplayer">Instálalo gratis desde aquí</a>.
+El editor de Placas necesita Flash Player. <a href="http://www.adobe.com/go/getflashplayer">Instï¿½lalo gratis desde aquï¿½</a>.
 </div>
 <script type="text/javascript" language="JavaScript">
 var swfobj = new SWFObject("<?php echo WWW; ?>/web-gallery/flash/BadgeEditor.swf", "badgeEditor", "280", "366", "8");

@@ -1,12 +1,12 @@
 <?php
 require_once('../global.php');
 
-$productId = filter($_POST['productId']);
+$productId = ($_POST['productId']);
 
-$getItem = dbquery("SELECT * FROM site_shop_items WHERE id = '" . $productId . "'");
+$getItem = db::query("SELECT * FROM site_shop_items WHERE id = ?", $productId);
 
-if ($getItem->num_rows > 0) {
-    $row = $getItem->fetch_assoc();
+if ($getItem->rowCount() > 0) {
+    $row = $getItem->fetch(2);
 } else {
     exit;
 }

@@ -6,18 +6,17 @@ if (!defined('NOWHOS')) {
 define("Xukys", true);
 require_once('../global.php');
 $my_id = USER_ID;
-$itemId = filter($_POST['itemId']);
-$type = ucwords(filter($_POST['type']));
+$itemId = ($_POST['itemId']);
+$type = ucwords(($_POST['type']));
 if ($type != 'Notes') {
     $type = substr($type, 0, -1);
 }
-$query = "SELECT * FROM site_inventory_items WHERE userId = '" . $my_id . "' AND id = '" . $itemId . "' AND type = '" . $type . "' AND isWaiting = '0'";
-$getPreview = dbquery($query);
+$getPreview = db::query("SELECT * FROM site_inventory_items WHERE userId = ? AND id = ? AND type = ? AND isWaiting = '0'", $my_id, $itemId, $type);
 //echo $query;
 
-if ($getPreview->num_rows > 0 || $type == "Widget") {
-    $row = $getPreview->fetch_assoc();
-    $getSame = dbquery("SELECT * FROM site_inventory_items WHERE userId = '" . $my_id . "' AND skin = '" . $row['skin'] . "' AND type = '" . $type . "' AND isWaiting = '0'")->num_rows;
+if ($getPreview->rowCount() > 0 || $type == "Widget") {
+    $row = $getPreview->fetch(2);
+    $getSame = db::query("SELECT * FROM site_inventory_items WHERE userId = '" . $my_id . "' AND skin = '" . $row['skin'] . "' AND type = ? AND isWaiting = '0'", $type)->rowCount();
 
     if ($type == "Widget") {
         if ($itemId == "5") {

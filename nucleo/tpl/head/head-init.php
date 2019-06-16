@@ -5,7 +5,7 @@
     <script type="text/javascript">
         var andSoItBegins = <?php echo time() ?>;
         var ad_keywords = "";
-        document.habboLoggedIn = %habboLoggedIn%;
+        document.habboLoggedIn = '%habboLoggedIn%';
         var habboName = "%habboName%";
         var habboReqPath = "%www%";
         var habboStaticFilePath = "%www%/web-gallery";

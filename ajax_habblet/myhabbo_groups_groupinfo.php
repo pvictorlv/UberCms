@@ -1,16 +1,16 @@
 <?php
 ####################################################
-## InfoCMS - Emulación del sitio de Habbo Hotel.  ##
+## InfoCMS - Emulaciï¿½n del sitio de Habbo Hotel.  ##
 ####################################################
 ## Este Software basado en PHP, Curl y HTML es de ##
-## libre edición y código libre, cualquier		  ##
-## modificación es permitida siempre y cuando	  ##
-## respete para lo que fue diseñado.			  ##
+## libre ediciï¿½n y cï¿½digo libre, cualquier		  ##
+## modificaciï¿½n es permitida siempre y cuando	  ##
+## respete para lo que fue diseï¿½ado.			  ##
 ####################################################
-## Copyright © 2010. Kolesias123 & InfoSmart.	  ##
+## Copyright ï¿½ 2010. Kolesias123 & InfoSmart.	  ##
 ## http://www.infosmart.com.mx/					  ##
 ####################################################
-## Copyright © 2010. Sulake Corporation Oy.		  ##
+## Copyright ï¿½ 2010. Sulake Corporation Oy.		  ##
 ## http://www.sulake.com/ ~ http://www.habbo.es/  ##
 ####################################################
 
@@ -19,11 +19,11 @@ require_once('../global.php');
 $ownerId = FilterText($_POST['ownerId'], true);
 $groupId = FilterText($_POST['groupId'], true);
 
-$verify = dbquery("SELECT null FROM groups_memberships WHERE userID = '" . $ownerId . "'  AND groupID = '" . $groupId . "' LIMIT 1");
+$verify = db::query("SELECT null FROM groups_memberships WHERE userID = '" . $ownerId . "'  AND groupID = '" . $groupId . "' LIMIT 1");
 
 if($verify > 0)
 {
-	$checkGroup = dbquery("SELECT * FROM users_groups WHERE id = '" . $groupId . "' LIMIT 1");
+	$checkGroup = db::query("SELECT * FROM users_groups WHERE id = '" . $groupId . "' LIMIT 1");
 	$existGroup = mysql_num_rows($checkGroup);
 	
 	if($existGroup > 0)

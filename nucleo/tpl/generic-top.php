@@ -38,7 +38,8 @@
                 <a href="%adfly%" class="new-button green-button" target="uberClientWnd"
                    onClick="HabboClient.openOrFocus(this); return false;"><b>Entrar no %site_name% Hotel</b><i></i></a>
 
-                <?php global $users; if ($users->hasFuse(USER_ID, 'fuse_housekeeping_login')) { ?>
+                <?php global $users;
+                if ($users->hasFuse(USER_ID, 'fuse_housekeeping_login')) { ?>
                     <a href="%www%/manage/" class="new-button green-button" style="margin-right: 10px;"><b>%site_name%
                             Manager</b><i></i></a>
                 <?php } ?>
@@ -105,9 +106,9 @@
     <ul id="navi">
         <?php
 
-        $data = dbquery("SELECT id,caption,class,url,visibility FROM site_navi WHERE parent_id = '0' ORDER BY order_id ASC");
+        $data = db::DoQuery("SELECT id,caption,class,url,visibility FROM site_navi WHERE parent_id = '0' ORDER BY order_id ASC");
 
-        while ($link = $data->fetch_assoc()) {
+        while ($link = $data->fetch(2)) {
             $allowDisplay = true;
 
             switch ($link['visibility']) {
@@ -183,7 +184,10 @@
 
 <div id="content-container">
 
-    <?php if (LOGGED_IN || defined('TAB_ID')) { ?>
+
+    <?php
+    $defined = defined('TAB_ID');
+    if (LOGGED_IN || $defined) { ?>
         <div id="navi2-container" class="pngbg">
             <div id="navi2" class="pngbg clearfix">
                 <ul>
@@ -192,15 +196,14 @@
                     $i = 0;
                     $lookupParent = '1';
 
-                    if (defined('TAB_ID')) {
+                    if ($defined) {
                         $lookupParent = TAB_ID;
                     }
 
-                    $getSub = dbquery("SELECT id,caption,url,visibility FROM site_navi WHERE parent_id = '" . $lookupParent . "' ORDER BY order_id ASC");
+                    $getSub = db::query("SELECT id,caption,url,visibility FROM site_navi WHERE parent_id = ? ORDER BY order_id ASC", $lookupParent);
 
-                    while ($subLink = $getSub->fetch_assoc()) {
+                    while ($subLink = $getSub->fetch(2)) {
                         $allowDisplay = true;
-
                         switch ($subLink['visibility']) {
                             default:
                             case 0:
@@ -243,7 +246,7 @@
                             $showLink = false;
                         }
 
-                        if ($i == $getSub->num_rows) {
+                        if ($i == $getSub->rowCount()) {
                             $class .= ' last';
                         }
 

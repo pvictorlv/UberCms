@@ -2,8 +2,8 @@
 
 require "../../global.php";
 
-$Type = filter($_GET["scope"]);
-$Data = filter($_GET["query"]);
+$Type = ($_GET["scope"]);
+$Data = ($_GET["query"]);
 $Query = Array();
 
 if(strlen($Data) > 2)
@@ -12,26 +12,26 @@ if(strlen($Data) > 2)
 	{
 		$resultType = "habbo";
 		$Name = "username";
-		$Query = dbquery("SELECT id, username FROM users WHERE username LIKE '%" . $Data . "%' LIMIT 5");
+		$Query = db::query("SELECT id, username FROM users WHERE username LIKE ? LIMIT 5", "%$Data%");
 	}
 	else if($Type == "2")
 	{
 		$resultType = "room";
 		$Name = "caption";
-		$Query = dbquery("SELECT id, caption FROM rooms WHERE caption LIKE '%" . $Data . "%' LIMIT 5");
+		$Query = db::query("SELECT id, caption FROM rooms WHERE caption LIKE ? LIMIT 5", "%$Data%");
 	}
 	else if($Type == "3")
 	{
 		$resultType = "group";
 		$Name = "name";
-		$Query = dbquery("SELECT id, name FROM groups_details WHERE name LIKE '%" . $Data . "%' LIMIT 5");
+		$Query = db::query("SELECT id, name FROM groups_details WHERE name LIKE ? LIMIT 5", "%$Data%");
 	}
 }
 ?>
 <ul>
-	<li>Haz clic para añadirlo al documento</li>
+	<li>Haz clic para aï¿½adirlo al documento</li>
 <?php
-while ($Row = mysql_fetch_array($Query))
+while ($Row = $Query->fetch(2))
 {
 ?>
     <li><a href="#" class="linktool-result" type="<?php echo $resultType; ?>" 

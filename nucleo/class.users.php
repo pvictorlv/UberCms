@@ -27,21 +27,17 @@ class uberUsers
 
         $q .= "LIMIT 1";
 
-        $get = Db::query($q);
+        $get = Db::query($q)->fetch(2);
 
-        if ($get->num_rows > 0) {
-            return $get->fetch_assoc();
+        if (!$get) {
+            return null;
         }
-        return null;
+        return $get;
     }
 
     public static function IsIpBanned($ip)
     {
-        if (uberUsers::GetBan('ip', $ip, true) != null) {
-            return true;
-        }
-
-        return false;
+        return self::GetBan('ip', $ip, true) !== null;
     }
 
     public static function GetUserTags($userId)
@@ -49,7 +45,7 @@ class uberUsers
         $tagsArray = Array();
         $data = Db::query("SELECT id,tag FROM user_tags WHERE user_id = '" . $userId . "'");
 
-        while ($tag = $data->fetch_assoc()) {
+        while ($tag = $data->fetch(2)) {
             $tagsArray[$tag['id']] = $tag['tag'];
         }
 
@@ -58,13 +54,13 @@ class uberUsers
 
     public static function Is_Online($userId)
     {
-        $result = Db::query("SELECT `online` FROM `users` WHERE `id` = '" . $userId . "' LIMIT 1");
-        return $result->fetch_assoc()['online'];
+        $result = Db::query("SELECT `online` FROM `users` WHERE `id` = ? LIMIT 1", $userId);
+        return $result->fetchColumn();
     }
 
     public static function haveWidget($Id, $var)
     {
-        $check = mysql_num_rows(Db::query("SELECT id FROM homes_items WHERE data = '" . $var . "' AND owner_id = '" . $Id . "' LIMIT 1"));
+        $check = Db::query("SELECT id FROM homes_items WHERE data = '" . $var . "' AND owner_id = '" . $Id . "' LIMIT 1")->rowCount();
 
         if ($check > 0) {
             return true;
@@ -75,7 +71,7 @@ class uberUsers
 
     public function IsValidEmail($email = '')
     {
-        if (Db::query("SELECT NULL FROM users WHERE mail = '" . $email . "' LIMIT 1")->num_rows)
+        if (Db::query("SELECT count(id) FROM users WHERE mail = ? LIMIT 1", $email)->fetchColumn())
             return true;
 
         return preg_match("/^[a-z0-9_\.-]+@([a-z0-9]+([\-]+[a-z0-9]+)*\.)+[a-z]{2,7}$/i", $email);
@@ -93,46 +89,38 @@ class uberUsers
         if ($allowCache && isset($_SESSION["user_$id"][$var])) {
             return $_SESSION["user_$id"][$var];
         }
-        $val = Db::query("SELECT " . $var . " FROM users WHERE id = '" . $id . "' LIMIT 1")->fetch_assoc()[$var];
+        $val = Db::query("SELECT $var FROM users WHERE id = ? LIMIT 1", $id)->fetchColumn();
         $_SESSION["user_$id"][$var] = $val;
         return $val;
     }
 
-    public function IsValidName($nm = '')
+    public function IsValidName($nm = ''): bool
     {
-        if (preg_match('/^[a-z0-9]+$/i', $nm) && strlen($nm) >= 1 && strlen($nm) <= 32) {
-            return true;
-        }
-
-        return false;
+        return $nm !== '' && preg_match('/^[a-z0-9]+$/i', $nm) && strlen($nm) <= 32;
     }
 
     /**************************************************************************************************/
 
-    public function IsValidPassword($pass1 = '')
+    public function IsValidPassword($pass1 = ''): bool
     {
-        if (strlen($pass1) >= 1 && strlen($pass1) <= 32) {
-            return true;
-        }
-
-        return false;
+        return $pass1 !== '' && strlen($pass1) <= 32;
     }
 
-    public function IsNameTaken($nm = '')
+    public function IsNameTaken($nm = ''): bool
     {
-        return Db::query("SELECT NULL FROM users WHERE username = '" . $nm . "' LIMIT 1")->num_rows > 0;
+        return Db::query("SELECT count(id) FROM users WHERE username = ? LIMIT 1", $nm)->fetchColumn() > 0;
     }
 
     public function IsEmailTaken($nm = '')
     {
-        return ((mysql_num_rows(Db::query("SELECT NULL FROM users WHERE mail = '" . $nm . "' LIMIT 1")) > 0) ? true : false);
+        return ((mysql_rowCount()(Db::query("SELECT NULL FROM users WHERE mail = '" . $nm . "' LIMIT 1")) > 0) ? true : false);
     }
 
     /**************************************************************************************************/
 
     public function IdExists($id = 0)
     {
-        return Db::query("SELECT NULL FROM users WHERE id = '" . $id . "' LIMIT 1")->num_rows > 0;
+        return Db::query("SELECT NULL FROM users WHERE id = '" . $id . "' LIMIT 1")->rowCount() > 0;
     }
 
     public function IsNameBlocked($nm = '')
@@ -155,9 +143,12 @@ class uberUsers
     public function Add($username = '', $passwordHash = '', $email = 'default@localhost', $rank = 1, $figure = '', $sex = 'M', $real = null)
     {
         if ($real == null) $real = $username;
-        Db::query("INSERT INTO users (username,real_name,password,mail,auth_ticket,rank,look,gender,account_created) VALUES ('" . $username . "','" . $real . "','" . $passwordHash . "','" . $email . "','','" . $rank . "','" . $figure . "','" . $sex . "','" . date('d-M-Y') . "')");
-        $id = $this->Name2id($username);
-        Db::query("INSERT INTO user_info (user_id,bans,cautions,reg_timestamp,login_timestamp,cfhs,cfhs_abusive) VALUES ('" . $id . "','0','0','" . time() . "','" . time() . "','0','0')");
+        Db::query('INSERT INTO users (username,real_name,password,mail,rank,look,gender,account_created) VALUES (?,?,?,?,?,?,?,?)', $username, $real, $passwordHash, $email, $rank, $figure, $sex, date('d-M-Y'));
+
+        $id = Db::GetId();
+
+        Db::query("INSERT INTO user_info (user_id,bans,cautions,reg_timestamp,login_timestamp,cfhs,cfhs_abusive) VALUES (?,'0','0','" . time() . "','" . time() . "','0','0')", $id);
+
         return $id;
     }
 
@@ -165,7 +156,7 @@ class uberUsers
 
     public function Name2id($username = '')
     {
-        return (int)Db::query("SELECT id FROM users WHERE username = '" . $username . "' LIMIT 1")->fetch_assoc()['id'];
+        return (int)Db::query("SELECT id FROM users WHERE username = ? LIMIT 1", $username)->fetchColumn();
     }
 
     public function Delete($id)
@@ -192,7 +183,7 @@ class uberUsers
 
     public function ValidateUser($username, $password)
     {
-        return Db::query("SELECT NULL FROM users WHERE username = '" . $username . "' AND password = '" . $password . "' LIMIT 1")->num_rows > 0;
+        return Db::query("SELECT count(id) FROM users WHERE username =? AND password = ? LIMIT 1", $username, $password)->fetchColumn() > 0;
     }
     // do not remove - still used in hk
 
@@ -200,7 +191,7 @@ class uberUsers
 
     public function ValidateUserByEmail($email, $password)
     {
-        return Db::query("SELECT NULL FROM users WHERE mail = '" . $email . "' AND password = '" . $password . "' LIMIT 1")->num_rows;
+        return Db::query("SELECT NULL FROM users WHERE mail = '" . $email . "' AND password = '" . $password . "' LIMIT 1")->rowCount();
     }
 
     public function Id2name($id = -1)
@@ -209,29 +200,29 @@ class uberUsers
             return $_SESSION["user_$id"]['username'];
         }
 
-        $name = Db::query("SELECT username FROM users WHERE id = '" . $id . "' LIMIT 1")->fetch_assoc()['username'];
+        $name = Db::query("SELECT username FROM users WHERE id = ? LIMIT 1", $id)->fetchColumn();
         $_SESSION["user_$id"]['username'] = $name;
         return $name;
     }
 
     public function Email2id($email = '')
     {
-        return (int)Db::query("SELECT id FROM users WHERE mail = '" . $email . "' LIMIT 1")->fetch_assoc()['id'];
+        return (int)Db::query("SELECT id FROM users WHERE mail = ? LIMIT 1", $email)->fetchColumn();
     }
 
     public function CacheUser($id)
     {
-        $data = Db::query("SELECT username,credits,activity_points,rank,motto,last_online FROM users WHERE id = '" . $id . "' LIMIT 1")->fetch_assoc();
+        $data = Db::query("SELECT username,credits,activity_points,rank,motto,last_online FROM users WHERE id = ? LIMIT 1", $id)->fetch(2);
 
         foreach ($data as $key => $value) {
-            if (!isset($_SESSION["$id"]["$key"]))
-                $_SESSION["user_$id"]["$key"] = $value;
+            if (!isset($_SESSION["user_$id"][$key]))
+                $_SESSION["user_$id"][$key] = $value;
         }
     }
 
     public function SetUserVar($id, $var, $value): void
     {
-        Db::query("UPDATE users SET $var = ? WHERE id = ? LIMIT 1", $var, $id);
+        Db::query("UPDATE users SET $var = ? WHERE id = ? LIMIT 1", $value, $id);
         $_SESSION["user_$id"][$var] = $value;
     }
 
@@ -275,14 +266,15 @@ class uberUsers
 
     public function getRankVar($rankId, $var)
     {
-        return Db::query("SELECT " . $var . " FROM ranks WHERE id = '" . intval($rankId) . "' LIMIT 1")->fetch_assoc()[$var];
+        return Db::query("SELECT " . $var . " FROM ranks WHERE id = ? LIMIT 1", $rankId)->fetchColumn();
     }
 
     /**************************************************************************************************/
 
     public function hasFuse($id, $fuse)
     {
-        return Db::query("SELECT NULL FROM fuserights WHERE rank <= '" . $this->getRank($id) . "' AND fuse = '" . $fuse . "' LIMIT 1")->num_rows > 0;
+        return Db::query('SELECT count(rank) FROM fuserights WHERE rank <= ? AND fuse = ? LIMIT 1',
+                $this->getRank($id), $fuse)->fetchColumn() > 0;
     }
 
     public function getRank($id)
@@ -291,14 +283,14 @@ class uberUsers
             return $_SESSION["user_$id"]['rank'];
         }
 
-        $rankId = Db::query("SELECT rank FROM users WHERE id = '" . intval($id) . "' LIMIT 1")->fetch_assoc()['rank'];
+        $rankId = Db::query("SELECT rank FROM users WHERE id = ? LIMIT 1", $id)->fetchColumn();
         $_SESSION["user_$id"]['rank'] = $rankId;
         return $rankId;
     }
 
     public function GetFriendRequests($id)
     {
-        $amount = Db::query("SELECT NULL FROM messenger_requests WHERE `to_id` = '" . $id . "'")->num_rows;
+        $amount = Db::query("SELECT count(id) FROM messenger_requests WHERE `to_id` = ?", $id)->fetchColumn();
         return $amount > 0;
 
     }
@@ -306,13 +298,13 @@ class uberUsers
     public function GetFriendCount($id, $onlineOnly = false)
     {
         $i = 0;
-        $q = Db::query("SELECT user_two_id FROM messenger_friendships WHERE user_one_id = '" . $id . "'");
+        $q = Db::query("SELECT user_two_id FROM messenger_friendships WHERE user_one_id = ?", $id);
 
-        while ($friend = $q->fetch_assoc()) {
+        while ($friend = $q->fetch(2)) {
             if (!$onlineOnly) {
                 $i++;
             } else {
-                $isOnline = Db::query("SELECT online FROM users WHERE id = '" . $friend['user_two_id'] . "' LIMIT 1")->fetch_assoc()['online'];
+                $isOnline = Db::query("SELECT online FROM users WHERE id = ? LIMIT 1", $friend['user_two_id'])->fetchColumn();
 
                 if ($isOnline == "1") {
                     $i++;
@@ -336,7 +328,7 @@ class uberUsers
         $secInit = 1310696790; // Beginning Of Subscription
         $secEnd = 1313288790; // End Of Subscription
 
-        if (mysql_num_rows($sql) > 0) {
+        if (mysql_rowCount()($sql) > 0) {
             $data = mysql_fetch_assoc($sql); // Mysql Data
             $sec = 1310696790; // Unix TimeStamp (The same from uberEmu)
 
@@ -412,10 +404,10 @@ class uberUsers
     {
         $sql = Db::query("SELECT activated FROM user_subscriptions WHERE subscription_id = 'club_habbo' AND user_id = '" . $id . "' LIMIT 1");
 
-        if ($sql->num_rows <= 0) {
+        if ($sql->rowCount() <= 0) {
             return 0;
         }
-        $data = strtotime($sql->fetch_assoc()['activated']);
+        $data = strtotime($sql->fetchColumn());
         $diff = $data - time();
 
         if ($diff <= 0) {
@@ -434,12 +426,11 @@ class uberUsers
 
     public function getClubDays($id)
     {
-        $sql = Db::query("SELECT activated,months FROM user_subscriptions WHERE user_id = '" . $id . "' LIMIT 1");
+        $row = Db::query("SELECT activated,months FROM user_subscriptions WHERE user_id = '" . $id . "' LIMIT 1")->fetch(2);
 
-        if ($sql->num_rows <= 0) {
+        if (!$row) {
             return 0;
         }
-        $row = $sql->fetch_assoc();
         $data = strtotime($row['activated']) + 2678400 * $row['months'];
         $diff = $data - time();
 
@@ -450,7 +441,7 @@ class uberUsers
         return ceil($diff / 86400);
     }
 
-    public function EatCredits($id, $credits, $restar = true)
+    public function EatCredits(int $id, int $credits, bool $restar = true)
     {
         if ($restar) {
             Db::query("UPDATE users SET credits = credits - " . $credits . " WHERE id = '" . $id . "' LIMIT 1");

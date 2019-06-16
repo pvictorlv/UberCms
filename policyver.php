@@ -38,7 +38,7 @@ if (isset($_POST['confirm']))
 	
 	if ($confirm == 'Si acepto')
 	{
-		dbquery("UPDATE users SET newbie_status = '2' WHERE id = '" . USER_ID . "' LIMIT 1");
+		db::query("UPDATE users SET newbie_status = '2' WHERE id = '" . USER_ID . "' LIMIT 1");
 		header("Location: /client");
 		exit;		
 	}
@@ -61,7 +61,7 @@ $tpl->AddGeneric('page-langver');
 $tpl->AddGeneric('process-template-bottom');
 $tpl->AddGeneric('footer');
 
-$tpl->SetParam('page_title', 'Verificación de Seguridad');
+$tpl->SetParam('page_title', 'Verificaciï¿½n de Seguridad');
 $tpl->SetParam('body_id', 'popup');
 
 $tpl->Output();

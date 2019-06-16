@@ -12,9 +12,9 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_housekeeping_moderation')) 
 global $db;
 
 if (isset($_GET['doDenyAppeal']) && is_numeric($_GET['doDenyAppeal'])) {
-    $q = dbquery("UPDATE bans SET appeal_state = '2' WHERE id = '" . (int)filter($_GET['doDenyAppeal']) . "'" . (($users->HasFuse(USER_ID, 'fuse_admin')) ? "" : " AND added_by = '" . HK_USER_NAME . "'") . " LIMIT 1");
+    $q = db::query("UPDATE bans SET appeal_state = '2' WHERE id = '" . (int)filter($_GET['doDenyAppeal']) . "'" . (($users->HasFuse(USER_ID, 'fuse_admin')) ? "" : " AND added_by = '" . HK_USER_NAME . "'") . " LIMIT 1");
     if ($db->GetAffected() >= 1) {
-        dbquery("DELETE FROM bans_appeals WHERE ban_id = '" . (int)filter($_GET['doDenyAppeal']) . "' LIMIT 1");
+        db::query("DELETE FROM bans_appeals WHERE ban_id = '" . (int)filter($_GET['doDenyAppeal']) . "' LIMIT 1");
         fMessage('ok', 'Ban appeal denied.');
 
         header("Location: index.php?_cmd=bans");
@@ -23,10 +23,10 @@ if (isset($_GET['doDenyAppeal']) && is_numeric($_GET['doDenyAppeal'])) {
 }
 
 if (isset($_GET['unban']) && is_numeric($_GET['unban'])) {
-    dbquery("DELETE FROM bans WHERE id = '" . (int)filter($_GET['unban']) . "'" . (($users->HasFuse(USER_ID, 'fuse_admin')) ? "" : " AND added_by = '" . HK_USER_NAME . "'") . " LIMIT 1");
+    db::query("DELETE FROM bans WHERE id = '" . (int)filter($_GET['unban']) . "'" . (($users->HasFuse(USER_ID, 'fuse_admin')) ? "" : " AND added_by = '" . HK_USER_NAME . "'") . " LIMIT 1");
 
     if ($db->GetAffected() >= 1) {
-        dbquery("DELETE FROM bans_appeals WHERE ban_id = '" . (int)filter($_GET['unban']) . "' LIMIT 1");
+        db::query("DELETE FROM bans_appeals WHERE ban_id = '" . (int)filter($_GET['unban']) . "' LIMIT 1");
         fMessage('ok', 'Ban removed.');
 
         $core->Mus('reloadbans');
@@ -102,13 +102,13 @@ require_once "top.php";
         <tbody>
         <?php
 
-        $getMyBans = dbquery("SELECT id,bantype,value,expire,added_date,appeal_state FROM bans WHERE appeal_state = '1'" . (($users->HasFuse(USER_ID, 'fuse_admin')) ? "" : " AND added_by = '" . HK_USER_NAME . "'"));
+        $getMyBans = db::query("SELECT id,bantype,value,expire,added_date,appeal_state FROM bans WHERE appeal_state = '1'" . (($users->HasFuse(USER_ID, 'fuse_admin')) ? "" : " AND added_by = '" . HK_USER_NAME . "'"));
 
-        while ($ban = $getMyBans->fetch_assoc()) {
-            $findAppeal = dbquery("SELECT * FROM bans_appeals WHERE ban_id = '" . $ban['id'] . "' LIMIT 1");
+        while ($ban = $getMyBans->fetch(2)) {
+            $findAppeal = db::query("SELECT * FROM bans_appeals WHERE ban_id = '" . $ban['id'] . "' LIMIT 1");
 
-            if ($findAppeal->num_rows == 1) {
-                $data = $findAppeal->fetch_assoc();
+            if ($findAppeal->rowCount() == 1) {
+                $data = $findAppeal->fetch(2);
 
                 if ($data['plea'] == '') {
                     continue;
@@ -199,9 +199,9 @@ require_once "top.php";
         <tbody>
         <?php
 
-        $getBans = dbquery("SELECT * FROM bans ORDER BY expire DESC");
+        $getBans = db::query("SELECT * FROM bans ORDER BY expire DESC");
 
-        while ($ban = $getBans->fetch_assoc()) {
+        while ($ban = $getBans->fetch(2)) {
             echo '<tr>
 	<td>' . $ban['id'] . '</td>
 	<td>' . strtoupper($ban['bantype']) . ' Ban: <b>' . clean($ban['value']) . '</b></td>
@@ -213,7 +213,7 @@ require_once "top.php";
             if ($ban['appeal_state'] == "0") {
                 echo 'Not allowed to appeal!';
             } else if ($ban['appeal_state'] == "1") {
-                if (dbquery("SELECT NULL FROM bans_appeals WHERE ban_id = '" . $ban['id'] . "' AND plea != '' LIMIT 1")->num_rows > 0) {
+                if (db::query("SELECT NULL FROM bans_appeals WHERE ban_id = '" . $ban['id'] . "' AND plea != '' LIMIT 1")->rowCount() > 0) {
                     echo '<b style="color: blue;">El usuario ha enviado su apelaci�n, esperando la revisi�n de un Moderador.</b>';
                 } else {
                     echo 'El usuario no ha enviado una apelaci�n.';

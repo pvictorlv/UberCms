@@ -14,14 +14,14 @@ if (isset($_GET['messageId']) && is_numeric($_GET['messageId'])) {
 }
 
 if ($messageId > 0) {
-    $getMessage = dbquery("SELECT * FROM site_minimail WHERE id = '" . $messageId . "' AND receiver_id = '" . USER_ID . "' LIMIT 1");
+    $getMessage = db::query("SELECT * FROM site_minimail WHERE id = '" . $messageId . "' AND receiver_id = '" . USER_ID . "' LIMIT 1");
 
-    if ($getMessage->num_rows >= 1) {
-        $messageData = $getMessage->fetch_assoc();
-        $getSender = dbquery("SELECT username FROM users WHERE id = '" . $messageData['sender_id'] . "' LIMIT 1");
+    if ($getMessage->rowCount() >= 1) {
+        $messageData = $getMessage->fetch(2);
+        $getSender = db::query("SELECT username FROM users WHERE id = '" . $messageData['sender_id'] . "' LIMIT 1");
 
-        if ($getSender->num_rows >= 1) {
-            $senderData = $getSender->fetch_assoc();
+        if ($getSender->rowCount() >= 1) {
+            $senderData = $getSender->fetch(2);
         }
     }
 }
@@ -42,7 +42,7 @@ $message->SetParam('trashed', $messageData['folder'] == 'trash');
 $message->SetParam('sent', $messageData['folder'] == 'sent');
 
 if ($messageData['is_read'] == "0") {
-    dbquery("UPDATE site_minimail SET is_read = '1' WHERE id = '" . $messageData['id'] . "' LIMIT 1");
+    db::query("UPDATE site_minimail SET is_read = '1' WHERE id = '" . $messageData['id'] . "' LIMIT 1");
 }
 
 $tpl->AddTemplate($message);

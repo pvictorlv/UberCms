@@ -26,8 +26,8 @@ if (isset($_POST['nombre']))
 	$orden = $_POST['orden'];		
 
 	
-		dbquery("UPDATE site_addons_comunidad SET nombre='".$nombre."',nombretpl='".$nombretpl."',columna='".$columna."',orden='".$orden."' WHERE nombre='".$Nombre."'");
-		fMessage('ok', 'Configuración guardada.');
+		db::query("UPDATE site_addons_comunidad SET nombre='".$nombre."',nombretpl='".$nombretpl."',columna='".$columna."',orden='".$orden."' WHERE nombre='".$Nombre."'");
+		fMessage('ok', 'Configuraciï¿½n guardada.');
 		
 		header("Location: index.php?_cmd=addons-comunidad");
 		exit;
@@ -75,13 +75,13 @@ $Verificar2 = mysql_fetch_assoc($Verificar22);
    </select><br />
    <br />
 
-<strong>¿Activado?</strong><br />
+<strong>ï¿½Activado?</strong><br />
 <select name='activado'>
 <option value='1' <?php if ($GetAddon['activado'] == '1') { echo 'selected';};?>>Si</option>
 <option value='0' <?php if ($GetAddon['activado'] == '0') { echo 'selected';};?>>No</option>
    </select><br /><br>
 
-<strong>Nombre del TPL (sin la terminación .tpl):</strong><br />
+<strong>Nombre del TPL (sin la terminaciï¿½n .tpl):</strong><br />
 <input type="text" name="nombre-tpl" value="<?php echo $GetAddon['nombretpl'];?>" size="40" style="padding: 5px; font-size: 130%;">.TPL<br />
 <br />
 

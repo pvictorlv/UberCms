@@ -19,7 +19,7 @@ if (isset($_POST['title'])) {
     if (strlen($seoUrl) < 1 || strlen($title) < 1 || strlen($teaser) < 1) {
         fMessage('error', 'Por Favor llena todos los datos.');
     } else {
-         dbquery("INSERT INTO site_news (title,category_id,seo_link,topstory_image,body,snippet,datestr,timestamp) VALUES ('" . $title . "','" . $category . "','" . $seoUrl . "','" . $topstory . "','" . $content . "','" . $teaser . "','" . date('d-M-Y') . "', '" . time() . "')");
+         db::query("INSERT INTO site_news (title,category_id,seo_link,topstory_image,body,snippet,datestr,timestamp) VALUES ('" . $title . "','" . $category . "','" . $seoUrl . "','" . $topstory . "','" . $content . "','" . $teaser . "','" . date('d-M-Y') . "', '" . time() . "')");
         fMessage('ok', 'Nova notícia postada.');
 
            header("Location: index.php?_cmd=news");
@@ -69,9 +69,9 @@ require_once "top.php";
         <select name="category">
             <?php
 
-            $getOptions = dbquery("SELECT * FROM site_news_categories ORDER BY caption ASC");
+            $getOptions = db::query("SELECT * FROM site_news_categories ORDER BY caption ASC");
 
-            while ($option = $getOptions->fetch_assoc()) {
+            while ($option = $getOptions->fetch(2)) {
                 echo '<option value="' . intval($option['id']) . '" ' . (($option['id'] == $_POST['category']) ? 'selected' : '') . '>' . $option['caption'] . '</option>';
             }
 

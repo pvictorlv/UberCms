@@ -27,16 +27,12 @@ function HoloText($str, $advanced=false) {
 
 function getData($id)
 {
-	$sql = mysql_query("SELECT * FROM users WHERE username = '" . $id . "' OR id = '" . $id . "' LIMIT 1");
-	$exist = mysql_num_rows($sql);
+	$sql = db::query("SELECT * FROM users WHERE username = '" . $id . "' OR id = '" . $id . "' LIMIT 1");
+	$exist = $sql->rowCount();
 		
 	if($exist > 0)
 	{
 		return $sql;
-	}
-	else
-	{
-		return false;
 	}
 }
 

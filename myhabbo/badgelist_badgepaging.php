@@ -18,7 +18,7 @@ if(isset($_POST['pageNumber']) && isset($_POST['widgetId']))
 	$widgetId = $gtfo->cleanWord($_POST['widgetId']);
 	$reqacc = $gtfo->cleanWord($_POST['_mypage_requested_account']);
 	
-	$data = mysql_fetch_array(dbquery("SELECT home_id FROM homes_items WHERE id = '".$widgetId."' LIMIT 1"));
+	$data = mysql_fetch_array(db::query("SELECT home_id FROM homes_items WHERE id = '".$widgetId."' LIMIT 1"));
 	$user_id = $data['home_id'];
 	
 	$count = mysql_num_rows(mysql_query("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '".$user_id."'"));
@@ -86,7 +86,7 @@ if(isset($_POST['pageNumber']) && isset($_POST['widgetId']))
 		if($page != 1){ echo '<a href="#" id="badge-list-search-first">'; } ?>Primero<?php if($page != 1){ echo '</a>'; } ?> |
         <?php if($page != 1){ echo '<a href="#" id="badge-list-search-previous">'; } ?>&lt;&lt; <?php if($page != 1){ echo '</a>'; } ?> |
         <?php if($page != $x){ echo '<a href="#" id="badge-list-search-next">'; } ?>&gt;&gt;<?php if($page != $x){ echo '</a>'; } ?> |
-        <?php if($page != $x){ echo '<a href="#" id="badge-list-search-last">'; } ?>Último<?php if($page != $x){ echo '</a>'; } ?>
+        <?php if($page != $x){ echo '<a href="#" id="badge-list-search-last">'; } ?>ï¿½ltimo<?php if($page != $x){ echo '</a>'; } ?>
 		<input type="hidden" id="badgeListPageNumber" value="<?php echo $page; ?>">
         <input type="hidden" id="badgeListTotalPages" value="<?php echo $x; ?>">
 		<?php

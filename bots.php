@@ -1,4 +1,6 @@
 <?php
+
+
 if (isset($_GET['editar'])) {
     $page = 146;
 } elseif (isset($_GET['efectos'])) {

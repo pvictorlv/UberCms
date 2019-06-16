@@ -1,7 +1,7 @@
 <div class="habblet-container ">		
 						<div class="cbb clearfix default "> 
 	
-							<h2 class="title">Notícias <?php if ($mode == 'archive') { echo 'Archive'; } ?>
+							<h2 class="title">Notï¿½cias <?php if ($mode == 'archive') { echo 'Archive'; } ?>
 							</h2> 
 						<div id="article-archive"> 
  
@@ -47,21 +47,21 @@ if ($mode == 'recent')
 				
 			case 4:
 			
-				$sectionName = 'Este Mês';
+				$sectionName = 'Este Mï¿½s';
 				$sectionCutoffMax = time() - 1209600;
 				$sectionCutoffMin = time() - 2592000;
 				break;
 				
 			case 5:
 			
-				$sectionName = 'No mês passado';
+				$sectionName = 'No mï¿½s passado';
 				$sectionCutoffMax = time() - 2592000;
 				$sectionCutoffMin = time() - 5184000;
 				break;
 		}
 		
 		$q = "SELECT * FROM site_news WHERE timestamp >= " . $sectionCutoffMin . " AND timestamp <= " . $sectionCutoffMax .  " ORDER BY timestamp DESC";
-		$getArticles = dbquery($q);
+		$getArticles = db::query($q);
 
 		if (mysql_num_rows($getArticles) > 0)
 		{
@@ -79,12 +79,12 @@ if ($mode == 'recent')
 		}
 	}
  
-	echo '<a href="%www%/articles/archive">Mais notícias &raquo;</a>';
+	echo '<a href="%www%/articles/archive">Mais notï¿½cias &raquo;</a>';
 }
 else if ($mode == 'archive')
 {
 	$categories = Array();	
-	$getArticles = dbquery("SELECT * FROM site_news");
+	$getArticles = db::query("SELECT * FROM site_news");
 	
 	while ($newsData = mysql_fetch_assoc($getArticles))
 	{
@@ -98,7 +98,7 @@ else if ($mode == 'archive')
 			continue;
 		}
 		
-		$getCategory = dbquery("SELECT caption FROM site_news_categories WHERE id = '" . intval($catId) . "' LIMIT 1");
+		$getCategory = db::query("SELECT caption FROM site_news_categories WHERE id = '" . intval($catId) . "' LIMIT 1");
 		$catName = 'Unknown';
 		
 		if (mysql_num_rows($getCategory) == 1)
@@ -121,8 +121,8 @@ else if ($mode == 'archive')
 }
 else if ($mode == 'category')
 {	
-	$getArticles = dbquery("SELECT * FROM site_news WHERE category_id = '" . $category_id . "'");
-	$getCategory = dbquery("SELECT caption FROM site_news_categories WHERE id = '" . intval($category_id) . "' LIMIT 1");
+	$getArticles = db::query("SELECT * FROM site_news WHERE category_id = '" . $category_id . "'");
+	$getCategory = db::query("SELECT caption FROM site_news_categories WHERE id = '" . intval($category_id) . "' LIMIT 1");
 	$catName = 'Unknown';
 		
 	if (mysql_num_rows($getCategory) == 1)

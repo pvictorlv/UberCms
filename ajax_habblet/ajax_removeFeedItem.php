@@ -10,7 +10,7 @@ require_once("../global.php");
 if ($_POST["feedItemIndex"])
 		{
 $ospina = $_POST["feedItemIndex"];
-dbquery("DELETE FROM cms_alerts WHERE id = '".$ospina."'") or die(mysql_error());
+db::query("DELETE FROM cms_alerts WHERE id = '".$ospina."'") or die(mysql_error());
 echo "Eliminado";
 		}else{};
 

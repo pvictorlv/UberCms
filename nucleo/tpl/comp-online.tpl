@@ -14,7 +14,7 @@ if (!LOGGED_IN)
 	exit;
 }
 
-$getUsers = dbquery("SELECT id FROM users WHERE online = '1' ORDER BY ID");
+$getUsers = db::query("SELECT id FROM users WHERE online = '1' ORDER BY ID");
 
 if (mysql_num_rows($getUsers) > 0)
 {

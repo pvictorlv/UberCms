@@ -1,7 +1,7 @@
 ﻿<?php
 session_start();
 require_once("../global.php");
-$getID = dbquery("SELECT * FROM users WHERE username = '".USER_NAME."'");
+$getID = db::query("SELECT * FROM users WHERE username = '".USER_NAME."'");
 $b = mysql_fetch_assoc($getID);
 $my_id = $b['id'];
 

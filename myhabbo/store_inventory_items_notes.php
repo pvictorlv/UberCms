@@ -7,9 +7,9 @@ if (!LOGGED_IN) {
 ?>
 <ul id="inventory-item-list">
     <?php
-    $sql = dbquery("SELECT id,skin,type FROM site_inventory_items WHERE type = 'Notes' AND userId = '" . USER_ID . "'");
-    $data = $sql->fetch_assoc();
-    $count = $sql->num_rows;
+    $sql = db::query("SELECT id,skin,type FROM site_inventory_items WHERE type = 'Notes' AND userId = '" . USER_ID . "'");
+    $data = $sql->fetch(2);
+    $count = $sql->rowCount();
 
     if ($count > 0) {
         ?>

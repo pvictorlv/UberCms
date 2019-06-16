@@ -27,7 +27,7 @@ else
 }
 ?>
 <?php
-$rango = dbquery("SELECT * FROM users WHERE id = '".USER_ID."'");
+$rango = db::query("SELECT * FROM users WHERE id = '".USER_ID."'");
 $user_rank = mysql_fetch_assoc($rango);
 ?>
 <?php if($edit_mode){ ?>
@@ -46,7 +46,7 @@ $user_rank = mysql_fetch_assoc($rango);
 			<option value="6" id="edit-menu-skins-select-goldenskin">Dorado</option>
 			<option value="3" id="edit-menu-skins-select-metalskin">Metal</option>
 			<option value="5" id="edit-menu-skins-select-notepadskin">Bloc de Notas</option>
-			<option value="2" id="edit-menu-skins-select-speechbubbleskin">Bocadillo de Diálogo</option>
+			<option value="2" id="edit-menu-skins-select-speechbubbleskin">Bocadillo de Diï¿½logo</option>
 			<option value="4" id="edit-menu-skins-select-noteitskin">Nota-etiqueta</option>
 <?php if(getHC("'.USER_ID.'") || getVIP("'.USER_ID.'")){ ?>
 			<option value="8" id="edit-menu-skins-select-hc_pillowskin">HC Bling</option>
@@ -58,7 +58,7 @@ $user_rank = mysql_fetch_assoc($rango);
 	</select>
 				</div>
 				<div id="edit-menu-stickie">
-					<p>¡Atención! Si pinchas en 'Quitar', tu nota será eliminada para siempre.</p>
+					<p>ï¿½Atenciï¿½n! Si pinchas en 'Quitar', tu nota serï¿½ eliminada para siempre.</p>
 				</div>
 				<div id="rating-edit-menu">
 					<input type="button" id="ratings-reset-link"
@@ -77,7 +77,7 @@ $user_rank = mysql_fetch_assoc($rango);
 				</div>
 				<div id="edit-menu-gb-availability">
 					<select id="guestbook-privacy-options">
-						<option value="private">Sólo amigos</option>
+						<option value="private">Sï¿½lo amigos</option>
 						<option value="public">Publico</option>
 					</select>
 				</div>
@@ -173,7 +173,7 @@ Event.observe("trax-select-options", "change", handleTraxplayerTrackChange, fals
 <form method="post" id="guestbook-delete-form">
 	<input type="hidden" name="entryId" id="guestbook-delete-id" value="" />
 
-	<p>¿Seguro que lo quieres eliminar?</p>
+	<p>ï¿½Seguro que lo quieres eliminar?</p>
 	<p>
 		<a href="#" id="guestbook-delete-cancel" class="new-button"><b>Cancelar</b><i></i></a>
 		<a href="#" id="guestbook-delete" class="new-button"><b>Eliminar</b><i></i></a>
@@ -188,7 +188,7 @@ Event.observe("trax-select-options", "change", handleTraxplayerTrackChange, fals
 <h3>Editar Grupo</h3>
 
 <ul>
-	<li><a href="/groups/<?php echo $groupid; ?>/id/edit" id="group-tools-style">Modificar página</a></li>
+	<li><a href="/groups/<?php echo $groupid; ?>/id/edit" id="group-tools-style">Modificar pï¿½gina</a></li>
 	<?php if($ownerid == "'USER_ID'"){ ?><li><a href="#" id="group-tools-settings">Ajustes</a></li><?php } ?>
 	<li><a href="#" id="group-tools-badge">Placa</a></li>
 	<li><a href="#" id="group-tools-members">Miembros</a></li>
@@ -203,7 +203,7 @@ Event.observe("trax-select-options", "change", handleTraxplayerTrackChange, fals
 	<div class="box-tabs-container">
 <ul class="box-tabs">
 	<li class="selected" id="group-settings-link-group"><a href="#">Grupo</a><span class="tab-spacer"></span></li>
-	<li id="group-settings-link-forum"><a href="#">Foro de Discusión</a><span class="tab-spacer"></span></li>
+	<li id="group-settings-link-forum"><a href="#">Foro de Discusiï¿½n</a><span class="tab-spacer"></span></li>
 	<li id="group-settings-link-room"><a href="#">Salas</a><span class="tab-spacer"></span></li>
 </ul>
 </div>

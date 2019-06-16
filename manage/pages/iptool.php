@@ -35,8 +35,8 @@ IP:<br />
 
 if (isset($_POST['user'])) {
     $user = filter($_POST['user']);
-    $get = dbquery("SELECT ip_last,ip_reg FROM users WHERE username = '$user'");
-    $r = $get->fetch_assoc();
+    $get = db::query("SELECT ip_last,ip_reg FROM users WHERE username = '$user'");
+    $r = $get->fetch(2);
     if ($r != null) {
         $ip = $r['ip_last'];
         if ($ip == null)
@@ -48,9 +48,9 @@ if (isset($_POST['user'])) {
 
 if (isset($ip) && strlen($ip) > 0) {
     echo '<br><h2>Usuários com o ip ' . $ip . '</h2>';
-    $get = dbquery("SELECT * FROM users WHERE ip_last = '" . $ip . "' LIMIT 50");
+    $get = db::query("SELECT * FROM users WHERE ip_last = '" . $ip . "' LIMIT 50");
 
-    while ($user = $get->fetch_assoc()) {
+    while ($user = $get->fetch(2)) {
         $date = $user['last_online'];
         echo '<h2 style="width: 50%;"><B>' . clean($user['username']) . '</B> <Small>(ID: ' . $user['id'] . ')</small><br /><span style="font-weight: normal;">Última conexão: ' . $date . ' <br />E-mail: ' . $user['mail'] . '<br />Este usuario esta <b>' . (($user['online'] == "1") ? 'online!' : 'offline') . '</b></span></h2>';
     }

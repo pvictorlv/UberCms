@@ -52,18 +52,18 @@ $skin = 'n_skin_';
 		}
 		
 		if(isset($_SESSION['startSessionEditHome'])) {
-			dbquery("INSERT INTO homes_items (id, home_id, type, x, y, z, data, skin, owner_id, link) VALUES (NULL, '".USER_ID."', 'stickie', '10', '10', '6', '".$noteText."', '".$skin."', '".USER_ID."', '0');");
+			db::query("INSERT INTO homes_items (id, home_id, type, x, y, z, data, skin, owner_id, link) VALUES (NULL, '".USER_ID."', 'stickie', '10', '10', '6', '".$noteText."', '".$skin."', '".USER_ID."', '0');");
 		} elseif(isset($_SESSION['startSessionEditGroup'])) {
-			dbquery("INSERT INTO groups_items (id, group_id, type, x, y, z, data, skin, owner_id, link) VALUES (NULL, '".filter($_SESSION['startSessionEditGroup'])."', 'stickie', '10', '10', '6', '".$noteText."', '".$skin."', '".USER_ID."', '0');");
+			db::query("INSERT INTO groups_items (id, group_id, type, x, y, z, data, skin, owner_id, link) VALUES (NULL, '".filter($_SESSION['startSessionEditGroup'])."', 'stickie', '10', '10', '6', '".$noteText."', '".$skin."', '".USER_ID."', '0');");
 		}
-		dbquery("DELETE from site_inventory_items WHERE type='Notes' AND userId = '".USER_ID."' LIMIT 1");
+		db::query("DELETE from site_inventory_items WHERE type='Notes' AND userId = '".USER_ID."' LIMIT 1");
 		
 	if(isset($_SESSION['startSessionEditHome'])) {
-		$sql = dbquery("SELECT id from homes_items WHERE home_id = '".USER_ID."' AND data = '".$noteText."' LIMIT 1");
+		$sql = db::query("SELECT id from homes_items WHERE home_id = '".USER_ID."' AND data = '".$noteText."' LIMIT 1");
 	} elseif(isset($_SESSION['startSessionEditGroup'])) {
-		$sql = dbquery("SELECT id from groups_items WHERE group_id = '".filter($_SESSION['startSessionEditGroup'])."' AND data = '".$noteText."' LIMIT 1");
+		$sql = db::query("SELECT id from groups_items WHERE group_id = '".filter($_SESSION['startSessionEditGroup'])."' AND data = '".$noteText."' LIMIT 1");
 	}
-	$data = $sql->fetch_assoc();
+	$data = $sql->fetch(2);
 
 	if(isset($_SESSION['startSessionEditHome'])) {
 		$homeData = HomesManager::GetHome(HomesManager::GetHomeId('user', USER_ID));

@@ -12,7 +12,7 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_housekeeping_sitemanagement
 
 if (isset($_GET['doDel']) && is_numeric($_GET['doDel']))
 {
-	dbquery("DELETE FROM site_promo WHERE id = '" . intval($_GET['doDel']) . "' LIMIT 1"); 
+	db::query("DELETE FROM site_promo WHERE id = '" . intval($_GET['doDel']) . "' LIMIT 1"); 
 	
 	if (mysql_affected_rows() >= 1)
 	{
@@ -25,7 +25,7 @@ if (isset($_GET['doDel']) && is_numeric($_GET['doDel']))
 
 if (isset($_GET['doBump']) && is_numeric($_GET['doBump']))
 {
-	dbquery("UPDATE site_promo SET datestr = '" . date('d-M-Y') . "', timestamp = '" . time() . "' WHERE id = '" . intval($_GET['doBump']) . "' LIMIT 1"); 
+	db::query("UPDATE site_promo SET datestr = '" . date('d-M-Y') . "', timestamp = '" . time() . "' WHERE id = '" . intval($_GET['doBump']) . "' LIMIT 1"); 
 	
 	if (mysql_affected_rows() >= 1)
 	{
@@ -41,13 +41,13 @@ require_once "top.php";
 ?>		
 <div id="icon-edit" class="icon32"><br /></div>
 
-<h2>Administrar promoções</h2>
+<h2>Administrar promoï¿½ï¿½es</h2>
 
 <br />
 
 <p>
 <img src="images/packi/promo.gif" style="float: right;">
-	Aqui você pode gerenciar as promoções do Ibbo Hotel.
+	Aqui vocï¿½ pode gerenciar as promoï¿½ï¿½es do Ibbo Hotel.
 
 
 	</p>
@@ -57,7 +57,7 @@ require_once "top.php";
 <p>
 	<a href="index.php?_cmd=promopublish" class="button-primary">
 		<b>
-			Escrever Promoção
+			Escrever Promoï¿½ï¿½o
 		</b>
 	</a>
 </p>
@@ -78,7 +78,7 @@ require_once "top.php";
 <tbody>
 <?php
 
-$getNews = dbquery("SELECT * FROM site_promo ORDER BY timestamp DESC");
+$getNews = db::query("SELECT * FROM site_promo ORDER BY timestamp DESC");
 $i = 1;
 
 while ($n = mysql_fetch_assoc($getNews))
@@ -94,7 +94,7 @@ $oddeven++;
 	<td>' . $n['id'] . '</td>
 	<td>' . clean($n['title']) . '</td>
 	<td>' . clean($n['snippet']) . '</td>
-	<td>' . clean(mysql_result(dbquery("SELECT caption FROM site_promo_categories WHERE id = '" . $n['category_id'] . "' LIMIT 1"), 0)) . '</td>
+	<td>' . clean(mysql_result(db::query("SELECT caption FROM site_promo_categories WHERE id = '" . $n['category_id'] . "' LIMIT 1"), 0)) . '</td>
 	<td>' . $n['datestr'] . '</td>
 	<td>
 		<input class="button-secondary" type="button" value="Ver" onclick="document.location = \'' . WWW . '/promo/' . $n['id'] . '-' . $n['seo_link'] . '\';">&nbsp;

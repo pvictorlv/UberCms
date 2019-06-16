@@ -12,18 +12,18 @@ $data = null;
 $u = 0;
 
 if (isset($_GET['u']) && is_numeric($_GET['u'])) {
-    $u = intval(filter($_GET['u']));
-    $getData = dbquery("SELECT id,username FROM users WHERE id = '" . $u . "' LIMIT 1");
+    $u = (int)filter($_GET['u']);
+    $getData = db::query("SELECT id,username FROM users WHERE id = '" . $u . "' LIMIT 1");
 
-    if ($getData->num_rows > 0) {
-        $data = $getData->fetch_assoc();
+    if ($getData->rowCount() > 0) {
+        $data = $getData->fetch(2);
     }
 } else if (isset($_POST['usrsearch'])) {
     $usrSearch = filter($_POST['usrsearch']);
-    $getData = dbquery("SELECT id,username FROM users WHERE username = '" . $usrSearch . "' LIMIT 1");
+    $getData = db::query("SELECT id,username FROM users WHERE username = '" . $usrSearch . "' LIMIT 1");
 
-    if ($getData->num_rows > 0) {
-        $data = $getData->fetch_assoc();
+    if ($getData->rowCount() > 0) {
+        $data = $getData->fetch(2);
 
         header("Location: index.php?_cmd=badges&u=" . $data['id']);
         exit;
@@ -45,21 +45,19 @@ if ($data == null) {
     echo '</form></p>';
 } else {
     if (isset($_GET['take'])) {
-        dbquery("DELETE FROM user_badges WHERE user_id = '" . $data['id'] . "' AND badge_id = '" . filter($_GET['take']) . "'");
+        db::query("DELETE FROM user_badges WHERE user_id = '" . $data['id'] . "' AND badge_id = '" . filter($_GET['take']) . "'");
 
-        global $db;
-        if ($db->GetAffected() >= 1) {
-            echo '<b>Cojer placa ' . $_GET['take'] . ' from ' . $data['username'] . '.</b>';
-        }
+        echo '<b>Cojer placa ' . $_GET['take'] . ' from ' . $data['username'] . '.</b>';
+
     }
 
     if (isset($_POST['newbadge'])) {
-        dbquery("INSERT INTO user_badges (user_id,badge_id,badge_slot) VALUES ('" . $data['id'] . "','" . filter($_POST['newbadge']) . "','0')");
+        db::query("INSERT INTO user_badges (user_id,badge_id,badge_slot) VALUES ('" . $data['id'] . "','" . filter($_POST['newbadge']) . "','0')");
         echo '<b>Se ha dado la placa</b>';
     }
 
     echo '<h2>Editar Placas: ' . $data['username'] . ' (<a href="index.php?_cmd=badges">Volver a la bUsqueda del usuario</a>)</h2>';
-    $getBadges = dbquery("SELECT badge_id,badge_slot FROM user_badges WHERE user_id = '" . $data['id'] . "'");
+    $getBadges = db::query("SELECT badge_id,badge_slot FROM user_badges WHERE user_id = '" . $data['id'] . "'");
 
     echo '<Br /><table border="1">
 	<thead>
@@ -72,7 +70,7 @@ if ($data == null) {
 	</tr>
 	</thead>';
 
-    while ($b = $getBadges->fetch_assoc()) {
+    while ($b = $getBadges->fetch(2)) {
         echo '<tr>';
         echo '<td><img src="http://hretro.top/c_images/album1584/' . $b['badge_id'] . '.gif"></td>';
         echo '<td><center>' . $b['badge_id'] . '</center></td>';
@@ -87,8 +85,8 @@ if ($data == null) {
         echo '</center></td>';
         echo '<td><a href="index.php?_cmd=badgedefs">';
 
-        $tryGet1 = dbquery("SELECT sval FROM external_texts WHERE skey = 'badge_name_" . $b['badge_id'] . "'");
-        $tryGet2 = dbquery("SELECT sval FROM external_texts WHERE skey = 'badge_desc_" . $b['badge_id'] . "'");
+        $tryGet1 = db::query("SELECT sval FROM external_texts WHERE skey = 'badge_name_" . $b['badge_id'] . "'");
+        $tryGet2 = db::query("SELECT sval FROM external_texts WHERE skey = 'badge_desc_" . $b['badge_id'] . "'");
 
 
         echo "<b>{$b['badge_id']}</b>";

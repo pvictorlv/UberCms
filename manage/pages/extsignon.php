@@ -15,14 +15,14 @@ $popClient = '';
 if (isset($_POST['username']))
 {
 	$username = filter($_POST['username']);
-	$get = dbquery("SELECT id FROM users WHERE username = '" . $username . "' LIMIT 1");
+	$get = db::query("SELECT id FROM users WHERE username = '" . $username . "' LIMIT 1");
 	
 	if (mysql_num_rows($get) == 1)
 	{
 		$id = intval(mysql_result($get, 0));
 		$ticket = $core->GenerateTicket();
 		
-		dbquery("UPDATE users SET auth_ticket = '" . $ticket . "' WHERE id = '" . $id . "' LIMIT 1");
+		db::query("UPDATE users SET auth_ticket = '" . $ticket . "' WHERE id = '" . $id . "' LIMIT 1");
 		$core->Mus('signOut', $id);
 		$popClient = $ticket;
 		
@@ -40,7 +40,7 @@ echo '<h1>Entrar Como Otro Usuario</h1>';
 
 if ($popClient != '')
 {
-	echo "<input type=\"button\" onclick=\"popSsoClient('" . $popClient . "'); window.location = 'index.php?_cmd=extsignon'\" value=\"¡Listo! Has clic aqui para acceder al hotel como " . $username . "\" style=\"margin: 20px; font-size: 150%;\">";
+	echo "<input type=\"button\" onclick=\"popSsoClient('" . $popClient . "'); window.location = 'index.php?_cmd=extsignon'\" value=\"ï¿½Listo! Has clic aqui para acceder al hotel como " . $username . "\" style=\"margin: 20px; font-size: 150%;\">";
 	echo '<input type="button" value="Done" onclick="window.location = \'index.php?_cmd=extsignon\';">';
 }
 else

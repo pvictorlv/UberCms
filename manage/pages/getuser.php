@@ -16,7 +16,7 @@ require_once "top.php";
 	
 <div id="icon-users" class="icon32"><br /></div>
 
-<h2>Lista de usuários</h2>
+<h2>Lista de usuï¿½rios</h2>
 <img src="images/packi/users.gif" style="float: right;">	
 <p>
 
@@ -33,12 +33,12 @@ require_once "top.php";
 	<th scope="col" id="title" class="manage-column column-title" style="">Nombre</th>
 	<th scope="col" id="title" class="manage-column column-title" style="width:150px;">E-Mail</th>
 	<th scope="col" id="title" class="manage-column column-title" style="">Datos de Registro</th>
-	<th scope="col" id="title" class="manage-column column-title" style="">Última Conexion</th>
+	<th scope="col" id="title" class="manage-column column-title" style="">ï¿½ltima Conexion</th>
 </tr>
 </thead>
 <?php
 
-$get = dbquery("SELECT * FROM users");
+$get = db::query("SELECT * FROM users");
 
 while ($user = mysql_fetch_assoc($get))
 {

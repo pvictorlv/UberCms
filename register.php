@@ -1,13 +1,13 @@
 <?php
 include "global.php";
 if (LOGGED_IN) {
-    header("Location: " . WWW . "/me");
+    header('Location: ' . WWW . "/me");
     exit;
 }
 $ip = USER_IP;
-$q = dbquery("SELECT null FROM users WHERE ip_last = '$ip' OR ip_reg ='$ip'");
-if ($q->num_rows >= 3) {
-    header("Location: " . WWW . "/me");
+$q = Db::query('SELECT count(id) FROM users WHERE ip_last = ? OR ip_reg = ?', $ip, $ip)->fetchColumn();
+if ($q >= 3) {
+    header("Location: " . WWW . "/");
     exit;
 }
 $tpl->SetParam('error-messages-holder', '');
@@ -18,9 +18,9 @@ $tpl->SetParam('post-mail', '');
 
 if (isset($_GET['doSubmit'])) {
     if (isset($_POST['checkNameOnly']) && $_POST['checkNameOnly'] == 'true') {
-        $name = filter($_POST['bean_avatarName']);
+        $name = ($_POST['bean_avatarName']);
 
-        echo '                <div class="field field-habbo-name">
+        echo '<div class="field field-habbo-name">
                   <label for="habbo-name">Nome de usuário</label>
                   <input type="text" id="habbo-name" size="32" value="' . clean($name) . '" name="bean.avatarName" class="text-field" maxlength="32"/>
                   <a href="#" class="new-button" id="check-name-btn"><b>Verificar</b><i></i></a> 
@@ -43,16 +43,18 @@ if (isset($_GET['doSubmit'])) {
                 </div>';
 
         exit;
-    } else if (isset($_POST['bean_avatarName'])) {
+    }
+
+    if (isset($_POST['bean_avatarName'])) {
         $registerErrors = Array();
 
-        $name = filter($_POST['bean_avatarName']);
-        $password = filter($_POST['bean_password']);
-        $password2 = filter($_POST['bean_retypedPassword']);
-        $email = filter($_POST['bean_email']);
-        $dob_day = filter($_POST['bean_day']);
-        $dob_month = filter($_POST['bean_month']);
-        $dob_year = filter($_POST['bean_year']);
+        $name = ($_POST['bean_avatarName']);
+        $password = ($_POST['bean_password']);
+        $password2 = ($_POST['bean_retypedPassword']);
+        $email = ($_POST['bean_email']);
+        $dob_day = ($_POST['bean_day']);
+        $dob_month = ($_POST['bean_month']);
+        $dob_year = ($_POST['bean_year']);
 
         $tpl->SetParam('post-name', $name);
         $tpl->SetParam('post-pass', $password);
@@ -111,16 +113,16 @@ if (isset($_GET['doSubmit'])) {
 
             header("Location: /register/welcome");
             exit;
-        } else {
-            $errResult = '<div class="error-messages-holder"><h3>Por favor, corrija os erros e tente novamente.</h3><ul>';
-            foreach ($registerErrors as $err) {
-                $errResult .= '<li><p class="error-message">' . $err . '</p></li>';
-            }
-
-            $errResult .= '</ul></div>';
-
-            $tpl->SetParam('error-messages-holder', $errResult);
         }
+
+        $errResult = '<div class="error-messages-holder"><h3>Por favor, corrija os erros e tente novamente.</h3><ul>';
+        foreach ($registerErrors as $err) {
+            $errResult .= '<li><p class="error-message">' . $err . '</p></li>';
+        }
+
+        $errResult .= '</ul></div>';
+
+        $tpl->SetParam('error-messages-holder', $errResult);
     }
 }
 

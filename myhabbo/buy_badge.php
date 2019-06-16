@@ -83,22 +83,22 @@ if(isset($_POST['badge_id']))
 			
 			if(isset($price) && isset($id))
 			{
-				$data = mysql_fetch_array(dbquery("SELECT vip_points,vip FROM users WHERE id = '".USER_ID."' LIMIT 1;"));
+				$data = mysql_fetch_array(db::query("SELECT vip_points,vip FROM users WHERE id = '".USER_ID."' LIMIT 1;"));
 				if($data['vip'] == 0)
 				{
 					die('<center><font color="red">No eres VIP, para poder comprar placas debes ser VIP.</font></center>');
 				}
 				if($data['vip_points'] > $price)
 				{
-					$count = mysql_num_rows(dbquery("SELECT badge_id FROM user_badges WHERE user_id = '".USER_ID."' AND badge_id = '".$id."' LIMIT 1;"));
+					$count = mysql_num_rows(db::query("SELECT badge_id FROM user_badges WHERE user_id = '".USER_ID."' AND badge_id = '".$id."' LIMIT 1;"));
 					if($count > 0)
 					{
 						die('<center><font color="red">Ya cuentas con esta placa, por favor elige otra.</font></center>');
 					}
 					else
 					{
-						dbquery("INSERT INTO user_badges (user_id, badge_id) VALUES ('".USER_ID."', '".$id."')");
-						dbquery("UPDATE users SET vip_points = vip_points - $price WHERE id = '".USER_ID."' LIMIT 1");
+						db::query("INSERT INTO user_badges (user_id, badge_id) VALUES ('".USER_ID."', '".$id."')");
+						db::query("UPDATE users SET vip_points = vip_points - $price WHERE id = '".USER_ID."' LIMIT 1");
 						die('<center><font color="green">Placa comprada correctamente.</font></center>');
 					}					
 				}

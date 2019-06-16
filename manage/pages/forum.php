@@ -20,7 +20,7 @@ if (isset($_POST['msg'])) {
         die('Mensagem muito curta.');
     }
 
-    dbquery("INSERT INTO moderation_forum_threads (subject,message,poster,date,timestamp) VALUES ('" . filter($subject) . "','" . filter($body) . "','" . HK_USER_NAME . "','" . date('j F Y h:i A') . "','" . time() . "')");
+    db::query("INSERT INTO moderation_forum_threads (subject,message,poster,date,timestamp) VALUES ('" . filter($subject) . "','" . filter($body) . "','" . HK_USER_NAME . "','" . date('j F Y h:i A') . "','" . time() . "')");
 
     fMessage('ok', 'Thread created');
 
@@ -34,10 +34,10 @@ require_once "top.php";
 
 <?php
 
-$getTopics = dbquery("SELECT * FROM moderation_forum_threads ORDER BY timestamp DESC");
+$getTopics = db::query("SELECT * FROM moderation_forum_threads ORDER BY timestamp DESC");
 
-if ($getTopics->num_rows >= 1) {
-    while ($topic = $getTopics->fetch_assoc()) {
+if ($getTopics->rowCount() >= 1) {
+    while ($topic = $getTopics->fetch(2)) {
         echo '<h2 style="font-weight: normal;"><a href="index.php?_cmd=forumthread&i=' . $topic['id'] . '">';
         echo '<b style="font-size: 130%;">';
 
@@ -51,7 +51,7 @@ if ($getTopics->num_rows >= 1) {
 
         echo clean($topic['subject']) . '</b>&nbsp;';
 
-        $rCount = dbquery("SELECT NULL FROM moderation_forum_replies WHERE thread_id = '" . $topic['id'] . "'")->num_rows;
+        $rCount = db::query("SELECT NULL FROM moderation_forum_replies WHERE thread_id = '" . $topic['id'] . "'")->rowCount();
 
         if ($topic['locked'] == "0" || $rCount > 0) {
             echo '(' . $rCount . ' respostas)';

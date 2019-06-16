@@ -18,8 +18,8 @@ if (isset($_POST['user']) && isset($_POST['update']))
 {
 	$user = filter($_POST['user']);
 	$vip_coins = filter($_POST['vip_coins']);
-	dbquery("UPDATE users SET Vip_Coins = '".$vip_coins."' WHERE username = '".$user."' LIMIT 1");
-	$msg = "¡Coins actualizadas con Exito!";
+	db::query("UPDATE users SET Vip_Coins = '".$vip_coins."' WHERE username = '".$user."' LIMIT 1");
+	$msg = "ï¿½Coins actualizadas con Exito!";
 
 	}	
 	else
@@ -27,14 +27,14 @@ if (isset($_POST['user']) && isset($_POST['update']))
 		$msg = "No se encontro usuario para dar las coins respectivas.";
 	}
 
-if (isset($_POST['user']) && isset($_POST['añadir']))
+if (isset($_POST['user']) && isset($_POST['aï¿½adir']))
 {
 	$user = filter($_POST['user']);
 	$vip_coins = filter($_POST['vip_coins']);
 	$getuser = mysql_fetch_assoc(mysql_query("SELECT Vip_Coins FROM users WHERE username = '".$user."' LIMIT 1"));
 	$Coins_Final = $getuser+$vip_coins;
-	dbquery("UPDATE users SET Vip_Coins = '".$Coins_Final."' WHERE username = '".$user."' LIMIT 1");
-	$msg = "¡Rango cambiado con Exito! Este ya tiene la placa correspondiente.";
+	db::query("UPDATE users SET Vip_Coins = '".$Coins_Final."' WHERE username = '".$user."' LIMIT 1");
+	$msg = "ï¿½Rango cambiado con Exito! Este ya tiene la placa correspondiente.";
 
 	}	
 	else
@@ -48,9 +48,9 @@ require_once "top.php";
             <div class="box-content">
 <?php if(isset($msg)){ ?><?php echo $msg; ?><?php } ?><br>
 <br>
-<h1>Selecciona como quieres modificar las coins. Por ejemplo, si quieres AÑADIR coins (Sumar la cantidad que tiene el usuario mas la que des) clickea en añadir, si quieres ACTUALIZAR coins (Actualizar las coins sin sumar las que ya tiene el usuario) clickea en actualizar.</h1>
+<h1>Selecciona como quieres modificar las coins. Por ejemplo, si quieres Aï¿½ADIR coins (Sumar la cantidad que tiene el usuario mas la que des) clickea en aï¿½adir, si quieres ACTUALIZAR coins (Actualizar las coins sin sumar las que ya tiene el usuario) clickea en actualizar.</h1>
 <br><form method='post' name'rank' action='index.php?_cmd=vip_coins&do=give'>
-<input type='radio' value='añadir' name='añadir' id='añadir'> Añadir
+<input type='radio' value='aï¿½adir' name='aï¿½adir' id='aï¿½adir'> Aï¿½adir
 
 <input type='radio' value='update' name='update' id='update'> Actualizar
 	<br><br>

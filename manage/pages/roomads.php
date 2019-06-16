@@ -45,7 +45,7 @@ if (isset($_POST['name']))
 			{
 				if (copy($_FILES['img']['tmp_name'], $fileLoc))
 				{
-					dbquery("INSERT INTO room_ads (id,ad_image,ad_image_orig,ad_link,views,views_limit,enabled) VALUES (NULL,'" . $wwwLoc . "','" . $filename . '.' . $ext . "','" . filter($clickurl) . "',0,0,1)");
+					db::query("INSERT INTO room_ads (id,ad_image,ad_image_orig,ad_link,views,views_limit,enabled) VALUES (NULL,'" . $wwwLoc . "','" . $filename . '.' . $ext . "','" . filter($clickurl) . "',0,0,1)");
 					fMessage('ok', 'Okay, publicidad subida.');
 				}
 				else
@@ -71,7 +71,7 @@ if (isset($_POST['name']))
 
 if (isset($_GET['delId']))
 {
-	dbquery("DELETE FROM room_ads WHERE ad_image_orig = '" . filter($_GET['delId']) . "'");
+	db::query("DELETE FROM room_ads WHERE ad_image_orig = '" . filter($_GET['delId']) . "'");
 	
 	if (@unlink(CWD . '/ads/' . filter($_GET['delId'])))
 	{
@@ -84,7 +84,7 @@ if (isset($_GET['delId']))
 
 if (isset($_GET['switchId']))
 {
-	$get = dbquery("SELECT enabled FROM room_ads WHERE ad_image_orig = '" . filter($_GET['switchId']) . "' LIMIT 1");
+	$get = db::query("SELECT enabled FROM room_ads WHERE ad_image_orig = '" . filter($_GET['switchId']) . "' LIMIT 1");
 	
 	if (mysql_num_rows($get) >= 1)
 	{
@@ -97,7 +97,7 @@ if (isset($_GET['switchId']))
 			$set = "1";
 		}
 
-		dbquery("UPDATE room_ads SET enabled = '" . $set . "' WHERE ad_image_orig = '" . filter($_GET['switchId']) . "' LIMIT 1");
+		db::query("UPDATE room_ads SET enabled = '" . $set . "' WHERE ad_image_orig = '" . filter($_GET['switchId']) . "' LIMIT 1");
 	}
 	
 	header("Location: index.php?_cmd=roomads");
@@ -147,7 +147,7 @@ if ($handle = opendir(CWD . '/ads'))
 		
 		$hasDbEntry = false;
 		$dbData = null;
-		$dbGet = dbquery("SELECT * FROM room_ads WHERE ad_image_orig = '" . $file . "' LIMIT 1");
+		$dbGet = db::query("SELECT * FROM room_ads WHERE ad_image_orig = '" . $file . "' LIMIT 1");
 		
 		if (mysql_num_rows($dbGet) >= 1)
 		{
@@ -212,14 +212,14 @@ if ($handle = opendir(CWD . '/ads'))
 </tbody>
 </table>
 
-<h2>Subir un anuncio intersticial (GIF sólo!)</h2><br />
+<h2>Subir un anuncio intersticial (GIF sï¿½lo!)</h2><br />
 <form method="post" enctype="multipart/form-data">
 
 <b>Archivo</b><br />
 <input type="file" name="img"><br />
 <br />
 
-<b>Nombre de archivo (solo caracteres alfanumericos, sin extensión):</b><br />
+<b>Nombre de archivo (solo caracteres alfanumericos, sin extensiï¿½n):</b><br />
 <input type="text" name="Nombre"><br />
 <br />
 

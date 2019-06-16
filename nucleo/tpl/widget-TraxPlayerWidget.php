@@ -43,12 +43,12 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
 
                         <?php
 
-                        $mysql = dbquery("SELECT * FROM items WHERE user_id = '" . USER_ID . "' LIMIT 1");
+                        $mysql = db::query("SELECT * FROM items WHERE user_id = '" . USER_ID . "' LIMIT 1");
                         $i = 0;
-                        while ($machinerow = $mysql->num_rows) {
+                        while ($machinerow = $mysql->rowCount()) {
                             $i++;
 
-                            $sql = dbquery("SELECT * FROM soundmachine_songs WHERE machineid = '1' LIMIT 1");
+                            $sql = db::query("SELECT * FROM soundmachine_songs WHERE machineid = '1' LIMIT 1");
                             $n = 0;
                             while ($songrow = mysql_fetch_assoc($sql)) {
                                 $n++;

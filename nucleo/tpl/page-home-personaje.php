@@ -10,12 +10,8 @@
     <div class="box-tabs-container box-tabs-left clearfix">
 
         <?php
-        global $users;
-        if (isset($_GET['qryName'])) {
-            $qryId = $users->Name2id(filter($_GET['qryName']));
-        } else if (isset($_GET['qryId']) && is_numeric($_GET['qryId'])) {
-            $qryId = (int)filter($_GET['qryId']);
-        }
+        global $users, $qryId;
+
         if (isset($_SESSION['UBER_USER_N']) && !isset($_SESSION['startSessionEditHome'])) {
             if (USER_ID == $qryId) {
                 echo '	<a href="/home/%habboname%/startSession/' . USER_ID . '" id="edit-button" class="new-button dark-button edit-icon" style="float:left"><b><span></span>Editar</b><i></i></a>';
@@ -47,7 +43,7 @@
         ?>
 
         <div id="mypage-bg"
-             class="<?php $data = dbquery("SELECT bgimage FROM homes WHERE home_id = '" . $qryId . "' LIMIT 1")->fetch_assoc();
+             class="<?php $data = db::query("SELECT bgimage FROM homes WHERE home_id = '" . $qryId . "' LIMIT 1")->fetch(2);
              echo $data['bgimage']; ?>">
             <div id="playground">
                 <?php

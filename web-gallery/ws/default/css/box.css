@@ -1,0 +1,115 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu|Ubuntu+Mono);
+
+* {
+    cursor: default;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+body {
+    margin: 0;
+    font-family: Ubuntu, -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+}
+
+.defaultBox {
+    max-width: 500px;
+    display: inline-block;
+    border: 1px solid #000;
+    border-bottom-width: 2px;
+    border-radius: 8px;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, .3);
+}
+
+.defaultBox .defaultHeader {
+    text-align: center;
+    background-color: #367897;
+    box-shadow: inset 2px 2px 0 #408caf, inset -2px 0 0 #408caf;
+    height: 32px;
+    border-bottom: 1px solid #000;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.defaultBox .defaultHeader h1 {
+    color: #fff;
+    font-size: 16px !important;
+    line-height: 32px;
+    text-align: center;
+    margin: 0 -5px 0 0;
+    display: inline-block;
+
+}
+
+.defaultBox .defaultBody {
+    background-color: #e9e9e1;
+    box-shadow: inset 2px 2px 0 #fff, inset -2px -2px 0 #fff;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 8px;
+
+}
+
+.defaultClose {
+    background: url(../images/close.png) 0 0;
+    width: 19px;
+    height: 20px;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    float: right;
+}
+
+.defaultClose:hover {
+    background: url(../images/closePressed.png) 0 0;
+    width: 19px;
+    height: 20px;
+}
+
+.buttonDefault {
+    position: relative;
+    background: url(../images/smallButton.png);
+    height: 23px;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+}
+.buttonDefault:hover {
+    background: url(../images/smallButtonPressed.png);
+}
+
+.buttonDefault::-moz-focus-inner,
+.buttonDefault:focus {
+    border: 0;
+}
+
+.buttonDefault:before,
+.buttonDefault:after {
+    content: "";
+    background: url(../images/leftSmallButton.png);
+    width: 4px;
+    height: 23px;
+    position: absolute;
+    left: -4px;
+    top: 0;
+}
+
+.buttonDefault:hover:before,
+.buttonDefault:hover:after {
+    background: url(../images/leftSmallButtonPressed.png);
+}
+
+.buttonDefault:after {
+    background: url(../images/rightSmallButon.png);
+    width: 4px;
+    left: auto;
+    right: -4px;
+
+}
+
+.buttonDefault:hover:after {
+    background: url(../images/rightSmallButonPressed.png);
+}
+

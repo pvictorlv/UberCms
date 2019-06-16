@@ -17,7 +17,7 @@ echo '<p>This tool will scan Habbo UK\'s furni data file for furniture that is m
 echo '<p><a href="http://hotel-uk.habbo.com/gamedata/furnidata?hash=x">http://hotel-uk.habbo.com/gamedata/furnidata?hash=x</a></p><br />';
 
 $whatWeKnow = Array();
-$getWhatWeKnow = dbquery("SELECT item_name FROM furniture");
+$getWhatWeKnow = db::query("SELECT item_name FROM furniture");
 
 while ($g = mysql_fetch_assoc($getWhatWeKnow))
 {

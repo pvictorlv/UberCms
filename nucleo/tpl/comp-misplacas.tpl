@@ -9,7 +9,7 @@
 </div>
 <center><b><br><a style="color:#000000">Placas en uso:</a style></b><?php
 
-    $getBadges = dbquery("SELECT * FROM user_badges WHERE user_id = '" . USER_ID . "' AND badge_slot >= 1 ORDER BY badge_slot DESC LIMIT 5");
+    $getBadges = db::query("SELECT * FROM user_badges WHERE user_id = '" . USER_ID . "' AND badge_slot >= 1 ORDER BY badge_slot DESC LIMIT 5");
 
 ?>
 

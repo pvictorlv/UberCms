@@ -28,8 +28,8 @@ if (isset($_POST['content']))
 		$errors= '<b><font color="#FF0000">Porfavor Inserte El usuario o ID</font></b></br></br>';
 	}
                  else
-	{                 dbquery("SELECT * From users Where id ='". $user_id ."' or username = '". $user_id ."' ");
-		dbquery("INSERT INTO users_alerts (id,user_id,alert) VALUES ('0','". $user_id ."', '" . $content . "') ");
+	{                 db::query("SELECT * From users Where id ='". $user_id ."' or username = '". $user_id ."' ");
+		db::query("INSERT INTO users_alerts (id,user_id,alert) VALUES ('0','". $user_id ."', '" . $content . "') ");
 		fMessage('ok', 'Alerta Enviada.');
 		
 		echo '<b>Alerta enviada con exito!</b><META HTTP-EQUIV="refresh" CONTENT="5; url=index.php?_cmd=users_alerts">';

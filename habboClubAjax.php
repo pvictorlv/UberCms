@@ -68,7 +68,7 @@ switch (strtolower($cmd)) {
             $tpl->Output();
 
         } else {
-            dbquery("UPDATE users SET credits = credits - {$price} WHERE id = " . USER_ID . " LIMIT 1");
+            db::query("UPDATE users SET credits = credits - {$price} WHERE id = " . USER_ID . " LIMIT 1");
 
             if ($type == 1 || $type == 2) {
                 // Club System

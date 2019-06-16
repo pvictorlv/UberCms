@@ -29,22 +29,17 @@ $senderData = null;
 
 if (isset($_GET['messageId']) && is_numeric($_GET['messageId']))
 {
-	$messageId = intval($_GET['messageId']);
+	$messageId = (int)$_GET['messageId'];
 }
 
 if ($messageId > 0)
 {
-	$getMessage = dbquery("SELECT * FROM site_minimail WHERE id = '" . $messageId . "' AND receiver_id = '" . USER_ID . "' LIMIT 1");
+	$getMessage = db::query("SELECT * FROM site_minimail WHERE id = ? AND receiver_id = ? LIMIT 1", $messageId, USER_ID)->fetch(2);
 	
-	if (mysql_num_rows($getMessage) == 1)
+	if ($getMessage)
 	{
-		$messageData = mysql_fetch_assoc($getMessage);
-		$getSender = dbquery("SELECT * FROM users WHERE id = '" . $messageData['sender_id'] . "' LIMIT 1");
-		
-		if (mysql_num_rows($getSender) == 1)
-		{
-			$senderData = mysql_fetch_assoc($getSender);
-		}
+        $senderData = db::query("SELECT * FROM users WHERE id = '" . $getMessage['sender_id'] . "' LIMIT 1")->fetch(2);
+
 	}
 }
 
@@ -66,7 +61,7 @@ $message->SetParam('sent', ($messageData['folder'] == "sent") ? true : false);
 
 if ($messageData['is_read'] == "0")
 {
-	dbquery("UPDATE site_minimail SET is_read = '1' WHERE id = '" . $messageData['id'] . "' LIMIT 1");
+	db::query("UPDATE site_minimail SET is_read = '1' WHERE id = '" . $messageData['id'] . "' LIMIT 1");
 }
 
 $tpl->AddTemplate($message);

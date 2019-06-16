@@ -9,7 +9,7 @@
 		<div class="method-content">
 			<h2>Moedas Gratis!</h2>
 			<div class="summary clearfix">
-			As Habbo Moedas são grátis! A cada 3 horas, são acrescentados 20 moedas em sua conta para asegurar que você nunca fique sem dinheiro!
+			As Habbo Moedas sï¿½o grï¿½tis! A cada 3 horas, sï¿½o acrescentados 20 moedas em sua conta para asegurar que vocï¿½ nunca fique sem dinheiro!
 
 			</div>
 		</div>
@@ -72,7 +72,7 @@
 
 			<?php
 
-			$last_exec = intval(mysql_result(dbquery("SELECT last_exec FROM site_cron WHERE scriptfile = 'credits.php' LIMIT 1"), 0));
+			$last_exec = intval(mysql_result(db::query("SELECT last_exec FROM site_cron WHERE scriptfile = 'credits.php' LIMIT 1"), 0));
 			$next_exec = $last_exec + 10800;
 			$diff = $next_exec - time();
 
@@ -82,7 +82,7 @@
 
 			function showCountdownResult()
 			{
-				document.getElementById('credits-countdown').innerHTML = "<h3 style='color: darkgreen;'>Creditos actualizados</h3><p>Acabamos envió una actualización de créditos. Revise su inventario en Habbo</p>";
+				document.getElementById('credits-countdown').innerHTML = "<h3 style='color: darkgreen;'>Creditos actualizados</h3><p>Acabamos enviï¿½ una actualizaciï¿½n de crï¿½ditos. Revise su inventario en Habbo</p>";
 				window.setTimeout("location.reload(true);", 2500);
 			}
 
@@ -142,8 +142,8 @@ document.observe("dom:loaded", function() { new CreditsList(); });
 
 
 <div class="disclaimer" style="border: 0 !important;">
-    <h3><span>Habbo Moedas grátis</span></h3>
-    Nunca se cobrarão pelas moedas, elas são grátis<br />
+    <h3><span>Habbo Moedas grï¿½tis</span></h3>
+    Nunca se cobrarï¿½o pelas moedas, elas sï¿½o grï¿½tis<br />
 
 </div>
 

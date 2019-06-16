@@ -12,7 +12,7 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_admin'))
 
 if (isset($_GET['new']))
 {
-	dbquery("INSERT INTO moderation_presets (type,enabled,message) VALUES ('message','0','Newly generated preset - please update')");
+	db::query("INSERT INTO moderation_presets (type,enabled,message) VALUES ('message','0','Newly generated preset - please update')");
 	
 	fMessage('ok', 'New preset generated.');
 	
@@ -22,7 +22,7 @@ if (isset($_GET['new']))
 
 if (isset($_GET['delete']) && is_numeric($_GET['delete']))
 {
-	dbquery("DELETE FROM moderation_presets WHERE id = '" . intval($_GET['delete']) . "' LIMIT 1");
+	db::query("DELETE FROM moderation_presets WHERE id = '" . intval($_GET['delete']) . "' LIMIT 1");
 	
 	if (mysql_affected_rows() >= 1)
 	{
@@ -40,7 +40,7 @@ if (isset($_POST['preset-save']) && is_numeric($_POST['preset-save']))
 	$enabled = filter($_POST['enabled']);
 	$message = filter($_POST['message']);
 	
-	dbquery("UPDATE moderation_presets SET type = '" . $type . "', enabled = '" . $enabled . "', message = '" . $message . "' WHERE id = '" . $id . "' LIMIT 1");
+	db::query("UPDATE moderation_presets SET type = '" . $type . "', enabled = '" . $enabled . "', message = '" . $message . "' WHERE id = '" . $id . "' LIMIT 1");
 	
 	if (mysql_affected_rows() >= 1)
 	{
@@ -68,7 +68,7 @@ require_once "top.php";
 <tbody>
 <?php
 
-$get = dbquery("SELECT * FROM moderation_presets ORDER BY id DESC");
+$get = db::query("SELECT * FROM moderation_presets ORDER BY id DESC");
 
 while ($p = mysql_fetch_assoc($get))
 {

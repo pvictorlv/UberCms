@@ -46,7 +46,7 @@ require_once "top.php";
 
 if (isset($_POST['UBERDOWN'])) {
 
-dbquery("INSERT INTO uberdown (username,shit) VALUES ('" . USER_NAME . "','" . filter($_POST['UBERDOWN']) . "')");
+db::query("INSERT INTO uberdown (username,shit) VALUES ('" . USER_NAME . "','" . filter($_POST['UBERDOWN']) . "')");
 
 ?>
 

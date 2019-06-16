@@ -15,7 +15,7 @@ $tpl->AddIncludeFile(new IncludeFile('text/css', '%www%/web-gallery/static/style
 
 $tpl->AddGeneric('generic-top');
 $tpl->AddGeneric('cuerpo-grupos');
-$tpl->AddGeneric('head-bottom');
+$tpl->AddGeneric('head/head-bottom');
 
 $tpl->Output();
 

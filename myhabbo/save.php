@@ -6,40 +6,42 @@ if (isset($_POST["stickers"])) {
     $var = explode('/', $_POST['stickers']);
     foreach ($var as $var_data) {
         if (empty($var_data)) {
-            return;
+            break;
         }
         $vardata = explode(':', $var_data);
         $xyz = explode(',', $vardata[1]);
 
-        $sql = dbquery("SELECT skin FROM site_inventory_items WHERE userId = '" . USER_ID . "' AND id = '" . filter($vardata[0]) . "' AND isWaiting = '1' LIMIT 1");
-        if ($sql->num_rows > 0) {
-            $row = $sql->fetch_assoc();
-            dbquery("INSERT INTO homes_items (id, home_id, type, x, y, z, data, skin, owner_id, link) VALUES (NULL, '" . USER_ID . "', 'sticker', '" . filter($xyz[0]) . "', '" . filter($xyz[1]) . "', '" . filter($xyz[2]) . "', '" . $row['skin'] . "', '', '" . USER_ID . "', '" . filter($vardata[0]) . "');");
+        $sql = db::query("SELECT skin FROM site_inventory_items WHERE userId = '" . USER_ID . "' AND id = ? AND isWaiting = '1' LIMIT 1", $vardata[0]);
+        if ($sql->rowCount() > 0) {
+            $row = $sql->fetch(2);
+            db::query("INSERT INTO homes_items (id, home_id, type, x, y, z, data, skin, owner_id, link) VALUES (NULL, '" . USER_ID . "', 'sticker', ?,?,?,?, '', '" . USER_ID . "', ?);", $xyz[0], $xyz[1], $xyz[2], $row['skin'], $vardata[0]);
         } else {
-            dbquery("UPDATE homes_items SET x = '" . filter($xyz[0]) . "', y = '" . filter($xyz[1]) . "', z = '" . filter($xyz[2]) . "' WHERE id = '" . filter($vardata[0]) . "' AND owner_id = '" . USER_ID . "' LIMIT 1");
+            db::query("UPDATE homes_items SET x = ?, y = ?, z = ? WHERE id = ? AND owner_id = '" . USER_ID . "' LIMIT 1", $xyz[0], $xyz[1], $xyz[2], $vardata[0]);
         }
     }
 }
 if (isset($_POST["stickienotes"])) {
 
-    $varstickienotes = explode('/', $_POST['stickienotes']);
+    $stickie_notes = explode('/', $_POST['stickienotes']);
     //var_dump($var);
-    foreach ($varstickienotes as $var_datastickienotes) {
-        if (empty($var_datastickienotes)) {
+    foreach ($stickie_notes as $note) {
+        if (empty($note)) {
             break;
         }
-        $vardatastickienotes = explode(':', $var_datastickienotes);
-        $xyzstickienotes = explode(',', $vardatastickienotes[1]);
+        $data_note = explode(':', $note);
+        $coords = explode(',', $data_note[1]);
 
-        $sqlstickienotes = dbquery("SELECT skin FROM site_inventory_items WHERE userId = '" . USER_ID . "' AND id = '" . filter($vardatastickienotes[0]) . "' AND isWaiting = '1' LIMIT 1");
+        $query = db::query("SELECT skin FROM site_inventory_items WHERE userId = '" . USER_ID . "' AND id = ? AND isWaiting = '1' LIMIT 1",
+            $data_note[0]);
 
-        if ($sqlstickienotes->num_rows > 0) {
-            $rowstickienotes = $sqlstickienotes->fetch_assoc();
+        if ($query->rowCount() > 0) {
+            $row_stick = $query->fetch(2);
 
-            dbquery("INSERT INTO homes_items (id, home_id, type, x, y, z, data, skin, owner_id) VALUES (NULL, '" . USER_ID . "', 'sticker', '" . filter($xyzstickienotes[0]) . "', '" . filter($xyzstickienotes[1]) . "', '" . filter($xyzstickienotes[2]) . "', '" . $rowstickienotes['skin'] . "', '', '" . USER_ID . "');");
-//						dbquery("UPDATE site_inventory_items SET isWaiting = '0' WHERE id = '".filter($vardatastickienotes[0])."' AND userId = '".USER_ID."' LIMIT 1");
+            db::query("INSERT INTO homes_items (id, home_id, type, x, y, z, data, skin, owner_id) VALUES (NULL, '" . USER_ID . "', 'sticker', ?, ?, ?, ?, '', '" . USER_ID . "');",
+                $coords[0], $coords[1], $coords[2], $row_stick['skin']);
+//						db::query("UPDATE site_inventory_items SET isWaiting = '0' WHERE id = '".filter($vardatastickienotes[0])."' AND userId = '".USER_ID."' LIMIT 1");
         } else {
-            dbquery("UPDATE homes_items SET x = '" . filter($xyzstickienotes[0]) . "', y = '" . filter($xyzstickienotes[1]) . "', z = '" . filter($xyzstickienotes[2]) . "' WHERE id = '" . filter($vardatastickienotes[0]) . "' AND owner_id = '" . USER_ID . "' LIMIT 1");
+            db::query("UPDATE homes_items SET x = ?, y = ?, z = ? WHERE id = ? AND owner_id = '" . USER_ID . "' LIMIT 1", $coords[0], $coords[1], $coords[2], $data_note[0]);
         }
     }
 
@@ -57,15 +59,15 @@ if (isset($_POST["widgets"])) {
         $vardatawidgets = explode(':', $var_datawidgets);
         $xyzwidgets = explode(',', $vardatawidgets[1]);
 
-        $sqlwidgets = dbquery("SELECT skin FROM site_inventory_items WHERE userId = '" . USER_ID . "' AND id = '" . filter($vardatawidgets[0]) . "' AND isWaiting = '1' LIMIT 1");
+        $sqlwidgets = db::query("SELECT skin FROM site_inventory_items WHERE userId = '" . USER_ID . "' AND id = ? AND isWaiting = '1' LIMIT 1", $vardatawidgets[0]);
 
-        if ($sqlwidgets->num_rows > 0) {
-            $rowwidgets = $sqlwidgets->fetch_assoc();
+        if ($sqlwidgets->rowCount() > 0) {
+            $rowwidgets = $sqlwidgets->fetch(2);
 
-            //dbquery("INSERT INTO homes_items (id, home_id, type, x, y, z, data, skin, owner_id) VALUES (NULL, '".USER_ID."', 'sticker', '".filter($xyzwidgets[0])."', '".filter($xyzwidgets[1])."', '".filter($xyzwidgets[2])."', '".$rowwidgets['skin']."', '', '".USER_ID."');");
-//						dbquery("UPDATE site_inventory_items SET isWaiting = '0' WHERE id = '".filter($vardatawidgets[0])."' AND userId = '".USER_ID."' LIMIT 1");
+            //db::query("INSERT INTO homes_items (id, home_id, type, x, y, z, data, skin, owner_id) VALUES (NULL, '".USER_ID."', 'sticker', '".filter($xyzwidgets[0])."', '".filter($xyzwidgets[1])."', '".filter($xyzwidgets[2])."', '".$rowwidgets['skin']."', '', '".USER_ID."');");
+//						db::query("UPDATE site_inventory_items SET isWaiting = '0' WHERE id = '".filter($vardatawidgets[0])."' AND userId = '".USER_ID."' LIMIT 1");
         } else {
-            dbquery("UPDATE homes_items SET x = '" . filter($xyzwidgets[0]) . "', y = '" . filter($xyzwidgets[1]) . "', z = '" . filter($xyzwidgets[2]) . "' WHERE id = '" . filter($vardatawidgets[0]) . "' AND owner_id = '" . USER_ID . "' LIMIT 1");
+            db::query("UPDATE homes_items SET x = ?, y = ?, z = ? WHERE id = ? AND owner_id = '" . USER_ID . "' LIMIT 1", $xyzwidgets[0], $xyzwidgets[1], $xyzwidgets[2], $vardatawidgets[0]);
         }
     }
 
@@ -73,15 +75,14 @@ if (isset($_POST["widgets"])) {
 }
 
 if (isset($_POST['background'])) {
-    $background = filter($_POST['background']);
     $bg = explode(':', $_POST['background']);
 
     if (is_numeric($bg[0])) {
-        $sql = dbquery("SELECT userId FROM site_inventory_items WHERE id = '" . $bg[0] . "'");
-        $data = $sql->fetch_assoc();
-        if ($sql->num_rows > 0) {
+        $sql = db::query('SELECT userId FROM site_inventory_items WHERE id = ?', $bg[0]);
+        $data = $sql->fetch(2);
+        if ($sql->rowCount() > 0) {
             if ($data['userId'] == USER_ID) {
-                dbquery("UPDATE homes SET bgimage = '" . $bg[1] . "' WHERE home_id = '" . USER_ID . "'");
+                db::query('UPDATE homes SET bgimage = ? WHERE home_id = ?', $bg[1], USER_ID);
             }
         }
 

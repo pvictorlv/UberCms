@@ -12,7 +12,7 @@ if(isset($_POST['motto'])){
 			mysql_query("UPDATE users SET motto = '".$motto."' WHERE username = '".USER_NAME."' LIMIT 1") or die(mysql_error());
 
 echo $motto;	} else {
-				$getCoins = dbquery("SELECT * FROM users WHERE username = '".USER_NAME."'");
+				$getCoins = db::query("SELECT * FROM users WHERE username = '".USER_NAME."'");
 $myrow = mysql_fetch_assoc($getCoins);
 		echo $myrow['motto'];
 	}

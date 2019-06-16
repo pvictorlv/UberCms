@@ -12,7 +12,7 @@ $appkey = $gtfo->cleanWord($_POST['__app_key']);
 
 if($core->GetGroupPerm($groupId) >= 2) {
 
-dbquery("UPDATE groups_details SET badge='".$badge."' WHERE (id='".$groupId."') LIMIT 1");
+db::query("UPDATE groups_details SET badge='".$badge."' WHERE (id='".$groupId."') LIMIT 1");
 header("Location:".WWW."/groups/".$groupId."/id"); exit;
 	}
 }

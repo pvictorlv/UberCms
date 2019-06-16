@@ -10,11 +10,11 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_housekeeping_sitemanagement
 	exit;
 }
 
-$newOrderNum = intval(mysql_result(dbquery("SELECT MAX(order_num) FROM site_app_form LIMIT 1"), 0)) + 1;
+$newOrderNum = intval(mysql_result(db::query("SELECT MAX(order_num) FROM site_app_form LIMIT 1"), 0)) + 1;
 
 if (isset($_GET['doDel']))
 {
-	dbquery("DELETE FROM site_app_form WHERE id = '" . filter($_GET['doDel']) . "' LIMIT 1");
+	db::query("DELETE FROM site_app_form WHERE id = '" . filter($_GET['doDel']) . "' LIMIT 1");
 	
 	if (mysql_affected_rows() >= 1)
 	{
@@ -27,7 +27,7 @@ if (isset($_GET['doDel']))
 
 if (isset($_GET['doUp']))
 {
-	dbquery("UPDATE site_app_form SET order_num = order_num + 1 WHERE id = '" . filter($_GET['doUp']) . "' LIMIT 1");
+	db::query("UPDATE site_app_form SET order_num = order_num + 1 WHERE id = '" . filter($_GET['doUp']) . "' LIMIT 1");
 	
 	if (mysql_affected_rows() >= 1)
 	{
@@ -40,7 +40,7 @@ if (isset($_GET['doUp']))
 
 if (isset($_GET['doDown']))
 {
-	dbquery("UPDATE site_app_form SET order_num = order_num - 1 WHERE id = '" . filter($_GET['doDown']) . "' LIMIT 1");
+	db::query("UPDATE site_app_form SET order_num = order_num - 1 WHERE id = '" . filter($_GET['doDown']) . "' LIMIT 1");
 	
 	if (mysql_affected_rows() >= 1)
 	{
@@ -79,7 +79,7 @@ if (isset($_POST['new-element-id']))
 	
 	if (count($errors) == 0)
 	{
-		fMessage('ok', 'Elemento añadido a formulario de solicitud!');
+		fMessage('ok', 'Elemento aï¿½adido a formulario de solicitud!');
 		
 		$req = "0";
 		
@@ -88,7 +88,7 @@ if (isset($_POST['new-element-id']))
 			$req = "1";
 		}
 		
-		dbquery("INSERT INTO site_app_form (id,caption,descr,field_type,required,order_num) VALUES ('" . $id . "','" . $name . "','" . $descr . "','" . $type . "','" . $req . "','" . $newOrderNum . "')");
+		db::query("INSERT INTO site_app_form (id,caption,descr,field_type,required,order_num) VALUES ('" . $id . "','" . $name . "','" . $descr . "','" . $type . "','" . $req . "','" . $newOrderNum . "')");
 	}
 	else
 	{
@@ -103,12 +103,12 @@ require_once "top.php";
 <h1>Solicitud de Empleo</h1>
 
 <p>
-	Siempre que un usuario solicita un trabajo, que tendrán que rellenar un formulario de solicitud predefinidos, que puede gestionar aquí.
+	Siempre que un usuario solicita un trabajo, que tendrï¿½n que rellenar un formulario de solicitud predefinidos, que puede gestionar aquï¿½.
 </p>
 
 <h2>
 
-<b>Añadir elemento nuevo formulario</b> (<a href="#" onclick="t('elform');">Ocultar/mostrar</a>)
+<b>Aï¿½adir elemento nuevo formulario</b> (<a href="#" onclick="t('elform');">Ocultar/mostrar</a>)
 
 <div id="elform" style="padding: 10px;">
 <br />
@@ -118,11 +118,11 @@ require_once "top.php";
 Tipo de campo:<br />
 <select name="new-element-type">
 <option value="textbox">Cuadro de texto normal</option>
-<option value="textarea">Area de texto (para el texto grandes líneas de multipile)</option>
-<option value="checkbox">Casilla de verificación (Descripción será utilizado como texto)</option>
+<option value="textarea">Area de texto (para el texto grandes lï¿½neas de multipile)</option>
+<option value="checkbox">Casilla de verificaciï¿½n (Descripciï¿½n serï¿½ utilizado como texto)</option>
 </select>
 
-<br /><br />ID de elemento (corto, <u> única  </u>, y el nombre interno para identificar este campo - no hay caracteres especiales, por favor):<br />
+<br /><br />ID de elemento (corto, <u> ï¿½nica  </u>, y el nombre interno para identificar este campo - no hay caracteres especiales, por favor):<br />
 <input type="text" value="" maxlength="24" name="new-element-id">
 
 <br /><br />Nombre de Forma:<br />
@@ -137,7 +137,7 @@ Tipo de campo:<br />
 
 <br /><br />
 
-<input type="submit" value="Añadir nuevo elemento para formar">
+<input type="submit" value="Aï¿½adir nuevo elemento para formar">
 
 <br /><br />
 
@@ -153,7 +153,7 @@ Tipo de campo:<br />
 
 <?php
 
-$getElements = dbquery("SELECT * FROM site_app_form ORDER BY order_num ASC");
+$getElements = db::query("SELECT * FROM site_app_form ORDER BY order_num ASC");
 
 echo '<ol style="margin-left: 20px;">';
 

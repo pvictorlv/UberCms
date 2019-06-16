@@ -12,7 +12,7 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_housekeeping_sitemanagement
 
 if (isset($_GET['doDel']))
 {
-	dbquery("DELETE FROM site_app_openings WHERE id = '" . intval(filter($_GET['doDel'])) . "' LIMIT 1");
+	db::query("DELETE FROM site_app_openings WHERE id = '" . intval(filter($_GET['doDel'])) . "' LIMIT 1");
 	
 	if (mysql_affected_rows() >= 1)
 	{
@@ -25,7 +25,7 @@ if (isset($_GET['doDel']))
 
 if (isset($_POST['n-name']) && strlen($_POST['n-name']) >= 1)
 {
-	dbquery("INSERT INTO site_app_openings (id,name,text_descr,text_reqs,text_duties) VALUES (NULL,'" . filter($_POST['n-name']) . "','" . filter($_POST['n-descr']) . "','" . filter($_POST['n-reqs']) . "','" . filter($_POST['n-duties']) . "')");
+	db::query("INSERT INTO site_app_openings (id,name,text_descr,text_reqs,text_duties) VALUES (NULL,'" . filter($_POST['n-name']) . "','" . filter($_POST['n-descr']) . "','" . filter($_POST['n-reqs']) . "','" . filter($_POST['n-duties']) . "')");
 	fMessage('ok', 'Trabajo de apertura en la lista!');
 	header("Location: index.php?_cmd=jobopenings");
 	exit;
@@ -33,7 +33,7 @@ if (isset($_POST['n-name']) && strlen($_POST['n-name']) >= 1)
 
 if (isset($_POST['edit']) && is_numeric($_POST['edit']))
 {
-	dbquery("UPDATE site_app_openings SET name = '" . filter($_POST['e-name']) . "', text_descr = '" . filter($_POST['e-descr']) . "', text_reqs = '" . filter($_POST['e-reqs']) . "', text_duties = '" . filter($_POST['e-duties']) . "' WHERE id = '" . intval($_POST['edit']) . "' LIMIT 1");
+	db::query("UPDATE site_app_openings SET name = '" . filter($_POST['e-name']) . "', text_descr = '" . filter($_POST['e-descr']) . "', text_reqs = '" . filter($_POST['e-reqs']) . "', text_duties = '" . filter($_POST['e-duties']) . "' WHERE id = '" . intval($_POST['edit']) . "' LIMIT 1");
 	fMessage('ok', 'Trabajo de apertura en la lista!');
 	header("Location: index.php?_cmd=jobopenings");
 	exit;	
@@ -46,7 +46,7 @@ require_once "top.php";
 <h1>Ofertas de Empleo</h1>
 
 <p>
-	Ofertas de empleo se muestra en el Centro de Soporte en el sitio web. Usuario Se dará la oportunidad de solicitar para ellos. También pueden presentar una solicitud abierta si su posición deseada no aparece en la lista. Las solicitudes presentadas se puede moderar a través de <a href="index.php?_cmd=jobapps">la moderacion de Trabajo</a>.
+	Ofertas de empleo se muestra en el Centro de Soporte en el sitio web. Usuario Se darï¿½ la oportunidad de solicitar para ellos. Tambiï¿½n pueden presentar una solicitud abierta si su posiciï¿½n deseada no aparece en la lista. Las solicitudes presentadas se puede moderar a travï¿½s de <a href="index.php?_cmd=jobapps">la moderacion de Trabajo</a>.
 </p>
 
 <h2>Crear nueva oferta</h2><br />
@@ -74,7 +74,7 @@ Requerimientos:<br />
 
 <?php
 
-$get = dbquery("SELECT * FROM site_app_openings");
+$get = db::query("SELECT * FROM site_app_openings");
 
 while ($opening = mysql_fetch_assoc($get))
 {

@@ -21,7 +21,7 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['to
 	$page = $gtfo->cleanWord($_POST['page']);
 	$_GET['page'] = $page;
 
-	$sql_group = dbquery("SELECT * FROM groups_details WHERE id = '" . $group__id . "' LIMIT 1");
+	$sql_group = db::query("SELECT * FROM groups_details WHERE id = '" . $group__id . "' LIMIT 1");
 	if(!mysql_num_rows($sql_group)) { die(); }
 	$row_group = mysql_fetch_array($sql_group);
 	
@@ -32,9 +32,9 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['to
 			header('X-JSON: {"captchaError":"true"}');
 			die();
 		}
-	$GroupData = dbquery("SELECT forumType,perso_link FROM groups_details WHERE id = '".$groupId."' LIMIT 1;");
+	$GroupData = db::query("SELECT forumType,perso_link FROM groups_details WHERE id = '".$groupId."' LIMIT 1;");
 	if(mysql_num_rows($GroupData)) {
-		$TopicData = dbquery("SELECT type,user_id FROM groups_forum_topics WHERE id = '".$topicId."' LIMIT 1");
+		$TopicData = db::query("SELECT type,user_id FROM groups_forum_topics WHERE id = '".$topicId."' LIMIT 1");
 		if(mysql_num_rows($TopicData)) {
 			$group_rank = $core->GetGroupPerm($groupId);
 			
@@ -69,7 +69,7 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['to
 			if($GroupData['forumType'] && !$users->IsMember(USER_ID, $groupId)) {
 				
 			} elseif(!$forumType['type']) {
-				dbquery("INSERT INTO groups_forum_replies (user_id, content, date, topic_id, group_id) VALUES ('".USER_ID."', '".$message."', '".time()."', '".$topicId."', '".$groupId."')");
+				db::query("INSERT INTO groups_forum_replies (user_id, content, date, topic_id, group_id) VALUES ('".USER_ID."', '".$message."', '".time()."', '".$topicId."', '".$groupId."')");
 ?>
 <div class="postlist-header clearfix">
 							<?php if($checkTopicArray['type']) { ?>
@@ -85,7 +85,7 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['to
 								<a href="#" id="edit-topic-settings" class="edit-topic-settings-link">Editar Ajustes &raquo;</a>
 								<input type="hidden" id="settings_dialog_header" value="Editar Ajustes"/>
 							<?php }
-	$count = mysql_num_rows(dbquery("SELECT null FROM groups_forum_replies WHERE topic_id = '".$topicId."';"));
+	$count = mysql_num_rows(db::query("SELECT null FROM groups_forum_replies WHERE topic_id = '".$topicId."';"));
 	$n = $count;
 	$x = 0;
 		while($n >= 0)
@@ -109,15 +109,15 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['to
 							?>
 								<div class="page-num-list">
 									<input type="hidden" id="current-page" value="<?php echo $RepliesPage; ?>"/>
-							Ver página:
+							Ver pï¿½gina:
 							
 						<?php
 						$anterior = $RepliesPage-1;
 						if($RepliesPage != 1 && $RepliesPage <= $x ||
 						   $RepliesPage != 0 && $RepliesPage <= $x) {
-								echo '<a title="Primera página" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/1">&lt;&lt;</a>
+								echo '<a title="Primera pï¿½gina" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/1">&lt;&lt;</a>
 								';
-								echo '<a title="Página anterior" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$anterior.'">&lt;</a>
+								echo '<a title="Pï¿½gina anterior" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$anterior.'">&lt;</a>
 								';
 							}
 						
@@ -147,31 +147,31 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['to
 							
 						}
 							if($x != 1 && $RepliesPage <> $x) {
-								echo '<a title="Página siguiente" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$next.'">&gt;</a>
+								echo '<a title="Pï¿½gina siguiente" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$next.'">&gt;</a>
 								';
-								echo '<a title="Última página" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$x.'">&gt;&gt;</a>';
+								echo '<a title="ï¿½ltima pï¿½gina" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$x.'">&gt;&gt;</a>';
 							}
 						?>
 						</div>
 							</div>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="group-postlist-list" id="group-postlist-list">
 <?php 
-$GetTopic = dbquery("SELECT id,user_id,date,type,title FROM groups_forum_topics WHERE id = '".$topicId."' LIMIT 1;");
+$GetTopic = db::query("SELECT id,user_id,date,type,title FROM groups_forum_topics WHERE id = '".$topicId."' LIMIT 1;");
 
 if(mysql_num_rows($GetTopic)) {
 	$i = 0;
 	$dataTopic = mysql_fetch_array($GetTopic);
 	$first_username = $users->id2name($dataTopic['user_id']);
-	$FirstUserData = mysql_fetch_array(dbquery("SELECT look,motto FROM users where id = '".$dataTopic['user_id']."' LIMIT 1;"));
+	$FirstUserData = mysql_fetch_array(db::query("SELECT look,motto FROM users where id = '".$dataTopic['user_id']."' LIMIT 1;"));
 				}
 
-	$GetReplies = dbquery("SELECT id,user_id,content,date,is_edited,is_first FROM groups_forum_replies WHERE topic_id = '".$topicId."' LIMIT ".$limit.",10;");
+	$GetReplies = db::query("SELECT id,user_id,content,date,is_edited,is_first FROM groups_forum_replies WHERE topic_id = '".$topicId."' LIMIT ".$limit.",10;");
 
 
 if(mysql_num_rows($GetReplies)) {
 	while($dataReplies = mysql_fetch_array($GetReplies)) {
 	$first_username = $users->id2name($dataReplies['user_id']);
-	$FirstUserData = mysql_fetch_array(dbquery("SELECT look,motto FROM users where id = '".$dataReplies['user_id']."' LIMIT 1;"));
+	$FirstUserData = mysql_fetch_array(db::query("SELECT look,motto FROM users where id = '".$dataReplies['user_id']."' LIMIT 1;"));
 ?>
 <tr class="post-list-index-<?php if(IsEven($i)) { echo 'even'; } else { echo 'odd'; } ?>">
 	<td class="post-list-row-container">
@@ -183,7 +183,7 @@ if(mysql_num_rows($GetReplies)) {
 				<?php } else { ?>
 				<img alt="online" src="http://images.xukys-hotel.com/web-gallery/images/myhabbo/habbo_online_anim.gif"/>
 				<?php } 
-				$GetCountMsgOnReplies = mysql_fetch_array(dbquery("SELECT COUNT(id) AS count FROM groups_forum_replies WHERE user_id = '" . $dataReplies['user_id'] . "'"));
+				$GetCountMsgOnReplies = mysql_fetch_array(db::query("SELECT COUNT(id) AS count FROM groups_forum_replies WHERE user_id = '" . $dataReplies['user_id'] . "'"));
 				$AllCount             = $GetCountMsgOnReplies['count'];
 				?>
 		<div class="post-list-posts post-list-creator-info">Mensaje: <?php echo $AllCount; ?></div>
@@ -226,7 +226,7 @@ if(mysql_num_rows($GetReplies)) {
 		</div>
 		<div class="post-list-content-element">
 		<?php if($dataReplies['is_edited']) { ?>
-		<span class="post-list-message-edited">Última edición:</span><br />
+		<span class="post-list-message-edited">ï¿½ltima ediciï¿½n:</span><br />
 		<?php } ?>
 		<?php echo fixText(uberCore::BBcode($dataReplies['content']), false, false, true, false, true); ?>
 		
@@ -251,7 +251,7 @@ if(mysql_num_rows($GetReplies)) {
 		<input type="hidden" id="edit-type" />
 		<input type="hidden" id="post-id"  />
         <a href="#" class="preview-post-link" id="post-form-preview">Previa &raquo;</a>
-        <input type="hidden" id="spam-message" value="¡Se ha detectado spam!"/>
+        <input type="hidden" id="spam-message" value="ï¿½Se ha detectado spam!"/>
 		<textarea id="post-message" class="new-post-entry-message" rows="5" name="message" ></textarea>
     <script type="text/javascript">
         bbcodeToolbar = new Control.TextArea.ToolBar.BBCode("post-message");
@@ -288,7 +288,7 @@ if(mysql_num_rows($GetReplies)) {
 	    <div id="discussion-captcha">
 
 <h3>
-<label for="bean_captcha" class="registration-text">Teclea el código de seguridad que aparece en la imagen</label>
+<label for="bean_captcha" class="registration-text">Teclea el cï¿½digo de seguridad que aparece en la imagen</label>
 </h3>
 
 <div id="captcha-code-error"></div>
@@ -337,13 +337,13 @@ document.observe("dom:loaded", function() {
             <a href="#" id="create-post-message-lower" class="create-post-link verify-email">Crear respuesta</a>
 			<?php } ?>
         <div class="page-num-list">
-    Ver página:
+    Ver pï¿½gina:
 						<?php
 						$anterior = $RepliesPage-1;
 						if($RepliesPage != 1 && $RepliesPage <= $x) {
-								echo '<a title="Primera página" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/1">&lt;&lt;</a>
+								echo '<a title="Primera pï¿½gina" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/1">&lt;&lt;</a>
 								';
-								echo '<a title="Página anterior" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$anterior.'">&lt;</a>
+								echo '<a title="Pï¿½gina anterior" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$anterior.'">&lt;</a>
 								';
 							}
 						
@@ -373,23 +373,23 @@ document.observe("dom:loaded", function() {
 							
 						}
 							if($x != 1 && $x <> $RepliesPage) {
-								echo '<a title="Página siguiente" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$next.'">&gt;</a>
+								echo '<a title="Pï¿½gina siguiente" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$next.'">&gt;</a>
 								';
-								echo '<a title="Última página" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$x.'">&gt;&gt;</a>';
+								echo '<a title="ï¿½ltima pï¿½gina" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$x.'">&gt;&gt;</a>';
 							}
 						?>
 	</div>
     </div>
 <script type="text/javascript">
-L10N.put("myhabbo.discussion.error.topic_name_empty", "El Asunto no puede estar vacío");
-L10N.put("register.error.security_code", "El código de seguridad no era válido. Por favor, inténtalo de nuevo.");
+L10N.put("myhabbo.discussion.error.topic_name_empty", "El Asunto no puede estar vacï¿½o");
+L10N.put("register.error.security_code", "El cï¿½digo de seguridad no era vï¿½lido. Por favor, intï¿½ntalo de nuevo.");
 Discussions.initialize("<?php echo $group__id; ?>", "<?php write($forumType['perso_link']); ?>", "<?php echo $topicId; ?>");
 Discussions.captchaPublicKey = "6Le-aQoAAAAAABnHRzXH_W-9-vx4B8oSP3_L5tb0";
 </script>
 <?php
 
 		} elseif($forumType['type'] && $group_rank >= 2) {
-		dbquery("INSERT INTO groups_forum_replies (user_id, content, date, topic_id, group_id) VALUES ('".USER_ID."', '".$message."', '".time()."', '".$topicId."', '".$groupId."')");
+		db::query("INSERT INTO groups_forum_replies (user_id, content, date, topic_id, group_id) VALUES ('".USER_ID."', '".$message."', '".time()."', '".$topicId."', '".$groupId."')");
 ?>			
 <div class="postlist-header clearfix">
 							<?php if($checkTopicArray['type']) { ?>
@@ -405,7 +405,7 @@ Discussions.captchaPublicKey = "6Le-aQoAAAAAABnHRzXH_W-9-vx4B8oSP3_L5tb0";
 								<a href="#" id="edit-topic-settings" class="edit-topic-settings-link">Editar Ajustes &raquo;</a>
 								<input type="hidden" id="settings_dialog_header" value="Editar Ajustes"/>
 							<?php }
-	$count = mysql_num_rows(dbquery("SELECT null FROM groups_forum_replies WHERE topic_id = '".$topicId."';"));
+	$count = mysql_num_rows(db::query("SELECT null FROM groups_forum_replies WHERE topic_id = '".$topicId."';"));
 	$n = $count;
 	$x = 0;
 		while($n >= 0)
@@ -429,14 +429,14 @@ Discussions.captchaPublicKey = "6Le-aQoAAAAAABnHRzXH_W-9-vx4B8oSP3_L5tb0";
 							?>
 								<div class="page-num-list">
 									<input type="hidden" id="current-page" value="<?php echo $RepliesPage; ?>"/>
-							Ver página:
+							Ver pï¿½gina:
 							
 						<?php
 						$anterior = $RepliesPage-1;
 						if($RepliesPage != 1 && $RepliesPage <= $x) {
-								echo '<a title="Primera página" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/1">&lt;&lt;</a>
+								echo '<a title="Primera pï¿½gina" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/1">&lt;&lt;</a>
 								';
-								echo '<a title="Página anterior" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$anterior.'">&lt;</a>
+								echo '<a title="Pï¿½gina anterior" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$anterior.'">&lt;</a>
 								';
 							}
 						
@@ -466,31 +466,31 @@ Discussions.captchaPublicKey = "6Le-aQoAAAAAABnHRzXH_W-9-vx4B8oSP3_L5tb0";
 							
 						}
 							if($x != 1 && $RepliesPage <> $x) {
-								echo '<a title="Página siguiente" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$next.'">&gt;</a>
+								echo '<a title="Pï¿½gina siguiente" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$next.'">&gt;</a>
 								';
-								echo '<a title="Última página" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$x.'">&gt;&gt;</a>';
+								echo '<a title="ï¿½ltima pï¿½gina" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$x.'">&gt;&gt;</a>';
 							}
 						?>
 						</div>
 							</div>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="group-postlist-list" id="group-postlist-list">
 <?php 
-$GetTopic = dbquery("SELECT id,user_id,date,type,title FROM groups_forum_topics WHERE id = '".$topicId."' LIMIT 1;");
+$GetTopic = db::query("SELECT id,user_id,date,type,title FROM groups_forum_topics WHERE id = '".$topicId."' LIMIT 1;");
 
 if(mysql_num_rows($GetTopic)) {
 	$i = 0;
 	$dataTopic = mysql_fetch_array($GetTopic);
 	$first_username = $users->id2name($dataTopic['user_id']);
-	$FirstUserData = mysql_fetch_array(dbquery("SELECT look,motto FROM users where id = '".$dataTopic['user_id']."' LIMIT 1;"));
+	$FirstUserData = mysql_fetch_array(db::query("SELECT look,motto FROM users where id = '".$dataTopic['user_id']."' LIMIT 1;"));
 				}
 
-	$GetReplies = dbquery("SELECT id,user_id,content,date,is_edited,is_first FROM groups_forum_replies WHERE topic_id = '".$topicId."' LIMIT ".$limit.",10;");
+	$GetReplies = db::query("SELECT id,user_id,content,date,is_edited,is_first FROM groups_forum_replies WHERE topic_id = '".$topicId."' LIMIT ".$limit.",10;");
 
 
 if(mysql_num_rows($GetReplies)) {
 	while($dataReplies = mysql_fetch_array($GetReplies)) {
 	$first_username = $users->id2name($dataReplies['user_id']);
-	$FirstUserData = mysql_fetch_array(dbquery("SELECT look,motto FROM users where id = '".$dataReplies['user_id']."' LIMIT 1;"));
+	$FirstUserData = mysql_fetch_array(db::query("SELECT look,motto FROM users where id = '".$dataReplies['user_id']."' LIMIT 1;"));
 ?>
 <tr class="post-list-index-<?php if(IsEven($i)) { echo 'even'; } else { echo 'odd'; } ?>">
 	<td class="post-list-row-container">
@@ -502,9 +502,9 @@ if(mysql_num_rows($GetReplies)) {
 				<?php } else { ?>
 				<img alt="online" src="http://images.xukys-hotel.com/web-gallery/images/myhabbo/habbo_online_anim.gif"/>
 				<?php } 
-				$GetCountMsgOnTopics = mysql_fetch_array(dbquery("SELECT COUNT(id) AS first_count FROM groups_forum_topics WHERE user_id = '".$dataReplies['user_id']."'"));
+				$GetCountMsgOnTopics = mysql_fetch_array(db::query("SELECT COUNT(id) AS first_count FROM groups_forum_topics WHERE user_id = '".$dataReplies['user_id']."'"));
 				$first = $GetCountMsgOnTopics['first_count'];
-				$GetCountMsgOnReplies = mysql_fetch_array(dbquery("SELECT COUNT(id) AS second_count FROM groups_forum_replies WHERE user_id = '".$dataReplies['user_id']."'"));
+				$GetCountMsgOnReplies = mysql_fetch_array(db::query("SELECT COUNT(id) AS second_count FROM groups_forum_replies WHERE user_id = '".$dataReplies['user_id']."'"));
 				$second = $GetCountMsgOnReplies['second_count'];
 				$AllCount = $first+$second;
 				?>
@@ -548,7 +548,7 @@ if(mysql_num_rows($GetReplies)) {
 		</div>
 		<div class="post-list-content-element">
 		<?php if($dataReplies['is_edited']) { ?>
-		<span class="post-list-message-edited">Última edición:</span><br />
+		<span class="post-list-message-edited">ï¿½ltima ediciï¿½n:</span><br />
 		<?php } ?>
 		<?php echo fixText(uberCore::BBcode($dataReplies['content']), false, false, true, false, true); ?>
 		
@@ -573,7 +573,7 @@ if(mysql_num_rows($GetReplies)) {
 		<input type="hidden" id="edit-type" />
 		<input type="hidden" id="post-id"  />
         <a href="#" class="preview-post-link" id="post-form-preview">Previa &raquo;</a>
-        <input type="hidden" id="spam-message" value="¡Se ha detectado spam!"/>
+        <input type="hidden" id="spam-message" value="ï¿½Se ha detectado spam!"/>
 		<textarea id="post-message" class="new-post-entry-message" rows="5" name="message" ></textarea>
     <script type="text/javascript">
         bbcodeToolbar = new Control.TextArea.ToolBar.BBCode("post-message");
@@ -610,7 +610,7 @@ if(mysql_num_rows($GetReplies)) {
 	    <div id="discussion-captcha">
 
 <h3>
-<label for="bean_captcha" class="registration-text">Teclea el código de seguridad que aparece en la imagen</label>
+<label for="bean_captcha" class="registration-text">Teclea el cï¿½digo de seguridad que aparece en la imagen</label>
 </h3>
 
 <div id="captcha-code-error"></div>
@@ -659,13 +659,13 @@ document.observe("dom:loaded", function() {
             <a href="#" id="create-post-message-lower" class="create-post-link verify-email">Crear respuesta</a>
 			<?php } ?>
         <div class="page-num-list">
-    Ver página:
+    Ver pï¿½gina:
 						<?php
 						$anterior = $RepliesPage-1;
 						if ($RepliesPage != '1' && $RepliesPage <= $x) {
-								echo '<a title="Primera página" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/1">&lt;&lt;</a>
+								echo '<a title="Primera pï¿½gina" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/1">&lt;&lt;</a>
 								';
-								echo '<a title="Página anterior" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$anterior.'">&lt;</a>
+								echo '<a title="Pï¿½gina anterior" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$anterior.'">&lt;</a>
 								';
 							}
 						
@@ -695,16 +695,16 @@ document.observe("dom:loaded", function() {
 							
 						}
 							if($x != 1 && $x <> $RepliesPage) {
-								echo '<a title="Página siguiente" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$next.'">&gt;</a>
+								echo '<a title="Pï¿½gina siguiente" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$next.'">&gt;</a>
 								';
-								echo '<a title="Última página" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$x.'">&gt;&gt;</a>';
+								echo '<a title="ï¿½ltima pï¿½gina" href="/groups/'.$qryId.'/discussions/'.$topicId.'/id/page/'.$x.'">&gt;&gt;</a>';
 							}
 						?>
 	</div>
     </div>
 <script type="text/javascript">
-L10N.put("myhabbo.discussion.error.topic_name_empty", "El Asunto no puede estar vacío");
-L10N.put("register.error.security_code", "El código de seguridad no era válido. Por favor, inténtalo de nuevo.");
+L10N.put("myhabbo.discussion.error.topic_name_empty", "El Asunto no puede estar vacï¿½o");
+L10N.put("register.error.security_code", "El cï¿½digo de seguridad no era vï¿½lido. Por favor, intï¿½ntalo de nuevo.");
 Discussions.initialize("<?php echo $group__id; ?>", "<?php write($GroupData['perso_link']); ?>", "<?php echo $topicId; ?>");
 Discussions.captchaPublicKey = "6Le-aQoAAAAAABnHRzXH_W-9-vx4B8oSP3_L5tb0";
 </script>

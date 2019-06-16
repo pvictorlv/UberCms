@@ -1,7 +1,7 @@
 <?php
 include "global.php";
-$q = dbquery("SELECT * FORM furniture WHERE type = 's'");
-$arr = $q->fetch_assoc();
+$q = db::query("SELECT * FORM furniture WHERE type = 's'");
+$arr = $q->fetch(2);
 echo "[";
 foreach ($arr as $key => $value) {
     $$key = $value;

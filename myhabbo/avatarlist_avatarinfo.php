@@ -5,14 +5,14 @@ if (isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['a
     $groupId = filter($_POST['groupId']);
 $AccountId = filter($_POST['anAccountId']);
 
-$checkMember = dbquery("SELECT NULL FROM groups_memberships WHERE userid = '" . $AccountId . "' AND groupid = '" . $groupId . "' LIMIT 1;")->num_rows;
+$checkMember = db::query("SELECT NULL FROM groups_memberships WHERE userid = '" . $AccountId . "' AND groupid = '" . $groupId . "' LIMIT 1;")->rowCount();
 
 if ($checkMember > 0) {
-    $memberQuery = dbquery("SELECT id,look,username,motto,account_created FROM users WHERE id = '" . $AccountId . " LIMIT 1'");
-    if ($memberQuery->num_rows > 0) {
-        $data = $memberQuery->fetch_assoc();
-        $rango = dbquery("SELECT member_rank FROM groups_memberships WHERE groupid = '" . $groupId . "' AND userid = '" . $AccountId . "'");
-        $rank = $rango->fetch_assoc()['member_rank'];
+    $memberQuery = db::query("SELECT id,look,username,motto,account_created FROM users WHERE id = '" . $AccountId . " LIMIT 1'");
+    if ($memberQuery->rowCount() > 0) {
+        $data = $memberQuery->fetch(2);
+        $rango = db::query("SELECT member_rank FROM groups_memberships WHERE groupid = '" . $groupId . "' AND userid = '" . $AccountId . "'");
+        $rank = $rango->fetch(2)['member_rank'];
 
         if ($rank == 3) {
             $OWNER = true;

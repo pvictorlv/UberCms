@@ -23,7 +23,7 @@
                     <a class="sort sorted">Nombre</a>
                 </th>
                 <th class="friend-login">
-                    <a class="sort">Último acceso</a>
+                    <a class="sort">ï¿½ltimo acceso</a>
                 </th>
                 <th class="friend-remove">Quitar</th>
             </tr>
@@ -32,7 +32,7 @@
 <?php
 session_start();
 require_once("../global.php");
-function time_stamp($session_time){$time_difference = time() - $session_time ;$seconds = $time_difference ;$minutes = round($time_difference / 60 );$hours = round($time_difference / 3600 );$days = round($time_difference / 86400 );$weeks = round($time_difference / 604800 );$months = round($time_difference / 2419200 );$years = round($time_difference / 29030400 );if($seconds <= 60){echo "Hace $seconds segundos";}else if($minutes <=60){if($minutes==1){echo "Hace 1 minuto";}else{echo "Hace $minutes minutos";}}else if($hours <=24){if($hours==1){echo "Hace 1 hora"; } else{echo "Hace $hours horas";}}else if($days <= 7){if($days==1){echo "Hace 1 día";}else{echo "Hace $days días";}}else if($weeks <= 4){if($weeks==1){echo "Hace 1 semana";}else{echo "Hace $weeks semanas";}}else if($months <=12){if($months==1){echo "Hace 1 mes";}else{echo "Hace $months meses";}}else{if($years==1){echo "Hace 1 año";}else{echo "Hace $years años";}}}
+function time_stamp($session_time){$time_difference = time() - $session_time ;$seconds = $time_difference ;$minutes = round($time_difference / 60 );$hours = round($time_difference / 3600 );$days = round($time_difference / 86400 );$weeks = round($time_difference / 604800 );$months = round($time_difference / 2419200 );$years = round($time_difference / 29030400 );if($seconds <= 60){echo "Hace $seconds segundos";}else if($minutes <=60){if($minutes==1){echo "Hace 1 minuto";}else{echo "Hace $minutes minutos";}}else if($hours <=24){if($hours==1){echo "Hace 1 hora"; } else{echo "Hace $hours horas";}}else if($days <= 7){if($days==1){echo "Hace 1 dï¿½a";}else{echo "Hace $days dï¿½as";}}else if($weeks <= 4){if($weeks==1){echo "Hace 1 semana";}else{echo "Hace $weeks semanas";}}else if($months <=12){if($months==1){echo "Hace 1 mes";}else{echo "Hace $months meses";}}else{if($years==1){echo "Hace 1 aï¿½o";}else{echo "Hace $years aï¿½os";}}}
 	if(!isset($_GET['pageNumber'])){$pagenumber = "1";}else{$pagenumber = $_GET['pageNumber'];};
 		if(!isset($_GET['pageSize'])){$pagesize = "30";}else{$pagedize = $_GET['pageSize'];};
 				if(!isset($_GET['sortColumn'])){$sortcolumn = "name";}else{$sortcolumn = $_GET['sortColumn'];};
@@ -41,7 +41,7 @@ function time_stamp($session_time){$time_difference = time() - $session_time ;$s
 	$pag2 = $pag-($pagesize-1);
 	$net = '';
 	$m = 0;
-$getID = dbquery("SELECT * FROM users WHERE username = '".USER_NAME."'");
+$getID = db::query("SELECT * FROM users WHERE username = '".USER_NAME."'");
 $b = mysql_fetch_assoc($getID);
 $userid = $b['id'];
 $amigosdehabbo = mysql_query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$userid."'");
@@ -94,7 +94,7 @@ while ($mefriend = mysql_fetch_assoc($buscarhabbo)){
         </tbody>
     </table>
     <a class="select-all" id="friends-select-all" href="#">Seleccionar todo</a> |
-    <a class="deselect-all" href=#" id="friends-deselect-all">Quitar selección</a>
+    <a class="deselect-all" href=#" id="friends-deselect-all">Quitar selecciï¿½n</a>
 </form>
 
 <div id="category-options" class="clearfix">

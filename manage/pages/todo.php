@@ -14,12 +14,12 @@ if (!$users->hasFuse(HK_USER_ID, 'fuse_admin')) {
 
 if (isset($_POST['submit'])) {
     $content = filter($_POST['content']);
-    $ins = dbquery("INSERT INTO `notes` (content,date) VALUES ('" . $content . "','" . date('j F Y h:i') . "')");
+    $ins = db::query("INSERT INTO `notes` (content,date) VALUES ('" . $content . "','" . date('j F Y h:i') . "')");
     header("Location: index.php?_cmd=todo");
 }
 
 if (isset($_GET['del']) && is_numeric($_GET['del'])) {
-    dbquery("DELETE FROM notes WHERE id = '" . intval($_GET['del']) . "' LIMIT 1");
+    db::query("DELETE FROM notes WHERE id = '" . intval($_GET['del']) . "' LIMIT 1");
     header("Location: index.php?_cmd=todo");
 }
 
@@ -31,7 +31,7 @@ require_once "top.php";
 
 <?php
 
-$getNotes = dbquery("SELECT id,content,date FROM notes ORDER BY id DESC");
+$getNotes = db::query("SELECT id,content,date FROM notes ORDER BY id DESC");
 
 while ($n = mysql_fetch_assoc($getNotes)) {
     echo '<div style="border: 1px solid; margin-top: 20px; margin-bottom: 20px; margin-left: 5px; margin-right: 20px;">';

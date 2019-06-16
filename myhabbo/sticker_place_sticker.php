@@ -2,31 +2,31 @@
 ob_start();
 require_once('../global.php');
 $my_id = USER_ID;
-$selectedStickerId = filter($_POST['selectedStickerId']);
-$zindex = filter($_POST['zindex']);
+$selectedStickerId = ($_POST['selectedStickerId']);
+$zindex = ($_POST['zindex']);
 if (isset($_POST['placeAll'])) {
-    $placeAll = filter($_POST['placeAll']);
+    $placeAll = ($_POST['placeAll']);
 } else {
     $placeAll = NULL;
 }
 
-$getItem = dbquery("SELECT * FROM site_inventory_items WHERE userId = '" . $my_id . "' AND id = '" . $selectedStickerId . "' AND isWaiting = '0' LIMIT 1");
+$getItem = db::query("SELECT * FROM site_inventory_items WHERE userId = ? AND id = ? AND isWaiting = '0' LIMIT 1", $my_id, $selectedStickerId);
 
-if ($getItem->num_rows > 0) {
-    $row = $getItem->fetch_assoc();
+if ($getItem->rowCount() > 0) {
+    $row = $getItem->fetch(2);
 
     if ($placeAll == "true") {
         $i = 0;
         $x_json = "";
-        $getSame = dbquery("SELECT * FROM site_inventory_items WHERE userId = '" . $my_id . "' AND skin = '" . $row['skin'] . "' AND isWaiting = '0'");
-        $getSame2 = dbquery("SELECT * FROM site_inventory_items WHERE userId = '" . $my_id . "' AND skin = '" . $row['skin'] . "' AND isWaiting = '0'");
+        $getSame = db::query("SELECT * FROM site_inventory_items WHERE userId = ? AND skin = ? AND isWaiting = '0'",
+            $my_id, $row['skin']);
 
-        while ($row = $getSame->fetch_assoc()) {
+        while ($row = $getSame->fetch(2)) {
             $i++;
             $x_json .= $row['id'];
-            dbquery("UPDATE site_inventory_items SET isWaiting = '1' WHERE userId = '" . $my_id . "' AND id = '" . $row['id'] . "' AND isWaiting = '0' LIMIT 1");
+            db::query("UPDATE site_inventory_items SET isWaiting = '1' WHERE userId = ? AND id = ? AND isWaiting = '0' LIMIT 1", $my_id, $row['id']);
 
-            if ($i !== $getSame->num_rows) {
+            if ($i !== $getSame->rowCount()) {
                 $x_json .= ", ";
             }
         }
@@ -34,14 +34,14 @@ if ($getItem->num_rows > 0) {
         header("X-JSON: [" . $x_json . "]");
     } else {
         header("X-JSON: [\"" . $row['id'] . "\"]");
-        dbquery("UPDATE site_inventory_items SET isWaiting = '1' WHERE userId = '" . $my_id . "' AND id = '" . $selectedStickerId . "' AND isWaiting = '0' LIMIT 1");
+        db::query("UPDATE site_inventory_items SET isWaiting = '1' WHERE userId = ? AND id = ? AND isWaiting = '0' LIMIT 1", $my_id, $selectedStickerId);
     }
 } else {
     exit;
 }
 ?>
 <?php if ($placeAll == "true") {
-    while ($row = $getSame2->fetch_assoc()) { ?>
+    while ($row = $getSame2->fetch(2)) { ?>
         <div class="movable sticker <?php echo $row['skin']; ?>"
              style="left: 20px; top: 30px; z-index: <?php echo $zindex + 1; ?>" id="sticker-<?php echo $row['id']; ?>">
             <img src="<?php echo WWW ?>/web-gallery/v2/images/icon_edit.gif" width="19" height="18" class="edit-button"

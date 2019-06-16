@@ -7,10 +7,10 @@ class Db
      */
     private static $connection;
 
-    public static function Init(array $config): void
+    public static function Init(string $host, string $user, string $pass, string $db): void
     {
         try {
-            self::$connection = new PDO('mysql:host=' . $config['host'] . ';dbname=' . $config['db'] . ';charset=utf8', $config['user'], $config['pass']);
+            self::$connection = new PDO('mysql:host=' . $host . ';dbname=' . $db . ';charset=utf8', $user, $pass);
             self::$connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (\Exception $ex) {
             self::Error($ex);

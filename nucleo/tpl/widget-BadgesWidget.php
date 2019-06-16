@@ -1,9 +1,9 @@
 <?php
-$count = dbquery("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '" . USER_ID . "'")->num_rows;
-$sql = dbquery("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '" . USER_ID . "' LIMIT 16");
+$count = db::query("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '" . USER_ID . "'")->rowCount();
+$sql = db::query("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '" . USER_ID . "' LIMIT 16");
 $desde = 1;
 $hasta = 16;
-$getBadges = dbquery("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '" . USER_ID . "' LIMIT 0,16")->num_rows;
+$getBadges = db::query("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '" . USER_ID . "' LIMIT 0,16")->rowCount();
 $n = $getBadges;
 $x = 0;
 while ($n >= 0) {
@@ -24,7 +24,7 @@ while ($n >= 0) {
                 <div id="badgelist-content">
                     <ul class="clearfix" style="height: 180px; ">
                         <?php
-                        while ($data = $sql->fetch_assoc()) {
+                        while ($data = $sql->fetch(2)) {
                             ?>
                             <li style="background-image: url(http://images.xukys-hotel.com/c_images/album1584/<?php echo $data['badge_id']; ?>.gif)"></li>
                             <?php

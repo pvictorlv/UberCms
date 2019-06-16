@@ -13,11 +13,11 @@ if (!isset($qryId) && LOGGED_IN) {
     header('Location: ' . WWW . '/');
 }
 
-$sql = dbquery("SELECT * FROM messenger_friendships WHERE user_two_id = '" . $user_id . "'");
-$count = $sql->num_rows;
+$sql = db::query("SELECT * FROM messenger_friendships WHERE user_two_id = '" . $user_id . "'");
+$count = $sql->rowCount();
 
-$get_em = dbquery("SELECT * FROM homes_items WHERE owner_id = '" . USER_ID . "' AND type < 4 LIMIT 200");
-$row = $get_em->fetch_assoc();
+$get_em = db::query("SELECT * FROM homes_items WHERE owner_id = '" . USER_ID . "' AND type < 4 LIMIT 200");
+$row = $get_em->fetch(2);
 
 ?>
 <div class="movable widget FriendsWidget" id="widget-%id%" style=" left: %pos-x%px; top: %pos-y%px; z-index: %pos-z%;">

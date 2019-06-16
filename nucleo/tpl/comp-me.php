@@ -17,13 +17,13 @@
         <div id="habbo-plate">
             <a href="%www%/identity/avatars">
                 <?php
-                if (strtolower(USER_MOTTO) == "crikey") {
+                if (strtolower(USER_MOTTO) === "crikey") {
                     $image = '/web-gallery/images/personal_info/sticker_croco.gif';
                     echo '<img alt="%habboName%"
                      src="/web-gallery/images/personal_info/sticker_croco.gif" style="margin-top: 55px"/>';
                 } else {
                     echo '<img alt="%habboName%"
-                     src="http://avatar-retro.com/habbo-imaging/avatarimage?figure=' . USER_LOOK . '&size=b&action=stand&direction=2&head_direction=2&gesture=sml&action=wav&size=m"/>';
+                     src="https://habbo.city/habbo-imaging/avatarimage?figure=' . USER_LOOK . '&size=b&action=stand&direction=2&head_direction=2&gesture=sml&action=wav&size=m"/>';
                 }
 
                 ?>
@@ -69,7 +69,7 @@
         <div id="habbo-feed">
             <ul id="feed-items">
                 <?php
-                $sql = dbquery("SELECT accept_trading FROM users WHERE id='" . USER_ID . "' ")->fetch_assoc()['accept_trading'];
+                $sql = db::query("SELECT accept_trading FROM users WHERE id=? ", USER_ID)->fetchColumn();
                 if ($sql == "1") {
                     echo
                     '<li class="small" id="feed-trading-enabled">Suas trocas estão ativas. <a href="%www%/profile">Clique aqui para mudar.</a></li>';
@@ -94,20 +94,16 @@
                         onlines
                         <span>
 <?php
-$result = dbquery("SELECT `user_two_id` FROM `messenger_friendships` WHERE `user_one_id` = '" . USER_ID . "'");
-$num = $result->num_rows;
-if ($num == 0) {
+$result = db::query("SELECT `user_two_id` FROM `messenger_friendships` WHERE `user_one_id` = ?", USER_ID);
 
-} else {
     $friends = array("online" => array(), "offline" => array());
-    while ($row = $result->fetch_array()) {
-        if ($users->Is_Online($row[0])) {
+    while ($row = $result->fetch(1)) {
+        if (uberUsers::Is_Online($row[0])) {
             $friends['online'][] = $users->Id2Name($row[0]);
         } else {
             $friends['offline'][] = $users->Id2Name($row[0]);
         }
     }
-
 
     if ($friends['online']) {
         echo "";
@@ -128,7 +124,7 @@ if ($num == 0) {
     }
 
 
-}
+
 
 ?>
 </span></li>

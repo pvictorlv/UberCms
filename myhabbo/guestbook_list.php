@@ -10,11 +10,11 @@ if (isset($_POST['ownerId']) && isset($_POST['lastEntryId']) && isset($_POST['wi
     $lastEntryId = filter($_POST['lastEntryId']);
     $widgetId = filter($_POST['widgetId']);
 
-    $sql = dbquery("SELECT * FROM cms_guestbook_entries WHERE home_id = '" . $ownerId . "' AND id < '" . $lastEntryId . "' ORDER BY id DESC LIMIT 20");
-    $last = dbquery("SELECT id FROM cms_guestbook_entries WHERE home_id = '" . $ownerId . "' AND id < '" . $lastEntryId . "' ORDER BY id ASC LIMIT 1")->fetch_assoc();
+    $sql = db::query("SELECT * FROM cms_guestbook_entries WHERE home_id = '" . $ownerId . "' AND id < '" . $lastEntryId . "' ORDER BY id DESC LIMIT 20");
+    $last = db::query("SELECT id FROM cms_guestbook_entries WHERE home_id = '" . $ownerId . "' AND id < '" . $lastEntryId . "' ORDER BY id ASC LIMIT 1")->fetch(2);
     $i = 0;
-    if ($sql->num_rows > 0) {
-        while ($data = $sql->fetch_assoc()) {
+    if ($sql->rowCount() > 0) {
+        while ($data = $sql->fetch(2)) {
             $i++;
             if (uberUsers::IsUserOnline($data['userid'])) {
                 $status = 'online';
@@ -43,7 +43,7 @@ if (isset($_POST['ownerId']) && isset($_POST['lastEntryId']) && isset($_POST['wi
 			<div class="guestbook-cleaner">&nbsp;</div>
 			<div class="guestbook-entry-footer metadata">' . $data['time'] . '</div>
 		</li>';
-            if ($i == $sql->num_rows) {
+            if ($i == $sql->rowCount()) {
                 if ($data['id'] == $last['id']) {
                     header('X-JSON: {"lastPage":"true"}');
                 } else {

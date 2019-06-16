@@ -11,10 +11,10 @@ if (isset($_POST['accountId']) && isset($_POST['tagName'])) {
         $accountId = USER_ID;
         $tagName = strtolower(filter(uberCore::FilterSpecialChars($_POST['tagName'])));
 
-        $sql = dbquery("SELECT id FROM users WHERE id = '" . $accountId . "' LIMIT 1");
-        if ($sql->num_rows > 0 && !empty($tagName) && strlen($tagName) <= 20) {
-            $getTags = dbquery("SELECT NULL FROM user_tags WHERE user_id = '" . $accountId . "'")->num_rows;
-            $alreadyTag = dbquery("SELECT NULL FROM user_tags WHERE tag = '" . $tagName . "' AND user_id = '" . $accountId . "'")->num_rows;
+        $sql = db::query("SELECT id FROM users WHERE id = '" . $accountId . "' LIMIT 1");
+        if ($sql->rowCount() > 0 && !empty($tagName) && strlen($tagName) <= 20) {
+            $getTags = db::query("SELECT NULL FROM user_tags WHERE user_id = '" . $accountId . "'")->rowCount();
+            $alreadyTag = db::query("SELECT NULL FROM user_tags WHERE tag = '" . $tagName . "' AND user_id = '" . $accountId . "'")->rowCount();
 
             if ($alreadyTag == 0 && $getTags < 20) {
                 $tagName = strtolower($tagName);

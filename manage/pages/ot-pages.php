@@ -44,7 +44,7 @@ if (!isset($_SESSION['OT_PAGE_CAT']))
 	}
 }
 
-$newOrderId = mysql_result(dbquery("SELECT order_num FROM catalog_pages WHERE parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' ORDER BY order_num DESC"), 0) + 1;
+$newOrderId = mysql_result(db::query("SELECT order_num FROM catalog_pages WHERE parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' ORDER BY order_num DESC"), 0) + 1;
 
 if (!isset($_GET['sq']))
 {
@@ -53,10 +53,10 @@ if (!isset($_GET['sq']))
 
 if (isset($_GET['new']))
 {
-	dbquery("INSERT INTO catalog_pages (parent_id,caption,icon_color,icon_image,visible,enabled,coming_soon,order_num,page_layout,page_text_details,page_headline) VALUES ('" . $_SESSION['OT_PAGE_CAT'] . "','', '0', '1', '1', '1', '0', '" . $newOrderId . "', 'default_3x3','Click on an item for more information.','catalog_frontpage_headline2_en')");
+	db::query("INSERT INTO catalog_pages (parent_id,caption,icon_color,icon_image,visible,enabled,coming_soon,order_num,page_layout,page_text_details,page_headline) VALUES ('" . $_SESSION['OT_PAGE_CAT'] . "','', '0', '1', '1', '1', '0', '" . $newOrderId . "', 'default_3x3','Click on an item for more information.','catalog_frontpage_headline2_en')");
 	fMessage('ok', 'New page stub added');
 
-	$newId = mysql_result(dbquery("SELECT id FROM catalog_pages ORDER BY id DESC LIMIT 1"), 0);
+	$newId = mysql_result(db::query("SELECT id FROM catalog_pages ORDER BY id DESC LIMIT 1"), 0);
 
 	header("Location: ./index.php?_cmd=ot-pages&edit=" . $newId);
 	exit;
@@ -70,7 +70,7 @@ if (isset($_GET['del']))
 if (isset($_GET['realdel']))
 {
 	fMessage('ok', 'Page deleted!');
-	dbquery("DELETE FROM catalog_pages WHERE id = '" . intval($_GET['realdel']) . "' AND parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' LIMIT 1");
+	db::query("DELETE FROM catalog_pages WHERE id = '" . intval($_GET['realdel']) . "' AND parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' LIMIT 1");
 	header("Location: ./index.php?_cmd=ot-pages&");
 	exit;
 }
@@ -81,7 +81,7 @@ $lockedVars = array('id','parent_id','type','gonew');
 if (isset($_GET['edit']))
 {
 	$i = intval($_GET['edit']);
-	$get = dbquery("SELECT * FROM catalog_pages WHERE id = '" . $i . "' AND parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' LIMIT 1");
+	$get = db::query("SELECT * FROM catalog_pages WHERE id = '" . $i . "' AND parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' LIMIT 1");
 
 	if (mysql_num_rows($get) == 0)
 	{
@@ -114,7 +114,7 @@ if (isset($_GET['edit']))
 				$qB .= $key . " = '" . filter($value) . "'";
 			}
 
-			dbquery("UPDATE catalog_pages SET " . $qB . " WHERE id = '" . intval($_GET['edit']) . "' LIMIT 1");
+			db::query("UPDATE catalog_pages SET " . $qB . " WHERE id = '" . intval($_GET['edit']) . "' LIMIT 1");
 			fMessage('ok', 'Updated item successfully');
 
 			if (isset($_POST['gonew']) && $_POST['gonew'] == "y")
@@ -148,7 +148,7 @@ if (isset($_POST['update-order']))
 
 		$id = intval(substr($key, 4));
 
-		dbquery("UPDATE catalog_pages SET order_num = '" . intval($value) . "' WHERE id = '" . $id .  "' AND parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' LIMIT 1");
+		db::query("UPDATE catalog_pages SET order_num = '" . intval($value) . "' WHERE id = '" . $id .  "' AND parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' LIMIT 1");
 	}
 
 	fMessage('ok', 'Updated page order.');
@@ -158,7 +158,7 @@ require_once "top.php";
 
 echo '<h1>Administrar pagina de catalogo</h1>';
 
-echo '<br />Editar categoria:<b>' . mysql_result(dbquery("SELECT caption FROM catalog_pages WHERE id = '" . $_SESSION['OT_PAGE_CAT'] . "' LIMIT 1"), 0) . '</b> (<a href="index.php?_cmd=ot-pages&unsetCat">Cambio</a>)';
+echo '<br />Editar categoria:<b>' . mysql_result(db::query("SELECT caption FROM catalog_pages WHERE id = '" . $_SESSION['OT_PAGE_CAT'] . "' LIMIT 1"), 0) . '</b> (<a href="index.php?_cmd=ot-pages&unsetCat">Cambio</a>)';
 echo '<br /><br /><hr /><br />';
 
 if ($data != null)
@@ -194,7 +194,7 @@ if ($data != null)
 	echo '<br /><hr /><Br />';
 }
 
-$getPages = dbquery("SELECT * FROM catalog_pages WHERE parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' ORDER BY order_num ASC");
+$getPages = db::query("SELECT * FROM catalog_pages WHERE parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' ORDER BY order_num ASC");
 
 echo '<a href="index.php?_cmd=ot-pages&new"><b>Generate new page stub</b></a><br /><br />';
 

@@ -15,7 +15,7 @@ function GetDescr($level)
 	}
 }
 
-$getGroups = dbquery("SELECT id,name FROM ranks WHERE id = 3 or id = 4 ORDER BY id DESC");
+$getGroups = db::query("SELECT id,name FROM ranks WHERE id = 3 or id = 4 ORDER BY id DESC");
 
 while ($group = mysql_fetch_assoc($getGroups))
 {
@@ -23,7 +23,7 @@ while ($group = mysql_fetch_assoc($getGroups))
 <div class="cbb clearfix blue ">
 <h2 class="title" >' . clean($group['name']) . 's</h2>';
 
-	$getMembers = dbquery("SELECT id,username,motto,look,online, last_online FROM users WHERE rank = '" . $group['id'] . "'");
+	$getMembers = db::query("SELECT id,username,motto,look,online, last_online FROM users WHERE rank = '" . $group['id'] . "'");
 
 	echo '<div class="box-content">';
 
@@ -56,11 +56,11 @@ while ($group = mysql_fetch_assoc($getGroups))
 						
 						$date = date('d-m-Y H:i:s', $member['last_online']);
 						
-					$getBadges = dbquery("SELECT * FROM user_badges WHERE user_id = '" . $member['id'] . "' AND badge_slot >= 1 ORDER BY badge_slot DESC LIMIT 1");
+					$getBadges = db::query("SELECT * FROM user_badges WHERE user_id = '" . $member['id'] . "' AND badge_slot >= 1 ORDER BY badge_slot DESC LIMIT 1");
 					
 					while ($b = mysql_fetch_assoc($getBadges))
 					{
-						echo "<b>Última conexión:</b> $date<br><br>&nbsp;";
+						echo "<b>ï¿½ltima conexiï¿½n:</b> $date<br><br>&nbsp;";
 						echo '<img src="http://images.kekolive.com/c_images/album1584/' . $b['badge_id'] . '.gif" style="float: left;">';
 					}
 						

@@ -11,7 +11,7 @@ echo "
     <link>" . WWW . "</link>
     <description>As Ultimas Noticias do Habbo Diretamente para Ca!</description>";
 
-$data = dbquery("SELECT * FROM site_news ORDER BY id DESC");
+$data = db::query("SELECT * FROM site_news ORDER BY id DESC");
 while ($row = mysql_fetch_array($data)) {
 
     echo "

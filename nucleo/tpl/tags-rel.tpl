@@ -6,7 +6,7 @@
     
     <?php
 
-$get = dbquery("SELECT tag, COUNT(id) AS quantity FROM user_tags GROUP BY tag ORDER BY quantity DESC LIMIT 20");
+$get = db::query("SELECT tag, COUNT(id) AS quantity FROM user_tags GROUP BY tag ORDER BY quantity DESC LIMIT 20");
 
 if (mysql_num_rows($get) > 0)
 {

@@ -8,7 +8,7 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_admin')) {
     exit;
 }
 
-$maintMode = dbquery("SELECT mantenimiento FROM configuracion LIMIT 1")->fetch_assoc()['mantenimiento'];
+$maintMode = db::query("SELECT maintenance FROM site_config LIMIT 1")->fetchColumn();
 
 if (isset($_GET['switch'])) {
     $newState = "1";
@@ -17,7 +17,7 @@ if (isset($_GET['switch'])) {
         $newState = "0";
     }
 
-    dbquery("UPDATE configuracion SET mantenimiento = '" . $newState . "' LIMIT 1");
+    db::query("UPDATE site_config SET maintenance = '" . $newState . "' LIMIT 1");
     $maintMode = $newState;
 }
 

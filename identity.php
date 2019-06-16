@@ -1,7 +1,7 @@
 <?php
 
 require_once "global.php";
-require_once "nucleo/recaptchalib.php";
+
 if (!LOGGED_IN) {
     header("Location: " . WWW . "/");
     exit;
@@ -48,7 +48,7 @@ $tpl->AddGeneric('check-name');
 
 switch ($type) {
     case "avatars":
-        dbquery("UPDATE `users` SET `real_name` = '" . $_SESSION['jjp']['login']['name'] . "' WHERE `mail` = '" . $_SESSION['jjp']['login']['email'] . "'");
+        db::query('UPDATE `users` SET `real_name` = ? WHERE `mail` = ?', $_SESSION['jjp']['login']['name'], $_SESSION['jjp']['login']['email']);
         $tpl->AddGeneric('identity-avatars');
         break;
 
@@ -59,10 +59,10 @@ switch ($type) {
 
     case "add_avatar_add":
         $userP = $_SESSION['UBER_USER_H'];
-        $userL = filter($_POST['bean_look']);
-        $userN = filter($_POST['bean_avatarName']);
+        $userL = ($_POST['bean_look']);
+        $userN = ($_POST['bean_avatarName']);
         $userE = $_SESSION['jjp']['login']['email'];
-        $gender = filter($_POST['bean_gender']);
+        $gender = ($_POST['bean_gender']);
 
         if (strlen($userN) < 1 and strlen($userN) > 32) {
             $errors = "Your name must be between 1 and 32 characters";
@@ -77,7 +77,7 @@ switch ($type) {
         if (!isset($errors)) {
             $userE = $_SESSION['jjp']['login']['email'];
             $users->Add($userN, $userP, $userE, 1, $userL, $gender);
-            dbquery("UPDATE `users` SET `real_name` = '" . $_SESSION['jjp']['login']['user'] . "' WHERE `mail` = '" . $_SESSION['jjp']['login']['email'] . "'");
+            db::query('UPDATE `users` SET `real_name` = ? WHERE `mail` = ?', $_SESSION['jjp']['login']['user'], $_SESSION['jjp']['login']['email']);
 
             $_SESSION['SHOW_WELCOME'] = true;
             $_SESSION['UBER_USER_N'] = $userN;
@@ -112,21 +112,27 @@ switch ($type) {
         break;
 
     case "password":
-        $tpl->SetParam('recaptcha_html', recaptcha_get_html("6Le-aQoAAAAAABnHRzXH_W-9-vx4B8oSP3_L5tb0"));
         $tpl->AddGeneric('identity-password');
         break;
 
     case "password_change":
         $userP = $_SESSION['UBER_USER_H'];
         $userE = $_SESSION['jjp']['login']['email'];
-        $userCP = filter($_POST['currentPassword']);
-        $userNP = filter($_POST['newPassword']);
-        $userNPA = filter($_POST['retypedNewPassword']);
+        $userCP = ($_POST['currentPassword']);
+        $userNP = ($_POST['newPassword']);
+        $userNPA = ($_POST['retypedNewPassword']);
 
-        $resp = recaptcha_check_answer('6Le-aQoAAAAAAKaqhlUT0lAQbjqokPqmj0F1uvQm', USER_IP, $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
-        if (!$resp->is_valid) {
-            $error = "Código captcha incorreto";
-        } else if ($userP <> $userCP) {
+        if (isset($_POST['g-recaptcha-response'])) {
+            $secret = '6Ld8ShAUAAAAAIw7whfmYKjtFBMmtWdHdhfi1pTX';
+            $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $_POST['g-recaptcha-response']);
+            $responseData = json_decode($verifyResponse);
+            if (!$responseData->success)
+                $error = 'Código inválido';
+        } else {
+            $error = 'Preencha todos os campos';
+        }
+
+       if ($userP <> $userCP) {
             $error = "A senha digitada não é correta";
         } else if ($userNP <> $userNPA) {
             $error = "As senhas não conferem";
@@ -135,7 +141,7 @@ switch ($type) {
             $error = "Sua nova senha é muito curta";
         } else if (!isset($error)) {
             $newPass = $userNP;
-            $result = dbquery("UPDATE `users` SET `password` = '" . $newPass . "' WHERE `mail` = '" . $userE . "'");
+            $result = db::query("UPDATE `users` SET `password` = '" . $newPass . "' WHERE `mail` = '" . $userE . "'");
             if ($result) {
                 $_SESSION['UBER_USER_H'] = $newPass;
                 header("Location: " . WWW . "/identity/settings&passwordChanged=true");
@@ -150,16 +156,19 @@ switch ($type) {
         break;
 
     case "email":
-        $tpl->SetParam('recaptcha_html', recaptcha_get_html("6Le-aQoAAAAAABnHRzXH_W-9-vx4B8oSP3_L5tb0"));
+        $tpl->AddGeneric('identity-email');
+        break;
+
+    case "mail_change":
         $tpl->AddGeneric('identity-email');
         break;
 
     case "add_email":
         $userP = $_SESSION['UBER_USER_H'];
         $userE = $_SESSION['jjp']['login']['email'];
-        $userCP = filter($_POST['currentPassword']);
-        $userNP = filter($_POST['newPassword']);
-        $userNPA = filter($_POST['retypedNewPassword']);
+        $userCP = ($_POST['currentPassword']);
+        $userNP = ($_POST['newPassword']);
+        $userNPA = ($_POST['retypedNewPassword']);
 
         $resp = recaptcha_check_answer('6Le-aQoAAAAAAKaqhlUT0lAQbjqokPqmj0F1uvQm', USER_IP, $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
         if (!$resp->is_valid) {
@@ -173,7 +182,7 @@ switch ($type) {
             $error = "Your new password is too short";
         } else if (!isset($error)) {
             $newPass = $userNP;
-            $result = dbquery("UPDATE `users` SET `password` = '" . $newPass . "' WHERE `mail` = '" . $userE . "'");
+            $result = db::query("UPDATE `users` SET `password` = '" . $newPass . "' WHERE `mail` = '" . $userE . "'");
             if ($result) {
                 $_SESSION['UBER_USER_H'] = $newPass;
                 header("Location: " . WWW . "/identity/settings&passwordChanged=true");

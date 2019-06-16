@@ -12,7 +12,7 @@ function GetDescr($level)
     }
 }
 
-$getGroups = dbquery("SELECT id,name FROM ranks WHERE id = 1");
+$getGroups = db::query("SELECT id,name FROM ranks WHERE id = 1");
 
 while ($group = mysql_fetch_assoc($getGroups))
 {    
@@ -22,7 +22,7 @@ while ($group = mysql_fetch_assoc($getGroups))
                             <h2 class="title">Tous mes avatars
                             </h2>
                             <div id="avatar-selector-habblet">';
-    $getMembers = dbquery("SELECT `id`,`username`,`last_online`,`look`,`password` FROM `users` WHERE `mail` = '".$_SESSION['jjp']['login']['email']."'");
+    $getMembers = db::query("SELECT `id`,`username`,`last_online`,`look`,`password` FROM `users` WHERE `mail` = '".$_SESSION['jjp']['login']['email']."'");
     
     echo'<ul>';
     

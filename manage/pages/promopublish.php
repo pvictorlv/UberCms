@@ -25,7 +25,7 @@ if (isset($_POST['content']))
 	}
 	else
 	{
-		dbquery("INSERT INTO site_promo (title,category_id,seo_link,topstory_image,body,snippet,datestr,timestamp) VALUES ('" . $title . "','" . $category . "','" . $seoUrl . "','" . $topstory . "','" . $content . "','" . $teaser . "','" . date('d-M-Y') . "', '" . time() . "')");
+		db::query("INSERT INTO site_promo (title,category_id,seo_link,topstory_image,body,snippet,datestr,timestamp) VALUES ('" . $title . "','" . $category . "','" . $seoUrl . "','" . $topstory . "','" . $content . "','" . $teaser . "','" . date('d-M-Y') . "', '" . time() . "')");
 		fMessage('ok', 'Promo article published.');
 		
 		header("Location: index.php?_cmd=promo");
@@ -78,14 +78,14 @@ tinyMCE.init({
 </head>
 <div class="wrap"> 
 	<div id="icon-edit" class="icon32"><br /></div> 
-<h2>Adicionar nova promoção</h2>  <img src="images/packi/typo.gif" style="float: right;">
+<h2>Adicionar nova promoï¿½ï¿½o</h2>  <img src="images/packi/typo.gif" style="float: right;">
 
 <form method="post">
 
 
 <div style="float: left;">
 <div class="wrap"> 
-<strong>Titúlo da promoção</strong><br />
+<strong>Titï¿½lo da promoï¿½ï¿½o</strong><br />
 <input type="text" value="<?php if (isset($_POST['title'])) { echo clean($_POST['title']); } ?>" name="title" size="50" onkeyup="suggestSEO(this.value);" style="padding: 5px; font-size: 130%;"><br />
 
 
@@ -156,14 +156,14 @@ tinyMCE.init({
 
 
 <div id="authordiv" class="postbox " > 
-<div class="handlediv" title="Clique para expandir ou recolher."><br /></div><h3 class='hndle'><span>Categoria da Promoção</span></h3> 
+<div class="handlediv" title="Clique para expandir ou recolher."><br /></div><h3 class='hndle'><span>Categoria da Promoï¿½ï¿½o</span></h3> 
 <div class="inside"> 
-<label class="screen-reader-text" for="post_author_override">Categoria da Promoção</label><select name='post_author_override' id='post_author_override' class=''> 
+<label class="screen-reader-text" for="post_author_override">Categoria da Promoï¿½ï¿½o</label><select name='post_author_override' id='post_author_override' class=''> 
 <strong>Categoria:</strong><br />
 <select name="category">
 <?php
 
-$getOptions = dbquery("SELECT * FROM site_promo_categories ORDER BY caption ASC");
+$getOptions = db::query("SELECT * FROM site_promo_categories ORDER BY caption ASC");
 
 while ($option = mysql_fetch_assoc($getOptions))
 {

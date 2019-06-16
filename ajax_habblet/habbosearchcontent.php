@@ -57,15 +57,15 @@ function searchHabbos($tag)
     if (!isset($_POST['pageNumber'])) {
         $pg = 0;
     } else {
-        $pg = $_POST['pageNumber'];
+        $pg = (int) $_POST['pageNumber'];
     }
     $pag2 = $pg * 10;
-    $buscarhabbo = dbquery("SELECT id,last_online,motto,username,look FROM users WHERE username LIKE '%" . $tag . "%' LIMIT $pag2, 10");
-    if ($buscarhabbo->num_rows > 0) {
+    $buscarhabbo = db::query("SELECT id,last_online,motto,username,look FROM users WHERE username LIKE ? LIMIT $pag2, 10", "%$tag%");
+    if ($buscarhabbo->rowCount()) {
         $net = '<ul class="habblet-list">';
         $m = 0;
-        while ($datoshabbo = $buscarhabbo->fetch_assoc()) {
-            $amigosdehabbo = dbquery("SELECT * FROM messenger_friendships WHERE user_one_id = '" . USER_ID . "' AND user_two_id = '" . $datoshabbo['id'] . "'");
+        while ($datoshabbo = $buscarhabbo->fetch(2)) {
+            $amigosdehabbo = db::query("SELECT * FROM messenger_friendships WHERE user_one_id = '" . USER_ID . "' AND user_two_id = ?", $datoshabbo['id']);
             if ($m % 2 == 0)
                 $color = "even";
             else
@@ -82,10 +82,10 @@ function searchHabbos($tag)
                 $hace = $datoshabbo['last_online'];
             }
             $look = $datoshabbo['look'];
-            $net .= '<li style="background-image: url(http://avatar-retro.com/habbo-imaging/avatarimage.php?figure=' . $look . '&size=s)" homeurl="/home/' . $datoshabbo['username'] . '" class="' . $color . ' offline">';
+            $net .= '<li style="background-image: url(https://habbo.city/habbo-imaging/avatarimage?figure=' . $look . '&size=s)" homeurl="/home/' . $datoshabbo['username'] . '" class="' . $color . ' offline">';
             $net .= '<div class="item"><b>' . $datoshabbo['username'] . '</b><br>' . $datoshabbo['motto'] . '</div>';
             $net .= '<div class="lastlogin"><b>&#218;ltimo acceso</b><br><span title="' . $acceso . '">' . $hace . '</span></div>';
-            if ($amigosdehabbo->num_rows <= 0 && ($datoshabbo['id'] != USER_ID))
+            if ($amigosdehabbo->rowCount() <= 0 && ($datoshabbo['id'] != USER_ID))
                 $net .= '<div class="tools"><a title="Adicionar  ' . $datoshabbo['username'] . ' a sua lista de amigos" avatarid="' . $datoshabbo['id'] . '" class="add" href="#"></a></div>';
             $net .= '<div class="clear"></div></li>';
             $m++;
@@ -94,10 +94,10 @@ function searchHabbos($tag)
     } else {
         $net = "Nenhum usuário encontrado";
     }
-    $dato1 = dbquery("SELECT NULL FROM users WHERE username LIKE '%" . $tag . "%'");
-    $dato = $dato1->num_rows / 10;
-    if (substr($dato, strlen($dato) - 2, strlen($dato) - 1) == ".9" or ".8" or ".7" or ".6" or ".5" or ".4" or ".3" or ".2" or ".1")
-        $dato = substr($dato, 0, strlen($dato) - 2) + 1;
+    $dato1 = db::query("SELECT count(id) FROM users WHERE username LIKE ?", "%$tag%")->fetchColumn();
+    $dato = $dato1 / 10;
+    if (substr($dato, strlen($dato) - 2, strlen($dato) - 1) === ".9" or ".8" or ".7" or ".6" or ".5" or ".4" or ".3" or ".2" or ".1")
+        $dato = substr($dato, 0, -2) + 1;
 
     if ($dato != 1) {
         $net .= '<div id="habblet-paging-avatar-habblet-list-container"><p class="paging-navigation" id="avatar-habblet-list-container-list-paging">';
@@ -114,7 +114,7 @@ function searchHabbos($tag)
 if (!isset($_POST['searchString'])) {
     $string = "";
 } else {
-    $string = filter($_POST['searchString']);
+    $string = $_POST['searchString'];
 }
 echo searchHabbos($string);
 

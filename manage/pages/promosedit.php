@@ -24,7 +24,7 @@ if (isset($_POST['edit']))
 		$order = 0;
 	}
 	
-	dbquery("UPDATE site_promos SET imagen = '" . $image . "', titulo = '" . $titulo . "', cuerpo = '" . $cuerpo . "'WHERE orden = '" . $orden . "' LIMIT 1");
+	db::query("UPDATE site_promos SET imagen = '" . $image . "', titulo = '" . $titulo . "', cuerpo = '" . $cuerpo . "'WHERE orden = '" . $orden . "' LIMIT 1");
 	fMessage('ok', 'Updated campaign.');
 }
 
@@ -38,7 +38,7 @@ require_once "top.php";
 <br />
 
 <p>
-	Puedes utilizar esta Herramienta para Editar Las "Promos". Estas son las Imágenes del ME.
+	Puedes utilizar esta Herramienta para Editar Las "Promos". Estas son las Imï¿½genes del ME.
 </p>
 <br>
 <h2>Manejar elementos</h2>
@@ -57,7 +57,7 @@ require_once "top.php";
 <tbody>
 <?php
 
-$getItems = dbquery("SELECT * FROM site_promos");
+$getItems = db::query("SELECT * FROM site_promos");
 
 while ($item = mysql_fetch_assoc($getItems))
 {

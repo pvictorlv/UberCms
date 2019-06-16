@@ -6,9 +6,9 @@ $qryId = 0;
 $userData = null;
 
 if (isset($_GET['qryName'])) {
-    $qryId = $users->Name2id(filter($_GET['qryName']));
+    $qryId = $users->Name2id(($_GET['qryName']));
 } else if (isset($_GET['qryId']) && is_numeric($_GET['qryId'])) {
-    $qryId = (int)filter($_GET['qryId']);
+    $qryId = (int)($_GET['qryId']);
 }
 
 if ($qryId <= 0 || !$users->IdExists($qryId)) {
@@ -25,7 +25,7 @@ if (!HomesManager::HomeExists('user', $qryId)) {
     HomesManager::CreateHome('user', $qryId);
 }
 
-$userData = dbquery("SELECT username FROM users WHERE id = '" . $qryId . "' LIMIT 1")->fetch_assoc();
+$userData = db::query("SELECT username FROM users WHERE id = ? LIMIT 1", $qryId)->fetch(2);
 $homeData = HomesManager::GetHome(HomesManager::GetHomeId('user', $qryId));
 
 $tpl->Init();

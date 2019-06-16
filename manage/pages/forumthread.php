@@ -12,10 +12,10 @@ $t = null;
 
 if (isset($_GET['i']) && is_numeric($_GET['i'])) {
     $i = intval($_GET['i']);
-    $s = dbquery("SELECT * FROM moderation_forum_threads WHERE id = '" . $i . "' LIMIT 1");
+    $s = db::query("SELECT * FROM moderation_forum_threads WHERE id = '" . $i . "' LIMIT 1");
 
-    if ($s->num_rows >= 1) {
-        $t = $s->fetch_assoc();
+    if ($s->rowCount() >= 1) {
+        $t = $s->fetch(2);
     }
 }
 
@@ -30,10 +30,10 @@ if ($t['locked'] == "0" && isset($_POST['msg'])) {
         die("Message is too short. Please post something worthwhile.");
     }
 
-    dbquery("INSERT INTO moderation_forum_replies (thread_id,poster,date,message) VALUES ('" . $t['id'] . "','" . HK_USER_NAME . "','" . date('j F Y h:i A') . "','" . $msg . "')");
+    db::query("INSERT INTO moderation_forum_replies (thread_id,poster,date,message) VALUES ('" . $t['id'] . "','" . HK_USER_NAME . "','" . date('j F Y h:i A') . "','" . $msg . "')");
 
     if ($t['timestamp'] < 99999999999) {
-        dbquery("UPDATE moderation_forum_threads SET timestamp = '" . time() . "' WHERE id = '" . $t['id'] . "' LIMIT 1");
+        db::query("UPDATE moderation_forum_threads SET timestamp = '" . time() . "' WHERE id = '" . $t['id'] . "' LIMIT 1");
     }
 
     header("Location: index.php?_cmd=forumthread&i=" . $t['id']);
@@ -56,29 +56,29 @@ if (isset($_POST['opt'])) {
 
             fMessage('ok', 'Thread ' . $l . '.');
 
-            dbquery("UPDATE moderation_forum_threads SET locked = '" . $newState . "' WHERE id = '" . $t['id'] . "' LIMIT 1");
+            db::query("UPDATE moderation_forum_threads SET locked = '" . $newState . "' WHERE id = '" . $t['id'] . "' LIMIT 1");
             break;
 
         case 'stick':
 
             fMessage('ok', 'Thread stickied.');
 
-            dbquery("UPDATE moderation_forum_threads SET timestamp = '99999999999' WHERE id = '" . $t['id'] . "' LIMIT 1");
+            db::query("UPDATE moderation_forum_threads SET timestamp = '99999999999' WHERE id = '" . $t['id'] . "' LIMIT 1");
             break;
 
         case 'bump':
 
             fMessage('ok', 'Thread updated.');
 
-            dbquery("UPDATE moderation_forum_threads SET timestamp = '" . time() . "' WHERE id = '" . $t['id'] . "' LIMIT 1");
+            db::query("UPDATE moderation_forum_threads SET timestamp = '" . time() . "' WHERE id = '" . $t['id'] . "' LIMIT 1");
             break;
 
         case 'del';
 
             fMessage('ok', 'Thread deleted.');
 
-            dbquery("DELETE FROM moderation_forum_threads WHERE id = '" . $t['id'] . "' LIMIT 1");
-            dbquery("DELETE FROM moderation_forum_replies WHERE thread_id = '" . $t['id'] . "'");
+            db::query("DELETE FROM moderation_forum_threads WHERE id = '" . $t['id'] . "' LIMIT 1");
+            db::query("DELETE FROM moderation_forum_replies WHERE thread_id = '" . $t['id'] . "'");
             break;
     }
 
@@ -149,14 +149,14 @@ require_once "top.php";
 
 <?php
 
-$getReplies = dbquery("SELECT * FROM moderation_forum_replies WHERE thread_id = '" . $t['id'] . "'");
+$getReplies = db::query("SELECT * FROM moderation_forum_replies WHERE thread_id = '" . $t['id'] . "'");
 
 echo '<br />';
 
-if ($getReplies->num_rows >= 1) {
+if ($getReplies->rowCount() >= 1) {
     echo '<b style="font-size: 125%;">Replies</b>';
 
-    while ($r = $getReplies->fetch_assoc()) {
+    while ($r = $getReplies->fetch(2)) {
         echo '<h2 style="font-weight: normal; padding: 8px;">';
         echo '<p><B><small>' . $r['poster'] . ' replied:</small></B></p><br />';
         echo '<p style="padding: 5px;">' . nl2br(clean($r['message'])) . '</p><br />';

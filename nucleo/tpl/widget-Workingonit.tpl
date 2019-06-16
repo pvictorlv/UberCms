@@ -1,6 +1,6 @@
 <?php
 
-$getUser = dbquery("SELECT id,username,online,account_created,look,motto FROM users WHERE id = '" . $user_id . "' LIMIT 1");
+$getUser = db::query("SELECT id,username,online,account_created,look,motto FROM users WHERE id = '" . $user_id . "' LIMIT 1");
 
 if (mysql_num_rows($getUser) < 0)
 {
@@ -32,7 +32,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
 	</div> 
 	<div class="widget-body"> 
 		<div class="widget-content"> 
-		<center>¡Estamos trabajando en este elemento en estos instantes! </center>
+		<center>ï¿½Estamos trabajando en este elemento en estos instantes! </center>
 		</div> 
 	</div> 
 </div> 

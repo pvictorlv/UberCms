@@ -45,8 +45,8 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
 
                 global $users;
                 $name = $users->GetUserVar($qryId, 'username');
-                $roomsql = dbquery("SELECT id,caption,state FROM rooms WHERE owner = '" . $name . "'");
-                if ($roomsql->num_rows >= 1) {
+                $roomsql = db::query("SELECT id,caption,state FROM rooms WHERE owner = '" . $name . "'");
+                if ($roomsql->rowCount() >= 1) {
 
                     ?>
 
@@ -56,10 +56,10 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                             <?php
 
                             $i = 0;
-                            while ($room = $roomsql->fetch_assoc()) {
+                            while ($room = $roomsql->fetch(2)) {
                                 $i++;
 
-                                if ($roomsql->num_rows == $i) {
+                                if ($roomsql->rowCount() == $i) {
                                     $asdf = " ";
                                 } else {
                                     $asdf = "\"class=\"dotted-line\"";

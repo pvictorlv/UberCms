@@ -9,7 +9,7 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_housekeeping_sitemanagement
 }
 
 if (isset($_GET['doDel']) && is_numeric($_GET['doDel'])) {
-    $q = dbquery("DELETE FROM site_news WHERE id = '" . filter($_GET['doDel']) . "' LIMIT 1");
+    $q = db::query("DELETE FROM site_news WHERE id = '" . filter($_GET['doDel']) . "' LIMIT 1");
 
     fMessage('ok', 'Article deleted.');
 
@@ -19,7 +19,7 @@ if (isset($_GET['doDel']) && is_numeric($_GET['doDel'])) {
 }
 
 if (isset($_GET['doBump']) && is_numeric($_GET['doBump'])) {
-    dbquery("UPDATE site_news SET datestr = '" . date('d-M-Y') . "', TIMESTAMP = '" . time() . "' WHERE id = '" . intval($_GET['doBump']) . "' LIMIT 1");
+    db::query("UPDATE site_news SET datestr = '" . date('d-M-Y') . "', TIMESTAMP = '" . time() . "' WHERE id = '" . intval($_GET['doBump']) . "' LIMIT 1");
 
     fMessage('ok', 'Article date bumped.');
 
@@ -62,10 +62,10 @@ require_once "top.php";
         <tbody>
         <?php
 
-        $getNews = dbquery("SELECT * FROM site_news ORDER BY timestamp DESC");
+        $getNews = db::query("SELECT * FROM site_news ORDER BY timestamp DESC");
         $i = 1;
 
-        while ($n = $getNews->fetch_assoc()) {
+        while ($n = $getNews->fetch(2)) {
             $highlight = '#fff';
 
             if ($i <= 3) {
@@ -78,7 +78,7 @@ require_once "top.php";
 	<td>' . $n['id'] . '</td>
 	<td>' . clean($n['title']) . '</td>
 	<td>' . clean($n['snippet']) . '</td>
-	<td>' . dbquery("SELECT caption FROM site_news_categories WHERE id = '" . $n['category_id'] . "' LIMIT 1")->fetch_assoc()['caption'] . '</td>
+	<td>' . db::query("SELECT caption FROM site_news_categories WHERE id = '" . $n['category_id'] . "' LIMIT 1")->fetch(2)['caption'] . '</td>
 	<td>' . $n['datestr'] . '</td>
 	<td>
 		<input type="button" value="Ver" onclick="document.location = \'' . WWW . '/articles/' . $n['id'] . '-' . $n['seo_link'] . '\';">&nbsp;

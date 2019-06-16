@@ -8,15 +8,15 @@ $rate = filter($_GET['givenRate']);
 
 
 if (is_numeric($ownerid) && is_numeric($widgetid) && is_numeric($rate)) {
-    $myvote = $db->result(dbquery("SELECT COUNT(*) FROM " . PREFIX . "ratings WHERE raterid = '" . $user->id . "' AND userid = '" . $ownerid . "'"));
+    $myvote = $db->result(db::query("SELECT COUNT(*) FROM " . PREFIX . "ratings WHERE raterid = '" . $user->id . "' AND userid = '" . $ownerid . "'"));
     if ($myvote < 1 && $ownerid != $user->id && $rate > 0 && $rate < 6) {
-        dbquery("INSERT INTO " . PREFIX . "ratings (userid,rating,raterid) VALUES ('" . $ownerid . "','" . $rate . "','" . $user->id . "')");
+        db::query("INSERT INTO " . PREFIX . "ratings (userid,rating,raterid) VALUES ('" . $ownerid . "','" . $rate . "','" . $user->id . "')");
     }
 }
 
-$totalvotes = dbquery("SELECT COUNT(*) FROM " . PREFIX . "ratings WHERE userid = '" . $ownerid . "'");
-$highvotes = dbquery("SELECT COUNT(*) FROM " . PREFIX . "ratings WHERE userid = '" . $ownerid . "' AND rating > 3");
-$votestally = dbquery("SELECT SUM(rating) FROM " . PREFIX . "ratings WHERE userid = '" . $ownerid . "'");
+$totalvotes = db::query("SELECT COUNT(*) FROM " . PREFIX . "ratings WHERE userid = '" . $ownerid . "'");
+$highvotes = db::query("SELECT COUNT(*) FROM " . PREFIX . "ratings WHERE userid = '" . $ownerid . "' AND rating > 3");
+$votestally = db::query("SELECT SUM(rating) FROM " . PREFIX . "ratings WHERE userid = '" . $ownerid . "'");
 
 $x = $totalvotes;
 if ($x == 0) {

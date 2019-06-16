@@ -13,11 +13,11 @@ if (!isset($qryId) && LOGGED_IN) {
     header('Location: ' . WWW . '/');
 }
 
-$group = dbquery("SELECT NULL FROM groups_memberships WHERE userid = '" . USER_ID . "' LIMIT 1");
-$groups = $group->num_rows;
+$group = db::query("SELECT NULL FROM groups_memberships WHERE userid = '" . USER_ID . "' LIMIT 1");
+$groups = $group->rowCount();
 
-$get_em = dbquery("SELECT * FROM homes_items WHERE owner_id = '" . USER_ID . "' AND type < 4 LIMIT 200");
-$row = $get_em->fetch_assoc();
+$get_em = db::query("SELECT * FROM homes_items WHERE owner_id = '" . USER_ID . "' AND type < 4 LIMIT 200");
+$row = $get_em->fetch(2);
 
 ?>
 
@@ -47,13 +47,13 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
 
                         <?php
 
-                        $get_groups = dbquery("SELECT * FROM groups_memberships WHERE userid = '" . USER_ID . "'") or die(mysql_error());
+                        $get_groups = db::query("SELECT * FROM groups_memberships WHERE userid = '" . USER_ID . "'") or die(mysql_error());
 
-                        if ($get_groups->num_rows > 0) {
-                            while ($members_row = $get_groups->fetch_assoc()) {
+                        if ($get_groups->rowCount() > 0) {
+                            while ($members_row = $get_groups->fetch(2)) {
 
-                                $get_groupdata = dbquery("SELECT * FROM groups_details WHERE id = '" . $members_row['groupid'] . "' LIMIT 1") or die(mysql_error());
-                                $grouprow = $get_groupdata->fetch_assoc();
+                                $get_groupdata = db::query("SELECT * FROM groups_details WHERE id = '" . $members_row['groupid'] . "' LIMIT 1") or die(mysql_error());
+                                $grouprow = $get_groupdata->fetch(2);
 
                                 ?>
 

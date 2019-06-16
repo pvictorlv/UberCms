@@ -11,7 +11,7 @@ if (isset($_POST['ownerId']) && isset($_POST['message']) && isset($_POST['scope'
 
     if (is_numeric($ownerId) && is_numeric($widgetId)) {
 
-        dbquery("INSERT INTO cms_guestbook_entries (id, message, time, home_id, userid) VALUES (NULL, '" . $message . "', '" . $_SESSION['Guestbook_posted_on'] . "', '" . $ownerId . "', '" . USER_ID . "');");
+        db::query("INSERT INTO cms_guestbook_entries (id, message, time, home_id, userid) VALUES (NULL, '" . $message . "', '" . $_SESSION['Guestbook_posted_on'] . "', '" . $ownerId . "', '" . USER_ID . "');");
         ?>
 
         <li id="guestbook-entry--1" class="guestbook-entry">

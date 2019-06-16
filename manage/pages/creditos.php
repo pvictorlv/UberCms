@@ -12,7 +12,7 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_housekeeping_sitemanagement
 
 if (isset($_POST['usuario']))
 {   $usuario = filter($_POST['usuario']);
-	$creditos_actuales = dbquery("SELECT credits FROM users WHERE username = '". $usuario ."'");	
+	$creditos_actuales = db::query("SELECT credits FROM users WHERE username = '". $usuario ."'");	
 	$creditos = filter($_POST['creditos']);
 	$creditos_totales = $creditos_actuales + $creditos;
 	
@@ -22,7 +22,7 @@ if (isset($_POST['usuario']))
 	}
 	else
 	{
-		dbquery("UPDATE `users` SET `credits` = '". $creditos_totales ."' WHERE `username` = '". $usuario ."';");
+		db::query("UPDATE `users` SET `credits` = '". $creditos_totales ."' WHERE `username` = '". $usuario ."';");
 		fMessage('ok', 'Nuevo articulo publicdado.');
 		
 		header("Location: index.php?_cmd=news");
@@ -34,7 +34,7 @@ require_once "top.php";
 
 ?>			
 
-<h1>Añadir Créditos</h1>
+<h1>Aï¿½adir Crï¿½ditos</h1>
 <form method="post">
 
 <br />

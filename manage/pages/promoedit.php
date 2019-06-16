@@ -15,7 +15,7 @@ $data = null;
 if (isset($_GET['u']) && is_numeric($_GET['u']))
 {
 	$u = intval($_GET['u']);
-	$getData = dbquery("SELECT * FROM site_promo WHERE id = '" . $u . "' LIMIT 1");
+	$getData = db::query("SELECT * FROM site_promo WHERE id = '" . $u . "' LIMIT 1");
 	
 	if (mysql_num_rows($getData) > 0)
 	{
@@ -44,7 +44,7 @@ if (isset($_POST['content']))
 	}
 	else
 	{
-		dbquery("UPDATE site_promo SET title = '" . $title . "', category_id = '" . $category . "', topstory_image = '" . $topstory . "', body = '" . $content . "', snippet = '" . $teaser . "' WHERE id = '" . $data['id'] . "' LIMIT 1");
+		db::query("UPDATE site_promo SET title = '" . $title . "', category_id = '" . $category . "', topstory_image = '" . $topstory . "', body = '" . $content . "', snippet = '" . $teaser . "' WHERE id = '" . $data['id'] . "' LIMIT 1");
 		fMessage('ok', 'News article updated.');
 		
 		header("Location: index.php?_cmd=news");
@@ -116,7 +116,7 @@ function previewTS(el)
 
 <div style="float: left;">
 <div class="wrap"> 
-<strong>Titúlo da promoção:</strong><br />
+<strong>Titï¿½lo da promoï¿½ï¿½o:</strong><br />
 <input type="text" value="<?php if (isset($_POST['title'])) { echo clean($_POST['title']); } ?>" name="title" size="50" onkeyup="suggestSEO(this.value);" style="padding: 5px; font-size: 130%;"><br />
 
 
@@ -179,20 +179,20 @@ function previewTS(el)
 <textarea name="teaser" cols="48" rows="5" id="excerpt" style="padding: 5px; font-size: 120%;"><?php if (isset($_POST['teaser'])) { echo clean($_POST['teaser']); } ?></textarea><br />
 <br />
 
-<p>Frontpage são pequenas descrições do conteúdo do seu post feitas manualmente que podem ser usadas em seu tema.</p> 
+<p>Frontpage sï¿½o pequenas descriï¿½ï¿½es do conteï¿½do do seu post feitas manualmente que podem ser usadas em seu tema.</p> 
 </div> 
 </div> 
 
 
 <div id="authordiv" class="postbox " > 
-<div class="handlediv" title="Clique para expandir ou recolher."><br /></div><h3 class='hndle'><span>Categoria da Notícia</span></h3> 
+<div class="handlediv" title="Clique para expandir ou recolher."><br /></div><h3 class='hndle'><span>Categoria da Notï¿½cia</span></h3> 
 <div class="inside"> 
-<label class="screen-reader-text" for="post_author_override">Categoria da Notícia</label><select name='post_author_override' id='post_author_override' class=''> 
+<label class="screen-reader-text" for="post_author_override">Categoria da Notï¿½cia</label><select name='post_author_override' id='post_author_override' class=''> 
 <strong>Category:</strong><br />
 <select name="category">
 <?php
 
-$getOptions = dbquery("SELECT * FROM site_promo_categories ORDER BY caption ASC");
+$getOptions = db::query("SELECT * FROM site_promo_categories ORDER BY caption ASC");
 
 while ($option = mysql_fetch_assoc($getOptions))
 {

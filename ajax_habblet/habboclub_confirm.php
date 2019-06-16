@@ -5,7 +5,7 @@ if (isset($_POST['optionNumber'])) {
     if ($plantogive == "1") {
         $price = "15";
         $dias = "31";
-        $image = "%www%/web-gallery/v2/images/habboclub_basic_small.png";
+        $image = "/web-gallery/v2/images/habboclub_basic_small.png";
         $text = "Habbo Club";
         $money = "Cr&#233;ditos";
 

@@ -2,7 +2,7 @@
 
 $facebook_app = "85d1933e500252ed51d4a5471642e***";
 
-$config['Site']['www'] = "http://localhost";
+$config['Site']['www'] = "http://localhost:8080";
 $config['Site']['hash_secret'] = "xCg532%@%gdvf^5DGaa6&*rFTfg^FD4\$OIFThrR_gh(ugf*/";
 
 $config['MySQL']['hostname'] = "127.0.0.1";

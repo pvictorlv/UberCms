@@ -9,7 +9,9 @@ require_once "global.php";
 if (!LOGGED_IN) {
     header("Location: " . WWW . "/");
     exit;
-} else if ($users->GetUserVar(USER_ID, 'room_created') == "0") {
+}
+
+if ($users->GetUserVar(USER_ID, 'room_created') === "0") {
     header("Location: " . WWW . "/register/welcome");
     exit;
 }
@@ -44,8 +46,8 @@ $tpl->Write('<div id="column1" class="column">');
 $compMe = new Template('comp-me');
 define('USER_LOOK', $users->GetUserVar(USER_ID, 'look'));
 $compMe->SetParam('look', USER_LOOK);
-$motto = $users->GetUserVar(USER_ID, 'motto');
-define('USER_MOTTO', (empty($motto)) ? "Qual seu pensamento de hoje?" : $motto);
+$motto = $users->GetUserVar(USER_ID, 'motto', false);
+define('USER_MOTTO', empty($motto) ? "Qual seu pensamento de hoje?" : $motto);
 $compMe->SetParam('motto', USER_MOTTO);
 $compMe->SetParam('creditsBalance', (int)$users->GetUserVar(USER_ID, 'credits'));
 $compMe->SetParam('pixelsBalance', (int)$users->GetUserVar(USER_ID, 'activity_points'));

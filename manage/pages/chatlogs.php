@@ -48,7 +48,7 @@ if (isset($_POST['searchQuery'])) {
             $q .= "timestamp >= " . $cutMin . " AND timestamp <= " . $cutMax;
     }
 
-    $searchResults = dbquery($q);
+    $searchResults = db::query($q);
 }
 
 require_once "top.php";
@@ -147,9 +147,9 @@ if (isset($searchResults)) {
 	</tr>
 	<tbody>';
 
-    $getRecent = dbquery("SELECT * FROM chatlogs ORDER BY id DESC LIMIT 50");
+    $getRecent = db::query("SELECT * FROM chatlogs ORDER BY id DESC LIMIT 50");
 
-    while ($recent = $getRecent->fetch_assoc()) {
+    while ($recent = $getRecent->fetch(2)) {
         if (strlen($recent['hour']) < 2) {
             $recent['hour'] = '0' . $recent['hour'];
         }

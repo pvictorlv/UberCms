@@ -27,9 +27,9 @@ require_once "top.php";
         </thead>
         <?php
 
-        $get = dbquery("SELECT id,rank,mail FROM users WHERE rank >= 3 ORDER BY rank DESC");
+        $get = db::query("SELECT id,rank,mail FROM users WHERE rank >= 3 ORDER BY rank DESC");
 
-        while ($user = $get->fetch_assoc()) {
+        while ($user = $get->fetch(2)) {
             echo '<tr>';
             echo '<td>' . $users->formatUsername($user['id']) . '</td>';
             echo '<td>' . $users->getRankName($user['rank']) . '</td>';

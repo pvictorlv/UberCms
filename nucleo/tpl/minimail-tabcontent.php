@@ -21,8 +21,9 @@ if ($unreadMode) {
     $isReadClause = " AND is_read = '0'";
 }
 
-$getMessages = dbquery("SELECT * FROM site_minimail WHERE folder = '" . $folder . "' AND receiver_id = '" . USER_ID . "'" . $isReadClause . " ORDER BY id DESC");
-$messageCount = $getMessages->num_rows;
+$count = db::query('SELECT count(id) FROM site_minimail WHERE folder = ? AND receiver_id = ?' . $isReadClause . " ORDER BY id DESC", $folder, USER_ID)->fetchColumn();
+
+$messageCount = $count;
 
 $navigator = '';
 
@@ -74,13 +75,15 @@ if ($messageCount > 0) {
 
     <?php
 
-    if ($getMessages->num_rows > 0) {
-        while ($message = $getMessages->fetch_assoc()) {
-            $getSender = dbquery("SELECT username,look FROM users WHERE id = '" . $message['sender_id'] . "' LIMIT 1");
+    if ($messageCount > 0) {
+
+        $getMessages = db::query('SELECT * FROM site_minimail WHERE folder = ? AND receiver_id = ?' . $isReadClause . " ORDER BY id DESC", $folder, USER_ID);
+        while ($message = $getMessages->fetch(2)) {
+            $getSender = db::query("SELECT username,look FROM users WHERE id = '" . $message['sender_id'] . "' LIMIT 1");
             $senderData = Array();
 
-            if ($getSender->num_rows > 0) {
-                $senderData = $getSender->fetch_assoc();
+            if ($getSender->rowCount()) {
+                $senderData = $getSender->fetch(2);
             } else {
                 continue;
             }

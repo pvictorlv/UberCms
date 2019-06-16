@@ -26,7 +26,7 @@ if (isset($_POST['rank'])) {
 
 require_once "top.php";
 
-$GetRangos = dbquery("SELECT * FROM ranks ORDER BY id");
+$GetRangos = db::query("SELECT * FROM ranks ORDER BY id");
 ?>
     <h2 class="title"><?php echo $pagename; ?></h2>
     <div class="box-content">
@@ -40,7 +40,7 @@ $GetRangos = dbquery("SELECT * FROM ranks ORDER BY id");
             Rango:<br/>
             <select name='rank' class='dropdown'>
 
-                <?php while ($Rangos = $GetRangos->fetch_assoc()) {
+                <?php while ($Rangos = $GetRangos->fetch(2)) {
 
                     echo '
 <option value="' . $Rangos['id'] . '">' . $Rangos['name'] . '</option> ';

@@ -13,8 +13,8 @@ if (!isset($qryId) && LOGGED_IN) {
 }
 
 
-$sql = dbquery("SELECT * FROM cms_guestbook_entries WHERE home_id = '" . $qryId . "' ORDER BY id DESC LIMIT 20");
-$count = $sql->num_rows;
+$sql = db::query("SELECT * FROM cms_guestbook_entries WHERE home_id = '" . $qryId . "' ORDER BY id DESC LIMIT 20");
+$count = $sql->rowCount();
 
 ?>
 <div class="movable widget GuestbookWidget" id="widget-%id%"
@@ -46,7 +46,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                     <ul class="guestbook-entries" id="guestbook-entry-container">
                         <?php
                         if ($count > 0) {
-                            while ($data = $sql->fetch_assoc()) {
+                            while ($data = $sql->fetch(2)) {
                                 $on = $users->GetUserVar($data['userid'], 'online');
                                 if ($on = "1") {
                                     $status = 'online';

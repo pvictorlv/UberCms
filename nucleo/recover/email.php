@@ -1,7 +1,7 @@
 <?php
 if(isset($_POST['forgot_pass'])){
         $login = filter($_POST['login']);
-$result = dbquery("SELECT * FROM users WHERE username='$login'");
+$result = db::query("SELECT * FROM users WHERE username='$login'");
 while($l = mysql_fetch_array($result)) {
         $login = $l['username'];
         $senha = $l['password'];
@@ -27,7 +27,7 @@ $mail->IsSMTP();                                     // set mailer to use SMTP
 <strong>Ol&aacute;, $login</strong>
 <div><br />
 </div>
-<div>Você esqueceu sua senha? Segue os Dados de acesso novamente:</div>
+<div>Vocï¿½ esqueceu sua senha? Segue os Dados de acesso novamente:</div>
 <div><br />
 </div>
 <div><strong>Seus dados de acesso ao painel s&atilde;o:</strong></div>
@@ -37,7 +37,7 @@ $mail->IsSMTP();                                     // set mailer to use SMTP
 <div>Senha: $senha</div>
 <div><br />
 </div>
-<div>* Você recebeu esse email pois pediu o reenvio de seus dados através do painel. Caso não se recorde de ter pedido, desconsidere esse email!</div>
+<div>* Vocï¿½ recebeu esse email pois pediu o reenvio de seus dados atravï¿½s do painel. Caso nï¿½o se recorde de ter pedido, desconsidere esse email!</div>
 <div><br />
 </div>
 

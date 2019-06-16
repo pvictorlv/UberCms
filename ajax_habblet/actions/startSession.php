@@ -6,7 +6,7 @@ if(isset($_GET['id'])) {
 	if(is_numeric($_GET['id'])) {
 			$qryId = $gtfo->cleanWord($_GET['id']);
 			
-			$sql = dbquery("SELECT * FROM groups_memberships WHERE userid = '".USER_ID."' AND groupid = '".$qryId."';");
+			$sql = db::query("SELECT * FROM groups_memberships WHERE userid = '".USER_ID."' AND groupid = '".$qryId."';");
 			$is_member = mysql_num_rows($sql);
 			$row = mysql_fetch_array($sql);
 			

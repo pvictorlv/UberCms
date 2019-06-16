@@ -8,10 +8,10 @@
             <ul id="hotcampaigns-habblet-list">
                 <?php
 
-                $getItems = dbquery("SELECT * FROM site_hotcampaigns WHERE enabled = '1' ORDER BY order_id ASC");
+                $getItems = db::DoQuery("SELECT * FROM site_hotcampaigns WHERE enabled = '1' ORDER BY order_id ASC");
                 $evenOdd = 'odd';
 
-                while ($item = $getItems->fetch_assoc()) {
+                while ($item = $getItems->fetch(2)) {
                     if ($evenOdd == 'odd') {
                         $evenOdd = 'even';
                     } else {

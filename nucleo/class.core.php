@@ -20,10 +20,10 @@ class uberCore
         if (isset($_COOKIE['rememberme']) && $_COOKIE['rememberme'] == "true" && isset($_COOKIE['rememberme_token']) && isset($_COOKIE['rememberme_name'])) {
             $name = filter($_COOKIE['rememberme_name']);
             $token = filter($_COOKIE['rememberme_token']);
-            $find = dbquery("SELECT id,username FROM users WHERE username = '" . $name . "' AND password = '" . $token . "' LIMIT 1");
+            $find = db::query("SELECT id,username FROM users WHERE username = '" . $name . "' AND password = '" . $token . "' LIMIT 1");
 
-            if ($find->num_rows > 0) {
-                $data = $find->fetch_assoc();
+            if ($find->rowCount() > 0) {
+                $data = $find->fetch(2);
 
                 $_SESSION['UBER_USER_N'] = $data['username'];
                 $_SESSION['UBER_USER_H'] = $token;
@@ -139,7 +139,7 @@ class uberCore
 
     public static function AddBan($type, $value, $reason, $expireTime, $addedBy, $blockAppeal)
     {
-        dbquery("INSERT INTO bans (id,bantype,value,reason,expire,added_by,added_date,appeal_state) VALUES (NULL,'" . $type . "','" . $value . "','" . $reason . "','" . $expireTime . "','" . $addedBy . "','" . date('d/m/Y H:i') . "','" . (($blockAppeal) ? '0' : '1') . "')");
+        db::query("INSERT INTO bans (id,bantype,value,reason,expire,added_by,added_date,appeal_state) VALUES (NULL,'" . $type . "','" . $value . "','" . $reason . "','" . $expireTime . "','" . $addedBy . "','" . date('d/m/Y H:i') . "','" . (($blockAppeal) ? '0' : '1') . "')");
     }
 
     public static function fixText($str, $quotes = true, $clean = false, $ltgt = false, $transform = false, $guestbook = false)

@@ -2,7 +2,7 @@
 
 function getGroupData()
 {
-    $result = dbquery("SELECT * FROM groups_details ");
+    $result = db::query("SELECT * FROM groups_details ");
     while ($row = mysql_fetch_array($result)) {
         $id = $row["id"];
         $groupname = $row["groupname"];

@@ -21,10 +21,10 @@ if ($_GET['sq'] == '' || (!isset($_GET['sq']) && isset($_POST['search-query']) &
 }
 
 if (isset($_GET['new'])) {
-    dbquery("INSERT INTO furniture (public_name,item_name,type,length,width,stack_height,can_stack,sprite_id,interaction_type) VALUES ('','newitem', 's', '1', '1', '1', '1', '1', 'switch')");
+    db::query("INSERT INTO furniture (public_name,item_name,type,length,width,stack_height,can_stack,sprite_id,interaction_type) VALUES ('','newitem', 's', '1', '1', '1', '1', '1', 'switch')");
     fMessage('ok', 'New item def stub added');
 
-    $newId = dbquery("SELECT id FROM furniture ORDER BY id DESC LIMIT 1")->fetch_assoc()['id'];
+    $newId = db::query("SELECT id FROM furniture ORDER BY id DESC LIMIT 1")->fetch(2)['id'];
 
     header("Location: ./index.php?_cmd=ot-def&edit=" . $newId);
     exit;
@@ -36,7 +36,7 @@ if (isset($_GET['del'])) {
 
 if (isset($_GET['realdel'])) {
     fMessage('Ok', '�Borrado!');
-    dbquery("DELETE FROM furniture WHERE id = '" . intval($_GET['realdel']) . "' LIMIT 1");
+    db::query("DELETE FROM furniture WHERE id = '" . intval($_GET['realdel']) . "' LIMIT 1");
     header("Location: ./index.php?_cmd=ot-def&sq=" . $_GET['sq']);
     exit;
 }
@@ -46,12 +46,12 @@ $lockedVars = array('id', 'gonew', 'search-query');
 
 if (isset($_GET['edit'])) {
     $i = intval($_GET['edit']);
-    $get = dbquery("SELECT * FROM furniture WHERE id = '" . $i . "' LIMIT 1");
+    $get = db::query("SELECT * FROM furniture WHERE id = '" . $i . "' LIMIT 1");
 
-    if ($get->num_rows == 0) {
+    if ($get->rowCount() == 0) {
         fMessage('error', 'Oops! Item inv�lido.');
     } else {
-        $data = $get->fetch_assoc();
+        $data = $get->fetch(2);
 
         if (isset($_POST['public_name'])) {
             $i = 0;
@@ -72,7 +72,7 @@ if (isset($_GET['edit'])) {
                 $qB .= $key . " = '" . filter($value) . "'";
             }
 
-            dbquery("UPDATE furniture SET " . $qB . " WHERE id = '" . intval($_GET['edit']) . "' LIMIT 1");
+            db::query("UPDATE furniture SET " . $qB . " WHERE id = '" . intval($_GET['edit']) . "' LIMIT 1");
             fMessage('ok', 'Updated item successfully');
 
             if (isset($_POST['gonew']) && $_POST['gonew'] == "y") {
@@ -178,15 +178,15 @@ echo '<h1>Manejar el tema definiciones</h1>';
 
 <?php
 
-$checkBlankItems = dbquery("SELECT id FROM furniture WHERE item_name = 'newitem'");
+$checkBlankItems = db::query("SELECT id FROM furniture WHERE item_name = 'newitem'");
 
-if ($checkBlankItems->num_rows > 0) {
+if ($checkBlankItems->rowCount() > 0) {
     echo '<div style="margin: 5px; padding: 10px; border: 2px solid #000; color: darkred;">';
     echo '<p>';
     echo '<b>Peligro!</b> Este item tiene car�cteres blancos:<br />';
     echo '<ul class="styled">';
 
-    while ($item = $checkBlankItems->fetch_assoc()) {
+    while ($item = $checkBlankItems->fetch(2)) {
         if (isset($_GET['edit']) && $item['id'] == $_GET['edit']) {
             echo '<li><i>Est�s editando este item (ID #' . $item['id'] . ').</i></li>';
         } else {
@@ -238,7 +238,7 @@ if ($data != null) {
     if (isset($_POST['search-query'])) {
         $_POST['search-query'] = filter($_POST['search-query']);
 
-        $getPages = dbquery("SELECT * FROM furniture WHERE item_name LIKE '%" . $_POST['search-query'] . "%' OR public_name LIKE '%" . $_POST['search-query'] . "%' OR id = '" . $_POST['search-query'] . "'");
+        $getPages = db::query("SELECT * FROM furniture WHERE item_name LIKE '%" . $_POST['search-query'] . "%' OR public_name LIKE '%" . $_POST['search-query'] . "%' OR id = '" . $_POST['search-query'] . "'");
 
         echo '<table width="100%" border="1" style="text-align: center;">
 		<thead style="font-weight: bold; font-size: 110%;">
@@ -251,10 +251,10 @@ if ($data != null) {
 			<td>Tiene entrada en el cat�logo</td>
 		</thead>';
 
-        while ($page = $getPages->fetch_assoc()) {
+        while ($page = $getPages->fetch(2)) {
             $res = '<b style="color: darkred;">NO</b>';
 
-            if (dbquery("SELECT NULL FROM catalog_items WHERE item_ids = '" . $page['id'] . "' LIMIT 1")->num_rows >= 1) {
+            if (db::query("SELECT NULL FROM catalog_items WHERE item_ids = '" . $page['id'] . "' LIMIT 1")->rowCount() >= 1) {
                 $res = '<b style="color: darkgreen;">SI</b>';
             }
 

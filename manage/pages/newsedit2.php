@@ -15,7 +15,7 @@ $data = null;
 if (isset($_GET['u']) && is_numeric($_GET['u']))
 {
 	$u = intval($_GET['u']);
-	$getData = dbquery("SELECT * FROM site_news WHERE id = '" . $u . "' LIMIT 1");
+	$getData = db::query("SELECT * FROM site_news WHERE id = '" . $u . "' LIMIT 1");
 	
 	if (mysql_num_rows($getData) > 0)
 	{
@@ -44,7 +44,7 @@ if (isset($_POST['content']))
 	}
 	else
 	{
-		dbquery("UPDATE site_news SET title = '" . $title . "', category_id = '" . $category . "', topstory_image = '" . $topstory . "', body = '" . $content . "', snippet = '" . $teaser . "' WHERE id = '" . $data['id'] . "' LIMIT 1");
+		db::query("UPDATE site_news SET title = '" . $title . "', category_id = '" . $category . "', topstory_image = '" . $topstory . "', body = '" . $content . "', snippet = '" . $teaser . "' WHERE id = '" . $data['id'] . "' LIMIT 1");
 		fMessage('ok', 'News article updated.');
 		
 		header("Location: index.php?_cmd=newsedit2");
@@ -82,7 +82,7 @@ foreach ($data as $key => $value)
 ?>
 <div style="float: left;">
 
-<strong>Titulo del Artículo:</strong><br />
+<strong>Titulo del Artï¿½culo:</strong><br />
 <input type="text" value="<?php if (isset($_POST['title'])) { echo clean($_POST['title']); } ?>" name="title" size="50" onkeyup="suggestSEO(this.value);" style="padding: 5px; font-size: 130%;"><br />
 <br />
 
@@ -90,7 +90,7 @@ foreach ($data as $key => $value)
 <select name="category">
 <?php
 
-$getOptions = dbquery("SELECT * FROM site_news_categories ORDER BY caption ASC");
+$getOptions = db::query("SELECT * FROM site_news_categories ORDER BY caption ASC");
 
 while ($option = mysql_fetch_assoc($getOptions))
 {
@@ -106,7 +106,7 @@ while ($option = mysql_fetch_assoc($getOptions))
 <?php echo WWW; ?>/<b><?php echo $data['id']; ?>-<?php echo clean($data['seo_link']); ?></b>/<br />
 </div><br />
 
-<strong>Texto de la descripción:</strong><br />
+<strong>Texto de la descripciï¿½n:</strong><br />
 <textarea name="teaser" cols="45" rows="5" style="padding: 5px; font-size: 100%;"><?php if (isset($_POST['teaser'])) { echo clean($_POST['teaser']); } ?></textarea><br />
 <br />
 

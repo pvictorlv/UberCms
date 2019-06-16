@@ -25,7 +25,7 @@ if (isset($_POST['content']))
 	}
 	else
 	{
-		dbquery("INSERT INTO site_news (title,category_id,seo_link,topstory_image,body,snippet,datestr,timestamp) VALUES ('" . $title . "','" . $category . "','" . $seoUrl . "','" . $topstory . "','" . $content . "','" . $teaser . "','" . date('d-M-Y') . "', '" . time() . "')");
+		db::query("INSERT INTO site_news (title,category_id,seo_link,topstory_image,body,snippet,datestr,timestamp) VALUES ('" . $title . "','" . $category . "','" . $seoUrl . "','" . $topstory . "','" . $content . "','" . $teaser . "','" . date('d-M-Y') . "', '" . time() . "')");
 		fMessage('ok', 'News article published.');
 		
 		header("Location: index.php?_cmd=newspublish");
@@ -72,7 +72,7 @@ function suggestSEO(el)
 
 <div style="float: left;">
 
-<strong>Titulo del Artículo:</strong><br />
+<strong>Titulo del Artï¿½culo:</strong><br />
 <input type="text" value="<?php if (isset($_POST['title'])) { echo clean($_POST['title']); } ?>" name="title" size="50" onkeyup="suggestSEO(this.value);" style="padding: 5px; font-size: 130%;"><br />
 <br />
 
@@ -80,7 +80,7 @@ function suggestSEO(el)
 <select name="category">
 <?php
 
-$getOptions = dbquery("SELECT * FROM site_news_categories ORDER BY caption ASC");
+$getOptions = db::query("SELECT * FROM site_news_categories ORDER BY caption ASC");
 
 while ($option = mysql_fetch_assoc($getOptions))
 {
@@ -95,10 +95,10 @@ while ($option = mysql_fetch_assoc($getOptions))
 <div style="border: 1px dotted; width: 300px; padding: 5px;">
 <?php echo WWW; ?>/[id]-<input type="text" id="url" name="url" value="<?php if (isset($_POST['url'])) { echo clean($_POST['url']); } ?>" maxlength="120">/<br />
 </div>
-<small>Se actualiza automaticamente al poner el título del artículo.</small><br />
+<small>Se actualiza automaticamente al poner el tï¿½tulo del artï¿½culo.</small><br />
 <br />
 
-<strong>Texto de la descripción:</strong><br />
+<strong>Texto de la descripciï¿½n:</strong><br />
 <textarea name="teaser" cols="40" rows="5" style="padding: 5px; font-size: 120%;"><?php if (isset($_POST['teaser'])) { echo clean($_POST['teaser']); } ?></textarea><br />
 <br />
 

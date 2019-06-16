@@ -1,10 +1,10 @@
 <?php
 global $qryId;
-$getUser = dbquery("SELECT id,username,online,account_created,look,motto FROM users WHERE id = '$qryId' LIMIT 1");
-if ($getUser->num_rows <= 0) {
+$getUser = db::query("SELECT id,username,online,account_created,look,motto FROM users WHERE id = ? LIMIT 1", $qryId);
+if ($getUser->rowCount() <= 0) {
     return;
 }
-$userData = $getUser->fetch_assoc();
+$userData = $getUser->fetch(2);
 $status = 'offline';
 if ($userData['online'] == "1") {
     $status = 'online';
@@ -23,11 +23,11 @@ var editButtonCallback = function(e) { openEditMenu(e, %id%, "widget", "widget-%
 Event.observe("widget-%id%-edit", "click", editButtonCallback);
 Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback); 
 </script>';
-                        } 
+                        }
                     }
                     ?>
                     <span class="header-left">&nbsp;</span><span class="header-middle">Meu Perfil</span><span
-                        class="header-right">&nbsp;</span></h3>
+                            class="header-right">&nbsp;</span></h3>
             </div>
         </div>
         <div class="widget-body">
@@ -62,7 +62,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                 <div class="profile-figure">
                     <img alt="<?php
                     echo clean($userData['username']);
-                    ?>" src="http://avatar-retro.com/habbo-imaging/avatarimage.php?figure=<?php
+                    ?>" src="https://habbo.city/habbo-imaging/avatarimage?figure=<?php
                     echo clean($userData['look']);
                     ?>&direction=4"/>
                 </div>
@@ -83,9 +83,9 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                     <div id="profile-tag-list">
                         <div id="profile-tags-container">
                             <?php
-                            $sql = dbquery("SELECT * FROM user_tags WHERE user_id = '" . $qryId . "'");
-                            if ($sql->num_rows > 0) {
-                                while ($data = $sql->fetch_assoc()) {
+                            $sql = db::query("SELECT * FROM user_tags WHERE user_id = ? LIMIT 15", $qryId);
+                            if ($sql->rowCount() > 0) {
+                                while ($data = $sql->fetch(2)) {
                                     ?>
                                     <span class="tag-search-rowholder">
                                     <a href="%www%/tag/<?php
@@ -107,21 +107,21 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                                     ?>
                                     <?php
                                     if (LOGGED_IN) {
-                                        $query = dbquery("SELECT user_id FROM user_tags WHERE tag = '" . $data['tag'] . "' AND user_id = '" . USER_ID . "' AND user_id != '" . $data['user_id'] . "' LIMIT 1");
-                                        if ($query->num_rows > 0) {
+                                        $query = db::query("SELECT user_id FROM user_tags WHERE tag = ? AND user_id = '" . USER_ID . "' AND user_id != '" . $data['user_id'] . "' LIMIT 1", $data['tag']);
+                                        if ($query->rowCount() > 0) {
                                             ?>
                                             <img id="tag-img-added" border="0" class="tag-none-link"
                                                  src="%www%/web-gallery/images/buttons/tags/tag_button_added.gif"/></span>
                                             <?php
                                         } //mysql_num_rows($query) > 0
-                                        elseif (dbquery("SELECT user_id FROM user_tags WHERE tag = '" . $data['tag'] . "' AND user_id != '" . USER_ID . "' AND user_id = '" . $data['user_id'] . "' LIMIT 1")->num_rows > 0) {
+                                        elseif (db::query("SELECT user_id FROM user_tags WHERE tag = ? AND user_id != '" . USER_ID . "' AND user_id = '" . $data['user_id'] . "' LIMIT 1", $data['tag'])->rowCount() > 0) {
                                             ?>
                                             <img border="0" class="tag-add-link"
                                                  onmouseover="this.src='%www%/web-gallery/images/buttons/tags/tag_button_add_hi.gif'"
                                                  onmouseout="this.src='%www%/web-gallery/images/buttons/tags/tag_button_add.gif'"
                                                  src="%www%/web-gallery/images/buttons/tags/tag_button_add.gif"/></span>
                                             <?php
-                                        } //mysql_num_rows(dbquery("SELECT user_id FROM user_tags WHERE tag = '" . $data['tag'] . "' AND user_id != '" . USER_ID . "' AND user_id = '" . $data['user_id'] . "' LIMIT 1")) > 0
+                                        } //mysql_num_rows(db::query("SELECT user_id FROM user_tags WHERE tag = '" . $data['tag'] . "' AND user_id != '" . USER_ID . "' AND user_id = '" . $data['user_id'] . "' LIMIT 1")) > 0
                                     } //LOGGED_IN
                                     else {
                                         ?>
@@ -155,9 +155,9 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                             <div class="content-red">
                                 <div class="content-red-body">
                                     <span id="tag-limit-message"><img
-                                            src="%www%/web-gallery/images/register/icon_error.gif"> Você alcançou o limite de etiquetas, remova algumas antes de continuar.</span>
+                                                src="%www%/web-gallery/images/register/icon_error.gif"> Você alcançou o limite de etiquetas, remova algumas antes de continuar.</span>
                                     <span id="tag-invalid-message"><img
-                                            src="%www%/web-gallery/images/register/icon_error.gif"> Etiqueta inválida</span>
+                                                src="%www%/web-gallery/images/register/icon_error.gif"> Etiqueta inválida</span>
                                 </div>
                             </div>
                             <div class="content-red-bottom">

@@ -27,8 +27,8 @@ require_once "top.php";
 <div style="float: left;">
 
 <?php
-$getOptions = dbquery("SELECT * FROM site_addons_comunidad WHERE columna='1' ORDER BY orden");
-$getOptions2 = dbquery("SELECT * FROM site_addons_comunidad WHERE columna='2' ORDER BY orden");
+$getOptions = db::query("SELECT * FROM site_addons_comunidad WHERE columna='1' ORDER BY orden");
+$getOptions2 = db::query("SELECT * FROM site_addons_comunidad WHERE columna='2' ORDER BY orden");
 
 ?>
 

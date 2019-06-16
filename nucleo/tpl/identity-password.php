@@ -1,4 +1,6 @@
 <body id="embedpage">
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
 <div id="overlay"></div>
 
 <div id="container">
@@ -62,7 +64,7 @@
 
                 <div id="register-fieldset-captcha" class="field field-captcha">
 
-                    <div id="captcha-container">
+                 <!--   <div id="captcha-container">
 
                         <label>Digite a frase que você vê abaixo.</label>
 
@@ -70,7 +72,19 @@
 
                         <div id="recaptcha_image" class="register-label"></div>
 
+                    </div>-->
+
+
+
+                    <div class="field field-recaptcha">
+
+                        <div id="captcha-container" class="input-field">
+                            <div class="g-recaptcha"
+                                 data-sitekey="6Ld8ShAUAAAAAC_2-ccVvXhefP6AQs315Z3jb0zv"></div>
+                        </div>
                     </div>
+
+
 
                 </div>
 

@@ -19,8 +19,8 @@ $frontpage->SetParam('login_result', '');
 $tpl->SetParam('csrf_token', $_SESSION['csrf_token']);
 $credUser = null;
 if (isset($_POST['csrf_token']) && $_POST['csrf_token'] == $_SESSION['csrf_token']) {
-    $credUser = filter($_POST['credentials_username']);
-    $credPass = filter($_POST['credentials_password']);
+    $credUser = ($_POST['credentials_username']);
+    $credPass = ($_POST['credentials_password']);
     $errors = null;
 
     if (strlen($_POST['credentials_username']) < 1) {
@@ -31,18 +31,18 @@ if (isset($_POST['csrf_token']) && $_POST['csrf_token'] == $_SESSION['csrf_token
         $errors[] = 'Por favor, digite sua senha';
     }
 
-    if (count($errors) == 0) {
+    if (count($errors) === 0) {
         $check = $users->ValidateLogin($credUser, $credPass);
         if ($check[0]) {
             if (isset($_POST['page'])) {
-                $reqPage = filter($_POST['page']);
+                $reqPage = ($_POST['page']);
                 $pos = strrpos($reqPage, WWW);
 
                 if ($pos === false || $pos != 0) {
                     die("<b>Security warning!</b> A malicious request was detected that tried redirecting you to an external site. Please proceed with caution, this may have been an attempt to steal your login details. <a href='" . WWW . "'>Return to site</a>");
-                } else {
-                    $_SESSION['page-redirect'] = $reqPage;
                 }
+
+                $_SESSION['page-redirect'] = $reqPage;
             }
 
             if (!$check[1])

@@ -1,7 +1,7 @@
 <?php
 /*=======================================================================
-| Agradecimiento a Juli0san por hacer SOLO ESTA PÁGINA, lo demás hecho por masacre10 
-| Aporte para kekomundo ~ Gracias por no hacerme querer dar más aportes km!
+| Agradecimiento a Juli0san por hacer SOLO ESTA Pï¿½GINA, lo demï¿½s hecho por masacre10 
+| Aporte para kekomundo ~ Gracias por no hacerme querer dar mï¿½s aportes km!
 | masacre_11@hotmail.com
 \======================================================================*/
 $pagename= "Referidos";
@@ -21,8 +21,8 @@ require_once "top.php";
 
 <h3><?php echo $pagename; ?></h3>
 
-<p>Aquí se muestranlos referidos hechos por los usuarios, si se encuentra una IP repetida muchas veces 
-<br/>avísa rápidamente al Dueño.</p>
+<p>Aquï¿½ se muestranlos referidos hechos por los usuarios, si se encuentra una IP repetida muchas veces 
+<br/>avï¿½sa rï¿½pidamente al Dueï¿½o.</p>
 
 <?php
 {
@@ -39,7 +39,7 @@ require_once "top.php";
 	{
 		$_POST['search-query'] = filter($_POST['search-query']);
 
-		$getPages = dbquery("SELECT * FROM users_referidos WHERE usuario LIKE '%" . $_POST['search-query'] . "%' OR ip_referida = '" . $_POST['search-query'] . "' ORDER BY ip_referida ASC");					
+		$getPages = db::query("SELECT * FROM users_referidos WHERE usuario LIKE '%" . $_POST['search-query'] . "%' OR ip_referida = '" . $_POST['search-query'] . "' ORDER BY ip_referida ASC");					
 
 
 
@@ -80,7 +80,7 @@ require_once "top.php";
 </thead>
 <?php
 
-$get = dbquery("SELECT * FROM users_referidos ORDER BY ip_referida ASC");
+$get = db::query("SELECT * FROM users_referidos ORDER BY ip_referida ASC");
 
 while ($user = mysql_fetch_assoc($get))
 {

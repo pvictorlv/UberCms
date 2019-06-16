@@ -11,7 +11,7 @@ if (!LOGGED_IN) {
 $forwardType = 0;
 $forwardId = 0;
 
-if ($users->GetUserVar(USER_ID, 'room_created', false) == "0") {
+if ($users->GetUserVar(USER_ID, 'room_created', false) === "0") {
     if (isset($_GET['createRoom']) && is_numeric($_GET['createRoom'])) {
         $roomId = RoomManager::CreateRoom(USER_NAME . "'s room", USER_NAME, 'model_s');
 
@@ -48,7 +48,7 @@ if ($users->GetUserVar(USER_ID, 'room_created', false) == "0") {
                 break;
         }
 
-        dbquery("UPDATE users SET home_room = '" . $roomId . "', room_created = '1' WHERE id = '" . USER_ID . "' LIMIT 1");
+        db::query("UPDATE users SET home_room = ?, room_created = '1' WHERE id = ? LIMIT 1", $roomId, USER_ID);
     } else {
         header("Location: " . WWW . "/client?createRoom=" . random_int(0, 5));
         exit;
@@ -63,7 +63,7 @@ if ($users->GetUserVar(USER_ID, 'room_created', false) == "0") {
 }
 
 if (isset($_GET['roomId'])) {
-    $id = filter($_GET['roomId']);
+    $id = ($_GET['roomId']);
     $users->SetUserVar(USER_ID, 'home_room', $id);
 }
 
@@ -72,6 +72,8 @@ $users->SetUserVar(USER_ID, 'auth_ticket', uberCore::GenerateTicket(USER_NAME));
 $tpl->Init();
 
 $tpl->AddGeneric('head/head-init');
+$tpl->SetParam('page_title', 'Client');
+
 $tpl->AddIncludeSet('default');
 $tpl->AddIncludeFile(new IncludeFile('text/css', '%www%/web-gallery/v2/styles/habboclient.css', 'stylesheet'));
 $tpl->AddIncludeFile(new IncludeFile('text/css', '%www%/web-gallery/v2/styles/habboflashclient.css', 'stylesheet'));
@@ -80,19 +82,17 @@ $tpl->WriteIncludeFiles();
 $tpl->AddGeneric('head/head-bottom');
 
 $client = new Template('page-client');
-$client->SetParam('page_title', ' ');
 $client->SetParam('sso_ticket', $users->GetUserVar(USER_ID, 'auth_ticket', false));
 $client->SetParam('flash_base', 'http://images.habbo.com/gordon/RELEASE47-25298-25289-201003111232_95572236204420188d53c5fb779d43f4/');
 $client->SetParam('flash_client_url', 'http://images.habbo.com/dcr/r47_none_74f18727eeee7d2cd329f9c7c9078061/');
-$client->SetParam('hotel_status', $core->GetUsersOnline() . ' users online now!');
 $client->SetParam('forwardType', $forwardType);
 $client->SetParam('forwardId', $forwardId);
 
-if (isset($_GET['forceTicket']) && $users->HasFuse(USER_ID, 'fuse_admin')) {
+if (isset($_GET['forceTicket']) && $users->hasFuse(USER_ID, 'fuse_admin')) {
     $client->SetParam('sso_ticket', $_GET['forceTicket']);
 }
 $users->SetUserVar(USER_ID, 'sec_hash', $users->GetUserVar(USER_ID, 'auth_ticket', false));
-setcookie('SECRET_HASH',  $users->GetUserVar(USER_ID, 'sec_hash', false));
+setcookie('SECRET_HASH', $users->GetUserVar(USER_ID, 'sec_hash', false));
 
 $tpl->AddTemplate($client);
 

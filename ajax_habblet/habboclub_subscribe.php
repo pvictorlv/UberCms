@@ -53,21 +53,20 @@ if (isset($_POST['optionNumber'])) {
                 $error = "Plano não encontrado";
                 echo $error;
             }
-            $getCoins = dbquery("SELECT credits FROM users WHERE username = '" . USER_NAME . "'");
-            $b = $getCoins->fetch_assoc();
-            $coins1 = $b['credits'];
+            $getCoins = db::query("SELECT credits FROM users WHERE username = '" . USER_NAME . "'");
+            $coins1 = $getCoins->fetchColumn();
             $id = USER_ID;
             if ($coins1 >= $amount) {
                 $final = $coins1 - $amount;
                 $vip_ini = date('m/d/Y h:m:s A', time());
-                $check = dbquery("SELECT user_id, activated FROM user_subscriptions WHERE user_id=" . $id . " AND subscription_id='habbo_club' ORDER BY activated DESC LIMIT 1");
-                $total_records = $check->num_rows;
+                $check = db::query("SELECT user_id, activated FROM user_subscriptions WHERE user_id=? AND subscription_id='habbo_club' ORDER BY activated DESC LIMIT 1", $id);
+                $total_records = $check->rowCount();
                 if ($total_records > 0) {
-                    dbquery("UPDATE user_subscriptions SET months = months + $meses WHERE subscription_id = 'habbo_club' AND user_id = '$id'");
+                    db::query("UPDATE user_subscriptions SET months = months + $meses WHERE subscription_id = 'habbo_club' AND user_id = '$id'");
                 } else {
-                    dbquery("DELETE FROM user_subscriptions WHERE user_id=" . $id . " AND subscription_id='habbo_club'");
-                    dbquery("INSERT INTO user_subscriptions(user_id, subscription_id, activated, months) VALUES ('" . $id . "', 'habbo_club', '" . $vip_ini . "', '" . $meses . "')");
-                    dbquery("UPDATE users SET credits='" . $final . "' WHERE username = '" . USER_NAME . "'");
+                    db::query("DELETE FROM user_subscriptions WHERE user_id=" . $id . " AND subscription_id='habbo_club'");
+                    db::query("INSERT INTO user_subscriptions(user_id, subscription_id, activated, months) VALUES ('" . $id . "', 'habbo_club', '" . $vip_ini . "', '" . $meses . "')");
+                    db::query("UPDATE users SET credits='" . $final . "' WHERE username = '" . USER_NAME . "'");
                 }
                 echo '<p><b>Obrigado por se inscrever no HabboClub</b></p>
 <p>Sua inscrição ao HC foi ativa.</p>
@@ -103,26 +102,24 @@ if (isset($_POST['optionNumber'])) {
                 $error = "Plano inexistente.";
                 echo $error;
             };
-            $getCoins = dbquery("SELECT credits FROM users WHERE username = '" . USER_NAME . "'");
-            $b = $getCoins->fetch_assoc();
-            $coins1 = $b['credits'];
+            $getCoins = db::query("SELECT credits FROM users WHERE username = '" . USER_NAME . "'");
+            $coins1 = $getCoins->fetchColumn();
             $id = USER_ID;
             if ($coins1 >= $amount) {
                 $final = $coins1 - $amount;
                 $vip_ini = date('m/d/Y h:m:s A', time());
-                $check = dbquery("SELECT user_id, activated FROM user_subscriptions WHERE user_id=" . $id . " AND subscription_id='club_habbo' ORDER BY activated DESC LIMIT 1");
-                $total_records = $check->num_rows;
+                $check = db::query("SELECT user_id, activated FROM user_subscriptions WHERE user_id=? AND subscription_id='club_habbo' ORDER BY activated DESC LIMIT 1", $id);
+                $total_records = $check->rowCount();
                 if ($total_records > 0) {
-                    $row = $check->fetch_assoc();
+                    $row = $check->fetch(2);
                     $current_exp = strtotime($row['activated']);
                     if ($current_exp > time()) {
                         echo "Você já é membro do clube!";
                         exit;
                     }
                 };
-                dbquery("DELETE FROM user_subscriptions WHERE user_id=" . $id . " AND subscription_id='club_habbo'");
-                dbquery("INSERT INTO user_subscriptions(user_id, subscription_id, activated, months) VALUES ('" . $id . "', 'club_habbo', '" . $vip_ini . "', '" . $meses . "')");
-                dbquery("UPDATE users SET credits='" . $final . "' WHERE username = '" . USER_NAME . "'");
+                db::query("replace INTO user_subscriptions(user_id, subscription_id, activated, months) VALUES (?, 'club_habbo', ?, ?)", $id, $vip_ini, $meses);
+                db::query("UPDATE users SET credits=? WHERE id = ?", $final, $id);
                 echo '<p><b>Obrigado por se inscrever no VIP Club</b>P</b></p>
 <p>Sua inscrição VIP foi ativa.</p>
 <p><a href="#" onclick="habboclub.closeSubscriptionWindow();return false;" class="new-button"><b>Ok</b><i></i></a></p>

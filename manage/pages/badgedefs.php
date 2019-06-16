@@ -12,22 +12,22 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_admin'))
 
 if (isset($_POST['edit-no']))
 {
-	dbquery("UPDATE external_texts SET sval = '" . filter($_POST['nm']) . "' WHERE skey = 'badge_name_" . filter($_POST['edit-no']) . "' LIMIT 1");
-	dbquery("UPDATE external_texts SET sval = '" . filter($_POST['dc']) . "' WHERE skey = 'badge_desc_" . filter($_POST['edit-no']) . "' LIMIT 1");
+	db::query("UPDATE external_texts SET sval = '" . filter($_POST['nm']) . "' WHERE skey = 'badge_name_" . filter($_POST['edit-no']) . "' LIMIT 1");
+	db::query("UPDATE external_texts SET sval = '" . filter($_POST['dc']) . "' WHERE skey = 'badge_desc_" . filter($_POST['edit-no']) . "' LIMIT 1");
 	
 	fMessage('ok', 'Updated badge def.');
 }
 
 if (isset($_POST['newbadge']))
 {
-	dbquery("INSERT INTO external_texts (skey,sval) VALUES ('badge_name_" . filter($_POST['newbadge']) . "','" . filter($_POST['newname']) . "')");
-	dbquery("INSERT INTO external_texts (skey,sval) VALUES ('badge_desc_" . filter($_POST['newbadge']) . "','" . filter($_POST['newdescr']) . "')");
+	db::query("INSERT INTO external_texts (skey,sval) VALUES ('badge_name_" . filter($_POST['newbadge']) . "','" . filter($_POST['newname']) . "')");
+	db::query("INSERT INTO external_texts (skey,sval) VALUES ('badge_desc_" . filter($_POST['newbadge']) . "','" . filter($_POST['newdescr']) . "')");
 }
 
 if (isset($_GET['doDel']))
 {
-	dbquery("DELETE FROM external_texts WHERE skey = 'badge_name_" . filter($_GET['doDel']) . "' LIMIT 1");
-	dbquery("DELETE FROM external_texts WHERE skey = 'badge_desc_" . filter($_GET['doDel']) . "' LIMIT 1");
+	db::query("DELETE FROM external_texts WHERE skey = 'badge_name_" . filter($_GET['doDel']) . "' LIMIT 1");
+	db::query("DELETE FROM external_texts WHERE skey = 'badge_desc_" . filter($_GET['doDel']) . "' LIMIT 1");
 	
 	fMessage('ok', 'Badge defenition removed.');
 	
@@ -49,13 +49,13 @@ echo '<td>Descripcion</td>';
 echo '<td>Controles</td>';
 echo '</tr>';
 
-$get = dbquery("SELECT * FROM external_texts WHERE skey LIKE '%badge_name_%'");
+$get = db::query("SELECT * FROM external_texts WHERE skey LIKE '%badge_name_%'");
 
 while ($text = mysql_fetch_assoc($get))
 {
 	$badgeName = substr($text['skey'], 11);
 	$badgeTName = $text['sval'];
-	$badgeTDescr = mysql_result(dbquery("SELECT sval FROM external_texts WHERE skey = 'badge_desc_" . $badgeName . "' LIMIT 1"), 0);
+	$badgeTDescr = mysql_result(db::query("SELECT sval FROM external_texts WHERE skey = 'badge_desc_" . $badgeName . "' LIMIT 1"), 0);
 
 	echo '<tr><form method="post">';
 	echo '<td><img src="http://images.habbohotel.co.uk/c_images/Badges/' . $badgeName . '.gif" style="vertical-align: middle;">&nbsp;&nbsp;' . $badgeName . '</td>';

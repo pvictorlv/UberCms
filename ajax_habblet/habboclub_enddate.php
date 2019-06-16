@@ -1,8 +1,7 @@
 <?php
 require_once("../global.php");
-$sql = "SELECT * FROM user_subscriptions WHERE user_id=" . USER_ID . " AND subscription_id='habbo_vip' ORDER BY activated DESC LIMIT 1";
-$result = dbquery($sql);
-$row = $result->fetch_assoc();
+$result = db::DoQuery("SELECT * FROM user_subscriptions WHERE user_id=" . USER_ID . " AND subscription_id='habbo_vip' ORDER BY activated DESC LIMIT 1");
+$row = $result->fetch(2);
 $userid = USER_ID;
 $expiretime = strtotime($row['activated']) + 2678400 * $row['months'];
 $daysLeft = 0;
@@ -17,15 +16,14 @@ if ($daysLeft == '0') {
 };
 
 
-$sql2 = "SELECT * FROM user_subscriptions WHERE user_id=" . USER_ID . " AND subscription_id='habbo_club' ORDER BY activated DESC LIMIT 1";
-$result2 = dbquery($sql2);
-$row2 = $result2->fetch_assoc();
+$result2 = db::query("SELECT * FROM user_subscriptions WHERE user_id=" . USER_ID . " AND subscription_id='habbo_club' ORDER BY activated DESC LIMIT 1");
+$row2 = $result2->fetch(2);
 $expiretime = strtotime($row['activated']) + 2678400 * $row['months'];
 $daysLeft2 = 0;
 if ($expiretime > time()) {
     $daysLeft2 = $expiretime - time();
     $daysLeft2 = round($daysLeft2 / 86400);
-    echo $da
+    echo $daysLeft2;
 }
 if ($daysLeft2 == '0') {
     $text1 = 'Inscrição HC não ativada.';

@@ -4,30 +4,31 @@ ob_start();
 require_once('../global.php');
 $my_id = USER_ID;
 
-$type = ucwords(filter($_POST['type']));
+$type = ucwords(($_POST['type']));
 $type = substr($type, 0, -1);
 
 if ($type == "Widget") {
     require_once('store_inventory_items_widgets.php');
     exit;
 } //$type == "Widget"
-else if ($type == "Note") {
+
+if ($type == "Note") {
     require_once 'store_inventory_items_notes.php';
     exit;
 } //$type == "Note"
 
 $MyItems = "";
-$getMyItems = dbquery("SELECT * FROM site_inventory_items WHERE userId = '" . $my_id . "' AND type = '" . $type . "' AND isWaiting = '0'");
+$getMyItems = db::query("SELECT * FROM site_inventory_items WHERE userId = ? AND type = ? AND isWaiting = '0'", $my_id, $type);
 ?>
     <ul id="inventory-item-list">
         <?php
-        if ($getMyItems->num_rows > 0) {
+        if ($getMyItems->rowCount() > 0) {
             for ($n = 0; $n <= 20; $n++) {
-                while ($row = $getMyItems->fetch_assoc()) {
+                while ($row = $getMyItems->fetch(2)) {
                     if (!Contains($row['skin'], $MyItems)) {
                         $n++;
                         $MyItems .= $row['skin'] . ", ";
-                        $getSameStickers = dbquery("SELECT * FROM site_inventory_items WHERE userId = '" . $my_id . "' AND skin = '" . $row['skin'] . "' AND type = '" . $type . "' AND isWaiting = '0'")->num_rows;
+                        $getSameStickers = db::query("SELECT * FROM site_inventory_items WHERE userId = ? AND skin = '" . $row['skin'] . "' AND type = ? AND isWaiting = '0'", $my_id, $type)->rowCount();
                         ?>
                         <li id="inventory-item-<?php
                         echo $row['id'];
@@ -70,7 +71,8 @@ $getMyItems = dbquery("SELECT * FROM site_inventory_items WHERE userId = '" . $m
                     <div class="blackbubble-body">
 
                         <p><b>Seu inventário está completamente vazio!</b></p>
-                        <p>Para comprar algum colante acesse o catálogo, escolha o seu item preferido e clique em comprar!</p>
+                        <p>Para comprar algum colante acesse o catálogo, escolha o seu item preferido e clique em
+                            comprar!</p>
 
                         <div class="clear"></div>
                     </div>

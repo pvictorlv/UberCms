@@ -11,7 +11,7 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_admin'))
 	exit;
 }
 
-$maintMode = mysql_result(dbquery("SELECT maintenance FROM site_config LIMIT 1"), 0);
+$maintMode = mysql_result(db::query("SELECT maintenance FROM site_config LIMIT 1"), 0);
 
 if (isset($_GET['switch']))
 {
@@ -22,7 +22,7 @@ if (isset($_GET['switch']))
 		$newState = "0";
 	}
 
-	dbquery("UPDATE site_config SET maintenance = '" . $newState . "' LIMIT 1");
+	db::query("UPDATE site_config SET maintenance = '" . $newState . "' LIMIT 1");
 	$maintMode = $newState;
 }
 

@@ -37,26 +37,26 @@ $str = str_replace("[U]","<u>",$str);
 $str = str_replace("[/U]","</u>",$str); 
 $str = str_replace("[SPOILER]",'[SPOILER]<font bgcolor ="#000000" color="#DDDDDD">',$str); 
 $str = str_replace("[/SPOILER]","</font>[/SPOILER]",$str); 
-		$str = str_replace("&Acirc;", "Â", $str);
-        $str = str_replace("Â¡", "¡", $str);
-        $str = str_replace("Â¿", "¿", $str);
-        $str = str_replace("í‘", "Ñ", $str);
-        $str = str_replace("Ã±", "ñ", $str);
-        $str = str_replace("í", "Á", $str);
-        $str = str_replace("Ã¡", "á", $str);
-        $str = str_replace("í‰", "É", $str);
-        $str = str_replace("Ã©", "é", $str);
-        $str = str_replace("í“", "Ó", $str);
-        $str = str_replace("Ã³", "ó", $str);
-        $str = str_replace("íš", "Ú", $str);
-        $str = str_replace("Ãº", "ú", $str);
-        $str = str_replace("í", "Í", $str);
-        $str = str_replace("Ã¤", "ä", $str);
-        $str = str_replace("­", "", $str);
-        $str = str_replace("Ã", "í", $str);
+		$str = str_replace("&Acirc;", "ï¿½", $str);
+        $str = str_replace("Â¡", "ï¿½", $str);
+        $str = str_replace("Â¿", "ï¿½", $str);
+        $str = str_replace("ï¿½", "ï¿½", $str);
+        $str = str_replace("Ã±", "ï¿½", $str);
+        $str = str_replace("ï¿½", "ï¿½", $str);
+        $str = str_replace("Ã¡", "ï¿½", $str);
+        $str = str_replace("ï¿½", "ï¿½", $str);
+        $str = str_replace("Ã©", "ï¿½", $str);
+        $str = str_replace("ï¿½", "ï¿½", $str);
+        $str = str_replace("Ã³", "ï¿½", $str);
+        $str = str_replace("ï¿½", "ï¿½", $str);
+        $str = str_replace("Ãº", "ï¿½", $str);
+        $str = str_replace("ï¿½", "ï¿½", $str);
+        $str = str_replace("Ã¤", "ï¿½", $str);
+        $str = str_replace("ï¿½", "", $str);
+        $str = str_replace("ï¿½", "ï¿½", $str);
         $str = str_replace(")", "&#x29;", $str);
         $str = str_replace("(", "&#x28;", $str);
-		$str = str_replace("Â¥", "¥", $str);
+		$str = str_replace("Â¥", "ï¿½", $str);
 		$str = str_replace("\\\\r\\\\n", "<br />", $str);
 		$str = str_replace("\\\\\\\\r\\\\\\\\n", "<br />", $str);
         $str = str_replace("\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\'", "&apos;", $str);
@@ -80,18 +80,18 @@ $str = str_replace("[/SPOILER]","</font>[/SPOILER]",$str);
         
         
         if ($clean) {
-            $str = str_replace("Ñ", "N", $str);
-            $str = str_replace("ñ", "n", $str);
-            $str = str_replace("Á", "A", $str);
-            $str = str_replace("á", "a", $str);
-            $str = str_replace("É", "E", $str);
-            $str = str_replace("é", "e", $str);
-            $str = str_replace("Ó", "O", $str);
-            $str = str_replace("ó", "o", $str);
-            $str = str_replace("Ú", "U", $str);
-            $str = str_replace("ú", "u", $str);
-            $str = str_replace("Í", "I", $str);
-            $str = str_replace("í", "i", $str);
+            $str = str_replace("ï¿½", "N", $str);
+            $str = str_replace("ï¿½", "n", $str);
+            $str = str_replace("ï¿½", "A", $str);
+            $str = str_replace("ï¿½", "a", $str);
+            $str = str_replace("ï¿½", "E", $str);
+            $str = str_replace("ï¿½", "e", $str);
+            $str = str_replace("ï¿½", "O", $str);
+            $str = str_replace("ï¿½", "o", $str);
+            $str = str_replace("ï¿½", "U", $str);
+            $str = str_replace("ï¿½", "u", $str);
+            $str = str_replace("ï¿½", "I", $str);
+            $str = str_replace("ï¿½", "i", $str);
         }
         
         if ($ltgt) {
@@ -134,8 +134,8 @@ if (isset($_POST['title']))
 	$imagen = WWW . '/images/promos/' . filter($_POST['topstory']);
 	$content = fixTexter($_POST['content']);
 	
-		dbquery("UPDATE site_promos SET titulo='".$title."',imagen='".$imagen."',cuerpo='".$content."' WHERE titulo='".$Nombre."'");
-		fMessage('ok', 'Configuración guardada.');
+		db::query("UPDATE site_promos SET titulo='".$title."',imagen='".$imagen."',cuerpo='".$content."' WHERE titulo='".$Nombre."'");
+		fMessage('ok', 'Configuraciï¿½n guardada.');
 		
 		header("Location: index.php?_cmd=newspromos");
 		exit;
@@ -228,7 +228,7 @@ div.editable {
 
 <div id="ts-preview" style="margin-left: -12px; padding: 5px; float: left; text-align: center; vertical-align: middle;">
 
-	<small>(Seleccione una imagen Topstory de la lista para obtener una vista previa aquí)</small>
+	<small>(Seleccione una imagen Topstory de la lista para obtener una vista previa aquï¿½)</small>
 
 </div>
 

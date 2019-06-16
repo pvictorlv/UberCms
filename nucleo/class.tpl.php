@@ -124,7 +124,7 @@ class uberTpl
                 $this->AddIncludeFile(new IncludeFile('text/javascript', '%www%/web-gallery/static/js/visual.js'));
                 $this->AddIncludeFile(new IncludeFile('text/javascript', '%www%/web-gallery/static/js/libs.js'));
                 $this->AddIncludeFile(new IncludeFile('text/javascript', '%www%/web-gallery/static/js/common.js'));
-                $this->AddIncludeFile(new IncludeFile('text/javascript', '%www%/web-gallery/static/js/fullcontent.js'));
+                $this->AddIncludeFile(new IncludeFile('text/javascript', '%www%/web-gallery/static/js/fullcontent.js?1'));
                 $this->AddIncludeFile(new IncludeFile('text/css', '%www%/web-gallery/v2/styles/style.css', 'stylesheet'));
                 $this->AddIncludeFile(new IncludeFile('text/css', '%www%/web-gallery/v2/styles/buttons.css', 'stylesheet'));
                 $this->AddIncludeFile(new IncludeFile('text/css', '%www%/web-gallery/v2/styles/boxes.css', 'stylesheet'));

@@ -22,7 +22,7 @@ if (isset($_POST['title']))
 	}
 	else
 	{
-		dbquery("INSERT INTO site_promos (titulo,imagen,cuerpo) VALUES ('" . $title . "','" . $imagen . "','" . $content . "')");
+		db::query("INSERT INTO site_promos (titulo,imagen,cuerpo) VALUES ('" . $title . "','" . $imagen . "','" . $content . "')");
 		fMessage('ok', 'Nuevo articulo publicado.');
 		
 		header("Location: index.php?_cmd=news");
@@ -103,7 +103,7 @@ function suggestSEO(el)
 
 <div id="ts-preview" style="margin-left: -12px; padding: 5px; float: left; text-align: center; vertical-align: middle;">
 
-	<small>(Seleccione una imagen Topstory de la lista para obtener una vista previa aquí)</small>
+	<small>(Seleccione una imagen Topstory de la lista para obtener una vista previa aquï¿½)</small>
 
 </div>
 

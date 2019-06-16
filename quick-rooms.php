@@ -7,15 +7,15 @@ if (!LOGGED_IN) {
     exit;
 }
 
-$result = dbquery("SELECT `id`,`caption` FROM `rooms` WHERE `owner` = '" . USER_NAME . "'");
-if ($result->num_rows == 0) {
+$result = db::query("SELECT `id`,`caption` FROM `rooms` WHERE `owner` = '" . USER_NAME . "'");
+if ($result->rowCount() <= 0) {
     echo '<ul><li>Você ainda não tem nenhuma sala!</li></ul>';
 } else {
     $oddeven = 'odd';
 
     echo "<ul id='quickmenu-rooms'>";
 
-    while ($row = $result->fetch_array()) {
+    while ($row = $result->fetch(1)) {
         if ($oddeven == "even") {
             $oddeven = 'odd';
         } else if ($oddeven == "odd") {

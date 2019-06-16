@@ -5,10 +5,10 @@
         <div id="topstories"> 
 		<?php
 		
-		$getNews = dbquery("SELECT * FROM site_news ORDER BY `timestamp` DESC LIMIT 3");
+		$getNews = db::query("SELECT * FROM site_news ORDER BY `timestamp` DESC LIMIT 3");
 		$c = 0;
 		
-		while ($n = $getNews->fetch_assoc())
+		while ($n = $getNews->fetch(2))
 		{
 			$disp = 'block';
 			if ($c > 0)
@@ -38,10 +38,10 @@
         <ul class="widelist"> 		
 		<?php
 		
-		$getNews = dbquery("SELECT * FROM site_news ORDER BY timestamp DESC LIMIT 3,2");
+		$getNews = db::query("SELECT * FROM site_news ORDER BY timestamp DESC LIMIT 3,2");
 		$oddEven = "odd";
 		
-		while ($n = $getNews->fetch_assoc())
+		while ($n = $getNews->fetch(2))
 		{		
 			if ($oddEven == "odd")
 			{

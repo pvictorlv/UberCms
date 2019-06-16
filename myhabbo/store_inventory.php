@@ -3,11 +3,11 @@ ob_start();
 require_once('../global.php');
 $my_id = USER_ID;
 
-$type = filter($_POST['type']);
+$type = ($_POST['type']);
 
 $MyStickers = "";
-$getCategorys = dbquery("SELECT * FROM site_items_categorys");
-$getMyStickers = dbquery("SELECT * FROM site_inventory_items WHERE userId = '" . $my_id . "' AND type = 'Sticker'");
+$getCategorys = db::DoQuery("SELECT * FROM site_items_categorys");
+$getMyStickers = db::query("SELECT * FROM site_inventory_items WHERE userId = ? AND type = 'Sticker'", $my_id);
 ?>
     <div style="position: relative;">
         <div id="webstore-categories-container">
@@ -19,7 +19,7 @@ $getMyStickers = dbquery("SELECT * FROM site_inventory_items WHERE userId = '" .
                         <ul class="purchase-subcategory-list" id="main-category-items-1">
                             <?php
                             $c = 0;
-                            while ($row = $getCategorys->fetch_assoc()) {
+                            while ($row = $getCategorys->fetch(2)) {
                                 $c++;
                                 ?>
                                 <li id="subcategory-1-<?php

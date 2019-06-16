@@ -59,10 +59,10 @@ if (isset($_POST['csrf_token']) && $_SESSION['csrf_token'] === $_POST['csrf_toke
     } else {
         $_SESSION['last_comment'] = time();
         $comment = filter($_POST['comment']);
-        if (is_null($comment) || empty($comment)) {
+        if ($comment === null || empty($comment)) {
             $error_message = 'Comentário em branco.<br /><br />';
         } else {
-            dbquery("INSERT INTO site_news_comments (article, userid, comment,posted_on) VALUES ('" . $articleData['id'] . "', '" . USER_ID . "', '" . $comment . "', '$posted_on');");
+            db::query("INSERT INTO site_news_comments (article, userid, comment,posted_on) VALUES ('" . $articleData['id'] . "', '" . USER_ID . "', '" . $comment . "', '$posted_on');");
             $error_message = 'Enviado com sucesso.<br /><br />';
 
         }
@@ -129,13 +129,13 @@ if (isset($_POST['csrf_token']) && $_SESSION['csrf_token'] === $_POST['csrf_toke
 <?php
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 0;
 $limit = 6 * $page;
-$rows = dbquery("SELECT id FROM site_news_comments WHERE article = '" . $articleData['id'] . "'")->num_rows;
+$rows = db::query("SELECT id FROM site_news_comments WHERE article = ?",$articleData['id'])->rowCount();
 if ($rows > 0) {
     $pages = round($rows / 6);
 } else {
     $pages = 0;
 }
-$getComments = dbquery("SELECT * FROM site_news_comments WHERE article = '" . $articleData['id'] . "' ORDER BY id DESC LIMIT $limit, 6");
+$getComments = db::query("SELECT * FROM site_news_comments WHERE article = ? ORDER BY id DESC LIMIT $limit, 6", $articleData['id']);
 ?>
 <div class="habblet-container ">
     <div class="cbb clearfix notitle ">
@@ -143,17 +143,17 @@ $getComments = dbquery("SELECT * FROM site_news_comments WHERE article = '" . $a
             <div class="article-meta"></div>
             <div class="article-body">
                 <?php
-                if ($getComments->num_rows == 0) {
+                if ($getComments->rowCount() == 0) {
                     echo 'Sem comentários no momento';
                 } else {
                     echo '<table width="528px">';
-                    while ($Comments = $getComments->fetch_assoc()) {
-                        $getUserInfo = dbquery("SELECT username,look FROM users WHERE id = '" . $Comments['userid'] . "'");
-                        $userInfo = $getUserInfo->fetch_assoc();
+                    while ($Comments = $getComments->fetch(2)) {
+                        $getUserInfo = db::query("SELECT username,look FROM users WHERE id = ?",$Comments['userid']);
+                        $userInfo = $getUserInfo->fetch(2);
                         echo ' 
                   <tr> 
                     <td width="90px" valign="top"> 
-                      <div style="float:left"><img src="http://avatar-retro.com/habbo-imaging/avatarimage.php?figure=' . $userInfo['look'] . '&size=b&direction=2&head_direction=3&gesture=sml&size=m&action=sit"></div>
+                      <div style="float:left"><img src="https://habbo.city/habbo-imaging/avatarimage?figure=' . $userInfo['look'] . '&size=b&direction=2&head_direction=3&gesture=sml&size=m&action=sit"></div>
                       ';
                         echo ' 
                 </td> 

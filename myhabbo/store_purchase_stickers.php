@@ -7,13 +7,13 @@ if (!LOGGED_IN){
 $my_id = USER_ID;
 $credits = $users->GetUserVar(USER_ID, 'credits', false);
 
-$task = filter($_POST['task']);
-$selectedId = filter($_POST['selectedId']);
+$task = ($_POST['task']);
+$selectedId = ($_POST['selectedId']);
 
-$getItem = dbquery("SELECT * FROM site_shop_items WHERE id = '" . $selectedId . "' LIMIT 1");
+$getItem = db::query("SELECT * FROM site_shop_items WHERE id = ? LIMIT 1", $selectedId);
 
-if ($getItem->num_rows > 0) {
-    $row = $getItem->fetch_assoc();
+if ($getItem->rowCount() > 0) {
+    $row = $getItem->fetch(2);
 
     if ($credits >= $row['price']) {
         if ($row['skin'] == "package_product_pre") {
@@ -24,7 +24,8 @@ if ($getItem->num_rows > 0) {
                 $core->Mus('updatecredits', USER_ID);
             }
             foreach ($Items as $ItemSkin) {
-                dbquery("INSERT INTO site_inventory_items (userId, var, skin, type) VALUES ('" . $my_id . "', '', '" . $ItemSkin . "', 'Sticker')");
+                db::query("INSERT INTO site_inventory_items (userId, var, skin, type) VALUES (?, '', ?, 'Sticker')",
+                    $my_id, $ItemSkin);
             }
 
             header("X-JSON: " . $row['id']);
@@ -34,7 +35,7 @@ if ($getItem->num_rows > 0) {
             $amount = $row['amount'];
 
             while ($count <= $amount) {
-                dbquery("INSERT INTO site_inventory_items (userId, var, skin, type) VALUES ('" . $my_id . "', '', '" . $row['skin'] . "', '" . $row['type'] . "')");
+                db::query("INSERT INTO site_inventory_items (userId, var, skin, type) VALUES (?, '', '" . $row['skin'] . "', '" . $row['type'] . "')", $my_id);
                 $count++;
             }
 
@@ -45,7 +46,7 @@ if ($getItem->num_rows > 0) {
             if ($users->EatCredits(USER_ID, $newCredits, false)) {
                 $core->Mus('updatecredits', USER_ID);
             }
-            dbquery("INSERT INTO site_inventory_items (userId, var, skin, type) VALUES ('" . $my_id . "', '', '" . $row['skin'] . "', '" . $row['type'] . "')");
+            db::query("INSERT INTO site_inventory_items (userId, var, skin, type) VALUES ('" . $my_id . "', '', '" . $row['skin'] . "', '" . $row['type'] . "')");
 
             header("X-JSON: " . $row['id']);
             echo "OK";

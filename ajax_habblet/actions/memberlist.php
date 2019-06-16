@@ -6,7 +6,7 @@ require '../../global.php';
 
 if(isset($_POST['searchString']) && !empty($_POST['searchString'])) {
 	$searchString = $gtfo->cleanWord($_POST['searchString']);
-	$usuario_sql = dbquery("SELECT id FROM users WHERE username LIKE '".$searchString."%'");
+	$usuario_sql = db::query("SELECT id FROM users WHERE username LIKE '".$searchString."%'");
 	$putId = NULL;
 	$i = 0;
 	while($usuario = mysql_fetch_array($usuario_sql)) {
@@ -78,27 +78,27 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId'])) {
 			break;
 	}
 	
-	$count = mysql_num_rows(dbquery("SELECT userid FROM groups_memberships WHERE groupid = '".$groupId."';"));
+	$count = mysql_num_rows(db::query("SELECT userid FROM groups_memberships WHERE groupid = '".$groupId."';"));
 	$count_real = $count;
-	$count_wait = mysql_num_rows(dbquery("SELECT userid FROM groups_memberships WHERE groupid = '".$groupId."' AND is_pending = '1';"));
+	$count_wait = mysql_num_rows(db::query("SELECT userid FROM groups_memberships WHERE groupid = '".$groupId."' AND is_pending = '1';"));
 	
 	if(isset($pending) && isset($putId)) {
-		$sql = dbquery("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND (".$putId.") AND is_pending = '1' ORDER BY member_rank LIMIT $limit,20");
-		$count = mysql_num_rows(dbquery("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND (".$putId.") AND is_pending = '1'"));
+		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND (".$putId.") AND is_pending = '1' ORDER BY member_rank LIMIT $limit,20");
+		$count = mysql_num_rows(db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND (".$putId.") AND is_pending = '1'"));
 		$test = 'if 1';
 	}
 	elseif(isset($pending) && !isset($putId)) {
-		$sql = dbquery("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND is_pending = '1' ORDER BY member_rank LIMIT $limit,20");
-		$count = mysql_num_rows(dbquery("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND is_pending = '1'"));
+		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND is_pending = '1' ORDER BY member_rank LIMIT $limit,20");
+		$count = mysql_num_rows(db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND is_pending = '1'"));
 		$test = 'elseif 2';
 	}
 	elseif(isset($putId) && !isset($pending)) {
-		$sql = dbquery("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND (".$putId.") ORDER BY member_rank LIMIT $limit,20");
-		$count = mysql_num_rows(dbquery("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND (".$putId.");"));
+		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND (".$putId.") ORDER BY member_rank LIMIT $limit,20");
+		$count = mysql_num_rows(db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND (".$putId.");"));
 		$test = 'elseif 3';
 	}
 	else {
-		$sql = dbquery("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' ORDER BY member_rank LIMIT 20");
+		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' ORDER BY member_rank LIMIT 20");
 		$test = 'else';
 	}
 	
@@ -154,7 +154,7 @@ if(IsEven($lefts)) {
 			<li class="<?php echo $oddeven; ?> <?php if($users->IsUserOnline($data['userid'])) { echo 'online'; } else { echo 'offline'; } ?> <?php echo $pos; ?>">
 				<div class="item" style="padding-left: 5px; padding-bottom: 4px;">
 					<div style="float: right; width: 16px; height: 16px; margin-top: 1px">
-						<?php if($data['member_rank'] == 3) { echo '<img src="'.WWW.'/web-gallery/images/groups/owner_icon.gif" width="15" height="15" alt="Dueñ@" title="Dueñ@" />'; } 
+						<?php if($data['member_rank'] == 3) { echo '<img src="'.WWW.'/web-gallery/images/groups/owner_icon.gif" width="15" height="15" alt="Dueï¿½@" title="Dueï¿½@" />'; } 
 						elseif($data['member_rank'] == 2) { echo '<img src="'.WWW.'/web-gallery/images/groups/administrator_icon.gif" width="15" height="15" alt="Administrador" title="Administrador" />'; } 
 						?>
 					</div>
@@ -181,7 +181,7 @@ if($count > 0) {
 if($pageNumber != 1){ echo '<a href="#" class="avatar-list-paging-link" id="memberlist-search-first">'; } ?>Primero<?php if($pageNumber != 1) { echo '</a>'; } ?> |
 <?php if($pageNumber != 1) { echo '<a href="#" class="avatar-list-paging-link" id="memberlist-search-previous">'; } ?>&lt;&lt;<?php if($pageNumber != 1) { echo '</a>'; } ?> |
 <?php if($pageNumber != $x){ echo '<a href="#" class="avatar-list-paging-link" id="memberlist-search-next" >'; } ?>&gt;&gt;<?php if($pageNumber != $x){ echo '</a>'; } ?> |
-<?php if($pageNumber != $x){ echo '<a href="#" class="avatar-list-paging-link" id="memberlist-search-last" >'; } ?>Último<?php if($pageNumber != $x){ echo '</a>'; } ?>
+<?php if($pageNumber != $x){ echo '<a href="#" class="avatar-list-paging-link" id="memberlist-search-last" >'; } ?>ï¿½ltimo<?php if($pageNumber != $x){ echo '</a>'; } ?>
 <input type="hidden" id="pageNumberMemberList" value="<?php echo $pageNumber; ?>"/>
 <input type="hidden" id="totalPagesMemberList" value="<?php echo $x; ?>"/>
 </div>

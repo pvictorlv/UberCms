@@ -24,7 +24,7 @@
             <div class="method idx1 nosmallprint">
                 <div class="method-content">
                     <h2>Quando as conseguirei?</h2>
-                        A cada 15 minutos são adicionados 10 moedas em sua conta, basta jogar e ganhar!
+                        A cada 10 minutos é adicionada 1 moeda em sua conta, basta jogar e ganhar!
                     <div class="summary clearfix">
                         <div id="credits-countdown">
 

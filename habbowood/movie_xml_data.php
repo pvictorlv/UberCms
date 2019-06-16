@@ -1,1 +1,1 @@
-<?phpinclude "../global.php";header("Content-Type:text/xml");$id = filter($_GET["id"]);echo utf8_encode(dbquery("SELECT data FROM movies WHERE id = '" . $id . "'")->fetch_assoc()['data']);
+<?phpinclude "../global.php";header("Content-Type:text/xml");$id = filter($_GET["id"]);echo utf8_encode(db::query("SELECT data FROM movies WHERE id = '" . $id . "'")->fetch(2)['data']);

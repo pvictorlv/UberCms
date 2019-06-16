@@ -17,13 +17,13 @@ if (isset($_POST['rank']))
 {
 	$user = filter($_POST['user']);
 	$rank = filter($_POST['rank']);
-	dbquery("UPDATE users SET rank = '".$rank."' WHERE username = '".$user."' LIMIT 1");
-	$msg = "¡Rango cambiado con Exito! Este ya tiene la placa correspondiente.";
+	db::query("UPDATE users SET rank = '".$rank."' WHERE username = '".$user."' LIMIT 1");
+	$msg = "ï¿½Rango cambiado con Exito! Este ya tiene la placa correspondiente.";
 
 	}	
 	else
 	{
-		$msg = "¡No se encontro usuario para dar rango.";
+		$msg = "ï¿½No se encontro usuario para dar rango.";
 	}
 
 

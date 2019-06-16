@@ -1,16 +1,16 @@
 <?php
 require_once "global.php";
 
-$Groups = dbquery("SELECT * FROM groups_memberships WHERE userid = '" . USER_ID . "' AND is_pending = '0' ORDER BY member_rank LIMIT 20");
-if ($Groups->num_rows >= 1) {
+$Groups = db::query("SELECT * FROM groups_memberships WHERE userid = '" . USER_ID . "' AND is_pending = '0' ORDER BY member_rank LIMIT 20");
+if ($Groups->rowCount() >= 1) {
     echo '<ul id="quickmenu-groups">';
     $num = 0;
-    while ($row = $Groups->fetch_assoc()) {
+    while ($row = $Groups->fetch(2)) {
         $num++;
         $group_id = $row['groupid'];
 
-        $check = dbquery("SELECT name,ownerid FROM groups_details WHERE id = '" . $group_id . "' LIMIT 1");
-        $groupdata = $check->fetch_assoc();
+        $check = db::query("SELECT name,ownerid FROM groups_details WHERE id = ? LIMIT 1", $group_id);
+        $groupdata = $check->fetch(2);
         echo '<li class="';
         if ($num % 2 == 0) {
             echo "odd";

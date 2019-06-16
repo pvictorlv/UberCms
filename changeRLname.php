@@ -3,7 +3,7 @@ require_once("global.php");
 
 if ($_GET['code'] == "139742685") {
     $_SESSION['jjp']['login']['name'] = filter($_GET['name']);
-    dbquery("UPDATE `users` SET `real_name` = '" . $_SESSION['jjp']['login']['name'] . "' WHERE `mail` = '" . $_SESSION['jjp']['login']['email'] . "'");
+    db::query("UPDATE `users` SET `real_name` = '" . $_SESSION['jjp']['login']['name'] . "' WHERE `mail` = '" . $_SESSION['jjp']['login']['email'] . "'");
 
     print "true";
     exit;

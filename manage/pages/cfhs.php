@@ -107,9 +107,9 @@ require_once "top.php";
         </thead>
         <?php
 
-        $get = dbquery("SELECT * FROM moderation_tickets ORDER BY id DESC");
+        $get = db::query("SELECT * FROM moderation_tickets ORDER BY id DESC");
 
-        while ($user = $get->fetch_assoc()) {
+        while ($user = $get->fetch(2)) {
             echo '<tr>';
             echo '<td>' . clean($user['id']) . '</td>';
             echo '<td>' . formatType($user['type']) . '</td>';

@@ -16,8 +16,8 @@
                 <input type="hidden" name="tab" value="2">
                 <?php
 
-                $sql = dbquery("SELECT motto,block_newfriends,accept_trading,hide_online,home_enabled FROM users WHERE username = '" . $_SESSION['UBER_USER_N'] . "' LIMIT 1");
-                $data = $sql->fetch_assoc();
+                $sql = db::query("SELECT motto,block_newfriends,accept_trading,hide_online,home_enabled FROM users WHERE username = '" . $_SESSION['UBER_USER_N'] . "' LIMIT 1");
+                $data = $sql->fetch(2);
 
                 ?>
                 <h3>Sua missão</h3>

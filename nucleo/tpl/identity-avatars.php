@@ -38,14 +38,14 @@
 
                 <?php
 
-                $result = dbquery("SELECT `id`,`username`,`last_online`,`look`,`password` FROM `users` WHERE `mail` = '" . $_SESSION['jjp']['login']['email'] . "'");
+                $result = db::query("SELECT `id`,`username`,`last_online`,`look`,`password` FROM `users` WHERE `mail` = ?", $_SESSION['jjp']['login']['email']);
 
                 $i = 0;
-                while ($row = $result->fetch_array(2)) {
+                while ($row = $result->fetch(1)) {
                     ?>
                     <div id="first-avatar">
 
-                        <img src="http://www.habbo.com/habbo-imaging/avatarimage?figure=<?php echo $row[3]; ?>"
+                        <img src="https://habbo.city/habbo-imaging/avatarimage?figure=<?php echo $row[3]; ?>"
                              width="64" height="110"/>
 
                         <div id="first-avatar-info">

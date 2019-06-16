@@ -8,10 +8,10 @@
 
             <?php
 
-            $getRandom = dbquery("SELECT id,username,look,motto,account_created,online FROM users ORDER BY RAND() LIMIT 18");
+            $getRandom = db::DoQuery("SELECT id,username,look,motto,account_created,online FROM users ORDER BY RAND() LIMIT 18");
             $i = 0;
 
-            while ($randomHabbo = $getRandom->fetch_assoc()) {
+            while ($randomHabbo = $getRandom->fetch(2)) {
                 echo '<div id="active-habbo-data-' . $i . '" class="active-habbo-data">
 		<div class="active-habbo-data-container">
 			<div class="active-name ' . (($randomHabbo['online'] == "1") ? 'online' : 'offline') . '">' . clean($randomHabbo['username']) . '</div>
@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<input type="hidden" id="active-habbo-url-' . $i . '" value="%www%/home/' . clean($randomHabbo['username']) . '"/>
-	<input type="hidden" id="active-habbo-image-' . $i . '" class="active-habbo-image" value="http://avatar-retro.com/habbo-imaging/avatarimage.php?figure=' . clean($randomHabbo['look']) . '&direction=4&head_direction=4" />';
+	<input type="hidden" id="active-habbo-image-' . $i . '" class="active-habbo-image" value="https://habbo.city/habbo-imaging/avatarimage?figure=' . clean($randomHabbo['look']) . '&direction=4&head_direction=4" />';
 
                 $i++;
             }

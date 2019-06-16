@@ -104,7 +104,7 @@ $core->CheckCookies();
 // ############################################################################
 // Some commonly used functions for easy access
 
-function dbquery($strQuery = '')
+function db::query($strQuery = '')
 {
     global $db;
 

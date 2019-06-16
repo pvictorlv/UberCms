@@ -25,11 +25,11 @@ require_once "top.php";
         <div style="float: left;">
 
             <?php
-            $getOptions = dbquery("SELECT * FROM site_promos ORDER BY id");
+            $getOptions = db::query("SELECT * FROM site_promos ORDER BY id");
 
             ?>
 
-            <?php while ($Config = $getOptions->fetch_assoc()) {
+            <?php while ($Config = $getOptions->fetch(2)) {
                 echo '<strong><font color="green">' . $Config['titulo'] . '</font></strong>  ';
                 echo '<form name="formulario' . $Config['titulo'] . '" method="post" action="index.php?_cmd=editar_promos"><input type="hidden" id="nombre" name="nombre" value="' . $Config['titulo'] . '">
 <a href="index.php?_cmd=newspromosedit&nombre=' . $Config['titulo'] . '" id="boton">Editar</a> ';

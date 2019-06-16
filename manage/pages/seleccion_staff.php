@@ -1,5 +1,5 @@
 <?php
-$pagename= "Selección Staff";
+$pagename= "Selecciï¿½n Staff";
 if (!defined('IN_HK') || !IN_HK)
 {
 	exit;
@@ -23,10 +23,10 @@ if (isset($_POST['type']))
 	}
 	else
 	{
-        dbquery("INSERT INTO cms_recommended (id_rec,type) VALUES ('". $id_rec ."', '" . $type . "')");
-		fMessage('ok', 'Noticia publicada con éxito.');
+        db::query("INSERT INTO cms_recommended (id_rec,type) VALUES ('". $id_rec ."', '" . $type . "')");
+		fMessage('ok', 'Noticia publicada con ï¿½xito.');
 		
-		echo '<b>La noticia ha sido publicada correctamente, redireccionando a la administración..</b><META HTTP-EQUIV="refresh" CONTENT="5; url=index.php?_cmd=newspublish">';
+		echo '<b>La noticia ha sido publicada correctamente, redireccionando a la administraciï¿½n..</b><META HTTP-EQUIV="refresh" CONTENT="5; url=index.php?_cmd=newspublish">';
 		exit;
 	}
 }
@@ -36,7 +36,7 @@ require_once "top.php";
 ?>
 
 <h3><?php echo $pagename; ?></h3>
-Selecciona un Grupo o una sala a la Selección Staff.
+Selecciona un Grupo o una sala a la Selecciï¿½n Staff.
 <br />
 <br />
 
@@ -44,7 +44,7 @@ Selecciona un Grupo o una sala a la Selección Staff.
 
 ID de la Sala o Grupo: <input type="text" id="url" name="id_rec" value="" maxlength="120"><br /><br />
 
-¿Grupo o sala? <select name="type">
+ï¿½Grupo o sala? <select name="type">
 <option selected> ---
 <option value="group">Grupo
 <option value="room">Sala

@@ -4,7 +4,7 @@ session_start();
 require_once("../global.php");
 if($_POST['eventTypeId']){$category = $_POST['eventTypeId'];}else{$category = "4";};
 if($category == "1" || $category == "3" || $category == "4" || $category == "5" || $category == "6" || $category == "7" || $category == "8" || $category == "9" || $category == "10" || $category == "14"){
-$buscarsalas = dbquery("SELECT * FROM rooms WHERE category = '".$category."' AND users_now > '0' ORDER BY users_now DESC LIMIT 0,10");
+$buscarsalas = db::query("SELECT * FROM rooms WHERE category = '".$category."' AND users_now > '0' ORDER BY users_now DESC LIMIT 0,10");
 $i=0;
 $num_rows = mysql_num_rows($buscarsalas);
 if($num_rows > "0"){

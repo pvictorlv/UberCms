@@ -1,4 +1,4 @@
 <?php
 
-dbquery("UPDATE user_stats SET DailyRespectPoints = '3'");
-dbquery("UPDATE user_stats SET DailyPetRespectPoints = '3'");
+Db::fastQuery("UPDATE users SET daily_respect_points = '3'");
+Db::fastQuery("UPDATE users SET daily_pet_respect_points = '3'");
