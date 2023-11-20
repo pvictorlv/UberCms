@@ -6,7 +6,7 @@ include '../global.php';
 <div id="profile-tags-container">
 <?php
 	$accountId = $gtfo->cleanWord($_POST['accountId']);
-	$sql = mysql_query("SELECT * FROM user_tags WHERE user_id = '".$accountId."'");
+	$sql = mysql_query("SELECT * FROM users_tags WHERE user_id = '".$accountId."'");
 	if(mysql_num_rows($sql) > 0)
 	{
 	while($data = mysql_fetch_array($sql))
@@ -17,7 +17,7 @@ include '../global.php';
         <a href="http://xukys-hotel.com/tag/<?php echo fixText($data['tag'], true, false, true, false, false); ?>" class="tag"><?php echo fixText($data['tag'], true, false, true, false, false); ?></a><div class="tag-id" style="display:none"><?php echo $data['id']; ?></div><?php if(USER_ID == $data['user_id']) { ?><img border="0" class="tag-delete-link" onmouseover="this.src='<?php echo WWW; ?>/web-gallery/images/buttons/tags/tag_button_delete_hi.gif'" onmouseout="this.src='<?php echo WWW; ?>/web-gallery/images/buttons/tags/tag_button_delete.gif'" src="<?php echo WWW; ?>/web-gallery/images/buttons/tags/tag_button_delete.gif"><?php } ?>
     </span>
 <?php
-	$query = mysql_query("SELECT user_id FROM user_tags WHERE tag = '".$data['tag']."' AND user_id = '".USER_ID."' AND user_id != '".$data['user_id']."' LIMIT 1");
+	$query = mysql_query("SELECT user_id FROM users_tags WHERE tag = '".$data['tag']."' AND user_id = '".USER_ID."' AND user_id != '".$data['user_id']."' LIMIT 1");
 	if(mysql_num_rows($query) > 0)
 	{
 
@@ -31,7 +31,7 @@ include '../global.php';
 	}
 	else
 	{
-		echo "No hay ningún \'YoSoy\'";
+		echo "No hay ningï¿½n \'YoSoy\'";
 	}
 ?>
 </div>
@@ -40,7 +40,7 @@ include '../global.php';
     
         TagHelper.setTexts({
             buttonText: "OK",
-            tagLimitText: "¡Has alcanzado el límite de \'YoSoys\'! Elimina uno antes si quieres añadir otro nuevo."
+            tagLimitText: "ï¿½Has alcanzado el lï¿½mite de \'YoSoys\'! Elimina uno antes si quieres aï¿½adir otro nuevo."
         });
     
 </script>

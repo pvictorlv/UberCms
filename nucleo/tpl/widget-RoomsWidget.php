@@ -45,7 +45,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
 
                 global $users;
                 $name = $users->GetUserVar($qryId, 'username');
-                $roomsql = db::query("SELECT id,caption,state FROM rooms WHERE owner = '" . $name . "'");
+                $roomsql = db::query("SELECT id,caption,state FROM rooms_data WHERE owner = ?", $name);
                 if ($roomsql->rowCount() >= 1) {
 
                     ?>

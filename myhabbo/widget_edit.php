@@ -3,7 +3,8 @@ if(!defined('NOWHOS'))
 {
 	define('NOWHOS', true);
 }
-define('Xukys', true);
+
+
 require_once '../global.php';
 require_once "../nucleo/class.homes.php";
 
@@ -43,8 +44,8 @@ if(isset($_POST['skinId']) && isset($_POST['widgetId']))
 				break;
 		}
 				$skiId = 'w_skin_'.$skin;
-				$sql = mysql_query("SELECT type,owner_id from homes_items where id = '".$_POST['widgetId']."' LIMIT 1");
-				$data = mysql_fetch_array($sql);
+				$sql = db::query("SELECT type,owner_id from homes_items where id = ? LIMIT 1", $_POST['widgetId']);
+				$data = $sql->fetch(PDO::FETCH_ASSOC);
 				if($data['owner_id'] == USER_ID)
 				{
 				header('X-JSON: {"id":"' . $_POST['widgetId'] . '","cssClass":"' . $skiId . '","type":"'.$data['type'].'"}');

@@ -1,16 +1,11 @@
 <?php
 
-function getGroupData()
+function getGroupData($id)
 {
-    $result = db::query("SELECT * FROM groups_details ");
-    while ($row = mysql_fetch_array($result)) {
-        $id = $row["id"];
-        $groupname = $row["groupname"];
-        $groupurpose = $row["groupurpose"];
-        $groupmessage = $row["groupmessage"];
+    return db::query("SELECT * FROM groups_data where id = ?", $id)->fetch(2);
 
-    }
 }
+global $users;
 
 if (!defined("NOWHOS")) {
     define("NOWHOS", TRUE);
@@ -61,13 +56,14 @@ switch ($widgetId) {
 }
 
 if (!$users->haveWidget($id, $widget)) {
-    mysql_query("INSERT INTO homes_items (id, home_id, type, x, y, z, data, skin, owner_id, link) VALUES (NULL, '" . USER_ID . "', 'widget', '15', '25', '12', '" . $widget . "', 'w_skin_goldenskin', '" . USER_ID . "', '0');");
+    DB::query("INSERT INTO homes_items (id, home_id, type, x, y, z, data, skin, owner_id, link)
+            VALUES (NULL, '" . USER_ID . "', 'widget', '15', '25', '12', ?, 'w_skin_goldenskin', '" . USER_ID . "', '0');", $widget);
 } else {
     exit;
 }
 
-$getWidget = mysql_query("SELECT * FROM homes_items WHERE owner_id = '" . $my_id . "' AND data = '" . $widget . "' AND type = 'widget' LIMIT 1");
-$row = mysql_fetch_assoc($getWidget);
+$getWidget = db::query("SELECT * FROM homes_items WHERE owner_id = '" . $my_id . "' AND data = ? AND type = 'widget' LIMIT 1", $widget);
+$row = $getWidget->fetch(2);
 header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
 ?>
 
@@ -87,7 +83,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
                             }, false);
                         </script>
                         <span class="header-left">&nbsp;</span><span class="header-middle">Mis Amigos (<span
-                                id="avatar-list-size">0</span>)</span><span class="header-right">&nbsp;</span></h3>
+                                    id="avatar-list-size">0</span>)</span><span class="header-right">&nbsp;</span></h3>
                 </div>
             </div>
             <div class="widget-body">
@@ -145,7 +141,8 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
                             }, false);
                         </script>
                         <span class="header-left">&nbsp;</span><span
-                            class="header-middle">Placas y Recompensas</span><span class="header-right">&nbsp;</span>
+                                class="header-middle">Placas y Recompensas</span><span
+                                class="header-right">&nbsp;</span>
                     </h3>
                 </div>
             </div>
@@ -154,11 +151,11 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
                     <div id="badgelist-content">
                         <ul class="clearfix">
                             <?php
-                            $getMyBadges = mysql_query("SELECT badge_id FROM user_badges WHERE user_id = '" . $my_id . "' LIMIT 6");
-                            if (mysql_num_rows($getMyBadges) > 0) {
-                                while ($row = mysql_fetch_assoc($getMyBadges)) {
+                            $getMyBadges = DB::query("SELECT badge_id FROM user_badges WHERE user_id = '" . $my_id . "' LIMIT 6");
+                            if ($getMyBadges->rowCount() > 0) {
+                                while ($row = $getMyBadges->fetch(2)) {
                                     ?>
-                                    <li style="background-image: url(<?php echo 'http://images.xukys-hotel.com/c_images/album1584'; ?>/<?php echo $row['badge_id']; ?>.gif)"></li>
+                                    <li style="background-image: url(<?php echo '/c_images/album1584'; ?>/<?php echo $row['badge_id']; ?>.gif)"></li>
                                 <?php }
                             } else { ?>
                                 No tienes placas
@@ -189,7 +186,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
                                 }, false);
                             </script>
                         <?php } else { ?><span class="header-left">&nbsp;</span><span
-                            class="header-middle">MIS SALAS</span><span class="header-right">&nbsp;</span><?php } ?>
+                                class="header-middle">MIS SALAS</span><span class="header-right">&nbsp;</span><?php } ?>
                     </h3>
                 </div>
             </div>
@@ -217,7 +214,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
                             }, false);
                         </script>
                         <span class="header-left">&nbsp;</span><span class="header-middle">Mis votos</span><span
-                            class="header-right">&nbsp;</span></h3>
+                                class="header-right">&nbsp;</span></h3>
                 </div>
             </div>
             <div class="widget-body">
@@ -226,7 +223,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
                         <script type="text/javascript">
                             var ratingWidget;
 
-                            ratingWidget = new RatingWidget('<?php echo $row['id']; ?>', '<?php echo $userId; ?>', <?php echo time(); ?>);
+                            ratingWidget = new RatingWidget('<?php echo $row['id']; ?>', '<?php echo USER_ID; ?>', <?php echo time(); ?>);
 
                         </script>
                         <div class="rating-average">
@@ -250,8 +247,8 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
         </div>
     </div>
 <?php } else if ($widget == "GroupsWidget") {
-    $getMyGroups = mysql_query("SELECT * FROM groups_memberships WHERE userID = '" . USER_ID . "'");
-    $myGroups = mysql_num_rows($getMyGroups);
+    $getMyGroups = db::query("SELECT * FROM groups_members WHERE user_id = ?", USER_ID);
+    $myGroups = $getMyGroups->rowCount();
     ?>
     <div class="movable widget <?php echo $row['var']; ?>" id="widget-<?php echo $row['id']; ?>"
          style=" left: <?php echo $row['position_left']; ?>px; top: <?php echo $row['position_top']; ?>px; z-index: <?php echo $row['position_z']; ?>;">
@@ -267,7 +264,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
                             }, false);
                         </script>
                         <span class="header-left">&nbsp;</span><span class="header-middle">Mis Grupos (<span
-                                id="groups-list-size">0</span>)</span><span class="header-right">&nbsp;</span></h3>
+                                    id="groups-list-size">0</span>)</span><span class="header-right">&nbsp;</span></h3>
                 </div>
             </div>
             <div class="widget-body">
@@ -276,23 +273,23 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
                     <?php if ($myGroups > 0) { ?>
                         <div class="groups-list-container">
                             <ul class="groups-list">
-                                <?php while ($row = mysql_fetch_assoc($getMyGroups)) {
-                                    $groupName = getGroupData("name", $row['groupID']);
+                                <?php while ($row = $getMyGroups->fetch(2)) {
+                                    $data = getGroupData($row['group_id']);
                                     ?>
-                                    <li title="<?php echo $groupName; ?>"
-                                        id="groups-list-<?php echo $userId; ?>-<?php echo $row['groupID']; ?>">
+                                    <li title="<?php echo $data['name']; ?>"
+                                        id="groups-list-<?php echo USER_ID; ?>-<?php echo $row['group_id']; ?>">
                                         <div class="groups-list-icon"><a
-                                                href="/groups/<?php echo $row['groupID']; ?>/id"><img
-                                                    src="/habbo-imaging/badge/<?php echo $row['badge']; ?>.gif"/></a>
+                                                    href="/groups/<?php echo $row['groupID']; ?>/id"><img
+                                                        src="/habbo-imaging/badge/<?php echo $data['badge']; ?>.gif"/></a>
                                         </div>
                                         <div class="groups-list-open"></div>
                                         <h4>
-                                            <a href="/groups/<?php echo $row['groupID']; ?>/id"><?php echo $groupName; ?></a>
+                                            <a href="/groups/<?php echo $row['groupID']; ?>/id"><?php echo $data['name']; ?></a>
 
                                         </h4>
                                         <p>
-                                            Grupo creado:<br/>
-                                            <b><?php echo $Users->getGroupData("created", $row['groupID']); ?></b>
+                                            Grupo criado:<br/>
+                                            <b><?php echo $data['created'] ?></b>
                                         </p>
                                         <div class="clear"></div>
                                     </li>
@@ -301,7 +298,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
                         </div>
                     <?php } else { ?>
                         <div class="groups-list-none">
-                            No eres miembro de ning�n Grupo
+                            Não está em nenhum grupo
                         </div>
                     <?php } ?>
 
@@ -309,8 +306,9 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
                         <div><a href="#" class="groups-loading-close"></a></div>
                         <div class="clear"></div>
                         <p style="text-align:center"><img
-                                src="http://xukys-hotel.com/web-gallery/images/progress_bubbles.gif" alt="" width="29"
-                                height="6"/></p></div>
+                                    src="/web-gallery/images/progress_bubbles.gif" alt=""
+                                    width="29"
+                                    height="6"/></p></div>
                     <div class="groups-list-info"></div>
 
                     <div class="clear"></div>
@@ -321,7 +319,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
 
     <script type="text/javascript">
         document.observe("dom:loaded", function () {
-            new GroupsWidget('<?php echo $userId; ?>', '<?php echo $row['id']; ?>');
+            new GroupsWidget('<?php echo USER_ID; ?>', '<?php echo $row['id']; ?>');
         });
     </script>
 <?php } else if ($widget == "RoomsWidget") { ?>
@@ -332,7 +330,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
 
                 <div class="widget-headline">
                     <h3>
-                        <img src="http://xukys-hotel.com/web-gallery/images/myhabbo/icon_edit.gif" width="19"
+                        <img src="/web-gallery/images/myhabbo/icon_edit.gif" width="19"
                              height="18" class="edit-button" id="widget-<?php echo $row['id']; ?>-edit"/>
                         <script language="JavaScript" type="text/javascript">
                             Event.observe("widget-<?php echo $row['id']; ?>-edit", "click", function (e) {
@@ -340,7 +338,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
                             }, false);
                         </script>
                         <span class="header-left">&nbsp;</span><span class="header-middle">MIS SALAS</span><span
-                            class="header-right">&nbsp;</span></h3>
+                                class="header-right">&nbsp;</span></h3>
                 </div>
             </div>
             <div class="widget-body">
@@ -359,7 +357,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
             <div class="widget-corner" id="widget-<?php echo $row['id']; ?>-handle">
                 <div class="widget-headline">
                     <h3>
-                        <img src="http://xukys-hotel.com/web-gallery/images/myhabbo/icon_edit.gif" width="19"
+                        <img src="/web-gallery/images/myhabbo/icon_edit.gif" width="19"
                              height="18" class="edit-button" id="widget-<?php echo $row['id']; ?>-edit"/>
                         <script language="JavaScript" type="text/javascript">
                             Event.observe("widget-<?php echo $row['id']; ?>-edit", "click", function (e) {
@@ -367,14 +365,14 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
                             }, false);
                         </script>
                         <span class="header-left">&nbsp;</span><span class="header-middle">REPRODUCTOR</span><span
-                            class="header-right">&nbsp;</span></h3>
+                                class="header-right">&nbsp;</span></h3>
                 </div>
             </div>
             <div class="widget-body">
                 <div class="widget-content">
 
 
-                    No hay canciones seleccionadas
+                    Nenhuma música selecionada
 
 
                     <div class="clear"></div>

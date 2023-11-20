@@ -91,8 +91,6 @@ $client->SetParam('forwardId', $forwardId);
 if (isset($_GET['forceTicket']) && $users->hasFuse(USER_ID, 'fuse_admin')) {
     $client->SetParam('sso_ticket', $_GET['forceTicket']);
 }
-$users->SetUserVar(USER_ID, 'sec_hash', $users->GetUserVar(USER_ID, 'auth_ticket', false));
-setcookie('SECRET_HASH', $users->GetUserVar(USER_ID, 'sec_hash', false));
 
 $tpl->AddTemplate($client);
 

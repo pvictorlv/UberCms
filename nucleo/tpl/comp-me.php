@@ -69,8 +69,8 @@
         <div id="habbo-feed">
             <ul id="feed-items">
                 <?php
-                $sql = db::query("SELECT accept_trading FROM users WHERE id=? ", USER_ID)->fetchColumn();
-                if ($sql == "1") {
+                $sql = db::query("SELECT trade_lock FROM users WHERE id=? ", USER_ID)->fetchColumn();
+                if ($sql == "0") {
                     echo
                     '<li class="small" id="feed-trading-enabled">Suas trocas estão ativas. <a href="%www%/profile">Clique aqui para mudar.</a></li>';
                 } else {

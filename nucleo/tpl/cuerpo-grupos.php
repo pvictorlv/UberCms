@@ -52,11 +52,11 @@
 <?php
 
 $bg = "";
-$my_membership = db::query("SELECT * FROM groups_memberships WHERE groupid = '" . (($_GET['id'])) . "' AND userid ='" . USER_ID . "'")->fetch(2);
-$member_rank = $my_membership['member_rank'];
+$my_membership = db::query("SELECT * FROM groups_members WHERE group_id = ? AND user_id ='" . USER_ID . "'", $_GET['id'])->fetch(2);
+$member_rank = $my_membership['rank'];
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-    $check = db::query("SELECT * FROM groups_details WHERE id = '" . (($_GET['id'])) . "' LIMIT 1");
+    $check = db::query("SELECT * FROM groups_data WHERE id = ? LIMIT 1", $_GET['id']);
     $exists = $check->rowCount();
 
     if ($exists > 0) {
@@ -67,18 +67,18 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         $groupdata = $check->fetch(2);
 
         $pagename = "Grupo: " . $groupdata['name'];
-        $ownerid = $groupdata['ownerid'];
+        $ownerid = $groupdata['owner_id'];
         $bg = $groupdata['bg'];
 
-        $Miembros = db::query("SELECT COUNT(*) FROM groups_memberships WHERE groupid = '" . $groupid . "' AND is_pending = '0'");
+        $Miembros = db::query("SELECT COUNT(*) FROM groups_members WHERE group_id = ?", $groupid);
         $Members = $Miembros->fetch(2);
-        $check = db::query("SELECT * FROM groups_memberships WHERE userid = '" . USER_ID . "' AND groupid = '" . $groupid . "' AND is_pending = '0' LIMIT 1");
-        $is_member = $check->fetch(2);
+        $check = db::query("SELECT * FROM groups_members WHERE user_id = '" . USER_ID . "' AND group_id = ? LIMIT 1", $groupid);
 
-        if ($is_member > 0 && LOGGED_IN == TRUE) {
-            $is_member = true;
+        if ($check->rowCount() > 0 && LOGGED_IN == TRUE) {
             $my_membership = $check->fetch(2);
-            $member_rank = $my_membership['member_rank'];
+
+            $is_member = true;
+            $member_rank = $my_membership['rank'];
 
         } else {
             $is_member = false;
@@ -89,17 +89,17 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     }
 
 } else if (isset($_GET['name'])) {
-    $GroupName = Text($_GET['name']);
-    $check_name = db::query("SELECT * FROM groups_links WHERE short = '$GroupName' LIMIT 1") or die(mysql_error());
-    $exist_name = mysql_num_rows($check_name);
+    $GroupName = ($_GET['name']);
+    $check_name = db::query("SELECT * FROM groups_links WHERE short = ? LIMIT 1", $GroupName);
+    $exist_name = $check_name->rowCount();
 
-    if ($exists_name > 0) {
-        $linkdata = mysql_fetch_assoc($check);
-        $check = db::query("SELECT * FROM groups_details WHERE id = '" . Text($linkdata['groupid']) . "' LIMIT 1");
-        $exists = mysql_num_rows($check);
+    if ($exist_name > 0) {
+        $linkdata = $check_name->fetch(2);
+        $check = db::query("SELECT * FROM groups_data WHERE id = ? LIMIT 1", $linkdata['groupid']);
+        $exists = $check->rowCount();
 
         if ($exists > 0) {
-            $groupdata = mysql_fetch_assoc($check);
+            $groupdata = $check->fetch(2);
             $groupid = $groupdata['id'];
             $pageid = str_replace(" ", "-", $GroupName);
             $group_name = true;
@@ -107,19 +107,19 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $error = false;
 
             $pagename = "Grupo: " . $groupdata['name'] . "";
-            $ownerid = $groupdata['ownerid'];
+            $ownerid = $groupdata['owner_id'];
             $bg = $groupdata['bg'];
 
-            $Miembros = db::query("SELECT COUNT(*) FROM groups_memberships WHERE groupid = '" . $groupid . "' AND is_pending = '0'");
-            $Members = mysql_fetch_array($Miembros);
+            $Miembros = db::query("SELECT COUNT(*) FROM groups_members WHERE group_id = ?", $groupid);
+            $Members = $Miembros->fetch(3);
 
-            $check = db::query("SELECT * FROM groups_memberships WHERE userid = '" . USER_ID . "' AND groupid = '" . $groupid . "' AND is_pending = '0' LIMIT 1");
-            $is_member = mysql_num_rows($check);
+            $check = db::query("SELECT * FROM groups_members WHERE user_id = '" . USER_ID . "' AND group_id = '" . $groupid . "' LIMIT 1", $groupid);
+            $is_member = $check->rowCount();
 
             if ($is_member > 0 && LOGGED_IN == TRUE) {
                 $is_member = true;
-                $my_membership = mysql_fetch_assoc($check);
-                $member_rank = $my_membership['member_rank'];
+                $my_membership = $check->fetch(2);
+                $member_rank = $my_membership['rank'];
 
             } else {
                 $is_member = false;
@@ -143,13 +143,13 @@ if (isset($_GET['do']) && $_GET['do'] == "edit" && LOGGED_IN) {
         $_SESSION['group_edit'] = true;
         $_SESSION['group_edit_id'] = $groupid;
         $_SESSION['user_group_edit_id'] = "'.USER_ID.'";
-        $check = db::query("SELECT * FROM cms_homes_group_linker WHERE userid = '" . USER_ID . "' LIMIT 1") or die(mysql_error());
+        $check = db::query("SELECT * FROM cms_homes_group_linker WHERE userid = '" . USER_ID . "' LIMIT 1");
         $linkers = mysql_num_rows($check);
 
         if ($linkers > 0) {
-            db::query("UPDATE cms_homes_group_linker SET active = '1', groupid = '" . $groupid . "' WHERE userid = '" . USER_ID . "' LIMIT 1") or die(mysql_error());
+            db::query("UPDATE cms_homes_group_linker SET active = '1', groupid = '" . $groupid . "' WHERE userid = '" . USER_ID . "' LIMIT 1");
         } else {
-            db::query("INSERT INTO cms_homes_group_linker (userid,groupid,active) VALUES ('" . USER_ID . "','" . $groupid . "','1')") or die(mysql_error());
+            db::query("INSERT INTO cms_homes_group_linker (userid,groupid,active) VALUES ('" . USER_ID . "','" . $groupid . "','1')");
         }
 
         restoreWaitingItems("'.USER_ID.'");
@@ -184,17 +184,17 @@ if ($error == true) {
     $body_id = "home";
 }
 
-if ($groupdata['type'] !== "1" && $is_member !== true) {
-    $remove_pending = db::query("DELETE FROM groups_memberships WHERE is_pending = '1' AND userid = '" . USER_ID . "' AND groupid = '" . $groupid . "' LIMIT 1") or die(mysql_error());
+if ($groupdata['forum_type'] !== "1" && $is_member !== true) {
+    $remove_pending = db::query("DELETE FROM groups_requests WHERE user_id = '" . USER_ID . "' AND group_id = ? LIMIT 1", $groupid);
 }
 
 $viewtools = "	<div class=\"myhabbo-view-tools\">\n";
 
 
-if (LOGGED_IN == TRUE && !$is_member && $groupdata['type'] !== "2" && $my_membership['is_pending'] !== "1") {
+if (LOGGED_IN == TRUE && !$is_member && $groupdata['forum_type'] !== "2" && $my_membership['is_pending'] !== "1") {
     $viewtools = $viewtools . "<a href=\"/ajax_habblet/actions/join.php?groupId=" . $groupid . "\" id=\"join-group-button\">";
 
-    if ($groupdata['type'] == "0" || $groupdata['type'] == "3") {
+    if ($groupdata['forum_type'] == "0" || $groupdata['forum_type'] == "3") {
         $viewtools = $viewtools . "Unirse al Grupo";
     } else {
         $viewtools = $viewtools . "Enviar petici�n";
@@ -204,20 +204,11 @@ if (LOGGED_IN == TRUE && !$is_member && $groupdata['type'] !== "2" && $my_member
 }
 
 
-if (LOGGED_IN == TRUE && $my_membership['is_current'] !== "1" && $is_member) {
-    $viewtools = $viewtools . "<a href=\"#\" id=\"select-favorite-button\">Hacer favorito</a>\n";
-}
-
-if (LOGGED_IN == TRUE && $my_membership['is_current'] == "1" && $is_member) {
-    $viewtools = $viewtools . "<a href=\"#\" id=\"deselect-favorite-button\">Remover favorito</a>";
-}
-
 if (LOGGED_IN == TRUE && $is_member && $member_rank <= 2)
     if ('."' . USER_ID . '".' !== $ownerid) {
     } else {
         $viewtools = $viewtools . "<a href=\"/ajax_habblet/confirm_leave.php?groupId=" . $groupid . "\" id=\"leave-group-button\">Dejar el Grupo</a>\n";
     }
-
 
 
 $viewtools .= "	</div>\n";
@@ -230,7 +221,7 @@ $bg_exists = $bg_fetch->rowCount();
 <?php
 
 $groupid = ($_GET['id']);
-$ownerid = $groupdata['ownerid'];
+$ownerid = $groupdata['owner_id'];
 ?>
 <div id="container">
     <div id="content" style="position: relative" class="clearfix">
@@ -246,10 +237,12 @@ $ownerid = $groupdata['ownerid'];
 
                 <h2 class="page-owner">
                     <?php echo($groupdata['name']); ?>&nbsp;
-                    <?php if ($groupdata['type'] == "2") { ?><img src='/web-gallery/images/status_closed_big.gif'
-                                                                  alt='Grupo Cerrado' title='Grupo Cerrado'><?php } ?>
-                    <?php if ($groupdata['type'] == "1") { ?><img src='/web-gallery/images/status_exclusive_big.gif'
-                                                                  alt='Grupo Moderado' title='Grupo Moderado'><?php } ?>
+                    <?php if ($groupdata['forum_type'] == "2") { ?><img src='/web-gallery/images/status_closed_big.gif'
+                                                                        alt='Grupo Cerrado'
+                                                                        title='Grupo Cerrado'><?php } ?>
+                    <?php if ($groupdata['forum_type'] == "1") { ?><img
+                            src='/web-gallery/images/status_exclusive_big.gif'
+                            alt='Grupo Moderado' title='Grupo Moderado'><?php } ?>
                 </h2>
                 </h2>
                 <ul class="box-tabs">
@@ -353,11 +346,11 @@ $ownerid = $groupdata['ownerid'];
 
                             <?php
                             // Widgets
-                            $getWidgets = db::query("SELECT * FROM site_items WHERE groupId = '" . $groupid . "' AND type = 'widget'");
+                            $getWidgets = db::query("SELECT * FROM site_items WHERE groupId = ? and type = 'widget'", $groupid);
                             while ($row = $getWidgets->fetch(2)) {
 
                             $WidgetId = $row['id'];
-                            $Miembros = db::query("SELECT * FROM groups_memberships WHERE groupid = '" . $groupid . "' AND is_pending = '0'");
+                            $Miembros = db::query("SELECT * FROM groups_members WHERE group_id = ?", $groupid);
                             $Members = $Miembros->rowCount();
                             if ($row['var'] == "MemberWidget") {
                                 ?>
@@ -402,11 +395,11 @@ $ownerid = $groupdata['ownerid'];
                                                     <div class="avatar-widget-list-container">
 
                                                         <?php
-                                                        $getMemberss = db::query("SELECT userID FROM groups_memberships WHERE groupID = '" . $groupid . "' AND is_pending = '0'");
+                                                        $getMemberss = db::query("SELECT user_id FROM groups_members WHERE group_id = ?", $groupid);
 
                                                         while ($rowMember = $getMemberss->fetch(2)) {
 
-                                                            $rowUser = getData($rowMember['userID'])->fetch(2);
+                                                            $rowUser = getData($rowMember['user_id'])->fetch(2);
                                                             ?>
                                                             <ul id="avatar-list-list" class="avatar-widget-list">
                                                                 <li id="avatar-list-<?php echo $WidgetId; ?>-<?php echo $rowUser['id']; ?>"
@@ -443,10 +436,10 @@ $ownerid = $groupdata['ownerid'];
                                                     <div id="avatar-list-paging">
                                                         1 - 1 / 1
                                                         <br/>
-                                                        Primero |
+                                                        Primeiro |
                                                         &lt;&lt; |
                                                         &gt;&gt; |
-                                                        �ltimo
+                                                        Último
 
                                                         <input type="hidden" id="pageNumber" value="1"/>
                                                         <input type="hidden" id="totalPages" value="1"/>
@@ -468,8 +461,8 @@ $ownerid = $groupdata['ownerid'];
 
                             <?php } else if ($row['var'] == "GuestbookWidget")
                             {
-                                $sql = db::query("SELECT * FROM cms_guestbook WHERE widget_id = '$WidgetId' ORDER BY id DESC");
-                                $count = mysql_num_rows($sql);
+                                $sql = db::query("SELECT * FROM cms_guestbook_entries WHERE widget_id =  ? ORDER BY id DESC", $WidgetId);
+                                $count = $sql->rowCount();
 
                                 if ($row['content'] == "private")
                                     $status = "private";
@@ -514,17 +507,17 @@ $ownerid = $groupdata['ownerid'];
                                                             <div id="guestbook-empty-notes">Este Libro est� vac�o.</div>
                                                             <?php
                                                         } else {
-                                                            $sql123 = db::query("SELECT * FROM groups_details WHERE id = '" . $_GET['id'] . "' LIMIT 1");
-                                                            $grouprrow = mysql_fetch_assoc($sql123);
+                                                            $sql123 = db::query("SELECT * FROM groups_data WHERE id = ? LIMIT 1", $_GET['id']);
+                                                            $grouprrow = $sql123->fetch(2);
                                                             $i = 0;
 
-                                                            while ($row1 = mysql_fetch_assoc($sql)) {
+                                                            while ($row1 = $sql->fetch(2)) {
                                                                 $i++;
-                                                                $userrow = mysql_fetch_assoc(db::query("SELECT * FROM users WHERE id = '" . $row1['userid'] . "' LIMIT 1"));
+                                                                $userrow = db::query("SELECT * FROM users WHERE id = '" . $row1['userid'] . "' LIMIT 1")->fetch(2);
 
-                                                                if ("'.USER_ID.'" == $row1['userid']) {
+                                                                if (USER_ID == $row1['userid']) {
                                                                     $owneronly = "<img src=\"/images/myhabbo/buttons/delete_entry_button.gif\" id=\"gbentry-delete-" . $row1['id'] . "\" class=\"gbentry-delete\" style=\"cursor:pointer\" alt=\"\"/><br/>";
-                                                                } else if ($grouprrow['ownerid'] == "'.USER_ID.'") {
+                                                                } else if ($grouprrow['owner_id'] == USER_ID) {
                                                                     $owneronly = "<img src=\"/images/myhabbo/buttons/delete_entry_button.gif\" id=\"gbentry-delete-" . $row1['id'] . "\" class=\"gbentry-delete\" style=\"cursor:pointer\" alt=\"\"/><br/>";
                                                                 } else {
                                                                     $owneronly = "";
@@ -621,21 +614,21 @@ $ownerid = $groupdata['ownerid'];
 
                                             <p>Grupo creado: <b><?php echo $groupdata['created']; ?></b></p>
                                             <p><?php echo $Members; ?> miembros</p>
-                                            <?php if ($groupdata['roomid'] != 0) { ?>
+                                            <?php if ($groupdata['room_id'] != 0) { ?>
                                                 <p>
                                                     <a href="/client?forwardId=2&amp;roomId=<?php echo $groupdata['roomid']; ?>"
                                                        onclick="HabboClient.roomForward(this, '<?php echo $groupdata['roomid']; ?>', 'private'); return false;"
-                                                       target="<?php echo $myrow["client_token"]; ?>"
+                                                       target="_blank"
                                                        class="group-info-room">Territorio xdr-lns</a></p>
                                             <?php } ?>
-                                            <div class="group-info-description"><?php echo CleanText($groupdata['description']); ?></div>
+                                            <div class="group-info-description"><?php echo CleanText($groupdata['desc']); ?></div>
 
 
                                             <div id="profile-tags-panel">
                                                 <div id="profile-tag-list">
                                                     <div id="profile-tags-container">
                                                         <?php
-                                                        $getTags = db::query("SELECT * FROM user_tags_groups WHERE groupid = '" . $groupid . "'");
+                                                        $getTags = db::query("SELECT * FROM groups_tags WHERE group_id = ?", $groupid);
                                                         if ($getTags->rowCount() > 0) {
                                                             while ($row = $getTags->fetch(2)) {
                                                                 ?>

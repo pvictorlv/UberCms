@@ -16,7 +16,7 @@
                 <input type="hidden" name="tab" value="2">
                 <?php
 
-                $sql = db::query("SELECT motto,block_newfriends,accept_trading,hide_online,home_enabled FROM users WHERE username = '" . $_SESSION['UBER_USER_N'] . "' LIMIT 1");
+                $sql = db::query("SELECT motto,block_newfriends,trade_lock,hide_online,home_enabled FROM users WHERE username = '" . $_SESSION['UBER_USER_N'] . "' LIMIT 1");
                 $data = $sql->fetch(2);
 
                 ?>
@@ -66,12 +66,12 @@
                 <h3>Negociação</h3>
                 <p>
                     Deseja efetuar trocas no hotel?<br>
-                    <label><input type="radio" name="accept_trading"
-                                  value="0" <?php if ($data['accept_trading'] == '0') {
+                    <label><input type="radio" name="trade_lock"
+                                  value="0" <?php if ($data['trade_lock'] == '1') {
                             echo 'checked="checked"';
                         } ?>>Não</label>
-                    <label><input type="radio" name="accept_trading"
-                                  value="1" <?php if ($data['accept_trading'] == '1') {
+                    <label><input type="radio" name="trade_lock"
+                                  value="1" <?php if ($data['trade_lock'] == '0') {
                             echo 'checked="checked"';
                         } ?>>Sim</label>
                 </p>

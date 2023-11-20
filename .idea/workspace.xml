@@ -9,340 +9,70 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be2cabe0-8dc8-4802-b861-8b2cc06a404a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/ajax_habblet/purchase_ajax.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/nucleo/tpl/page-editar-2.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web-gallery/static/js/groupview.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nucleo/class.groups.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/actions/EditingSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/actions/EditingSession.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/actions/confirm_remove.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/actions/confirm_remove.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/actions/join.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/actions/join.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/actions/leave.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/actions/leave.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/actions/memberlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/actions/memberlist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/actions/remove.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/actions/remove.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/actions/select_favorite.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/actions/select_favorite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/actions/show_badge_editor.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/actions/show_badge_editor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/actions/startSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/actions/startSession.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/actions/update_group_badge.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/actions/update_group_badge.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/addFriend.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/addFriend.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/ajax_friendmanagement.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/ajax_friendmanagement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/ajax_friendmanagement_createcategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/ajax_friendmanagement_createcategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/ajax_friendmanagement_deletecategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/ajax_friendmanagement_deletecategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/ajax_friendmanagement_editCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/ajax_friendmanagement_editCategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/ajax_friendmanagement_movefriends.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/ajax_friendmanagement_movefriends.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/ajax_friendmanagement_updatecategoryoptions.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/ajax_friendmanagement_updatecategoryoptions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/ajax_removeFeedItem.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/ajax_removeFeedItem.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/confirmAddFriend.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/deletepost.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/deletepost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/friendslist.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/friendslist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/habboclub_confirm.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/habboclub_confirm.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ajax_habblet/group_create_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/group_create_form.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ajax_habblet/habboclub_enddate.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/habboclub_enddate.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ajax_habblet/habboclub_subscribe.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/habboclub_subscribe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/habbosearchcontent.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/habbosearchcontent.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ajax_habblet/linktool/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/linktool/search.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ajax_habblet/load_events.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/load_events.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/myhabbo_groups_groupinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/myhabbo_groups_groupinfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/opentopicsettings.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/opentopicsettings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/removeFriend.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/removeFriend.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/savepost.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/savepost.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/subscribe.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/subscribe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ajax_habblet/updatemotto.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/updatemotto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article.php" beforeDir="false" afterPath="$PROJECT_DIR$/article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bots.php" beforeDir="false" afterPath="$PROJECT_DIR$/bots.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/css/spiel.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/auto-hinten.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/auto-hintenlinks.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/auto-hintenrechts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/auto-links.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/auto-rechts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/auto-vorne.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/auto-vornelinks.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/auto-vornerechts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/coins.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/cursor.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/explosion.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/fb_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/gameover/bild_untenlinks.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/gameover/bild_untenrechts.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/herz.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/herz_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/komisch.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/menubg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/pfeiltasten.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/replay.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/spielbg-stroh.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/spielbg1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/spielbg11111.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/spielbg2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/spielbg3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/spielbg4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/stein.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/taler.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/uhr.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/grafik/volume.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/js/spiel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/schriften/novecento.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/sound/bgm.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/sound/explosion.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/sound/leben.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cabbo_racing/medien/sound/münze.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/changeRLname.php" beforeDir="false" afterPath="$PROJECT_DIR$/changeRLname.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ajax_habblet/purchase_ajax.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/purchase_ajax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ajax_habblet/purchase_confirmation.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/purchase_confirmation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client.php" beforeDir="false" afterPath="$PROJECT_DIR$/client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client2.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dcr/hof_furni/hole.swf" beforeDir="false" afterPath="$PROJECT_DIR$/dcr/hof_furni/hole.swf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dcr/hof_furni/holebkp.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dcr/hof_furni/holee.swf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/furniture.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedata/external_variablesnew.txt" beforeDir="false" afterPath="$PROJECT_DIR$/gamedata/external_variablesnew.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gamedata/furnidata.txt" beforeDir="false" afterPath="$PROJECT_DIR$/gamedata/furnidata.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gordon/RELEASE63-30422-30421-201012031025_ae9f99b7038dab3670d4b6ab7c9bf83b/Habbo.swf" beforeDir="false" afterPath="$PROJECT_DIR$/gordon/RELEASE63-30422-30421-201012031025_ae9f99b7038dab3670d4b6ab7c9bf83b/Habbo.swf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gordon/RELEASE63-30422-30421-201012031025_ae9f99b7038dab3670d4b6ab7c9bf83b/Habbo04082310.swf" beforeDir="false" afterPath="$PROJECT_DIR$/gordon/RELEASE63-30422-30421-201012031025_ae9f99b7038dab3670d4b6ab7c9bf83b/Habbo04082310.swf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gordon/RELEASE63-30422-30421-201012031025_ae9f99b7038dab3670d4b6ab7c9bf83b/Habbo04112.swf" beforeDir="false" afterPath="$PROJECT_DIR$/gordon/RELEASE63-30422-30421-201012031025_ae9f99b7038dab3670d4b6ab7c9bf83b/Habbo04112.swf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/group_create_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/group_create_form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/groups.php" beforeDir="false" afterPath="$PROJECT_DIR$/groups.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/groups/actions/EditingSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/groups/actions/EditingSession.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habbletAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/habbletAjax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habboClubAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/habboClubAjax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habbowood/movie_xml_data.php" beforeDir="false" afterPath="$PROJECT_DIR$/habbowood/movie_xml_data.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habbowood/savemovie.php" beforeDir="false" afterPath="$PROJECT_DIR$/habbowood/savemovie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/identity.php" beforeDir="false" afterPath="$PROJECT_DIR$/identity.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/global.php" beforeDir="false" afterPath="$PROJECT_DIR$/global.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/groups/actions/leave.php" beforeDir="false" afterPath="$PROJECT_DIR$/groups/actions/leave.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/core.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/core.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/general.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/jquery-1.12.4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/jquery-ui.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/tipped.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/admincore.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/admincore.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/global.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/global.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/addons-comunidad.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/addons-comunidad.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/addons-me.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/addons-me.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/app_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/app_edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/badgedefs.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/badgedefs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/badges.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/badges.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/bans.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/bans.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/box.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/box.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/campaigns.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/campaigns.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/campaigns2.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/campaigns2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/cfhs.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/cfhs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/chatlogs.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/chatlogs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/config-addons.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/config-addons.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/config_addon.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/config_addon.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/creditos.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/creditos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/editar_addon.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/editar_addon.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/editar_addon_comunidad.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/editar_addon_comunidad.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/extsignon.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/extsignon.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/forum.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/forum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/forumthread.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/forumthread.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/furnifinder.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/furnifinder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/getstaff.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/getstaff.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/getuser.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/getuser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/iptool.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/iptool.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/jobform.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/jobform.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/jobopenings.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/jobopenings.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/maint.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/maint.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/news.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/news.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/newsedit.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/newsedit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/newsedit2.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/newsedit2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/newspromos.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/newspromos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/newspromosedit.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/newspromosedit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/newspromospublish.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/newspromospublish.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/newspublish.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/newspublish.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/newspublish2.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/newspublish2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/nuevo_addon.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/nuevo_addon.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/nuevo_addon_comunidad.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/nuevo_addon_comunidad.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/ot-cata-items.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/ot-cata-items.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/ot-def.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/ot-def.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/ot-pages.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/ot-pages.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/presets.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/presets.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/promo.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/promo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/promoedit.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/promoedit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/promopublish.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/promopublish.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/promosedit.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/promosedit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/rank.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/rank.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/referidos.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/referidos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/roomads.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/roomads.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/seleccion_staff.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/seleccion_staff.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/tablas.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/tablas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/texts.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/texts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/todo.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/todo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/uberdown.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/uberdown.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/users_alerts.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/users_alerts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/vars.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/vars.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/vip.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/vip.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/vip_coins.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/vip_coins.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/vouchers.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/vouchers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/vaciartablas.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/vaciartablas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/me.php" beforeDir="false" afterPath="$PROJECT_DIR$/me.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minesweeper-master/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/minesweeper-master/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/minesweeper-master/css/styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/minesweeper-master/images/small_logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/minesweeper-master/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/minesweeper-master/js/Game.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/minesweeper-master/js/game.coffee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/minesweeper-master/lib/jquery-1.10.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimail-view.php" beforeDir="false" afterPath="$PROJECT_DIR$/minimail-view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minimail.php" beforeDir="false" afterPath="$PROJECT_DIR$/minimail.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhabbo.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/avatarlist_avatarinfo.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/avatarlist_avatarinfo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/avatarlist_friendsearchpaging.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/avatarlist_friendsearchpaging.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/badgelist_badgepaging.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/badgelist_badgepaging.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/buy_badge.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/buy_badge.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/error_log" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/error_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/global.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/global.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/guestbook_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/guestbook_add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/guestbook_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/guestbook_list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myhabbo/global.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/myhabbo/linktool/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/linktool/search.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/noteeditor_place.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/noteeditor_place.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/rating_rate.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/rating_rate.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/save.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/save.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/sticker_place_sticker.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/sticker_place_sticker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/sticker_remove_sticker.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/sticker_remove_sticker.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/stickie_delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/stickie_delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/stickie_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/stickie_edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/store_inventory.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_inventory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/store_inventory_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_inventory_items.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/store_inventory_items_notes.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_inventory_items_notes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/store_inventory_preview.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_inventory_preview.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/store_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_items.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/store_main.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/store_preview.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_preview.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/store_purchase_backgrounds.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_purchase_backgrounds.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/store_purchase_confirm.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_purchase_confirm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/store_purchase_stickers.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_purchase_stickers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/store_purchase_stickie_notes.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_purchase_stickie_notes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myhabbo/myhabbo_tag_addgrouptag.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/myhabbo_tag_addgrouptag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhabbo/tag_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/tag_add.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myhabbo/tag_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/tag_list.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhabbo/tag_remove.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/tag_remove.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhabbo/widget_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/widget_add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/class.core.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/class.core.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/class.cron.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/class.cron.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myhabbo/widget_delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/widget_delete.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myhabbo/widget_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/widget_edit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/class.db.mysql.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/class.db.mysql.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/class.grupos.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/class.grupos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/class.homes.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/class.homes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/class.rooms.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/class.rooms.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/class.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/class.tpl.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/class.users.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/class.users.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/cron_scripts/credits.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/cron_scripts/credits.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/cron_scripts/mod_forum.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/cron_scripts/mod_forum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/cron_scripts/moderation_cleanup.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/cron_scripts/moderation_cleanup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/cron_scripts/respect.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/cron_scripts/respect.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/cron_scripts/serverstat.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/cron_scripts/serverstat.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/inc.config.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/inc.config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/recover/email.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/recover/email.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-avatars-me.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-avatars-me.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-avatars.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-avatars.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-bots.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-bots.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-canjeareferidos.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-vip-support.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-comprarvip.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-comprarvip.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-editar-grupos-default.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-editar-grupos-default.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-error.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-error.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-gift.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-gift.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-hotcampaigns.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-hotcampaigns.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-hotrooms.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-hotrooms.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-linces.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-linces.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-lookingfor.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-lookingfor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-me.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-me.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-misplacas.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-misplacas.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-news.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-news.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-newsarticle.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-newsarticle.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-newslist.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-newslist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-newslist.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-newslist.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-online.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-online.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-placas.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-placas.tpl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-randomhabbos.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-randomhabbos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-randomhabbos.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-randomhabbos.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-rares.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-rares.tpl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-tagsearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-tagsearch.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-tops.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-tops.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/cproxy-news.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/cproxy-news.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/cuerpo-grupos.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/cuerpo-grupos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/generic-top.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/generic-top.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/grupos-edit.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/grupos-edit.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/head/head-fp.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/head/head-fp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/head/head-init.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/head/head-init.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/head/head-overrides-fp.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/head/head-overrides-fp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/identity-add-avatars.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/identity-add-avatars.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/identity-avatars.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/identity-avatars.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/identity-email.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/identity-email.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/identity-password.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/identity-password.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/minimail-tabcontent.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/minimail-tabcontent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/minimail-view.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/minimail-view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/page-client.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/page-client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/page-editar-1.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/page-editar-1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/page-editar-2.tpl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/page-editar-3.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/page-editar-3.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/page-home-personaje.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/page-home-personaje.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/page-newcredits.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/page-newcredits.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/page-newcredits.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/page-newcredits.tpl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/tagcloud.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/tagcloud.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/tagcloud2.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/tagcloud2.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/tags-finder.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/tags-finder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/tags-finder.tpl" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/tags-rel.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/tags-rel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/tags-rel.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/tags-rel.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/widget-BadgesWidget.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/widget-BadgesWidget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/widget-FriendsWidget.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/widget-FriendsWidget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/widget-GroupsWidget.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/widget-GroupsWidget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/widget-GuestbookWidget.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/widget-GuestbookWidget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/widget-RatingWidget.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/widget-RatingWidget.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/widget-RoomsWidget.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/widget-RoomsWidget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/widget-TraxPlayerWidget.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/widget-TraxPlayerWidget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/widget-Workingonit.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/widget-Workingonit.tpl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/widget-profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/widget-profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/policyver.php" beforeDir="false" afterPath="$PROJECT_DIR$/policyver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-grupos.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile-grupos.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/purchase_ajax.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/purchase_confirmation.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/purchase_confirmation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quick-friends.php" beforeDir="false" afterPath="$PROJECT_DIR$/quick-friends.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quick-groups.php" beforeDir="false" afterPath="$PROJECT_DIR$/quick-groups.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quick-rooms.php" beforeDir="false" afterPath="$PROJECT_DIR$/quick-rooms.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/img/bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/img/bg_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/img/button.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/img/close.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/img/guy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/img/handle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/img/handle2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/img/listeners.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/img/loc.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/img/music.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/img/open.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/img/play_pause.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/img/room.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/js/jquery-1.12.4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/js/jquery-ui.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/js/tipped.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/radio/reset.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/radio/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/reset.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/radio/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/register-cancel.php" beforeDir="false" afterPath="$PROJECT_DIR$/register-cancel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rss.php" beforeDir="false" afterPath="$PROJECT_DIR$/rss.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/security_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/security_check.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/startSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/startSession.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/ui/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vaciartablas.php" beforeDir="false" afterPath="$PROJECT_DIR$/vaciartablas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-gallery/static/js/fullcontent.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/static/js/fullcontent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-gallery/static/js/homeview.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/static/js/homeview.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-gallery/static/js/visuale.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/static/js/visuale.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-gallery/styles/assets/backgrounds.css" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/styles/assets/backgrounds.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-gallery/styles/assets/stickers.css" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/styles/assets/stickers.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web.config" beforeDir="false" afterPath="$PROJECT_DIR$/web.config" afterDir="false" />
     </list>
-    <ignored path="RoolCMS.iws" />
-    <ignored path=".idea/workspace.xml" />
-    <ignored path=".idea/dataSources.local.xml" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true">
+  <component name="ComposerSettings" doNotAsk="true" notifyAboutMissingVendor="false">
     <pharConfigPath>$PROJECT_DIR$/ui/composer.json</pharConfigPath>
+    <execution />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -363,82 +93,6 @@
   </component>
   <component name="ExportToHTMLSettings">
     <option name="OUTPUT_DIRECTORY" value="C:\inetpub\wwwroot\habblexcms\exportToHTML" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="PearlCMS" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manage/pages/login.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manage/pages/maint.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="49" selection-start-line="19" selection-start-column="49" selection-end-line="19" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manage/pages/badges.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="49" column="42" selection-start-line="49" selection-start-column="42" selection-end-line="49" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/manage/pages/ot-cata-items.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1700">
-              <caret line="100" column="16" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nucleo/tpl/page-client.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1003">
-              <caret line="59" column="43" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web-gallery/ws/wsInit.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ws_script.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nucleo/tpl/comp-bots.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1343">
-              <caret line="79" column="47" selection-start-line="79" selection-start-column="47" selection-end-line="79" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/edit_groups.php">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -558,13 +212,17 @@
       </list>
     </option>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.0" />
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1387" />
     <option name="height" value="867" />
   </component>
+  <component name="ProjectId" id="2YS1ABHROmB3kZDm82Dhlr6Gr8o" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -669,19 +327,23 @@
       <pane id="ProjectPane" />
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistory" value="&#10;Ex" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="js.eslint.eslintPackage" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PearlFramework" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="options.lastSelected" value="web.server" />
-    <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.splitter.main.proportions" value="0.3" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
-    <property name="settings.editor.splitter.proportion" value="0.25440314" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Paulo/Documents/GitHub/UberCms",
+    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb"
+    ]
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\UBER\ajax_habblet" />
@@ -690,18 +352,6 @@
       <recent name="C:\xampp\htdocs\inc" />
       <recent name="C:\xampp\htdocs\inc\cron_scripts" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
@@ -717,6 +367,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -790,6 +441,7 @@
       <workItem from="1554314180592" duration="1760000" />
       <workItem from="1554863330159" duration="598000" />
       <workItem from="1555273624892" duration="692000" />
+      <workItem from="1700504022281" duration="8092000" />
     </task>
     <servers />
   </component>
@@ -826,7 +478,18 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">

@@ -16,7 +16,7 @@ if ($userData['online'] == "1") {
             <div class="widget-headline"><h3>
                     <?php
                     if (isset($_SESSION['startSessionEditHome'])) {
-                        if ($_SESSION['startSessionEditHome'] == $user_id) {
+                        if ($_SESSION['startSessionEditHome'] == USER_ID) {
                             echo '<img src="' . WWW . '/web-gallery/images/myhabbo/icon_edit.gif" width="19" height="18" class="edit-button" id="widget-%id%-edit">
 <script type="text/javascript">
 var editButtonCallback = function(e) { openEditMenu(e, %id%, "widget", "widget-%id%-edit"); };
@@ -83,7 +83,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                     <div id="profile-tag-list">
                         <div id="profile-tags-container">
                             <?php
-                            $sql = db::query("SELECT * FROM user_tags WHERE user_id = ? LIMIT 15", $qryId);
+                            $sql = db::query("SELECT * FROM users_tags WHERE user_id = ? LIMIT 15", $qryId);
                             if ($sql->rowCount() > 0) {
                                 while ($data = $sql->fetch(2)) {
                                     ?>
@@ -107,21 +107,21 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                                     ?>
                                     <?php
                                     if (LOGGED_IN) {
-                                        $query = db::query("SELECT user_id FROM user_tags WHERE tag = ? AND user_id = '" . USER_ID . "' AND user_id != '" . $data['user_id'] . "' LIMIT 1", $data['tag']);
+                                        $query = db::query("SELECT user_id FROM users_tags WHERE tag = ? AND user_id = '" . USER_ID . "' AND user_id != '" . $data['user_id'] . "' LIMIT 1", $data['tag']);
                                         if ($query->rowCount() > 0) {
                                             ?>
                                             <img id="tag-img-added" border="0" class="tag-none-link"
                                                  src="%www%/web-gallery/images/buttons/tags/tag_button_added.gif"/></span>
                                             <?php
                                         } //mysql_num_rows($query) > 0
-                                        elseif (db::query("SELECT user_id FROM user_tags WHERE tag = ? AND user_id != '" . USER_ID . "' AND user_id = '" . $data['user_id'] . "' LIMIT 1", $data['tag'])->rowCount() > 0) {
+                                        elseif (db::query("SELECT user_id FROM users_tags WHERE tag = ? AND user_id != '" . USER_ID . "' AND user_id = '" . $data['user_id'] . "' LIMIT 1", $data['tag'])->rowCount() > 0) {
                                             ?>
                                             <img border="0" class="tag-add-link"
                                                  onmouseover="this.src='%www%/web-gallery/images/buttons/tags/tag_button_add_hi.gif'"
                                                  onmouseout="this.src='%www%/web-gallery/images/buttons/tags/tag_button_add.gif'"
                                                  src="%www%/web-gallery/images/buttons/tags/tag_button_add.gif"/></span>
                                             <?php
-                                        } //mysql_num_rows(db::query("SELECT user_id FROM user_tags WHERE tag = '" . $data['tag'] . "' AND user_id != '" . USER_ID . "' AND user_id = '" . $data['user_id'] . "' LIMIT 1")) > 0
+                                        } //mysql_num_rows(db::query("SELECT user_id FROM users_tags WHERE tag = '" . $data['tag'] . "' AND user_id != '" . USER_ID . "' AND user_id = '" . $data['user_id'] . "' LIMIT 1")) > 0
                                     } //LOGGED_IN
                                     else {
                                         ?>

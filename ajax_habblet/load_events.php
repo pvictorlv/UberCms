@@ -10,7 +10,7 @@ $num_rows = mysql_num_rows($buscarsalas);
 if($num_rows > "0"){
 while ($rooms = mysql_fetch_assoc($buscarsalas)){
 	if ($i%2==1){$highlight = 'even';}else{$highlight = 'odd';}; $i++;
-	$porcent = 	round($rooms['users_now']*100/$rooms['users_max']);	
+	$porcent = 	round($rooms['visitors_now']*100/$rooms['users_max']);
 	if ($porcent <= "30"){$occupancy = '2';}elseif($porcent > "30" && $porcent <= "50"){$occupancy = '3';}elseif($porcent > "50" && $porcent <= "70"){$occupancy = '4';}elseif($porcent > "70"){$occupancy = '5';};
 
 	echo '<li class="'.$highlight.' room-occupancy-'.$occupancy.'" roomid="'.$rooms['id'].'">

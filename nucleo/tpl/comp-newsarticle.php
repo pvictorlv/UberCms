@@ -58,11 +58,11 @@ if (isset($_POST['csrf_token']) && $_SESSION['csrf_token'] === $_POST['csrf_toke
         $error_message = "Espere um pouco antes de comentar novamente!";
     } else {
         $_SESSION['last_comment'] = time();
-        $comment = filter($_POST['comment']);
+        $comment = ($_POST['comment']);
         if ($comment === null || empty($comment)) {
             $error_message = 'Comentário em branco.<br /><br />';
         } else {
-            db::query("INSERT INTO site_news_comments (article, userid, comment,posted_on) VALUES ('" . $articleData['id'] . "', '" . USER_ID . "', '" . $comment . "', '$posted_on');");
+            db::query("INSERT INTO site_news_comments (article, userid, comment,posted_on) VALUES ('" . $articleData['id'] . "', '" . USER_ID . "', ?, '$posted_on');", $comment);
             $error_message = 'Enviado com sucesso.<br /><br />';
 
         }

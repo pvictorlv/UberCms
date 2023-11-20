@@ -27,13 +27,8 @@ function HoloText($str, $advanced=false) {
 
 function getData($id)
 {
-	$sql = db::query("SELECT * FROM users WHERE username = '" . $id . "' OR id = '" . $id . "' LIMIT 1");
-	$exist = $sql->rowCount();
-		
-	if($exist > 0)
-	{
-		return $sql;
-	}
+	return db::query("SELECT * FROM users WHERE username = '" . $id . "' OR id = '" . $id . "' LIMIT 1");
+
 }
 
 
@@ -44,7 +39,7 @@ function FilterText($str, $antihtml = true)
 		if($antihtml)
 			$str = htmlentities(html_entity_decode($str));
 
-		$str = mysql_real_escape_string($str);
+		$str = db::Scape($str);
 		$str = @mb_convert_encoding($str, "UTF-8", "auto");
 		$str = str_replace('&amp;', '&', $str);
 
@@ -58,9 +53,9 @@ function FilterText($str, $antihtml = true)
 function SwitchWordFilter($str)
 {
 
-$sql = mysql_query("SELECT word FROM wordfilter") or die(mysql_error());
+$sql = db::query("SELECT word FROM wordfilter");
 
-	while($row = mysql_fetch_assoc($sql)){
+	while($row = $sql->fetch(2)){
 	$str = str_replace($row['word'],getServer("wordfilter_censor"),$str);
 	}
 

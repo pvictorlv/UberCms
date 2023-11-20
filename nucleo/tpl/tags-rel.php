@@ -6,7 +6,7 @@
 
             <?php
 
-            $get = db::query("SELECT tag, COUNT(id) AS quantity FROM user_tags GROUP BY tag ORDER BY quantity DESC LIMIT 20");
+            $get = db::query("SELECT tag, COUNT(id) AS quantity FROM users_tags GROUP BY tag ORDER BY quantity DESC LIMIT 20");
 
             if ($get->rowCount() > 0) {
                 echo '<ul class="tag-list">';

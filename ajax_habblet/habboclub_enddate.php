@@ -1,9 +1,9 @@
 <?php
 require_once("../global.php");
-$result = db::DoQuery("SELECT * FROM user_subscriptions WHERE user_id=" . USER_ID . " AND subscription_id='habbo_vip' ORDER BY activated DESC LIMIT 1");
+$result = db::DoQuery("SELECT * FROM users_subscriptions WHERE user_id=" . USER_ID . " AND subscription_id='2' ORDER BY timestamp_activated DESC LIMIT 1");
 $row = $result->fetch(2);
 $userid = USER_ID;
-$expiretime = strtotime($row['activated']) + 2678400 * $row['months'];
+$expiretime = strtotime($row['timestamp_activated']) +  $row['timestamp_expire'];
 $daysLeft = 0;
 if ($expiretime > time()) {
     $daysLeft = $expiretime - time();
@@ -16,9 +16,9 @@ if ($daysLeft == '0') {
 };
 
 
-$result2 = db::query("SELECT * FROM user_subscriptions WHERE user_id=" . USER_ID . " AND subscription_id='habbo_club' ORDER BY activated DESC LIMIT 1");
+$result2 = db::query("SELECT * FROM users_subscriptions WHERE user_id=" . USER_ID . " AND subscription_id='1' ORDER BY timestamp_activated DESC LIMIT 1");
 $row2 = $result2->fetch(2);
-$expiretime = strtotime($row['activated']) + 2678400 * $row['months'];
+$expiretime = strtotime($row['timestamp_activated']) +  $row['timestamp_expire'];
 $daysLeft2 = 0;
 if ($expiretime > time()) {
     $daysLeft2 = $expiretime - time();

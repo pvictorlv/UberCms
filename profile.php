@@ -10,7 +10,7 @@ if (!LOGGED_IN) {
     exit;
 }
 
-if (isset($_POST['motto']) && isset($_POST['showOnlineStatus']) && isset($_POST['followFriendMode']) && isset($_POST['accept_trading'])) {
+if (isset($_POST['motto']) && isset($_POST['showOnlineStatus']) && isset($_POST['followFriendMode']) && isset($_POST['trade_lock'])) {
     db::query("UPDATE users SET motto = '" . filter($_POST['motto']) . "' WHERE id = '" . USER_ID . "' LIMIT 1");
     if (isset($_POST['friendRequestsAllowed'])) {
         db::query("UPDATE users SET block_newfriends = '0' WHERE id = '" . USER_ID . "' LIMIT 1");
@@ -29,10 +29,10 @@ if (isset($_POST['motto']) && isset($_POST['showOnlineStatus']) && isset($_POST[
     } else {
         db::query("UPDATE users SET hide_inroom = '1' WHERE id = '" . USER_ID . "' LIMIT 1");
     }
-    if ($_POST['accept_trading'] == '1') {
-        db::query("UPDATE users SET accept_trading = '1' WHERE id = '" . USER_ID . "' LIMIT 1");
+    if ($_POST['trade_lock'] == '1') {
+        db::query("UPDATE users SET trade_lock = '1' WHERE id = '" . USER_ID . "' LIMIT 1");
     } else {
-        db::query("UPDATE users SET accept_trading = '0' WHERE id = '" . USER_ID . "' LIMIT 1");
+        db::query("UPDATE users SET trade_lock = '0' WHERE id = '" . USER_ID . "' LIMIT 1");
     }
 
 

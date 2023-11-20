@@ -15,13 +15,13 @@ if(strlen($Data) > 2)
 	{
 		$resultType = "room";
 		$Name = "caption";
-		$Query = db::query("SELECT id, caption FROM rooms WHERE caption LIKE '%" . $Data . "%' LIMIT 5");
+		$Query = db::query("SELECT id, caption FROM rooms_data WHERE caption LIKE '%" . $Data . "%' LIMIT 5");
 	}
 	else if($Type == "3")
 	{
 		$resultType = "group";
 		$Name = "name";
-		$Query = db::query("SELECT id, name FROM groups_details WHERE name LIKE '%" . $Data . "%' LIMIT 5");
+		$Query = db::query("SELECT id, name FROM groups_data WHERE name LIKE '%" . $Data . "%' LIMIT 5");
 	}
 }
 ?>

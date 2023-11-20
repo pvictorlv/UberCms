@@ -24,7 +24,7 @@ if (isset($_GET['search'])) {
             <?php
             if ($search_engine) {
 
-                $getUsersId = db::query("SELECT id, tag, user_id FROM user_tags WHERE `tag` LIKE  ?", "%$search%");
+                $getUsersId = db::query("SELECT id, tag, user_id FROM users_tags WHERE `tag` LIKE  ?", "%$search%");
                 if ($getUsersId->rowCount() > 0) {
                     $result = '&nbsp;' . $getUsersId->rowCount() . ' resultados';
                 } else {
@@ -57,7 +57,7 @@ if (isset($_GET['search'])) {
                     <span class="result-description">  ' . $usersName['motto'] . ' </span> 
  
     <ul class="tag-list">';
-                            $getUserTags = db::query("SELECT tag, user_id FROM user_tags WHERE `user_id` =  '" . $users['user_id'] . "'");
+                            $getUserTags = db::query("SELECT tag, user_id FROM users_tags WHERE `user_id` =  '" . $users['user_id'] . "'");
                             while ($tags = $getUserTags->fetch(2)) {
                                 echo '  <li><a href="%www%/tag/' . $tags['tag'] . '" class="tag" style="font-size:10px">' . $tags['tag'] . '</a> </li>' . "\n\r";
                             }

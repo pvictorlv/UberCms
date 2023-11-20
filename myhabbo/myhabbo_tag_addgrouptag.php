@@ -1,50 +1,48 @@
 <?php
 ####################################################
-## InfoCMS - Emulación del sitio de Habbo Hotel.  ##
+## InfoCMS - Emulaciï¿½n del sitio de Habbo Hotel.  ##
 ####################################################
 ## Este Software basado en PHP, Curl y HTML es de ##
-## libre edición y código libre, cualquier		  ##
-## modificación es permitida siempre y cuando	  ##
-## respete para lo que fue diseñado.			  ##
+## libre ediciï¿½n y cï¿½digo libre, cualquier		  ##
+## modificaciï¿½n es permitida siempre y cuando	  ##
+## respete para lo que fue diseï¿½ado.			  ##
 ####################################################
-## Copyright © 2010. Kolesias123 & InfoSmart.	  ##
+## Copyright ï¿½ 2010. Kolesias123 & InfoSmart.	  ##
 ## http://www.infosmart.com.mx/					  ##
 ####################################################
-## Copyright © 2010. Sulake Corporation Oy.		  ##
+## Copyright ï¿½ 2010. Sulake Corporation Oy.		  ##
 ## http://www.sulake.com/ ~ http://www.habbo.es/  ##
 ####################################################
 
-require_once('../../Kernel/Init.php');
+require_once('../global.php');
 
-if(!LOG_IN)
-{
-	header("Location: " . SITE);
-	exit;
+if (!LOGGED_IN) {
+    header("Location: /");
+    exit;
 }
+
+global $groups;
 
 $groupId = FilterText($_POST['groupId']);
 $tagName = fixText(FilterText($_POST['tagName']), true);
 $filter = preg_replace("/[^a-z \d]/i", "", $tagName);
 
-$existGroup = query_rows("SELECT null FROM users_groups WHERE id = '" . $groupId . "' LIMIT 1");
+$existGroup = db::query("SELECT * FROM groups_members WHERE group_id = ? and user_id = " . USER_ID, $groupId);
 
-if($existGroup > 0 && !empty($tagName) && strlen($tagName) <= 20)
-{
-	$getTags = query_rows("SELECT * FROM users_groups_tags WHERE groupID = '" . $groupId . "'");
-	
-	if(!$Users->alreadyGroupTag($groupId, $tagName) && $getTags < 20)
-	{
-		if($tagName == $filter)
-		{
-			$tagName = strtolower($tagName);
-			$Users->addGroupTag($groupId, $tagName);
-			echo "valid";
-		}
-		else
-		{
-			echo "invalidtag";
-		}
-	}
+if ($existGroup->rowCount() > 0 && !empty($tagName) && strlen($tagName) <= 20) {
+    $getTags = db::query("SELECT * FROM groups_tags WHERE group_id = ?", $groupId);
+
+    if (!$groups->alreadyGroupTag($groupId, $tagName) && $getTags < 20) {
+        if ($tagName == $filter) {
+            $tagName = strtolower($tagName);
+            $groups->addGroupTag($groupId, $tagName);
+            echo "valid";
+        } else {
+            echo "invalidtag";
+        }
+    }
+} else {
+    echo 'not member';
 }
 
 exit;

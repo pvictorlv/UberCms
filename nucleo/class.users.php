@@ -43,7 +43,7 @@ class uberUsers
     public static function GetUserTags($userId)
     {
         $tagsArray = Array();
-        $data = Db::query("SELECT id,tag FROM user_tags WHERE user_id = '" . $userId . "'");
+        $data = Db::query("SELECT id,tag FROM users_tags WHERE user_id = '" . $userId . "'");
 
         while ($tag = $data->fetch(2)) {
             $tagsArray[$tag['id']] = $tag['tag'];
@@ -60,7 +60,7 @@ class uberUsers
 
     public static function haveWidget($Id, $var)
     {
-        $check = Db::query("SELECT id FROM homes_items WHERE data = '" . $var . "' AND owner_id = '" . $Id . "' LIMIT 1")->rowCount();
+        $check = Db::query("SELECT id FROM homes_items WHERE data = ? AND owner_id = ? LIMIT 1", $var, $Id)->rowCount();
 
         if ($check > 0) {
             return true;
@@ -86,11 +86,8 @@ class uberUsers
 
     public function GetUserVar($id, $var, $allowCache = true)
     {
-        if ($allowCache && isset($_SESSION["user_$id"][$var])) {
-            return $_SESSION["user_$id"][$var];
-        }
         $val = Db::query("SELECT $var FROM users WHERE id = ? LIMIT 1", $id)->fetchColumn();
-        $_SESSION["user_$id"][$var] = $val;
+     //   $_SESSION["user_$id"][$var] = $val;
         return $val;
     }
 
@@ -123,7 +120,7 @@ class uberUsers
         return Db::query("SELECT NULL FROM users WHERE id = '" . $id . "' LIMIT 1")->rowCount() > 0;
     }
 
-    public function IsNameBlocked($nm = '')
+    public function IsNameBlocked($nm = ''): bool
     {
         foreach ($this->blockedNames as $bl) {
             if (strtolower($nm) == strtolower($bl)) {
@@ -132,7 +129,7 @@ class uberUsers
         }
 
         foreach ($this->blockedNameParts as $bl) {
-            if (strpos(strtolower($nm), strtolower($bl)) !== false) {
+            if (str_contains(strtolower($nm), strtolower($bl))) {
                 return true;
             }
         }
@@ -147,7 +144,7 @@ class uberUsers
 
         $id = Db::GetId();
 
-        Db::query("INSERT INTO user_info (user_id,bans,cautions,reg_timestamp,login_timestamp,cfhs,cfhs_abusive) VALUES (?,'0','0','" . time() . "','" . time() . "','0','0')", $id);
+        Db::query("INSERT INTO users_info (user_id,bans,cautions,reg_timestamp,login_timestamp,cfhs,cfhs_abusive) VALUES (?,'0','0','" . time() . "','" . time() . "','0','0')", $id);
 
         return $id;
     }
@@ -164,9 +161,9 @@ class uberUsers
         Db::query("DELETE FROM messenger_friendships WHERE user_one_id = '" . $id . "' OR user_two_id = '" . $id . "'");
         Db::query("DELETE FROM messenger_requests WHERE to_id = '" . $id . "' OR from_id = '" . $id . "'");
         Db::query("DELETE FROM users WHERE id = '" . $id . "' LIMIT 1");
-        Db::query("DELETE FROM user_subscriptions WHERE user_id = '" . $id . "'");
-        Db::query("DELETE FROM user_info WHERE user_id = '" . $id . "' LIMIT 1");
-        Db::query("DELETE FROM user_items WHERE user_id = '" . $id . "'");
+        Db::query("DELETE FROM users_subscriptions WHERE user_id = '" . $id . "'");
+        Db::query("DELETE FROM users_info WHERE user_id = '" . $id . "' LIMIT 1");
+        Db::query("DELETE FROM items_rooms WHERE user_id = '" . $id . "'");
     }
 
     public function ValidateLogin($user_mail, $password)
@@ -244,15 +241,6 @@ class uberUsers
             $suffix .= '</a>';
         }
 
-        if ($styles) {
-
-            $rankData = Db::query('SELECT prefix,suffix FROM ranks WHERE id = ? LIMIT 1', $data['rank']);
-
-            if ($rankData) {
-                $prefix .= $rankData['prefix'];
-                $suffix .= $rankData['suffix'];
-            }
-        }
 
         return clean($prefix . $name . $suffix, true);
     }
@@ -283,7 +271,7 @@ class uberUsers
             return $_SESSION["user_$id"]['rank'];
         }
 
-        $rankId = Db::query("SELECT rank FROM users WHERE id = ? LIMIT 1", $id)->fetchColumn();
+        $rankId = Db::query("SELECT `rank` FROM users WHERE id = ? LIMIT 1", $id)->fetchColumn();
         $_SESSION["user_$id"]['rank'] = $rankId;
         return $rankId;
     }
@@ -323,23 +311,21 @@ class uberUsers
 
     public function AddOrUpdateClub($id, $subID, $sec) // HC/VIP Subscription Function
     {
-        $sql = Db::query("SELECT * FROM user_subscriptions WHERE user_id = '" . $id . "' LIMIT 1"); // Select Subscription
+        $sql = Db::query("SELECT * FROM users_subscriptions WHERE user_id = ? LIMIT 1", $id); // Select Subscription
 
-        $secInit = 1310696790; // Beginning Of Subscription
-        $secEnd = 1313288790; // End Of Subscription
+        $secInit = time(); // Beginning Of Subscription
+        $secEnd = $secInit + ($sec * 86400); // End Of Subscription
 
-        if (mysql_rowCount()($sql) > 0) {
-            $data = mysql_fetch_assoc($sql); // Mysql Data
-            $sec = 1310696790; // Unix TimeStamp (The same from uberEmu)
+        if ($sql->rowCount()) {
 
             // Build new sistem Date Remaint
 
-            Db::query("UPDATE user_subscriptions SET timestamp_expire =  '" . $secEnd . "', subscription_id = '" . $subID . "' WHERE user_id = '" . $id . "'  LIMIT 1");  // Renew Subscription -> Not Funcional but here's the example code.
+            Db::query("UPDATE users_subscriptions SET timestamp_expire =  timestamp_expire + '" . $sec * 86400 . "', subscription_id = '" . $subID . "' WHERE user_id = '" . $id . "'  LIMIT 1");  // Renew Subscription -> Not Funcional but here's the example code.
 
             //Db::query("UPDATE users SET rank = '2' WHERE rank = '1' AND  id = '" . $id . "' LIMIT 1"); -> Maybe for buy VIP on uberCms?
 
         } else {
-            Db::query("INSERT INTO user_subscriptions (user_id,timestamp_expire,timestamp_activated,subscription_id) VALUES ('" . $id . "','" . $secEnd . "','" . $secInit . "','" . $subID . "')"); // Insert Subscription buy into his table with her respective User and subscription data.
+            Db::query("INSERT INTO users_subscriptions (user_id,timestamp_expire,timestamp_activated,subscription_id,timestamp_lastgift) VALUES ('" . $id . "','" . $secEnd . "','" . $secInit . "','" . $subID . "', '0')"); // Insert Subscription buy into his table with her respective User and subscription data.
         }
     }
 
@@ -402,11 +388,12 @@ class uberUsers
 
     public function hasVIP($id)
     {
-        $sql = Db::query("SELECT activated FROM user_subscriptions WHERE subscription_id = 'club_habbo' AND user_id = '" . $id . "' LIMIT 1");
+        $sql = Db::query("SELECT timestamp_expire FROM users_subscriptions WHERE subscription_id = 2 AND user_id = '" . $id . "' LIMIT 1");
 
         if ($sql->rowCount() <= 0) {
             return 0;
         }
+
         $data = strtotime($sql->fetchColumn());
         $diff = $data - time();
 
@@ -426,15 +413,17 @@ class uberUsers
 
     public function getClubDays($id)
     {
-        $row = Db::query("SELECT activated,months FROM user_subscriptions WHERE user_id = '" . $id . "' LIMIT 1")->fetch(2);
+        $row = Db::query("SELECT timestamp_expire FROM users_subscriptions WHERE user_id = '" . $id . "' LIMIT 1");
 
         if (!$row) {
             return 0;
         }
-        $data = strtotime($row['activated']) + 2678400 * $row['months'];
+
+        $data = strtotime($row->fetch(2)['timestamp_expire']);
         $diff = $data - time();
 
         if ($diff <= 0) {
+
             return 0;
         }
 

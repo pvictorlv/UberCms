@@ -1,6 +1,6 @@
 <?php
 
-$get = Db::query('SELECT tag, COUNT(id) AS quantity FROM user_tags GROUP BY tag ORDER BY quantity DESC LIMIT 25');
+$get = Db::query('SELECT tag, COUNT(id) AS quantity FROM users_tags GROUP BY tag ORDER BY quantity DESC LIMIT 25');
 echo '<ul class="tag-list"><li>Habbos gostam de... </li>';
 if ($get) {
     while ($row = $get->fetch(2)) {

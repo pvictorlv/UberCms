@@ -21,7 +21,7 @@ $credUser = null;
 if (isset($_POST['csrf_token']) && $_POST['csrf_token'] == $_SESSION['csrf_token']) {
     $credUser = ($_POST['credentials_username']);
     $credPass = ($_POST['credentials_password']);
-    $errors = null;
+    $errors = [];
 
     if (strlen($_POST['credentials_username']) < 1) {
         $errors[] = 'Por favor, digite seu usuário';

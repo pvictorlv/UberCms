@@ -4,12 +4,8 @@ if (LOGGED_IN) {
     header('Location: ' . WWW . "/me");
     exit;
 }
-$ip = USER_IP;
-$q = Db::query('SELECT count(id) FROM users WHERE ip_last = ? OR ip_reg = ?', $ip, $ip)->fetchColumn();
-if ($q >= 3) {
-    header("Location: " . WWW . "/");
-    exit;
-}
+
+
 $tpl->SetParam('error-messages-holder', '');
 $tpl->SetParam('post-name', '');
 $tpl->SetParam('post-pass', '');

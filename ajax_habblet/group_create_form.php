@@ -1,5 +1,5 @@
 <?php
-require_once "global.php";
+require_once "../global.php";
 
 if ($users->getCredits(USER_ID) < 10) {
     ?>

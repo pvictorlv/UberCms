@@ -1,28 +1,28 @@
 <?php
 /*=========================================================+
-|| # HabboCMS - Sistema de administración de contenido Habbo.
+|| # HabboCMS - Sistema de administraciï¿½n de contenido Habbo.
 |+=========================================================+
-|| # Copyright © 2010 Kolesias123. All rights reserved.
+|| # Copyright ï¿½ 2010 Kolesias123. All rights reserved.
 || # http://www.infosmart.com.mx
-|| # Partes Copyright © 2009 Yifan Lu. All rights reserved.
+|| # Partes Copyright ï¿½ 2009 Yifan Lu. All rights reserved.
 || # http://www.yifanlu.com
-|| # Base Copyright © 2007-2008 Meth0d. All rights reserved.
+|| # Base Copyright ï¿½ 2007-2008 Meth0d. All rights reserved.
 || # http://www.meth0d.org
 |+=========================================================+
 || # InfoSmart 2010. The power of Proyects.
-|| # Este es un Software de código libre, libre edición.
+|| # Este es un Software de cï¿½digo libre, libre ediciï¿½n.
 |+=========================================================+
 || # Todas las imagenes, scripts y temas
 || # Copyright (C) 2010 Sulake Ltd. All rights reserved.
 |+=========================================================*/
 
-########## DEFINICIÓN DE FUNCIÓN PARA ERRORES ####################################################
+########## DEFINICIï¿½N DE FUNCIï¿½N PARA ERRORES ####################################################
 
 function writeError($title, $msg)
 {
 	echo "<br /><font size='2' face='Tahoma'><b>".$title."</b><br /><br />".$msg."</font>";
 	
-	/* Créditos e Información del Desarrollador ~ Inecesaria :P */
+	/* Crï¿½ditos e Informaciï¿½n del Desarrollador ~ Inecesaria :P */
 	//echo "<br /><br /><pre>HabboCMS 9, Powered by InfoSmart, Lns ~ The power of Proyects. 2009 - 2010<br /><br />http://www.infosmart.com.mx/<br />ibravo[at]hotmail[dot]com";
 	
 	echo "<pre>";
@@ -35,7 +35,7 @@ tucodigo addsence en incluedes/core.php
 <script type=\"text/javascript\"
 src=\"http://pagead2.googlesyndication.com/pagead/show_ads.js\">
 </script>";
-	echo "<br />¡Ayudame a seguir con el Proyecto! Dale un clic.</p></center></pre>";  exit;	
+	echo "<br />ï¿½Ayudame a seguir con el Proyecto! Dale un clic.</p></center></pre>";  exit;	
 	/* Da un clic en la publicidad */
 }
 
@@ -56,21 +56,21 @@ session_start();
 
 define("PATH", "http://".$path.$subpath);
 
-########## COMPROBRACIÓN DE REQUISITOS ####################################################
+########## COMPROBRACIï¿½N DE REQUISITOS ####################################################
 
 if (!function_exists('curl_init')) 
 {
-	writeError("¡Ha sucedido un error fatal!", "Lo sentimos, pero al parecer no tienes activado el servicio de <b>Curl</b> (curl_init). Por la cual no es posible continuar.");
+	writeError("ï¿½Ha sucedido un error fatal!", "Lo sentimos, pero al parecer no tienes activado el servicio de <b>Curl</b> (curl_init). Por la cual no es posible continuar.");
 }
 
 
 if (!is_writable('./includes/config.php') && !is_writable('../includes/config.php'))
 {
-	writeError("¡Ha sucedido un error fatal!", "Lo sentimos, pero al parecer el archivo de configuración no es modificable. Por favor ajusta los permisos necesarios al archivo 'config.php'");
+	writeError("ï¿½Ha sucedido un error fatal!", "Lo sentimos, pero al parecer el archivo de configuraciï¿½n no es modificable. Por favor ajusta los permisos necesarios al archivo 'config.php'");
 }
 
 
-########## CONEXIÓN A LA BASE DE DATOS ##########################################
+########## CONEXIï¿½N A LA BASE DE DATOS ##########################################
 
 if(empty($dbhost) || empty($dbuser) || empty($dbpass) || empty($dbname))
 {
@@ -78,11 +78,11 @@ if(empty($dbhost) || empty($dbuser) || empty($dbpass) || empty($dbname))
 } 
 else
 {
-	@mysql_connect($dbhost, $dbuser, $dbpass)or die(writeError("¡Ha sucedido un error fatal!", "No ha sido posible la conexión a la Base de datos. Por favor si eres el dueño del Hotel revisa la configuración."));
-	@mysql_select_db($dbname)or die(writeError("¡Ha sucedido un error fatal!", "No ha sido posible la conexión a la Base de datos. Por favor si eres el dueño del Hotel revisa la configuración."));
+	@mysql_connect($dbhost, $dbuser, $dbpass)or die(writeError("ï¿½Ha sucedido un error fatal!", "No ha sido posible la conexiï¿½n a la Base de datos. Por favor si eres el dueï¿½o del Hotel revisa la configuraciï¿½n."));
+	@mysql_select_db($dbname)or die(writeError("ï¿½Ha sucedido un error fatal!", "No ha sido posible la conexiï¿½n a la Base de datos. Por favor si eres el dueï¿½o del Hotel revisa la configuraciï¿½n."));
 }
 
-########## DECLARACIÓN DE VARIABLES GLOBALES ####################################
+########## DECLARACIï¿½N DE VARIABLES GLOBALES ####################################
 
 $cms_sytem = mysql_query("SELECT * FROM cms_system") or die(mysql_error());
 $cms_row = mysql_fetch_assoc($cms_sytem);
@@ -208,7 +208,7 @@ if($require_facebook || $_SESSION['rpx'] == "facebook")
 	else
 	{
 		unset($_SESSION['rpx']);	
-		$_SESSION['error'] = "<li>¡Ha sucedido un error fatal!</li>";
+		$_SESSION['error'] = "<li>ï¿½Ha sucedido un error fatal!</li>";
 		header("location:".PATH."?page=".$_SERVER["REQUEST_URI"]."&username="); exit;
 	}
 }
@@ -234,7 +234,7 @@ if($require_rpx || $_SESSION['rpx'] == "rpx")
 		unset($_SESSION['rpx_token']);
 		unset($_SESSION['rpx']);
 	
-		$_SESSION['error'] = "<li>¡Ha sucedido un error fatal!</li>";
+		$_SESSION['error'] = "<li>ï¿½Ha sucedido un error fatal!</li>";
 		header("location:".PATH."?page=".$_SERVER["REQUEST_URI"]."&username="); exit;
 	}
 }
@@ -368,7 +368,7 @@ function showfriendsOffline($my_id)
 function showtags($my_id)
 {
 
-	$get_tags = mysql_query("SELECT * FROM user_tags WHERE user_id = '".$my_id."'") or die(mysql_error());
+	$get_tags = mysql_query("SELECT * FROM users_tags WHERE user_id = '".$my_id."'") or die(mysql_error());
 	$get_total = mysql_num_rows($get_tags);
 	$tags = "";
 	$total_tags = 1;
@@ -551,14 +551,14 @@ if(session_is_registered('username'))
 	{
 		unset($_SESSION['username']);
 		unset($_SESSION['password']);		
-		$_SESSION['error'] = "Contraseña incorrecta";
+		$_SESSION['error'] = "Contraseï¿½a incorrecta";
 		header("Location: ".PATH."/?page=".$_SERVER["REQUEST_URI"]."&username=".$rawname); exit;
 	} 
 	else if(getBanUser($myrow['username']))
 	{
 		unset($_SESSION['username']);
 		unset($_SESSION['password']);		
-		$_SESSION['error'] = "¡Has sido baneado! La razón es: \"".getBanReason($myrow['id'], MY_IP)." (id: ".$myrow['id'].")\", y acabará en ".getBanReason($myrow['id'], MY_IP, true).".";
+		$_SESSION['error'] = "ï¿½Has sido baneado! La razï¿½n es: \"".getBanReason($myrow['id'], MY_IP)." (id: ".$myrow['id'].")\", y acabarï¿½ en ".getBanReason($myrow['id'], MY_IP, true).".";
 		header("Location: ".PATH."/?page=".$_SERVER["REQUEST_URI"]."&username=".$rawname); exit;
 	}
 	
@@ -627,14 +627,14 @@ if(session_is_registered('email') && !$_SESSION['already_login'])
 	{
 		unset($_SESSION['email']);
 		unset($_SESSION['password']);		
-		$_SESSION['error'] = "Contraseña incorrecta";
+		$_SESSION['error'] = "Contraseï¿½a incorrecta";
 		header("Location: ".PATH."/?page=".$_SERVER["REQUEST_URI"]."&username=".$rawemail); exit;		
 	} 
 	else if(getBanUser($myrow['username']))
 	{
 		unset($_SESSION['email']);
 		unset($_SESSION['password']);		
-		$_SESSION['error'] = "¡Has sido baneado! La razón es: \"".getBanReason($myrow['id'], MY_IP)." (id: ".$myrow['id'].")\", y acabará en ".getBanReason($myrow['id'], MY_IP, true).".";
+		$_SESSION['error'] = "ï¿½Has sido baneado! La razï¿½n es: \"".getBanReason($myrow['id'], MY_IP)." (id: ".$myrow['id'].")\", y acabarï¿½ en ".getBanReason($myrow['id'], MY_IP, true).".";
 		header("Location: ".PATH."/?page=".$_SERVER["REQUEST_URI"]."&username=".$rawemail); exit;
 	}
 	
@@ -665,14 +665,14 @@ if($_SESSION['rpx'] == "facebook")
 	if($exist == 0)
 	{
 		unset($_SESSION['rpx']);
-		$_SESSION['error'] = "¡Error desconcido al autenticarte!";
+		$_SESSION['error'] = "ï¿½Error desconcido al autenticarte!";
 		header("Location: ".PATH."/?page=".$_SERVER["REQUEST_URI"]."&username="); exit;
 		
 	} 
 	else if(IsUserBanned($myrow['id'], MY_IP))
 	{
 		unset($_SESSION['rpx']);
-		$_SESSION['error'] = "¡Has sido baneado! La razón es: \"".getBanReason($myrow['id'], MY_IP)." (id: ".$myrow['id'].")\", y acabará en ".getBanReason($myrow['id'], MY_IP, true).".";
+		$_SESSION['error'] = "ï¿½Has sido baneado! La razï¿½n es: \"".getBanReason($myrow['id'], MY_IP)." (id: ".$myrow['id'].")\", y acabarï¿½ en ".getBanReason($myrow['id'], MY_IP, true).".";
 		header("Location: ".PATH."/?page=".$_SERVER["REQUEST_URI"]."&username="); exit;
 	}	
 	
@@ -703,13 +703,13 @@ if($_SESSION['rpx'] == "rpx"){
 	if($exist == 0){
 
 		unset($_SESSION['rpx']);
-		$_SESSION['error'] = "¡Error desconcido al autenticarte!";
+		$_SESSION['error'] = "ï¿½Error desconcido al autenticarte!";
 		header("Location: ".PATH."/?page=".$_SERVER["REQUEST_URI"]."&username="); exit;
 		
 	} else if(IsUserBanned($myrow['id'], MY_IP)){
 
 		unset($_SESSION['rpx']);
-		$_SESSION['error'] = "¡Has sido baneado! La razón es: \"".IsUserBanned($myrow['id'], MY_IP, true, false)." (id: ".$myrow['id'].")\", y acabará en ".IsUserBanned($myrow['id'], MY_IP, false, true).".";
+		$_SESSION['error'] = "ï¿½Has sido baneado! La razï¿½n es: \"".IsUserBanned($myrow['id'], MY_IP, true, false)." (id: ".$myrow['id'].")\", y acabarï¿½ en ".IsUserBanned($myrow['id'], MY_IP, false, true).".";
 		header("Location: ".PATH."/?page=".$_SERVER["REQUEST_URI"]."&username="); exit;
 	}	
 		
@@ -1063,35 +1063,35 @@ function stringToURL($str,$lowercase=true,$spaces=false){
 }
 
 function textInJS($str, $clean = false){
-	$str = str_replace("Â¡","¡",$str);
-	$str = str_replace("Â¿","¿",$str);
-	$str = str_replace("í‘","Ñ",$str);
-	$str = str_replace("Ã±","ñ",$str);
-	$str = str_replace("í","Á",$str);
-	$str = str_replace("Ã¡","á",$str);
-	$str = str_replace("í‰","É",$str);
-	$str = str_replace("Ã©","é",$str);
-	$str = str_replace("í“","Ó",$str);
-	$str = str_replace("Ã³","ó",$str);
-	$str = str_replace("íš","Ú",$str);
-	$str = str_replace("Ãº","ú",$str);
-	$str = str_replace("í","Í",$str);
-	$str = str_replace("Ã","í",$str);
+	$str = str_replace("Â¡","ï¿½",$str);
+	$str = str_replace("Â¿","ï¿½",$str);
+	$str = str_replace("ï¿½","ï¿½",$str);
+	$str = str_replace("Ã±","ï¿½",$str);
+	$str = str_replace("ï¿½","ï¿½",$str);
+	$str = str_replace("Ã¡","ï¿½",$str);
+	$str = str_replace("ï¿½","ï¿½",$str);
+	$str = str_replace("Ã©","ï¿½",$str);
+	$str = str_replace("ï¿½","ï¿½",$str);
+	$str = str_replace("Ã³","ï¿½",$str);
+	$str = str_replace("ï¿½","ï¿½",$str);
+	$str = str_replace("Ãº","ï¿½",$str);
+	$str = str_replace("ï¿½","ï¿½",$str);
+	$str = str_replace("ï¿½","ï¿½",$str);
 	
 	if($clean == true)
 	{
-	$str = str_replace("Ñ","N",$str);
-	$str = str_replace("ñ","n",$str);
-	$str = str_replace("Á","A",$str);
-	$str = str_replace("á","a",$str);
-	$str = str_replace("É","E",$str);
-	$str = str_replace("é","e",$str);
-	$str = str_replace("Ó","O",$str);
-	$str = str_replace("ó","o",$str);
-	$str = str_replace("Ú","U",$str);
-	$str = str_replace("ú","u",$str);
-	$str = str_replace("Í","I",$str);
-	$str = str_replace("í","i",$str);
+	$str = str_replace("ï¿½","N",$str);
+	$str = str_replace("ï¿½","n",$str);
+	$str = str_replace("ï¿½","A",$str);
+	$str = str_replace("ï¿½","a",$str);
+	$str = str_replace("ï¿½","E",$str);
+	$str = str_replace("ï¿½","e",$str);
+	$str = str_replace("ï¿½","O",$str);
+	$str = str_replace("ï¿½","o",$str);
+	$str = str_replace("ï¿½","U",$str);
+	$str = str_replace("ï¿½","u",$str);
+	$str = str_replace("ï¿½","I",$str);
+	$str = str_replace("ï¿½","i",$str);
 	}
 	
 	return $str;
@@ -1472,7 +1472,7 @@ if(time() > $date)
 	if(mysql_num_rows($win1) > 0)
 	{
 		mysql_query("UPDATE users SET credits = credits + 200, activity_points = activity_points + 150 WHERE id = '".$wrow1['userid']."'") or die(mysql_error());
-		mysql_query("INSERT INTO cms_alerts (userid, template, alert) VALUES ('".$wrow1['userid']."', '2', '¡Has gando la loteria! ¡Felicidades! Has obtenido con éxito tu premio.')") or die(mysql_error());
+		mysql_query("INSERT INTO cms_alerts (userid, template, alert) VALUES ('".$wrow1['userid']."', '2', 'ï¿½Has gando la loteria! ï¿½Felicidades! Has obtenido con ï¿½xito tu premio.')") or die(mysql_error());
 		
 		@SendMUSData('UPRC' . $wrow1['userid']); 
 		@SendMUSData('HKTM' . $wrow1['userid'] . chr(2) . "Â¡Has ganado la loteria! Felicidades ;D");
@@ -1481,7 +1481,7 @@ if(time() > $date)
 	if(mysql_num_rows($win2) > 0)
 	{
 		mysql_query("UPDATE users SET credits = credits + 200, activity_points = activity_points + 150 WHERE id = '".$wrow2['userid']."'") or die(mysql_error());
-		mysql_query("INSERT INTO cms_alerts (userid, template, alert) VALUES ('".$wrow2['userid']."', '2', '¡Has gando la loteria! ¡Felicidades! Has obtenido con éxito tu premio.')") or die(mysql_error());
+		mysql_query("INSERT INTO cms_alerts (userid, template, alert) VALUES ('".$wrow2['userid']."', '2', 'ï¿½Has gando la loteria! ï¿½Felicidades! Has obtenido con ï¿½xito tu premio.')") or die(mysql_error());
 		
 		@SendMUSData('UPRC' . $wrow2['userid']); 
 		@SendMUSData('HKTM' . $wrow2['userid'] . chr(2) . "Â¡Has ganado la loteria! Felicidades ;D");

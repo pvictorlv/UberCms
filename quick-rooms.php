@@ -7,7 +7,7 @@ if (!LOGGED_IN) {
     exit;
 }
 
-$result = db::query("SELECT `id`,`caption` FROM `rooms` WHERE `owner` = '" . USER_NAME . "'");
+$result = db::query("SELECT `id`,`caption` FROM `rooms_data` WHERE `owner` = '" . USER_NAME . "'");
 if ($result->rowCount() <= 0) {
     echo '<ul><li>Você ainda não tem nenhuma sala!</li></ul>';
 } else {

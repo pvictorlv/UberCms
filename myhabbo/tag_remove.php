@@ -4,12 +4,12 @@ include '../global.php';
 if (isset($_POST['accountId']) && isset($_POST['tagId'])) {
     $tagid = filter($_POST['tagId']);
     if (is_numeric($tagid)) {
-        $sql = db::query("SELECT user_id FROM user_tags WHERE id = '" . $tagid . "' LIMIT 1");
+        $sql = db::query("SELECT user_id FROM users_tags WHERE id = '" . $tagid . "' LIMIT 1");
         $data = $sql->fetch(2);
 
         if ($sql->rowCount() > 0) {
             if ($data['user_id'] == USER_ID) {
-                db::query("DELETE FROM user_tags WHERE id = '" . $tagid . "' LIMIT 1");
+                db::query("DELETE FROM users_tags WHERE id = '" . $tagid . "' LIMIT 1");
                 //echo "SUCCESS";
             } else {
                 echo "ERROR";
@@ -27,7 +27,7 @@ if (isset($_POST['accountId']) && isset($_POST['tagId'])) {
 <div id="profile-tags-container">
     <?php
     $accountId = filter($_POST['accountId']);
-    $sql = db::query("SELECT * FROM user_tags WHERE user_id = '" . $accountId . "'");
+    $sql = db::query("SELECT * FROM users_tags WHERE user_id = '" . $accountId . "'");
     if ($sql->rowCount() > 0) {
         while ($data = $sql->fetch(2)) {
 
@@ -42,7 +42,7 @@ if (isset($_POST['accountId']) && isset($_POST['tagId'])) {
                          src="<?php echo WWW; ?>/web-gallery/images/buttons/tags/tag_button_delete.gif"><?php } ?>
     </span>
             <?php
-            $query = db::query("SELECT user_id FROM user_tags WHERE tag = '" . $data['tag'] . "' AND user_id = '" . USER_ID . "' AND user_id != '" . $data['user_id'] . "' LIMIT 1");
+            $query = db::query("SELECT user_id FROM users_tags WHERE tag = '" . $data['tag'] . "' AND user_id = '" . USER_ID . "' AND user_id != '" . $data['user_id'] . "' LIMIT 1");
             if ($query->rowCount() > 0) {
 
                 ?>

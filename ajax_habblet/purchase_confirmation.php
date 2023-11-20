@@ -1,6 +1,6 @@
 <?php
 
-require_once "global.php";
+require_once "../global.php";
 
 $name = fixText($_POST['name']);
 $description = substr(fixText(($_POST['description'])), 0, 255);

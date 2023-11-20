@@ -29,8 +29,9 @@
                 $categories = [];
                 $getArticles = db::query("SELECT * FROM site_news");
 
-                while ($newsData = $getArticles->rowCount()) {
-                    $categories[$newsData['category_id']][] = $newsData;
+                while ($newsData = $getArticles->fetch(2)) {
+                    if ($newsData['category_id'])
+                        $categories[$newsData['category_id']][] = $newsData;
                 }
 
                 foreach ($categories as $catId => $articlesInCat) {
@@ -57,8 +58,8 @@
                     echo '</ul>';
                 }
             } else if ($mode == 'category') {
-                $getArticles = db::query("SELECT * FROM site_news WHERE category_id = '" . $category_id . "'");
-                $getCategory = db::query("SELECT caption FROM site_news_categories WHERE id = '" . (int)$category_id . "' LIMIT 1");
+                $getArticles = db::query("SELECT * FROM site_news WHERE category_id = ?", $_GET['category']);
+                $getCategory = db::query("SELECT caption FROM site_news_categories WHERE id = ? LIMIT 1", $_GET['category']);
                 $catName = 'Unknown';
 
                 if ($getCategory->rowCount() == 1) {

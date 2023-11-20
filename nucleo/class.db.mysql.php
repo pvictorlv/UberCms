@@ -17,6 +17,10 @@ class Db
         }
     }
 
+    public static function Scape($string): bool|string
+    {
+        return self::$connection->quote($string);
+    }
     public static function Error($errorString): void
     {
         uberCore::SystemError('Database Error', $errorString);

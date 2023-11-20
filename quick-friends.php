@@ -59,5 +59,5 @@ if ($num == 0) {
     }
 }
 
-echo "<p class='manage-friends'><a href='" . WWW . "/change_blockfriends.php'>Administrar amigos</a></p>";
+echo "<p class='manage-friends'><a href='" . WWW . "/client'>Administrar amigos</a></p>";
 ?>

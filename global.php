@@ -1,12 +1,13 @@
 <?php
 date_default_timezone_set('America/Sao_Paulo');
 
-define('DS', DIRECTORY_SEPARATOR);
+const DS = DIRECTORY_SEPARATOR;
 define('LB', chr(13));
 define('CWD', str_replace('manage' . DS, '', __DIR__ . DS));
-define('INCLUDES', CWD . 'nucleo' . DS);
+const INCLUDES = CWD . 'nucleo' . DS;
 
 error_reporting(E_ERROR | E_WARNING | E_PARSE | E_NOTICE | E_ALL);
+ini_set('display_errors', 1);
 //error_reporting(0);
 session_start();
 
@@ -19,11 +20,14 @@ include INCLUDES . "class.cron.php";
 include INCLUDES . "class.users.php";
 include INCLUDES . "class.tpl.php";
 include INCLUDES . "class.grupos.php";
+include INCLUDES . "class.groups.php";
 
 $core = new uberCore();
 $cron = new uberCron();
 $users = new uberUsers();
 $tpl = new uberTpl();
+$groups = new Groups();
+
 define('USER_IP', $users->getUserIP());
 
 

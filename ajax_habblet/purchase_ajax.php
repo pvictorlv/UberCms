@@ -1,11 +1,11 @@
 <?php
-require_once('global.php');
+require_once('../global.php');
 
 
 function newItem($userId, $groupId, $position_left, $position_top, $position_z, $var, $skin, $content, $type)
 {
     db::query('INSERT INTO site_items (userId, groupId, position_left, position_top, position_z, var, skin, content, type) VALUES (?,?,?,?,?,?,?,?,?)',
-        $userId,$groupId,$position_left,$position_top,$position_z,$var,$skin,$content,$type);
+        $userId, $groupId, $position_left, $position_top, $position_z, $var, $skin, $content, $type);
 }
 
 $name = (fixText(($_POST['name'])));
@@ -17,13 +17,14 @@ if (empty($name)) {
     exit;
 }
 
-db::query('INSERT INTO groups_details (name,description,ownerid,created,badge,type) VALUES (?,?,?,?,?,?)', $name,$description,USER_ID,date('d-M-o'), 'b1003Xs05175s05173s09114', '0');
+db::query('INSERT INTO groups_data (name,`desc`,owner_id,created,badge,forum_type) VALUES (?,?,?,?,?,?)', $name, $description, USER_ID, date('d-M-o'), 'b1003Xs05175s05173s09114', '0');
 
-$check = db::query("SELECT id FROM groups_details WHERE ownerid = '" . USER_ID . "' ORDER BY id DESC LIMIT 1");
+$check = db::query("SELECT id FROM groups_data WHERE owner_id = '" . USER_ID . "' ORDER BY id DESC LIMIT 1");
 $row = $check->fetch(2);
 $group_id = $row['id'];
+$time = time();
 
-db::query("INSERT INTO groups_memberships (userid,groupid,member_rank,is_current) VALUES ('" . USER_ID . "','" . $group_id . "','2','0')");
+db::query("INSERT INTO groups_members (user_id,group_id,`rank`, date_join) VALUES ('" . USER_ID . "','" . $group_id . "','2', '$time')");
 $users->takeCredits(USER_ID, 10);
 newItem(0, $group_id, "393", "9", "4", "", "n_skin_speechbubbleskin", "Seja bem-vindo a pagina deste grupo, faça parte dele!", "stickie");
 newItem(0, $group_id, "27", "218", "3", "", "n_skin_metalskin", "<br /><br /><br /><br />", "stickie");

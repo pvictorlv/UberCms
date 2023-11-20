@@ -412,7 +412,7 @@ echo "
     <div id=\"profile-tag-list\">
 <div id=\"profile-tags-container\">\n";
 
-$get_tags = mysql_query("SELECT * FROM user_tags WHERE user_id = '".$userdata['id']."' ORDER BY id LIMIT 20") or die(mysql_error());
+$get_tags = mysql_query("SELECT * FROM users_tags WHERE user_id = '".$userdata['id']."' ORDER BY id LIMIT 20") or die(mysql_error());
 $rows = mysql_num_rows($get_tags);
 
 	$num = mysql_num_rows($get_tags);
@@ -487,7 +487,7 @@ if($userdata['id'] == $my_id){
     <script type=\"text/javascript\">
 		document.observe(\"dom:loaded\", function() {
 			new ProfileWidget('".$userdata['id']."', '".$userdata['id']."', {
-				headerText: \"¿Estas seguro?\",
+				headerText: \"ï¿½Estas seguro?\",
 				messageText: \"&iquest;Estas seguro que quieres a&ntilde;adir como amigo a <strong\>".$userdata['username']."</strong\>? El deber&aacute; aceptar tu petici&oacute;n.\",
 				buttonText: \"OK\",
 				cancelButtonText: \"Cancelar\"
@@ -776,7 +776,7 @@ echo "
     <div id=\"profile-tag-list\">
 <div id=\"profile-tags-container\">\n";
 
-$get_tags = mysql_query("SELECT * FROM user_tags WHERE user_id= '".$userdata['id']."' ORDER BY id LIMIT 20") or die(mysql_error());
+$get_tags = mysql_query("SELECT * FROM users_tags WHERE user_id= '".$userdata['id']."' ORDER BY id LIMIT 20") or die(mysql_error());
 $rows = mysql_num_rows($get_tags);
 
 	$num = mysql_num_rows($get_tags);
@@ -851,7 +851,7 @@ if($userdata['id'] == $my_id){
     <script type=\"text/javascript\">
 		document.observe(\"dom:loaded\", function() {
 			new ProfileWidget('21063711', '21063711', {
-				headerText: \"¿Estas seguro?\",
+				headerText: \"ï¿½Estas seguro?\",
 				messageText: \"&iquest;Estas seguro que deseas a&ntilde;adir como amigo a <strong\>".$userdata['username']."</strong\>? El deber&aacute; aceptar tu petici&oacute;n\",
 				buttonText: \"OK\",
 				cancelButtonText: \"Cancel\"

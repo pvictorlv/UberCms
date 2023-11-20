@@ -27,6 +27,7 @@
   "require": {
     "ext-pdo": "*",
     "ext-openssl": "*",
-    "ext-json": "*"
+    "ext-json": "*",
+    "ext-mbstring": "*"
   }
 }
