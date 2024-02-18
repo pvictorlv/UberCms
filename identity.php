@@ -121,7 +121,7 @@ switch ($type) {
         $userCP = ($_POST['currentPassword']);
         $userNP = ($_POST['newPassword']);
         $userNPA = ($_POST['retypedNewPassword']);
-
+/*
         if (isset($_POST['g-recaptcha-response'])) {
             $secret = '6Ld8ShAUAAAAAIw7whfmYKjtFBMmtWdHdhfi1pTX';
             $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $_POST['g-recaptcha-response']);
@@ -131,7 +131,7 @@ switch ($type) {
         } else {
             $error = 'Preencha todos os campos';
         }
-
+*/
        if ($userP <> $userCP) {
             $error = "A senha digitada não é correta";
         } else if ($userNP <> $userNPA) {

@@ -87,7 +87,7 @@ if (isset($_GET['doSubmit'])) {
         } else {
             $tpl->SetParam('post-tos-check', 'checked');
         }
-
+/*
         if (isset($_POST['g-recaptcha-response'])) {
             $secret = '6Ld8ShAUAAAAAIw7whfmYKjtFBMmtWdHdhfi1pTX';
             $verifyResponse = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $_POST['g-recaptcha-response']);
@@ -97,7 +97,7 @@ if (isset($_GET['doSubmit'])) {
         } else {
             $registerErrors[] = 'Preencha todos os campos';
         }
-
+*/
         if (count($registerErrors) <= 0) {
             $users->Add($name, $password, $email, 1, 'hd-180-1.lg-270-1340.ha-1015-62.ch-210-1340.hr-802-61.sh-908-1340', 'M');
             $_SESSION['SHOW_WELCOME'] = true;
