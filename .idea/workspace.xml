@@ -9,26 +9,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be2cabe0-8dc8-4802-b861-8b2cc06a404a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/azure.jyKQBQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/cms.SYEBAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/comet.8DGnBQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/engenheiros.EbBOyw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/foot.bgwwAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/goldmine.s3RseQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/hiddo.TsvqBQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/mysql.osA4Bg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/newcms.qfN7wQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/olduber.oe7WrQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/performance_schema.kIw0nw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/pet.H7EBAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/phx.gLEBAA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/plus.mo00AA.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/portal.bIhwxQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/sentora.RpgKdg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9df6b8d1-6307-4c46-a861-0061a928cd39/storage_v2/_src_/schema/sentora_core.-AuxnQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9f3b98a6-cfdd-4c87-94e5-ae04a2243279.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client.php" beforeDir="false" afterPath="$PROJECT_DIR$/client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nucleo/class.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/class.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nucleo/tpl/page-client.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/page-client.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -299,7 +285,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Paulo/Documents/GitHub/ClearPoll.Admin",
+    "last_opened_file_path": "C:/Users/Paulo/Documents/GitHub/UberCms",
     "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
     "vue.rearranger.settings.migration": "true"
   },
@@ -408,6 +394,7 @@
       <workItem from="1555273624892" duration="692000" />
       <workItem from="1700504022281" duration="9110000" />
       <workItem from="1707315488724" duration="970000" />
+      <workItem from="1708222877063" duration="504000" />
     </task>
     <servers />
   </component>

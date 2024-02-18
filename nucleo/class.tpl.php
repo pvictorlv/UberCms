@@ -222,7 +222,10 @@ class Template
                 continue;
             }
 
-            $str = str_ireplace('%' . $param . '%', $value, $str);
+        if ($value == null)
+                $value = '';
+
+                $str = str_ireplace('%' . $param . '%', $value, $str);
         }
 
         return $str;

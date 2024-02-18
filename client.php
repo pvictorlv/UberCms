@@ -75,14 +75,14 @@ $tpl->AddGeneric('head/head-init');
 $tpl->SetParam('page_title', 'Client');
 
 $tpl->AddIncludeSet('default');
-$tpl->AddIncludeFile(new IncludeFile('text/css', '%www%/web-gallery/v2/styles/habboclient.css', 'stylesheet'));
-$tpl->AddIncludeFile(new IncludeFile('text/css', '%www%/web-gallery/v2/styles/habboflashclient.css', 'stylesheet'));
-$tpl->AddIncludeFile(new IncludeFile('text/javascript', '%www%/web-gallery/static/js/habboflashclient.js'));
+
 $tpl->WriteIncludeFiles();
+
 $tpl->AddGeneric('head/head-bottom');
 
 $client = new Template('page-client');
 $client->SetParam('sso_ticket', $users->GetUserVar(USER_ID, 'auth_ticket', false));
+
 $client->SetParam('flash_base', 'http://images.habbo.com/gordon/RELEASE47-25298-25289-201003111232_95572236204420188d53c5fb779d43f4/');
 $client->SetParam('flash_client_url', 'http://images.habbo.com/dcr/r47_none_74f18727eeee7d2cd329f9c7c9078061/');
 $client->SetParam('forwardType', $forwardType);
