@@ -21,7 +21,7 @@
 <div id="root" class="w-100 h-100"></div>
 <script>
     const NitroConfig = {
-        "config.urls": [ '%www%/webclient/renderer-config.json', '%www%/webclient/ui-config.json' ],
+        "config.urls": [ '/webclient/renderer-config.json', '/webclient/ui-config.json' ],
         "sso.ticket": '%sso_ticket%',
         "forward.type": '%forwardType%',
         "forward.id": '%forwardId%',

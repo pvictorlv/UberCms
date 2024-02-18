@@ -74,9 +74,7 @@ $tpl->Init();
 $tpl->AddGeneric('head/head-init');
 $tpl->SetParam('page_title', 'Client');
 
-$tpl->AddIncludeSet('client');
 
-$tpl->WriteIncludeFiles();
 
 $tpl->AddGeneric('head/head-bottom');
 
