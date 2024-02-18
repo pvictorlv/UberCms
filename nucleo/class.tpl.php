@@ -117,6 +117,8 @@ class uberTpl
                 $this->AddIncludeFile(new IncludeFile('text/css', '%www%/web-gallery/v2/styles/lightwindow.css', 'stylesheet'));
                 break;
 
+            case 'client':
+                break;
             case 'default':
             default:
 
