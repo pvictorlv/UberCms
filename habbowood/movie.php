@@ -4,6 +4,7 @@ include "../global.php";
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Habbowood</title>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
 </head>
 <body bgcolor="#292929">
 
