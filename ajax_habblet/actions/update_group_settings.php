@@ -1,10 +1,10 @@
 <?php
 /*=========================================================+
 || # Azure Files of XDRCMS. All rights reserved.
-|| # Copyright © 2012 Xdr.
+|| # Copyright  2012 Xdr.
 |+=========================================================+
 || # Xdr 2012. The power of Proyects.
-|| # Este es un Software de código libre, libre edición.
+|| # Este es un Software de cdigo libre, libre edicin.
 |+=========================================================+
 */
 
@@ -26,18 +26,18 @@ $check = Db::query("SELECT member_rank FROM groups_memberships WHERE userid = '"
 $is_member = ->rowCount($check);
 
 if($is_member > 0){
-	$my_membership = ->fetch(PDO::FETCH_ASSOC)$check);
+	$my_membership = $check->fetch(PDO::FETCH_ASSOC);
 	$member_rank = $my_membership['member_rank'];
 } else {
 	echo "Lo sentimos, pero no puedes editar este Grupo.\n\n<p>\n<a href=\"/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";
 	exit;
 }
 
-$check = Db::query("SELECT * FROM groups_details WHERE id = ?' LIMIT 1")
+$check = Db::query("SELECT * FROM groups_details WHERE id = ? LIMIT 1")
 $valid = ->rowCount($check);
 
 if($valid > 0){
-	$groupdata = ->fetch(PDO::FETCH_ASSOC)$check);
+	$groupdata = $check->fetch(PDO::FETCH_ASSOC);
 	$ownerid = $groupdata['ownerid'];
 } else {
 	echo "Lo sentimos, pero no puedes editar este Grupo.\n\n<p>\n<a href=\"/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";
@@ -54,19 +54,19 @@ $topics_type = FilterText($_POST['newTopicPermission']);
 $roomId = FilterText($_POST['roomId']);
 
 if($groupdata['type'] == "3" && $_POST['type'] !== "3"){ exit; }
-if($type < 0 || $type > 3){ echo "El tipo de Grupo no es válido."; exit; }
-if($forum_type < 0 || $forum_type > 1){ echo "El tipo del Foro no es válido."; exit; }
-if($topics_type < 0 || $topics_type > 2){ echo "El tipo del Foro no es válido."; exit; }
+if($type < 0 || $type > 3){ echo "El tipo de Grupo no es vlido."; exit; }
+if($forum_type < 0 || $forum_type > 1){ echo "El tipo del Foro no es vlido."; exit; }
+if($topics_type < 0 || $topics_type > 2){ echo "El tipo del Foro no es vlido."; exit; }
 
 if(strlen($name) > 25){
-	echo "¡El nombre del Grupo es muy largo!\n\n<p>\n<a href=\"".PATH."/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";
+	echo "El nombre del Grupo es muy largo!\n\n<p>\n<a href=\"".PATH."/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";
 } elseif(strlen($description) > 200){
-	echo "¡La descripción del Grupo es muy larga!\n\n<p>\n<a href=\"".PATH."/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";
+	echo "La descripcin del Grupo es muy larga!\n\n<p>\n<a href=\"".PATH."/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";
 } elseif(strlen($name) < 1){
 	echo "Por favor, escribe un nombre para el Grupo.\n\n<p>\n<a href=\"".PATH."/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";	
 } else {
 	Db::query("UPDATE groups_details SET name = '".$name."', description = '".$description."', roomid = '".$roomId."', type = '".$type."', pane = '".$forum_type."', topics = '".$topics_type."' WHERE id = ?' AND ownerid = '".$my_id."' LIMIT 1")
-	echo "¡Se ha editado el Grupo con éxito!\n\n<p>\n<a href=\"".PATH."/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";
+	echo "Se ha editado el Grupo con xito!\n\n<p>\n<a href=\"".PATH."/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";
 }
  
 ?>

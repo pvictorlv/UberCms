@@ -8,7 +8,7 @@ require_once '../../global.php';
 require_once "../../nucleo/class.grupos.php";
 
 if(!isset($_SESSION['startSessionEditGroup'])) {
-	die('Qué intentas');
+	die('Qu intentas');
 }
 
 $startSessionEditGroup = $gtfo->cleanWord($_SESSION['startSessionEditGroup']);
@@ -32,7 +32,7 @@ if(isset($_POST["stickers"]))
 				$sql = Db::query("SELECT skin FROM site_inventory_items WHERE userId = '" . USER_ID . "' AND id = '" . mysql_real_escape_string($vardata[0]) ."' AND isWaiting = '1' LIMIT 1");
 				if($sql->rowCount() > 0)
 					{
-						$row = ->fetch(PDO::FETCH_ASSOC)$sql);
+						$row = $sql->fetch(PDO::FETCH_ASSOC);
 						
 						Db::query("INSERT INTO groups_items (id, group_id, type, x, y, z, data, skin, owner_id, link) VALUES (NULL, '".$startSessionEditGroup."', 'sticker', '".mysql_real_escape_string($xyz[0])."', '".mysql_real_escape_string($xyz[1])."', '".mysql_real_escape_string($xyz[2])."', '".$row['skin']."', '', '".USER_ID."', '".mysql_real_escape_string($vardata[0])."');");
 //						Db::query("UPDATE site_inventory_items SET isWaiting = '0' WHERE id = '".mysql_real_escape_string($vardata[0])."' AND userId = '".USER_ID."' LIMIT 1;");
@@ -66,7 +66,7 @@ if(isset($_POST["stickienotes"]))
 				
 				if($sqlstickienotes->rowCount() > 0)
 					{
-						$rowstickienotes = ->fetch(PDO::FETCH_ASSOC)$sqlstickienotes);
+						$rowstickienotes = $sqlstickienotes->fetch(PDO::FETCH_ASSOC);
 						
 						Db::query("INSERT INTO groups_items (id, group_id, type, x, y, z, data, skin, owner_id) VALUES (NULL, '".$startSessionEditGroup."', 'sticker', '".mysql_real_escape_string($xyzstickienotes[0])."', '".mysql_real_escape_string($xyzstickienotes[1])."', '".mysql_real_escape_string($xyzstickienotes[2])."', '".$rowstickienotes['skin']."', '', '".USER_ID."');");
 //						Db::query("UPDATE site_inventory_items SET isWaiting = '0' WHERE id = '".mysql_real_escape_string($vardatastickienotes[0])."' AND userId = '".USER_ID."' LIMIT 1");
@@ -98,7 +98,7 @@ if(isset($_POST["stickienotes"]))
 				
 				if($sqlwidgets->rowCount() > 0)
 					{
-						$rowwidgets = ->fetch(PDO::FETCH_ASSOC)$sqlwidgets);
+						$rowwidgets = $sqlwidgets->fetch(PDO::FETCH_ASSOC);
 						
 						//Db::query("INSERT INTO groups_items (id, group_id, type, x, y, z, data, skin, owner_id) VALUES (NULL, '".USER_ID."', 'sticker', '".mysql_real_escape_string($xyzwidgets[0])."', '".mysql_real_escape_string($xyzwidgets[1])."', '".mysql_real_escape_string($xyzwidgets[2])."', '".$rowwidgets['skin']."', '', '".USER_ID."');");
 //						Db::query("UPDATE site_inventory_items SET isWaiting = '0' WHERE id = '".mysql_real_escape_string($vardatawidgets[0])."' AND userId = '".USER_ID."' LIMIT 1");
@@ -120,7 +120,7 @@ if(isset($_POST["stickienotes"]))
 			if(is_numeric($bg[0]))
 			{
 				$sql = Db::query("SELECT userId from site_inventory_items WHERE id = ?'");
-				$data = ->fetch(PDO::FETCH_ASSOC)$sql);
+				$data = $sql->fetch(PDO::FETCH_ASSOC);
 				//echo $bg[0];
 					
 					if($sql->rowCount() > 0)

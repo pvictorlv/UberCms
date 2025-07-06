@@ -1,16 +1,16 @@
 <?php
 /*=========================================================+
-|| # HabboCMS - Sistema de administración de contenido Habbo.
+|| # HabboCMS - Sistema de administracin de contenido Habbo.
 |+=========================================================+
-|| # Copyright © 2010 Kolesias123. All rights reserved.
+|| # Copyright  2010 Kolesias123. All rights reserved.
 || # http://www.infosmart.com.mx
-|| # Partes Copyright © 2009 Yifan Lu. All rights reserved.
+|| # Partes Copyright  2009 Yifan Lu. All rights reserved.
 || # http://www.yifanlu.com
-|| # Base Copyright © 2007-2008 Meth0d. All rights reserved.
+|| # Base Copyright  2007-2008 Meth0d. All rights reserved.
 || # http://www.meth0d.org
 |+=========================================================+
 || # InfoSmart 2010. The power of Proyects.
-|| # Este es un Software de código libre, libre edición.
+|| # Este es un Software de cdigo libre, libre edicin.
 |+=========================================================+
 || # Todas las imagenes, scripts y temas
 || # Copyright (C) 2010 Sulake Ltd. All rights reserved.
@@ -42,7 +42,7 @@ $sql = Db::query("SELECT userid,is_current,member_rank FROM groups_memberships W
 	$userrow = Db::query("SELECT id,name,figure,hbirth FROM users WHERE id = '".$membership['userid']."' LIMIT 1")
 	$found = $userrow->rowCount();
 	
-	$groupdetails = ->fetch(PDO::FETCH_ASSOC)Db::query("SELECT * FROM groups_details WHERE id = '".$groupid."' LIMIT 1"));
+	$groupdetails = Db::query("SELECT * FROM groups_details WHERE id = '".$groupid."' LIMIT 1")->fetch(PDO::FETCH_ASSOC);
 	$ownerid = $groupdetails['ownerid'];
 
 	if($found > 0){
@@ -106,10 +106,10 @@ $totalpages = ceil($count / 20);
 	<?php } ?>
 	<?php if($page != $totalpages){ ?>
     <a href="#" class="avatar-list-paging-link" id="avatarlist-search-next" >&gt;&gt;</a> |
-    <a href="#" class="avatar-list-paging-link" id="avatarlist-search-last" >Último</a>
+    <a href="#" class="avatar-list-paging-link" id="avatarlist-search-last" >ltimo</a>
 	<?php }else{ ?>
 	&gt;&gt; |
-    Último
+    ltimo
 	<?php } ?>
 <input type="hidden" id="pageNumber" value="<?php echo $page; ?>"/>
 <input type="hidden" id="totalPages" value="<?php echo $totalpages; ?>"/>
@@ -130,7 +130,7 @@ while($membership = $sql->fetch(PDO::FETCH_ASSOC)){
 	$userrow = Db::query("SELECT id,name,figure,hbirth FROM users WHERE id = '".$membership['userid']."' LIMIT 1")
 	$found = $userrow->rowCount();
 	
-	$groupdetails = ->fetch(PDO::FETCH_ASSOC)Db::query("SELECT * FROM groups_details WHERE id = '".$groupid."' LIMIT 1"));
+	$groupdetails = Db::query("SELECT * FROM groups_details WHERE id = '".$groupid."' LIMIT 1")->fetch(PDO::FETCH_ASSOC);
 	$ownerid = $groupdetails['ownerid'];
 
 	if($found > 0){
@@ -193,10 +193,10 @@ $totalpages = ceil($count / 20);
 	<?php } ?>
 	<?php if($page != $totalpages){ ?>
     <a href="#" class="avatar-list-paging-link" id="avatarlist-search-next" >&gt;&gt;</a> |
-    <a href="#" class="avatar-list-paging-link" id="avatarlist-search-last" >Último</a>
+    <a href="#" class="avatar-list-paging-link" id="avatarlist-search-last" >ltimo</a>
 	<?php }else{ ?>
 	&gt;&gt; |
-    Último
+    ltimo
 	<?php } ?>
 <input type="hidden" id="pageNumber" value="<?php echo $page; ?>"/>
 <input type="hidden" id="totalPages" value="<?php echo $totalpages; ?>"/>

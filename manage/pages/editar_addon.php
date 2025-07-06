@@ -6,7 +6,7 @@ require_once "../global.php";
 
 if(isset($_GET['nombre'])){
 $Nombre = $gtfo->cleanWord($_GET['nombre']);
-$GetAddon = ->fetch(PDO::FETCH_ASSOC)Db::query("SELECT * FROM site_addons WHERE nombre='".$Nombre."'"));
+$GetAddon = Db::query("SELECT * FROM site_addons WHERE nombre='".$Nombre."'")->fetch(PDO::FETCH_ASSOC);
 
 if (!defined('IN_HK') || !IN_HK)
 {

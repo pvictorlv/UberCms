@@ -55,7 +55,7 @@ while ($text = $get->fetch(PDO::FETCH_ASSOC)))
 {
 	$badgeName = substr($text['skey'], 11);
 	$badgeTName = $text['sval'];
-	$badgeTDescr = ->fetchColumn(db::query("SELECT sval FROM external_texts WHERE skey = 'badge_desc_" . $badgeName . "' LIMIT 1"), 0);
+	$badgeTDescr = db::query("SELECT sval FROM external_texts WHERE skey = 'badge_desc_" . $badgeName . "' LIMIT 1")->fetchColumn();
 
 	echo '<tr><form method="post">';
 	echo '<td><img src="http://images.habbohotel.co.uk/c_images/Badges/' . $badgeName . '.gif" style="vertical-align: middle;">&nbsp;&nbsp;' . $badgeName . '</td>';

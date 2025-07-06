@@ -143,7 +143,7 @@ if (isset($_POST['title']))
 
 require_once "top.php";
 
-$GetPromo = ->fetch(PDO::FETCH_ASSOC)Db::query("SELECT * FROM site_promos WHERE titulo='".$Nombre."'"));
+$GetPromo = Db::query("SELECT * FROM site_promos WHERE titulo='".$Nombre."'")->fetch(PDO::FETCH_ASSOC);
 
 ?>			
 

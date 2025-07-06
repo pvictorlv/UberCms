@@ -18,7 +18,7 @@ if(isset($_POST['pageNumber']) && isset($_POST['widgetId']))
 	$widgetId = $gtfo->cleanWord($_POST['widgetId']);
 	$reqacc = $gtfo->cleanWord($_POST['_mypage_requested_account']);
 	
-	$data = ->fetch(PDO::FETCH_ASSOC)db::query("SELECT home_id FROM homes_items WHERE id = '".$widgetId."' LIMIT 1"));
+	$data = db::query("SELECT home_id FROM homes_items WHERE id = '".$widgetId."' LIMIT 1")->fetch(PDO::FETCH_ASSOC);
 	$user_id = $data['home_id'];
 	
 	$count = ->rowCount(Db::query("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '".$user_id."'"));

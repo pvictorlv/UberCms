@@ -31,7 +31,7 @@ if (isset($_POST['user']) && isset($_POST['a�adir']))
 {
 	$user = filter($_POST['user']);
 	$vip_coins = filter($_POST['vip_coins']);
-	$getuser = ->fetch(PDO::FETCH_ASSOC)Db::query("SELECT Vip_Coins FROM users WHERE username = '".$user."' LIMIT 1"));
+	$getuser = Db::query("SELECT Vip_Coins FROM users WHERE username = '".$user."' LIMIT 1")->fetch(PDO::FETCH_ASSOC);
 	$Coins_Final = $getuser+$vip_coins;
 	db::query("UPDATE users SET Vip_Coins = '".$Coins_Final."' WHERE username = '".$user."' LIMIT 1");
 	$msg = "�Rango cambiado con Exito! Este ya tiene la placa correspondiente.";

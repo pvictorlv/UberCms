@@ -11,7 +11,7 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_admin'))
 	exit;
 }
 
-$maintMode = ->fetchColumn(db::query("SELECT maintenance FROM site_config LIMIT 1"), 0);
+$maintMode = db::query("SELECT maintenance FROM site_config LIMIT 1")->fetchColumn();
 
 if (isset($_GET['switch']))
 {

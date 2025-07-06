@@ -138,7 +138,7 @@ if($friends_category > 0){
 	$get_categorys = Db::query("SELECT * FROM messenger_categorys WHERE owner_id = ?'")
 	if($get_categorys->rowCount() > 0){
 		while($crow = $get_categorys->fetch(PDO::FETCH_ASSOC)){
-	$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ?' LIMIT 1")
+	$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ? LIMIT 1")
 	$row = $get_category->fetch(PDO::FETCH_ASSOC);
 	?>
 	<option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
@@ -291,7 +291,7 @@ if($friendsql->rowCount() > 0){
 	$get_categorys = Db::query("SELECT * FROM messenger_categorys WHERE owner_id = ?'")
 	if($get_categorys->rowCount() > 0){
 		while($crow = $get_categorys->fetch(PDO::FETCH_ASSOC)){
-	$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ?' LIMIT 1")
+	$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ? LIMIT 1")
 	$row = $get_category->fetch(PDO::FETCH_ASSOC);
 	?>
 	<option value="<?php echo $row['id']; ?>"><?php echo $row['username']; ?></option>

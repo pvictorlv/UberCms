@@ -6,7 +6,7 @@ require '../../global.php';
 
 if(isset($_POST['groupId']) && is_numeric($_POST['groupId'])) {
 	$groupId = $gtfo->cleanWord($_POST['groupId']);
-	$sql = db::query("SELECT id,badge FROM groups_details WHERE id = ?' LIMIT 1;");
+	$sql = db::query("SELECT id,badge FROM groups_details WHERE id = ? LIMIT 1;");
 	
 if($sql->rowCount() == 0) {
 	die();
@@ -16,7 +16,7 @@ if($core->GetGroupPerm($groupId) < 2) {
 	die('No tienes los permisos suficientes.');
 }
 
-$data = ->fetch(PDO::FETCH_ASSOC)$sql);
+$data = $sql->fetch(PDO::FETCH_ASSOC);
 ?>
 <div id="badge-editor-flash">
 El editor de Placas necesita Flash Player. <a href="http://www.adobe.com/go/getflashplayer">Inst�lalo gratis desde aqu�</a>.

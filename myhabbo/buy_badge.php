@@ -83,7 +83,7 @@ if(isset($_POST['badge_id']))
 			
 			if(isset($price) && isset($id))
 			{
-				$data = ->fetch(PDO::FETCH_ASSOC)db::query("SELECT vip_points,vip FROM users WHERE id = '".USER_ID."' LIMIT 1;"));
+				$data = db::query("SELECT vip_points,vip FROM users WHERE id = '".USER_ID."' LIMIT 1;")->fetch(PDO::FETCH_ASSOC);
 				if($data['vip'] == 0)
 				{
 					die('<center><font color="red">No eres VIP, para poder comprar placas debes ser VIP.</font></center>');

@@ -44,7 +44,7 @@ if (!isset($_SESSION['OT_PAGE_CAT']))
 	}
 }
 
-$newOrderId = ->fetchColumn(db::query("SELECT order_num FROM catalog_pages WHERE parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' ORDER BY order_num DESC"), 0) + 1;
+$newOrderId = db::query("SELECT order_num FROM catalog_pages WHERE parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' ORDER BY order_num DESC")->fetchColumn() + 1;
 
 if (!isset($_GET['sq']))
 {
@@ -56,7 +56,7 @@ if (isset($_GET['new']))
 	db::query("INSERT INTO catalog_pages (parent_id,caption,icon_color,icon_image,visible,enabled,coming_soon,order_num,page_layout,page_text_details,page_headline) VALUES ('" . $_SESSION['OT_PAGE_CAT'] . "','', '0', '1', '1', '1', '0', '" . $newOrderId . "', 'default_3x3','Click on an item for more information.','catalog_frontpage_headline2_en')");
 	fMessage('ok', 'New page stub added');
 
-	$newId = ->fetchColumn(db::query("SELECT id FROM catalog_pages ORDER BY id DESC LIMIT 1"), 0);
+	$newId = db::query("SELECT id FROM catalog_pages ORDER BY id DESC LIMIT 1")->fetchColumn();
 
 	header("Location: ./index.php?_cmd=ot-pages&edit=" . $newId);
 	exit;

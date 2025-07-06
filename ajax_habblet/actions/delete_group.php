@@ -11,16 +11,16 @@ if(!is_numeric($groupid)){
 $check = Db::query("SELECT * FROM groups_memberships WHERE userid = '".USER_ID."' AND groupid = '".$groupid."' AND member_rank > 1 AND is_pending = '0' LIMIT 1")
 
 if($check->rowCount() > 0){
-	$my_membership = ->fetch(PDO::FETCH_ASSOC)$check);
+	$my_membership = $check->fetch(PDO::FETCH_ASSOC);
 	$member_rank = $my_membership['member_rank'];
 } else {
 	exit;
 }
 
-$check = Db::query("SELECT * FROM group_details WHERE id = ?' LIMIT 1")
+$check = Db::query("SELECT * FROM group_details WHERE id = ? LIMIT 1")
 
 if($check->rowCount() > 0){
-	$groupdata = ->fetch(PDO::FETCH_ASSOC)$check);
+	$groupdata = $check->fetch(PDO::FETCH_ASSOC);
 	$ownerid = $groupdata['ownerid'];
 } else {
 	exit;
@@ -36,7 +36,7 @@ if($ownerid !== "'.USER_ID.'"){
 		unlink($image);
 	}
 	error_reporting(1);
-	Db::query("DELETE FROM group_details WHERE id = ?' LIMIT 1");
+	Db::query("DELETE FROM group_details WHERE id = ? LIMIT 1");
 	Db::query("DELETE FROM group_members WHERE id_group = ?'");
 	Db::query("DELETE FROM homes_group_linker WHERE groupid = ?'");
 	Db::query("DELETE FROM homes_stickers WHERE groupid = ?'");

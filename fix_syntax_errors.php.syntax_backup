@@ -1,0 +1,97 @@
+<?php
+
+function fixSyntaxErrors() {
+    $projectRoot = '/workspace/UberCms';
+    $fixedFiles = [];
+    $errors = [];
+    
+    // Padrões de erro para corrigir
+    $patterns = [
+        // Erro: $var = ->fetch(PDO::FETCH_ASSOC)$query);
+        '/(\$\w+)\s*=\s*->(fetch\w*)\(([^)]+)\)(\$\w+)\);/' => '$1 = $4->$2($3);',
+        
+        // Erro: $var = ->fetchColumn(db::query(...), 0);
+        '/(\$\w+)\s*=\s*->fetchColumn\(([^,]+),\s*(\d+)\);/' => '$1 = $2->fetchColumn();',
+        
+        // Erro: queries com ? mas sem parâmetros
+        '/db::query\("([^"]*\?[^"]*)"(\s*\));/' => 'db::query("$1", /* MISSING PARAMETER */);',
+        
+        // Erro: Db::query("SELECT * FROM table WHERE id = ?' LIMIT 1");
+        '/Db::query\("([^"]*)\?\'\s*([^"]*)"(\s*\));/' => 'Db::query("$1?$2", /* MISSING PARAMETER */);',
+    ];
+    
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveDirectoryIterator($projectRoot)
+    );
+    
+    foreach ($iterator as $file) {
+        if ($file->getExtension() === 'php' && 
+            !strpos($file->getPathname(), '.backup') && 
+            !strpos($file->getPathname(), '.security_backup') &&
+            !strpos($file->getPathname(), '.final_backup') &&
+            !strpos($file->getPathname(), '.manual_backup')) {
+            
+            $filePath = $file->getPathname();
+            $content = file_get_contents($filePath);
+            $originalContent = $content;
+            $fileFixed = false;
+            
+            // Aplicar correções
+            foreach ($patterns as $pattern => $replacement) {
+                $newContent = preg_replace($pattern, $replacement, $content);
+                if ($newContent !== $content) {
+                    $content = $newContent;
+                    $fileFixed = true;
+                }
+            }
+            
+            // Correções específicas mais complexas
+            $specificFixes = [
+                // Corrigir ->fetch(PDO::FETCH_ASSOC)$var) para $var->fetch(PDO::FETCH_ASSOC)
+                '/= ->fetch\(PDO::FETCH_ASSOC\)(\$\w+)\);/' => '= $1->fetch(PDO::FETCH_ASSOC);',
+                
+                // Corrigir ->fetchColumn($query) para $query->fetchColumn()
+                '/= ->fetchColumn\(([^,)]+)\);/' => '= $1->fetchColumn();',
+                
+                // Corrigir while($var = ->fetch(PDO::FETCH_ASSOC)$query))
+                '/while\(\$(\w+) = ->fetch\(PDO::FETCH_ASSOC\)(\$\w+)\)\)/' => 'while($1 = $2->fetch(PDO::FETCH_ASSOC))',
+            ];
+            
+            foreach ($specificFixes as $pattern => $replacement) {
+                $newContent = preg_replace($pattern, $replacement, $content);
+                if ($newContent !== $content) {
+                    $content = $newContent;
+                    $fileFixed = true;
+                }
+            }
+            
+            if ($fileFixed) {
+                // Criar backup antes de modificar
+                copy($filePath, $filePath . '.syntax_backup');
+                file_put_contents($filePath, $content);
+                $fixedFiles[] = str_replace($projectRoot . '/', '', $filePath);
+                
+                echo "✅ Fixed: " . str_replace($projectRoot . '/', '', $filePath) . "\n";
+            }
+        }
+    }
+    
+    return $fixedFiles;
+}
+
+echo "🔧 CORRIGINDO ERROS DE SINTAXE\n";
+echo "=" . str_repeat("=", 40) . "\n";
+
+$fixedFiles = fixSyntaxErrors();
+
+echo "\n📊 RESUMO:\n";
+echo "Arquivos corrigidos: " . count($fixedFiles) . "\n";
+
+if (count($fixedFiles) > 0) {
+    echo "\n📁 ARQUIVOS MODIFICADOS:\n";
+    foreach ($fixedFiles as $file) {
+        echo "- $file\n";
+    }
+}
+
+echo "\n✅ CORREÇÃO DE SINTAXE CONCLUÍDA!\n";

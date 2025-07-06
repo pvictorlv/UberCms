@@ -5,11 +5,11 @@ require_once('../../global.php');
 
 $groupid = FilterText($_POST['groupId']);
 
-$check = Db::query("SELECT * FROM groups_details WHERE id = ?' LIMIT 1")
+$check = Db::query("SELECT * FROM groups_details WHERE id = ? LIMIT 1")
 $exist = ->rowCount($check);
 
 if($exist > 0)
-	$row = ->fetch(PDO::FETCH_ASSOC)$check);
+	$row = $check->fetch(PDO::FETCH_ASSOC);
 else
 	exit;
 	
@@ -31,7 +31,7 @@ else
         <div id="group-name-area">
           <div id="group_name_message_error" class="error"></div>
           <label for="group_name" id="group_name_text">Editar nombre de Grupo:</label>
-          <input type="text" name="group_name" id="group_name" onKeyUp="GroupUtils.validateGroupElements('group_name', 30, 'Has alcanzado el límite');" value="<?php echo ($row['name']); ?>"/><br />
+          <input type="text" name="group_name" id="group_name" onKeyUp="GroupUtils.validateGroupElements('group_name', 30, 'Has alcanzado el lmite');" value="<?php echo ($row['name']); ?>"/><br />
         </div>
 
         <div id="group-url-area">
@@ -51,12 +51,12 @@ else
 
         <div id="group-description-area">
           <div id="group_description_message_error" class="error"></div>
-          <label for="group_description" id="description_text">Editar descripción:</label>
+          <label for="group_description" id="description_text">Editar descripcin:</label>
           <span id="description_chars_left">
             <label for="characters_left">Caracteres restantes:</label>
             <input id="group_description-counter" type="text" value="<?php echo (255 - strlen($row['description'])); ?>" size="3" readonly="readonly" class="amount" />
           </span>
-          <textarea name="group_description" id="group_description" onKeyUp="GroupUtils.validateGroupElements('group_description', 255, 'La descripción del Grupo es demasiado larga');"><?php echo ($row['description']); ?></textarea>
+          <textarea name="group_description" id="group_description" onKeyUp="GroupUtils.validateGroupElements('group_description', 255, 'La descripcin del Grupo es demasiado larga');"><?php echo ($row['description']); ?></textarea>
         </div>
       </div>
       <div id="group-settings-type" class="group-settings-pane group-settings-selection">
@@ -64,12 +64,12 @@ else
         <input type="radio" name="group_type" id="group_type" value="0" <?php if($row['type'] == "0") { echo "checked=\"checked\""; } ?> />
         <div class="description">
           <div class="group-type-normal">Abierto</div>
-          <p>Todos pueden unirse. Límite: 500 miembros</p>
+          <p>Todos pueden unirse. Lmite: 500 miembros</p>
         </div>
         <input type="radio" name="group_type" id="group_type" value="1" <?php if($row['type'] == "1") { echo "checked=\"checked\""; } ?> />
         <div class="description">
           <div class="group-type-exclusive">Exclusivo</div>
-          <p>Los Administradores deciden quién puede unirse</p>
+          <p>Los Administradores deciden quin puede unirse</p>
         </div>
         <input type="radio" name="group_type" id="group_type" value="2" <?php if($row['type'] == "2") { echo "checked=\"checked\""; } ?> />
         <div class="description">
@@ -79,8 +79,8 @@ else
         <input type="radio" name="group_type" id="group_type" value="3" <?php if($row['type'] == "3") { echo "checked=\"checked\""; } ?> />
         <div class="description">
           <div class="group-type-large">Ilimitado</div>
-          <p>Todos pueden unirse. No hay límite de miembros. Imposible mostrar los miembros</p>
-          <p class="description-note">Nota: ¡Si eliges esta opción luego no podrás cambiarla!</p>
+          <p>Todos pueden unirse. No hay lmite de miembros. Imposible mostrar los miembros</p>
+          <p class="description-note">Nota: Si eliges esta opcin luego no podrs cambiarla!</p>
         </div>
         <input type="hidden" id="initial_group_type" value="<?php echo $row['type']; ?>">
       </div>
@@ -93,13 +93,13 @@ else
         <label for="forum_type">Editar tipo de Foro:</label>
         <input type="radio" name="forum_type" id="forum_type" value="0" <?php if($row['pane'] == "0") { echo "checked=\"checked\""; } ?> />
         <div class="description">
-          Público<br />
+          Pblico<br />
           <p>Todos pueden leer los comentarios del Foro</p>
         </div>
         <input type="radio" name="forum_type" id="forum_type" value="1" <?php if($row['pane'] == "1") { echo "checked=\"checked\""; } ?> />
         <div class="description">
           Privado<br />
-          <p>Sólo los miembros del Grupo pueden leer los comentarios del Foro</p>
+          <p>Slo los miembros del Grupo pueden leer los comentarios del Foro</p>
         </div>
       </div>
 
@@ -108,12 +108,12 @@ else
         <input type="radio" name="new_topic_permission" id="new_topic_permission" value="2" <?php if($row['topics'] == "2") { echo "checked=\"checked\""; } ?> />
         <div class="description">
           Administrador<br />
-          <p>Sólo los Administradores pueden crear nuevos asuntos</p>
+          <p>Slo los Administradores pueden crear nuevos asuntos</p>
         </div>
         <input type="radio" name="new_topic_permission" id="new_topic_permission" value="1" <?php if($row['topics'] == "1") { echo "checked=\"checked\""; } ?> />
         <div class="description">
           Miembros<br />
-          <p>Sólo los miembros del Grupo pueden crear nuevos asuntos</p>
+          <p>Slo los miembros del Grupo pueden crear nuevos asuntos</p>
         </div>
         <input type="radio" name="new_topic_permission" id="new_topic_permission" value="0" <?php if($row['topics'] == "0") { echo "checked=\"checked\""; } ?> />
         <div class="description">
@@ -127,14 +127,14 @@ else
     <div id="room-settings" style="display: none;">
 <?php 
 $sql = Db::query("SELECT id,caption,description FROM rooms WHERE owner = '".USER_NAME."' ");
-$groupdetails = Db::query("SELECT * FROM groups_details WHERE id = ?' LIMIT 1");
-$group = ->fetch(PDO::FETCH_ASSOC)$groupdetails);
+$groupdetails = Db::query("SELECT * FROM groups_details WHERE id = ? LIMIT 1");
+$group = $groupdetails->fetch(PDO::FETCH_ASSOC);
 $i = 1; ?>
 <label>Selecciona una Sala para el grupo:</label>
 
 <div id="room-settings-id" class="group-settings-pane-wide group-settings-selection">
     <ul><li><input type="radio" name="roomId" value="0" <?php if($group['roomid'] == "0" || $group['roomid'] == "" || $group['roomid'] == " ") { echo "checked=\"checked\""; } ?> /><div>Sin Sala</div></li>
-	<?php while($row = ->fetch(PDO::FETCH_ASSOC)$sql)) {
+	<?php while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
 		        $i++;
 		?>
     	<li class="<?php if(isEven($i) == "even") { echo "even"; } else { echo "odd"; } ?>">
@@ -164,10 +164,10 @@ $i = 1; ?>
 
 <script type="text/javascript" language="JavaScript">
     L10N.put("group.settings.title.text", "Ajustes");
-    L10N.put("group.settings.group_type_change_warning.normal", "¿Seguro que quieres convertir tu Grupo en uno <strong\>Normal</strong\>?");
-    L10N.put("group.settings.group_type_change_warning.exclusive", "¿Seguro que quieres convertir tu Grupo en uno <strong \>Exclusivo</strong\>?");
-    L10N.put("group.settings.group_type_change_warning.closed", "¿Seguro que quieres convertir tu Grupo en uno <strong\>Privado</strong\>?");
-    L10N.put("group.settings.group_type_change_warning.large", "¿Seguro que quieres convertir tu Grupo en uno <strong\>Ilimitado</strong\>? ¡Luego no podrás volver a cambiarlo!");
+    L10N.put("group.settings.group_type_change_warning.normal", "Seguro que quieres convertir tu Grupo en uno <strong\>Normal</strong\>?");
+    L10N.put("group.settings.group_type_change_warning.exclusive", "Seguro que quieres convertir tu Grupo en uno <strong \>Exclusivo</strong\>?");
+    L10N.put("group.settings.group_type_change_warning.closed", "Seguro que quieres convertir tu Grupo en uno <strong\>Privado</strong\>?");
+    L10N.put("group.settings.group_type_change_warning.large", "Seguro que quieres convertir tu Grupo en uno <strong\>Ilimitado</strong\>? Luego no podrs volver a cambiarlo!");
     L10N.put("myhabbo.groups.confirmation_ok", "OK");
     L10N.put("myhabbo.groups.confirmation_cancel", "Cancelar");
     switchGroupSettingsTab(null, "group");

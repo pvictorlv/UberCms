@@ -57,7 +57,7 @@ if ($search == "") {
 
     <div id="avatar-list-paging">
         <?php
-        $sql = db::query("SELECT * FROM messenger_friendships WHERE user_one_id = '" . $user . '\' OR user_two_id = \'' . $user . '\'');
+        $sql = db::query("SELECT * FROM messenger_friendships WHERE user_one_id = ? OR user_two_id = ?", $user, $user);
         $count = $sql->rowCount();
         $at = $page - 1;
         $at *= 20;

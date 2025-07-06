@@ -9,7 +9,7 @@ if(isset($_POST['searchString']) && !empty($_POST['searchString'])) {
 	$usuario_sql = db::query("SELECT id FROM users WHERE username LIKE '".$searchString."%'");
 	$putId = NULL;
 	$i = 0;
-	while($usuario = ->fetch(PDO::FETCH_ASSOC)$usuario_sql)) {
+	while($usuario = $usuario_sql->fetch(PDO::FETCH_ASSOC)) {
 		$i++;
 		$putId .= 'userid = \''.$usuario['id'].'\'';
 			
@@ -119,7 +119,7 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId'])) {
 $counter = 0;
 $rights = 0;
 $lefts = 0;
-while($data = ->fetch(PDO::FETCH_ASSOC)$sql)) {
+while($data = $sql->fetch(PDO::FETCH_ASSOC)) {
 $counter++;
 if($data['member_rank'] == 3) {
 	$OWNER = true;

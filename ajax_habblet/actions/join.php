@@ -10,12 +10,12 @@ if(isset($_GET['groupId']) && is_numeric($_GET['groupId'])) {
 
 	$requestGroupId = $gtfo->cleanWord($_GET['groupId']);
 	
-	$group_sql = db::query("SELECT type FROM groups_details WHERE id = ?' LIMIT 1;");
-	$group = ->fetch(PDO::FETCH_ASSOC)$group_sql);
+	$group_sql = db::query("SELECT type FROM groups_details WHERE id = ? LIMIT 1;");
+	$group = $group_sql->fetch(PDO::FETCH_ASSOC);
 	
 	if($group_sql->rowCount() > 0) {
 		if($group['type'] == 0) {
-			$checkLimit500 = ->fetch(PDO::FETCH_ASSOC)db::query("SELECT count(userid) AS count FROM groups_memberships WHERE groupid = ?';"));
+			$checkLimit500 = db::query("SELECT count(userid) AS count FROM groups_memberships WHERE groupid = ?", $requestGroupId)->fetch(PDO::FETCH_ASSOC);
 			
 			if($checkLimit500['count'] >= 500)
 			{

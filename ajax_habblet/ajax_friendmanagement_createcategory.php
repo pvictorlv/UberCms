@@ -26,7 +26,7 @@ $_SESSION['create_category'] = time();
 $get_categorys = Db::query("SELECT * FROM messenger_categorys WHERE owner_id = ?'")
 	if($get_categorys->rowCount() > 0){
 	while($crow = $get_categorys->fetch(PDO::FETCH_ASSOC)){
-$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ?' LIMIT 1")
+$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ? LIMIT 1")
 $row = $get_category->fetch(PDO::FETCH_ASSOC);
 ?>
     <div id="category-item-<?php echo $row['id']; ?>" class="category-item ">

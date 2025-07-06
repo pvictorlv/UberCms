@@ -8,7 +8,7 @@ $category_id = FilterText($_POST['categoryId']);
 
 if(!empty($category_id) && is_numeric($category_id)){
 
-Db::query("DELETE FROM messenger_categorys WHERE id = ?' LIMIT 1")
+Db::query("DELETE FROM messenger_categorys WHERE id = ? LIMIT 1")
 Db::query("UPDATE messenger_friendships SET category = '0' WHERE user_one_id = ?' AND category = '".$category_id."'")
 
 }
@@ -22,7 +22,7 @@ Db::query("UPDATE messenger_friendships SET category = '0' WHERE user_one_id = ?
 $get_categorys = Db::query("SELECT * FROM messenger_categorys WHERE owner_id = ?'")
 	if($get_categorys->rowCount() > 0){
 	while($crow = $get_categorys->fetch(PDO::FETCH_ASSOC)){
-$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ?' LIMIT 1")
+$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ? LIMIT 1")
 $row = $get_category->fetch(PDO::FETCH_ASSOC);
 ?>
     <div id="category-item-<?php echo $row['id']; ?>" class="category-item ">

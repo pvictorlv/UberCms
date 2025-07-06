@@ -13,7 +13,7 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['ta
 		$check = ->rowCount(db::query("SELECT null FROM groups_memberships WHERE groupid = ?' AND userid = '".$targetIds."' LIMIT 1"));
 		
 		if($check > 0) {
-		$data = ->fetch(PDO::FETCH_ASSOC)db::query("SELECT name FROM groups_details WHERE id = ?' LIMIT 1"));
+		$data = db::query("SELECT name FROM groups_details WHERE id = ? LIMIT 1")->fetch(PDO::FETCH_ASSOC);
 			?>
 <p>
 �Seguro que quieres sacar del grupo <?php echo $data['name']; ?> a <?php echo $users->id2name($targetIds); ?>?"

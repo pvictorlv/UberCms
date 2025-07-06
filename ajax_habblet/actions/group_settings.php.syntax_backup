@@ -1,0 +1,174 @@
+<?php
+
+$require_login = true;
+require_once('../../global.php');
+
+$groupid = FilterText($_POST['groupId']);
+
+$check = Db::query("SELECT * FROM groups_details WHERE id = ?' LIMIT 1")
+$exist = ->rowCount($check);
+
+if($exist > 0)
+	$row = ->fetch(PDO::FETCH_ASSOC)$check);
+else
+	exit;
+	
+	function HoloText($str, $advanced=false, $bbcode=false) {
+	if($advanced == true){ return stripslashes($str); }
+	$str = stripslashes(nl2br(htmlspecialchars($str)));
+	if($bbcode == true){$str = bbcode_format($str); }
+	return $str;
+}
+?>
+<form action="#" method="post" id="group-settings-form">
+
+  <div id="group-settings">
+    <div id="group-settings-data" class="group-settings-pane">
+      <div id="group-logo">
+        <img src="/habbo-imaging/badge.php?badge=<?php echo $row['badge']; ?>.gif" />
+      </div>
+      <div id="group-identity-area">
+        <div id="group-name-area">
+          <div id="group_name_message_error" class="error"></div>
+          <label for="group_name" id="group_name_text">Editar nombre de Grupo:</label>
+          <input type="text" name="group_name" id="group_name" onKeyUp="GroupUtils.validateGroupElements('group_name', 30, 'Has alcanzado el lmite');" value="<?php echo ($row['name']); ?>"/><br />
+        </div>
+
+        <div id="group-url-area">
+          <div id="group_url_message_error" class="error"></div>
+			<?php if(empty($row['id'])) { ?>
+            <label for="group_url" id="group_url_text">Edit Group URL:</label><br/>
+            <input type="text" name="group_url" id="group_url" onKeyUp="GroupUtils.validateGroupElements('group_url', 30, 'URL limit reached');" value="<?php echo ($row['id']); ?>"/><br />
+            <input type="hidden" name="group_url_edited" id="group_url_edited" value="1"/>
+			<?php } else { ?>
+			<label for="group_url" id="group_url_text">Group URL is:</label><br/>
+            <span id="group_url_text"><a href="/groups/<?php echo $row['id']; ?>">..groups/<?php echo $row['id']; ?></a></span><br/>
+            <input type="hidden" name="group_url" id="group_url" value="<?php echo $row['id']; ?>"/>
+            <input type="hidden" name="group_url_edited" id="group_url_edited" value="0"/>
+			<?php } ?>
+          </div>
+        </div>
+
+        <div id="group-description-area">
+          <div id="group_description_message_error" class="error"></div>
+          <label for="group_description" id="description_text">Editar descripcin:</label>
+          <span id="description_chars_left">
+            <label for="characters_left">Caracteres restantes:</label>
+            <input id="group_description-counter" type="text" value="<?php echo (255 - strlen($row['description'])); ?>" size="3" readonly="readonly" class="amount" />
+          </span>
+          <textarea name="group_description" id="group_description" onKeyUp="GroupUtils.validateGroupElements('group_description', 255, 'La descripcin del Grupo es demasiado larga');"><?php echo ($row['description']); ?></textarea>
+        </div>
+      </div>
+      <div id="group-settings-type" class="group-settings-pane group-settings-selection">
+        <label for="group_type">Editar tipo de Grupo</label>
+        <input type="radio" name="group_type" id="group_type" value="0" <?php if($row['type'] == "0") { echo "checked=\"checked\""; } ?> />
+        <div class="description">
+          <div class="group-type-normal">Abierto</div>
+          <p>Todos pueden unirse. Lmite: 500 miembros</p>
+        </div>
+        <input type="radio" name="group_type" id="group_type" value="1" <?php if($row['type'] == "1") { echo "checked=\"checked\""; } ?> />
+        <div class="description">
+          <div class="group-type-exclusive">Exclusivo</div>
+          <p>Los Administradores deciden quin puede unirse</p>
+        </div>
+        <input type="radio" name="group_type" id="group_type" value="2" <?php if($row['type'] == "2") { echo "checked=\"checked\""; } ?> />
+        <div class="description">
+          <div class="group-type-private">Privado</div>
+          <p>Nadie puede unirse</p>
+        </div>
+        <input type="radio" name="group_type" id="group_type" value="3" <?php if($row['type'] == "3") { echo "checked=\"checked\""; } ?> />
+        <div class="description">
+          <div class="group-type-large">Ilimitado</div>
+          <p>Todos pueden unirse. No hay lmite de miembros. Imposible mostrar los miembros</p>
+          <p class="description-note">Nota: Si eliges esta opcin luego no podrs cambiarla!</p>
+        </div>
+        <input type="hidden" id="initial_group_type" value="<?php echo $row['type']; ?>">
+      </div>
+    </div>
+
+
+    <div id="forum-settings" style="display: none;">
+
+      <div id="forum-settings-type" class="group-settings-pane group-settings-selection">
+        <label for="forum_type">Editar tipo de Foro:</label>
+        <input type="radio" name="forum_type" id="forum_type" value="0" <?php if($row['pane'] == "0") { echo "checked=\"checked\""; } ?> />
+        <div class="description">
+          Pblico<br />
+          <p>Todos pueden leer los comentarios del Foro</p>
+        </div>
+        <input type="radio" name="forum_type" id="forum_type" value="1" <?php if($row['pane'] == "1") { echo "checked=\"checked\""; } ?> />
+        <div class="description">
+          Privado<br />
+          <p>Slo los miembros del Grupo pueden leer los comentarios del Foro</p>
+        </div>
+      </div>
+
+      <div id="forum-settings-topics" class="group-settings-pane group-settings-selection">
+        <label for="new_topic_permission">Crear nuevo asunto:</label>
+        <input type="radio" name="new_topic_permission" id="new_topic_permission" value="2" <?php if($row['topics'] == "2") { echo "checked=\"checked\""; } ?> />
+        <div class="description">
+          Administrador<br />
+          <p>Slo los Administradores pueden crear nuevos asuntos</p>
+        </div>
+        <input type="radio" name="new_topic_permission" id="new_topic_permission" value="1" <?php if($row['topics'] == "1") { echo "checked=\"checked\""; } ?> />
+        <div class="description">
+          Miembros<br />
+          <p>Slo los miembros del Grupo pueden crear nuevos asuntos</p>
+        </div>
+        <input type="radio" name="new_topic_permission" id="new_topic_permission" value="0" <?php if($row['topics'] == "0") { echo "checked=\"checked\""; } ?> />
+        <div class="description">
+          Todos<br />
+          <p>Todos pueden crear un nuevo asunto</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="room-settings" style="display: none;">
+<?php 
+$sql = Db::query("SELECT id,caption,description FROM rooms WHERE owner = '".USER_NAME."' ");
+$groupdetails = Db::query("SELECT * FROM groups_details WHERE id = ?' LIMIT 1");
+$group = ->fetch(PDO::FETCH_ASSOC)$groupdetails);
+$i = 1; ?>
+<label>Selecciona una Sala para el grupo:</label>
+
+<div id="room-settings-id" class="group-settings-pane-wide group-settings-selection">
+    <ul><li><input type="radio" name="roomId" value="0" <?php if($group['roomid'] == "0" || $group['roomid'] == "" || $group['roomid'] == " ") { echo "checked=\"checked\""; } ?> /><div>Sin Sala</div></li>
+	<?php while($row = ->fetch(PDO::FETCH_ASSOC)$sql)) {
+		        $i++;
+		?>
+    	<li class="<?php if(isEven($i) == "even") { echo "even"; } else { echo "odd"; } ?>">
+    		<input type="radio" name="roomId" value="<?php echo $row['id']; ?>" <?php if($group['roomid'] == $row['id']) { echo "checked=\"checked\""; } ?> /><a href="/client?forwardId=2&roomId=<?php echo $row['id']; ?>" onclick="HabboClient.roomForward(this, '<?php echo $row['id']; ?>', 'private'); return false;" target="uberClientWnd" class="room-enter">Entrada</a><div>
+				<?php echo HoloText($row['caption']); if($row['caption'] == ""){ ?>&nbsp;<?php } ?><br />
+				<span class="room-description"><?php echo HoloText($row['description']); if($row['description'] == "") { ?>&nbsp;<?php } ?></span>
+			</div>
+    	</li>
+		<?php } ?>
+        </ul>
+      </div>
+    </div>
+
+    <div id="group-button-area">
+      <a href="#" id="group-settings-update-button" class="new-button" onclick="showGroupSettingsConfirmation('<?php echo $groupid; ?>');">
+        <b>Guardar</b><i></i>
+      </a>
+      <a id="group-delete-button" href="#" class="new-button red-button" onclick="openGroupActionDialog('/groups/actions/confirm_delete_group.php', '/groups/actions/delete_group.php', null , '<?php echo $groupid; ?>', null);">
+        <b>Borrar Grupo</b><i></i>
+      </a>
+      <a href="#" id="group-settings-close-button" class="new-button" onclick="closeGroupSettings(); return false;"><b>Cancelar</b><i></i></a>
+    </div>
+  </div>
+</form>
+
+<div class="clear"></div>
+
+<script type="text/javascript" language="JavaScript">
+    L10N.put("group.settings.title.text", "Ajustes");
+    L10N.put("group.settings.group_type_change_warning.normal", "Seguro que quieres convertir tu Grupo en uno <strong\>Normal</strong\>?");
+    L10N.put("group.settings.group_type_change_warning.exclusive", "Seguro que quieres convertir tu Grupo en uno <strong \>Exclusivo</strong\>?");
+    L10N.put("group.settings.group_type_change_warning.closed", "Seguro que quieres convertir tu Grupo en uno <strong\>Privado</strong\>?");
+    L10N.put("group.settings.group_type_change_warning.large", "Seguro que quieres convertir tu Grupo en uno <strong\>Ilimitado</strong\>? Luego no podrs volver a cambiarlo!");
+    L10N.put("myhabbo.groups.confirmation_ok", "OK");
+    L10N.put("myhabbo.groups.confirmation_cancel", "Cancelar");
+    switchGroupSettingsTab(null, "group");
+</script>

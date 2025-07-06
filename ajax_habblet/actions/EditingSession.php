@@ -77,14 +77,14 @@ else if($do == "save")
 		
 			if($checkSticker->rowCount() > 0)
 			{
-				$row = ->fetch(PDO::FETCH_ASSOC)$checkSticker);
+				$row = $checkSticker->fetch(PDO::FETCH_ASSOC);
 			
 				$Users->newItem(0, $groupId, $position_left, $position_top, $position_z, "", $row['skin'], "", "sticker");
 				$Users->removeWaitingItem($myid, $stickerId);
 			}
 			else if($checkAlreadySticker->rowCount() > 0)
 			{
-				$row = ->fetch(PDO::FETCH_ASSOC)$checkAlreadySticker);
+				$row = $checkAlreadySticker->fetch(PDO::FETCH_ASSOC);
 				
 				$Users->updateItem($stickerId, 0, $groupId, $position_left, $position_top, $position_z);
 			}

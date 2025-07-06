@@ -524,7 +524,7 @@ if($userdata['id'] == $my_id){
 			$i = 0;
 			while ($row1 = $sql->fetch(PDO::FETCH_ASSOC)) {
 				$i++;
-				$userrow = ->fetch(PDO::FETCH_ASSOC)Db::query("SELECT * FROM users WHERE id = '".$row1['userid']."' LIMIT 1"));
+				$userrow = Db::query("SELECT * FROM users WHERE id = '".$row1['userid']."' LIMIT 1")->fetch(PDO::FETCH_ASSOC);
 				if($my_id == $row1['userid']){
 					$owneronly = "<img src=\"./web-gallery/images/myhabbo/buttons/delete_entry_button.gif\" id=\"gbentry-delete-".$row1['id']."\" class=\"gbentry-delete\" style=\"cursor:pointer\" alt=\"\"/><br/>";
 				} elseif($user_row['id'] == $my_id) {
