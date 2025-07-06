@@ -13,7 +13,7 @@ if(isset($_POST['searchString']) && !empty($_POST['searchString'])) {
 		$i++;
 		$putId .= 'userid = \''.$usuario['id'].'\'';
 			
-			if($i != $usuario_sql->rowCount()) {
+			if($i != ->rowCount($usuario_sql)) {
 				$putId .= ' OR ';
 			}
 	}
@@ -78,23 +78,23 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId'])) {
 			break;
 	}
 	
-	$count = db::query("SELECT userid FROM groups_memberships WHERE groupid = ?;")->rowCount();
+	$count = ->rowCount(db::query("SELECT userid FROM groups_memberships WHERE groupid = ?';"));
 	$count_real = $count;
-	$count_wait = db::query("SELECT userid FROM groups_memberships WHERE groupid = ? AND is_pending = '1';")->rowCount();
+	$count_wait = ->rowCount(db::query("SELECT userid FROM groups_memberships WHERE groupid = ?' AND is_pending = '1';"));
 	
 	if(isset($pending) && isset($putId)) {
-		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ? AND (".$putId.") AND is_pending = '1' ORDER BY member_rank LIMIT $limit,20");
-		$count = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ? AND (".$putId.") AND is_pending = '1'", $requestGroupId)->rowCount();
+		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ?' AND (".$putId.") AND is_pending = '1' ORDER BY member_rank LIMIT $limit,20");
+		$count = ->rowCount(db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ?' AND (".$putId.") AND is_pending = '1'"));
 		$test = 'if 1';
 	}
 	elseif(isset($pending) && !isset($putId)) {
-		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ? AND is_pending = '1' ORDER BY member_rank LIMIT $limit,20");
-		$count = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ? AND is_pending = '1'")->rowCount();
+		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ?' AND is_pending = '1' ORDER BY member_rank LIMIT $limit,20");
+		$count = ->rowCount(db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ?' AND is_pending = '1'"));
 		$test = 'elseif 2';
 	}
 	elseif(isset($putId) && !isset($pending)) {
-		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ? AND (".$putId.") ORDER BY member_rank LIMIT $limit,20");
-		$count = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ? AND (".$putId.")", $requestGroupId)->rowCount();
+		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ?' AND (".$putId.") ORDER BY member_rank LIMIT $limit,20");
+		$count = ->rowCount(db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ?' AND (".$putId.");"));
 		$test = 'elseif 3';
 	}
 	else {

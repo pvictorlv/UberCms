@@ -7,7 +7,7 @@ if(isset($_GET['id'])) {
 			$qryId = $gtfo->cleanWord($_GET['id']);
 			
 			$sql = db::query("SELECT * FROM groups_memberships WHERE userid = '".USER_ID."' AND groupid = '".$qryId."';");
-			$is_member = $sql->rowCount();
+			$is_member = ->rowCount($sql);
 			$row = $sql->fetch(PDO::FETCH_ASSOC);
 			
 			if($is_member > 0) {

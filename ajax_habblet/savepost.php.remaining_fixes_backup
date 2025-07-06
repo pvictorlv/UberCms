@@ -85,7 +85,7 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['to
 								<a href="#" id="edit-topic-settings" class="edit-topic-settings-link">Editar Ajustes &raquo;</a>
 								<input type="hidden" id="settings_dialog_header" value="Editar Ajustes"/>
 							<?php }
-	$count = db::query("SELECT null FROM groups_forum_replies WHERE topic_id = ?;")->rowCount();
+	$count = ->rowCount(db::query("SELECT null FROM groups_forum_replies WHERE topic_id = ?';"));
 	$n = $count;
 	$x = 0;
 		while($n >= 0)
@@ -165,7 +165,7 @@ if($GetTopic->rowCount()) {
 	$FirstUserData = db::query("SELECT look,motto FROM users where id = '".$dataTopic['user_id']."' LIMIT 1;")->fetch(PDO::FETCH_ASSOC);
 				}
 
-	$GetReplies = db::query("SELECT id,user_id,content,date,is_edited,is_first FROM groups_forum_replies WHERE topic_id = ? LIMIT ".$limit.",10;");
+	$GetReplies = db::query("SELECT id,user_id,content,date,is_edited,is_first FROM groups_forum_replies WHERE topic_id = ?' LIMIT ".$limit.",10;");
 
 
 if($GetReplies->rowCount()) {
@@ -389,7 +389,7 @@ Discussions.captchaPublicKey = "6Le-aQoAAAAAABnHRzXH_W-9-vx4B8oSP3_L5tb0";
 <?php
 
 		} elseif($forumType['type'] && $group_rank >= 2) {
-		db::query("INSERT INTO groups_forum_replies (user_id, content, date, topic_id, group_id) VALUES (?, ?, ?, ?, ?)", USER_ID, $message, time(), $topicId, $groupId);
+		db::query("INSERT INTO groups_forum_replies (user_id, content, date, topic_id, group_id) VALUES ('".USER_ID."', '".$message."', '".time()."', '".$topicId."', '".$groupId."')");
 ?>			
 <div class="postlist-header clearfix">
 							<?php if($checkTopicArray['type']) { ?>
@@ -405,7 +405,7 @@ Discussions.captchaPublicKey = "6Le-aQoAAAAAABnHRzXH_W-9-vx4B8oSP3_L5tb0";
 								<a href="#" id="edit-topic-settings" class="edit-topic-settings-link">Editar Ajustes &raquo;</a>
 								<input type="hidden" id="settings_dialog_header" value="Editar Ajustes"/>
 							<?php }
-	$count = db::query("SELECT null FROM groups_forum_replies WHERE topic_id = ?;")->rowCount();
+	$count = ->rowCount(db::query("SELECT null FROM groups_forum_replies WHERE topic_id = ?';"));
 	$n = $count;
 	$x = 0;
 		while($n >= 0)
@@ -484,7 +484,7 @@ if($GetTopic->rowCount()) {
 	$FirstUserData = db::query("SELECT look,motto FROM users where id = '".$dataTopic['user_id']."' LIMIT 1;")->fetch(PDO::FETCH_ASSOC);
 				}
 
-	$GetReplies = db::query("SELECT id,user_id,content,date,is_edited,is_first FROM groups_forum_replies WHERE topic_id = ? LIMIT ".$limit.",10;");
+	$GetReplies = db::query("SELECT id,user_id,content,date,is_edited,is_first FROM groups_forum_replies WHERE topic_id = ?' LIMIT ".$limit.",10;");
 
 
 if($GetReplies->rowCount()) {

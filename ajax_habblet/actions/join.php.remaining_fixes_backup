@@ -24,9 +24,9 @@ if(isset($_GET['groupId']) && is_numeric($_GET['groupId'])) {
 					<div class="clear"></div>');
 			}
 			
-			$check_user_member_sql = db::query("SELECT userid FROM groups_memberships WHERE groupid = ? AND userid = ? LIMIT 1", $requestGroupId, USER_ID);
+			$check_user_member_sql = db::query("SELECT userid FROM groups_memberships WHERE groupid = ?' AND userid = '".USER_ID."' LIMIT 1;");
 			if($check_user_member_sql->rowCount() == 0) {
-				db::query("INSERT INTO groups_memberships (userid, groupid, member_rank) VALUES (?, ?, ?)", USER_ID, $requestGroupId, "1");
+				db::query("INSERT INTO groups_memberships (userid, groupid, member_rank) VALUES ('".USER_ID."', '".$requestGroupId."', '1')");
 				?>
 					<p>�Enhorabuena, ya eres miembro del Grupo! </p>
 					<p><a href="#" class="new-button" id="group-action-ok"><b>OK</b><i></i></a></p>
@@ -49,9 +49,9 @@ Tu ya eres miembro de este grupo o tienes una peticion en espera.<br />
 			}
 		} elseif($group['type'] == 1) {
 		
-			$check_user_member_sql = db::query("SELECT userid FROM groups_memberships WHERE groupid = ? AND userid = ? LIMIT 1", $requestGroupId, USER_ID);
+			$check_user_member_sql = db::query("SELECT userid FROM groups_memberships WHERE groupid = ?' AND userid = '".USER_ID."' LIMIT 1;");
 			if($check_user_member_sql->rowCount() == 0) {
-				db::query("INSERT INTO groups_memberships (userid, groupid, member_rank, is_pending) VALUES (?, ?, ?, ?)", USER_ID, $requestGroupId, "1", "1");
+				db::query("INSERT INTO groups_memberships (userid, groupid, member_rank, is_pending) VALUES ('".USER_ID."', '".$requestGroupId."', '1', '1')");
 				?>
 					<p>Tu solicitud ha sido enviada.</p>
 					<p><a href="#" class="new-button" id="group-action-ok"><b>OK</b><i></i></a></p>
@@ -75,7 +75,7 @@ myhabbo.groups.already_member<br />
 		
 		} elseif($group['type'] == 2) {
 		
-			$check_user_member_sql = db::query("SELECT userid FROM groups_memberships WHERE groupid = ? AND userid = ? LIMIT 1", $requestGroupId, USER_ID);
+			$check_user_member_sql = db::query("SELECT userid FROM groups_memberships WHERE groupid = ?' AND userid = '".USER_ID."' LIMIT 1;");
 			if($check_user_member_sql->rowCount() == 0) {
 
 				?>
@@ -101,9 +101,9 @@ myhabbo.groups.already_member<br />
 		
 		} elseif($group['type'] == 3) {
 			
-			$check_user_member_sql = db::query("SELECT userid FROM groups_memberships WHERE groupid = ? AND userid = ? LIMIT 1", $requestGroupId, USER_ID);
+			$check_user_member_sql = db::query("SELECT userid FROM groups_memberships WHERE groupid = ?' AND userid = '".USER_ID."' LIMIT 1;");
 			if($check_user_member_sql->rowCount() == 0) {
-				db::query("INSERT INTO groups_memberships (userid, groupid, member_rank) VALUES (?, ?, ?)", USER_ID, $requestGroupId, "1");
+				db::query("INSERT INTO groups_memberships (userid, groupid, member_rank) VALUES ('".USER_ID."', '".$requestGroupId."', '1')");
 				?>
 					<p>�Enhorabuena, ya eres miembro del Grupo! </p>
 					<p><a href="#" class="new-button" id="group-action-ok"><b>OK</b><i></i></a></p>

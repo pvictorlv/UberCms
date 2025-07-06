@@ -23,7 +23,7 @@ $groupid = HoloText($_POST['groupId']);
 if(!is_numeric($groupid)){ exit; }
 
 $check = Db::query("SELECT member_rank FROM groups_memberships WHERE userid = '".USER_ID."' AND groupid = '".$groupid."' AND member_rank >= 1 AND is_pending = '0' LIMIT 1")
-$is_member = $check->rowCount();
+$is_member = ->rowCount($check);
 
 if($is_member > 0){
 	$my_membership = $check->fetch(PDO::FETCH_ASSOC);
@@ -34,7 +34,7 @@ if($is_member > 0){
 }
 
 $check = Db::query("SELECT * FROM groups_details WHERE id = ? LIMIT 1")
-$valid = $check->rowCount();
+$valid = ->rowCount($check);
 
 if($valid > 0){
 	$groupdata = $check->fetch(PDO::FETCH_ASSOC);
@@ -65,7 +65,7 @@ if(strlen($name) > 25){
 } elseif(strlen($name) < 1){
 	echo "Por favor, escribe un nombre para el Grupo.\n\n<p>\n<a href=\"".PATH."/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";	
 } else {
-	Db::query("UPDATE groups_details SET name = '".$name."', description = '".$description."', roomid = '".$roomId."', type = '".$type."', pane = '".$forum_type."', topics = '".$topics_type."' WHERE id = ? AND ownerid = '".$my_id."' LIMIT 1")
+	Db::query("UPDATE groups_details SET name = '".$name."', description = '".$description."', roomid = '".$roomId."', type = '".$type."', pane = '".$forum_type."', topics = '".$topics_type."' WHERE id = ?' AND ownerid = '".$my_id."' LIMIT 1")
 	echo "Se ha editado el Grupo con xito!\n\n<p>\n<a href=\"".PATH."/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";
 }
  

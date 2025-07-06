@@ -9,7 +9,7 @@ $category_id = FilterText($_POST['categoryId']);
 if(!empty($category_id) && is_numeric($category_id)){
 
 Db::query("DELETE FROM messenger_categorys WHERE id = ? LIMIT 1")
-Db::query("UPDATE messenger_friendships SET category = '0' WHERE user_one_id = ? AND category = '".$category_id."'")
+Db::query("UPDATE messenger_friendships SET category = '0' WHERE user_one_id = ?' AND category = '".$category_id."'")
 
 }
 ?>

@@ -100,7 +100,7 @@ if($friends_category > 0){
 		   $i = 0;
 		   $offset = $pagesize * $page;
 		   $offset = $offset - $pagesize;
-		   $getem = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id = ? AND category = '".$category."' LIMIT ".$pagesize." OFFSET ".$offset."")
+		   $getem = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id = ?' AND category = '".$category."' LIMIT ".$pagesize." OFFSET ".$offset."")
 
 		   while ($row = $getem->fetch(PDO::FETCH_ASSOC)) {
 		           $i++;
@@ -159,7 +159,7 @@ $page = 1;
 
 $sql = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id = ?'");
 		while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
-					$friendsql = Db::query("SELECT * FROM users WHERE id = ? AND username LIKE '%".$search."%'");
+					$friendsql = Db::query("SELECT * FROM users WHERE id = ?' AND username LIKE '%".$search."%'");
 		}
 if($friendsql->rowCount() > 0){
 ?>
@@ -199,7 +199,7 @@ if($friendsql->rowCount() > 0){
 			   $i++;
 
 
-					$friendsql = Db::query("SELECT * FROM users WHERE id = ? AND username LIKE '%".$search."%'");
+					$friendsql = Db::query("SELECT * FROM users WHERE id = ?' AND username LIKE '%".$search."%'");
 
 	   $list = $list + $friendsql->rowCount();
 		}
@@ -254,7 +254,7 @@ if($friendsql->rowCount() > 0){
 		           $i++;
 
 
-		           		$friendsql = Db::query("SELECT * FROM users WHERE id = ? AND username LIKE '%".$search."%'");
+		           		$friendsql = Db::query("SELECT * FROM users WHERE id = ?' AND username LIKE '%".$search."%'");
 
 
 		           $friendrow = $friendsql->fetch(PDO::FETCH_ASSOC);

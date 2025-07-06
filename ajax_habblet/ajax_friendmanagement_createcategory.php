@@ -12,7 +12,7 @@ $security_time = $_SESSION['create_category'] + (1);
 
 if(!empty($category_name) && (empty($_SESSION['create_category']) || $security_time < time())){
 
-Db::query("INSERT INTO messenger_categorys (name,owner_id) VALUES ('".$category_name."','".$my_id."')")
+Db::query("INSERT INTO messenger_categorys (name,owner_id) VALUES (?,?)", $category_name, $my_id);
 $_SESSION['create_category'] = time();
 
 }
@@ -23,10 +23,10 @@ $_SESSION['create_category'] = time();
 
 <div class="category-default category-item selected-category" id="category-item-0">Amigos</div>
 <?php
-$get_categorys = Db::query("SELECT * FROM messenger_categorys WHERE owner_id = ?'")
+$get_categorys = Db::query("SELECT * FROM messenger_categorys WHERE owner_id = ?", $my_id);
 	if($get_categorys->rowCount() > 0){
 	while($crow = $get_categorys->fetch(PDO::FETCH_ASSOC)){
-$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ? LIMIT 1")
+$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ? LIMIT 1", $crow['id']);
 $row = $get_category->fetch(PDO::FETCH_ASSOC);
 ?>
     <div id="category-item-<?php echo $row['id']; ?>" class="category-item ">

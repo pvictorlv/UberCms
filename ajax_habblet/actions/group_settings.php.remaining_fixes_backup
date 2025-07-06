@@ -6,7 +6,7 @@ require_once('../../global.php');
 $groupid = FilterText($_POST['groupId']);
 
 $check = Db::query("SELECT * FROM groups_details WHERE id = ? LIMIT 1")
-$exist = $check->rowCount();
+$exist = ->rowCount($check);
 
 if($exist > 0)
 	$row = $check->fetch(PDO::FETCH_ASSOC);
