@@ -16,6 +16,11 @@ class RoomManager
 
     public static function GetRoomVar($roomId, $var)
     {
-        return db::query('SELECT ' . $var . " FROM rooms_data WHERE id = ? LIMIT 1", $roomId)->fetchColumn();
+        // Sanitize column name to prevent SQL injection
+        $allowedColumns = ['caption', 'owner', 'state', 'model_name', 'wallpaper', 'floor'];
+        if (!in_array($var, $allowedColumns)) {
+            throw new InvalidArgumentException('Invalid column name');
+        }
+        return db::query("SELECT $var FROM rooms_data WHERE id = ? LIMIT 1", $roomId)->fetchColumn();
     }
 }

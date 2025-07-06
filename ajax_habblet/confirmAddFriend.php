@@ -1,10 +1,10 @@
 <?php
 
 require_once("../global.php");
-$buscarhabbo = mysql_query("SELECT * FROM users WHERE id = ".$_POST['accountId']."");
-$datoshabbo = mysql_fetch_array($buscarhabbo);
+$buscarhabbo = Db::query("SELECT * FROM users WHERE id = ".$_POST['accountId']."");
+$datoshabbo = $buscarhabbo->fetch(PDO::FETCH_ASSOC);
 echo '<p>
-&#191;Seguro que deseas a&#241;adir a '.$datoshabbo['username'].' en tu Lista de Amigos?
+&#191;Seguro que deseas a&#241;adir a '.$datoshabbo['username'].' en tu Lista de Amigos?"
 </p>
 
 <p>

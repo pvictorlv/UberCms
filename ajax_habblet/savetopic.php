@@ -21,9 +21,9 @@ require_once('../global.php');
 function SwitchWordFilter($str)
 {
 
-$sql = mysql_query("SELECT word FROM wordfilter") or die(mysql_error());
+$sql = Db::query("SELECT word FROM wordfilter")
 
-	while($row = mysql_fetch_assoc($sql)){
+	while($row = $sql->fetch(PDO::FETCH_ASSOC)){
 	$str = str_replace($row['word'],getServer("wordfilter_censor"),$str);
 	}
 
@@ -76,15 +76,15 @@ if(empty($topicTitle)){ echo "<center>El titulo del Asunto no puede estar vacío.
 
 if($security_time < time()){
 if($security_time < 3){
-mysql_query("INSERT INTO cms_forum_threads (forumid,type,title,author,date,lastpost_author,lastpost_date,views,posts,unix) VALUES ('".$_POST['groupId']."','1','".$topicTitle."','".$name."','".USER_NAME."','".$name."','".USER_NAME."','0','0','".strtotime('now')."')") or die(mysql_error());
-mysql_query("UPDATE users SET postcount = postcount + 1 WHERE id = '".USER_ID."' LIMIT 1");
+Db::query("INSERT INTO cms_forum_threads (forumid,type,title,author,date,lastpost_author,lastpost_date,views,posts,unix) VALUES ('".$_POST['groupId']."','1','".$topicTitle."','".$name."','".USER_NAME."','".$name."','".USER_NAME."','0','0','".strtotime('now')."')")
+Db::query("UPDATE users SET postcount = postcount + 1 WHERE id = '".USER_ID."' LIMIT 1");
 
-$check = mysql_query("SELECT id FROM cms_forum_threads WHERE forumid = '".$_POST['groupId']."' ORDER BY id DESC LIMIT 1") or die(mysql_error());
-$row = mysql_fetch_assoc($check);
+$check = Db::query("SELECT id FROM cms_forum_threads WHERE forumid = ?' ORDER BY id DESC LIMIT 1")
+$row = $check->fetch(PDO::FETCH_ASSOC);
 
 $threadid = $row['id'];
 
-mysql_query("INSERT INTO cms_forum_posts (forumid,threadid,message,author,date) VALUES ('".$_POST['groupId']."','".$threadid."','".$message."','".$name."','".$date_name."')");
+Db::query("INSERT INTO cms_forum_posts (forumid,threadid,message,author,date) VALUES ('".$_POST['groupId']."','".$threadid."','".$message."','".$name."','".$date_name."')");
 $_SESSION['savetopic'] = time();
 
 echo "<center>El Asunto ha sido publicado con éxito. <a href=\"/groups/".FilterText($_POST['groupId'])."/id/discussions/".$threadid."/id/page/1\">OK</a></center>";

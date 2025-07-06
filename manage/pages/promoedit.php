@@ -17,9 +17,9 @@ if (isset($_GET['u']) && is_numeric($_GET['u']))
 	$u = intval($_GET['u']);
 	$getData = db::query("SELECT * FROM site_promo WHERE id = '" . $u . "' LIMIT 1");
 	
-	if (mysql_num_rows($getData) > 0)
+	if ($getData->rowCount() > 0)
 	{
-		$data = mysql_fetch_assoc($getData);
+		$data = $getData->fetch(PDO::FETCH_ASSOC));
 	}
 }
 
@@ -194,7 +194,7 @@ function previewTS(el)
 
 $getOptions = db::query("SELECT * FROM site_promo_categories ORDER BY caption ASC");
 
-while ($option = mysql_fetch_assoc($getOptions))
+while ($option = $getOptions->fetch(PDO::FETCH_ASSOC)))
 {
 	echo '<option value="' . intval($option['id']) . '" ' . (($option['id'] == $_POST['category']) ? 'selected' : '') . '>' . clean($option['caption']) . '</option>';
 }

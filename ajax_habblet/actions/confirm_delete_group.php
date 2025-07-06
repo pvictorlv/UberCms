@@ -4,7 +4,7 @@ require_once('../../global.php');
 
 ?>
 <p>
-&iquest;Est&aacute; seguro que desea eliminar el grupo?
+&iquest;Est&aacute; seguro que desea eliminar el grupo?"
 </p>
 
 <p>

@@ -10,8 +10,8 @@ Recuerda Que solo se Pueden usar en BOT`S.
             <td><b>Nombre</b></td>
             <td><b>ID del Efecto</b></td>
         </tr>
-<?php $query = mysql_query("SELECT * FROM bots_effects WHERE user_id ='".USER_ID."'");
-while ($data = mysql_fetch_array($query)){ ?>
+<?php $query = Db::query("SELECT * FROM bots_effects WHERE user_id ='".USER_ID."'");
+while ($data = $query->fetch(PDO::FETCH_ASSOC)){ ?>
 <tr>
             <td><img src="<?php echo $data['imagen'] ?>"></td> 
             <td><?php echo $data['nombre'] ?></td>

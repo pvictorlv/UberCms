@@ -17,7 +17,7 @@ $catId = $_GET['catId'];
 if(!isset($_POST['category']) || !isset($_GET['category'])){ 
     foreach($_POST as $key => $value){
         if(strlen($value) > 0 && strlen($key) > 0){
-            mysql_query("UPDATE cms_content SET contentvalue = '".FilterText($value, true)."' WHERE contentkey = '".FilterText($key, true)."' LIMIT 1") or die(mysql_error());
+            Db::query("UPDATE cms_content SET contentvalue = '".FilterText($value, true)."' WHERE contentkey = '".FilterText($key, true)."' LIMIT 1")
             
         }
     }
@@ -44,8 +44,8 @@ if(!isset($_POST['category']) || !isset($_GET['category'])){
 
 <?php
 
-    $get_settings = mysql_query("SELECT * FROM cms_content WHERE category = '2' ORDER BY contentkey ASC") or die(mysql_error());
-    while($row = mysql_fetch_assoc($get_settings)){
+    $get_settings = Db::query("SELECT * FROM cms_content WHERE category = '2' ORDER BY contentkey ASC")
+    while($row = $get_settings->fetch(PDO::FETCH_ASSOC)){
 	if($row['contentkey'] !== "client-widescreen") {
         echo "<tr>
 <td class='tablerow1'  width='40%'  valign='middle'><b>".$row['setting_title']."</b><div class='graytext'>".$row['setting_desc']."</div></td>

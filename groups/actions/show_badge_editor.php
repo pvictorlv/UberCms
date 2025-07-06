@@ -14,11 +14,11 @@ require_once('../../Kernel/Init.php');
 
 $groupId = FilterText($_POST['groupId']);
 
-$check = mysql_query("SELECT * FROM groups_details WHERE id = '$groupId' LIMIT 1") or die(mysql_error());
-$exist = mysql_num_rows($check);
+$check = Db::query("SELECT * FROM groups_details WHERE id = '$groupId' LIMIT 1")
+$exist = $check->rowCount();
 
 if($exist > 0)
-	$row = mysql_fetch_assoc($check);
+	$row = $check->fetch(PDO::FETCH_ASSOC);
 else
 	exit;
 

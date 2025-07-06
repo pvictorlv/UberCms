@@ -2,10 +2,10 @@
 $error = "";
 $precio = "3";
 
-$query = mysql_query("SELECT * FROM users WHERE id = '".USER_ID."'");
+$query = Db::query("SELECT * FROM users WHERE id = '".USER_ID."'");
 
 $saldo = 0;
-while ($data = mysql_fetch_array($query)){
+while ($data = $query->fetch(PDO::FETCH_ASSOC)){
 
 $saldo = $data['credits'];
 }
@@ -21,8 +21,8 @@ $bot = $_POST['select-bot'];
 	
 }
 
-$bot_info = @mysql_query("SELECT * FROM bots WHERE id='$bot'");
-if($row = mysql_fetch_assoc($bot_info))
+$bot_info = @Db::query("SELECT * FROM bots WHERE id='$bot'");
+if($row = $bot_info->fetch(PDO::FETCH_ASSOC))
 
 ?>
 
@@ -38,8 +38,8 @@ d.innerHTML = '<textarea name="textarea" id="textarea" cols="45" rows="5"></text
 </script> 
 <div style="text-shadow: #808080 1px 1px 0px;padding-top:5px;padding-left:5px;color:#000;font-weight:bold;font-size:11px;float:center;">
 <?php echo $error; ?>
-<?php $query = mysql_query("SELECT * FROM bots WHERE id ='$bot'");
-while ($data = mysql_fetch_array($query)){
+<?php $query = Db::query("SELECT * FROM bots WHERE id ='$bot'");
+while ($data = $query->fetch(PDO::FETCH_ASSOC)){
 $bot_nombre =$data['name'];
 }
  ?>
@@ -59,8 +59,8 @@ Hola, Aqui Podras Editar Tus BOTS, colocarles Efectos Editar Su Ropa Su Sala, Cr
 
 <?php 
 $bot_room = $row['room_id'];
-$query = mysql_query("SELECT * FROM rooms WHERE id ='$bot_room'");
-while ($rooms2 = mysql_fetch_array($query)){
+$query = Db::query("SELECT * FROM rooms WHERE id ='$bot_room'");
+while ($rooms2 = $query->fetch(PDO::FETCH_ASSOC)){
 $room_name = $rooms2['caption'];
 } ?>
 <?php
@@ -72,8 +72,8 @@ if (isset($_POST['select-bot'])) {
 <b>Mision:</b><input name="mision" type="text" id="habbo" value="<?php echo $row['motto'] ?>" /> Esribe una Mision Para el BOT<br>
 <b>Sala:</b><select name="sala">
 <option value="<?php echo $row['room_id'] ?>"><?php echo $room_name; ?> (Actual)</option>
-<?php $query = mysql_query("SELECT * FROM rooms WHERE owner ='".USER_NAME."'");
-while ($data = mysql_fetch_array($query)){ ?>
+<?php $query = Db::query("SELECT * FROM rooms WHERE owner ='".USER_NAME."'");
+while ($data = $query->fetch(PDO::FETCH_ASSOC)){ ?>
 <option value="<?php echo $data['id'] ?>"><?php echo $data['caption'] ?></option>
 <?php } ?>
 </select>Sala Para el BOT<br>
@@ -84,8 +84,8 @@ Modo Caminar:<select name="estado">
 <hr>
 Selecciona un Look Para tu BOT
 <?php
-$query = mysql_query("SELECT * FROM users WHERE id = '".USER_ID."'") or die(mysql_error()); 
-while ($data2 = mysql_fetch_array($query)){
+$query = Db::query("SELECT * FROM users WHERE id = '".USER_ID."'") 
+while ($data2 = $query->fetch(PDO::FETCH_ASSOC)){
 $look=$data2['look'];
 $id = $data2['id']; }
 ?><br>
@@ -114,9 +114,9 @@ Posicion Y<input name="posiciony" type="text" id="habbo" value="<?php echo $row[
 
 <select name="efecto">
 <option value="<?php echo $row['effect'] ?>"><?php $effect=$row['effect'];if ($effect == 0){$efecto_nombre= 'Ninguno'; }if ($effect >= 1){$efecto_nombre= $row[effect]; } ?><?php echo $efecto_nombre; ?> (Actual)</option>
-<?php $query = mysql_query("SELECT * FROM bots_effects WHERE user_id ='".USER_ID."'");
+<?php $query = Db::query("SELECT * FROM bots_effects WHERE user_id ='".USER_ID."'");
 
-while ($data11 = mysql_fetch_array($query)){ ?>
+while ($data11 = $query->fetch(PDO::FETCH_ASSOC)){ ?>
 <option value="<?php echo $data11['effect'] ?>"><?php echo $data11['nombre'] ?></option>
 <?php } ?>
 <option value="0">Sin Efecto</option>
@@ -128,18 +128,18 @@ while ($data11 = mysql_fetch_array($query)){ ?>
 <input name="editarbot" type="hidden" id="habbo" value="<?php echo $bot; ?>" />
 
 <?php
-$me = mysql_real_escape_string(USER_NAME);
-$query = mysql_query("SELECT * FROM users WHERE username = '".$me."'");
-while ($data = mysql_fetch_array($query)){
+$me = htmlspecialchars(USER_NAME);
+$query = Db::query("SELECT * FROM users WHERE username = '".$me."'");
+while ($data = $query->fetch(PDO::FETCH_ASSOC)){
 $rango = $data['rank'];
 $vip = $data['vip'];
 }
 if ($rango >= 2){ ?>
                     <center><input type="submit" value="Actualizar BOT" name="edit-bot" /></center><?php } ?>
 					<?php
-$me = mysql_real_escape_string(USER_NAME);
-$query = mysql_query("SELECT * FROM users WHERE username = '".$me."'");
-while ($data = mysql_fetch_array($query)){
+$me = htmlspecialchars(USER_NAME);
+$query = Db::query("SELECT * FROM users WHERE username = '".$me."'");
+while ($data = $query->fetch(PDO::FETCH_ASSOC)){
 $rango = $data['rank'];
 $vip = $data['vip'];
 }
@@ -159,8 +159,8 @@ onclick='alert("Debes ser Premium Para poder Comprar o Editar BOTS.")' value="Ac
 		
 if(isset($_POST['edit-bot']))
 {
-	$user_info = @mysql_query("SELECT * FROM users WHERE username='". clean($_POST["habbo"]) ."'");
-	if($row = mysql_fetch_assoc($user_info))
+	$user_info = @Db::query("SELECT * FROM users WHERE username='". clean($_POST["habbo"]) ."'");
+	if($row = $user_info->fetch(PDO::FETCH_ASSOC))
 	{
 		$id = $row['id'];
 		$owner = $row['id'];
@@ -180,25 +180,25 @@ $editarbot = $_POST['editarbot'];
 
 
 		
-		$check_bot = mysql_query("SELECT * FROM bots WHERE owner='". $id ."'");
-		$check_user = mysql_query("SELECT * FROM users WHERE id='". $id ."'");
-		$check_stats = mysql_query("SELECT * FROM user_stats WHERE id='". $id ."'");
+		$check_bot = Db::query("SELECT * FROM bots WHERE owner='". $id ."'");
+		$check_user = Db::query("SELECT * FROM users WHERE id='". $id ."'");
+		$check_stats = Db::query("SELECT * FROM user_stats WHERE id='". $id ."'");
 
 		
-		if(mysql_num_rows($check_bot) > 20)
+		if($check_bot->rowCount() > 20)
 		{
 			$error.= "¡Por Ahora Solo se Permite 20 BOT por Usuario!<br /><br />";
 		}
 		else
 		{
-			if($mostrar = mysql_fetch_assoc($check_stats))
+			if($mostrar = $check_stats->fetch(PDO::FETCH_ASSOC))
 			{
 				$respetos = $mostrar['Respect'];
 				if($saldo >= 0)
 
 				{
 					
-					mysql_query("UPDATE bots SET room_id = '$sala', name= '$nombre', motto = '$mision', look = '$ropa', x ='$posicionx', y ='$posiciony', rotation = '$rotacion', walk_mode = '$estado', effect = '$effect', owner = '$owner' WHERE id = '$editarbot'");
+					Db::query("UPDATE bots SET room_id = '$sala', name= '$nombre', motto = '$mision', look = '$ropa', x ='$posicionx', y ='$posiciony', rotation = '$rotacion', walk_mode = '$estado', effect = '$effect', owner = '$owner' WHERE id = '$editarbot'");
 					$error.= "<font color='#009900'>Bot Actualizado<br> PARA ACTUALIZAR EL BOT DEBES ESCRIBIR :update_bots  Y LUEGO :unload PARA RECARGAR LA SALA.<br /></font>";
 				}
 				else
@@ -219,10 +219,10 @@ $editarbot = $_POST['editarbot'];
 </div>
 </div>
 <?php
-$query = mysql_query("SELECT * FROM users WHERE id = '".USER_ID."'");
+$query = Db::query("SELECT * FROM users WHERE id = '".USER_ID."'");
 
 $saldo = 0;
-while ($data = mysql_fetch_array($query)){
+while ($data = $query->fetch(PDO::FETCH_ASSOC)){
 
 $saldo = $data['credits'];
 }
@@ -235,9 +235,9 @@ $contesta = $_POST['contesta'];
 
 
 
-$query = mysql_query("SELECT * FROM bots_responses WHERE bot_id = '$bot_res'");
-if (mysql_num_rows($query) < 30){
-$data = mysql_fetch_array($query);
+$query = Db::query("SELECT * FROM bots_responses WHERE bot_id = '$bot_res'");
+if ($query->rowCount() < 30){
+$data = $query->fetch(PDO::FETCH_ASSOC);
 
 $response_id = $_POST['response_id'];
 $eliminar = $_POST['eliminar'];
@@ -256,10 +256,10 @@ echo "<b><font color='#009900'>Lo Sentimos, No pueden Haber Campos Vacios.</font
 
 else {
 
-mysql_query("UPDATE bots_responses SET keywords = '$rare', response_text = '$contesta', mode = '$modo' WHERE id = '$response_id'");
+Db::query("UPDATE bots_responses SET keywords = '$rare', response_text = '$contesta', mode = '$modo' WHERE id = '$response_id'");
 
 if ($eliminar == 1){
-mysql_query("DELETE FROM bots_responses WHERE id = '$response_id'");
+Db::query("DELETE FROM bots_responses WHERE id = '$response_id'");
  }
 header("Location: /bots/editar");
 }
@@ -288,8 +288,8 @@ alert('UPPS¡¡ a Habido Un Error Lo Sentimos. ');
 
 
 <?php
-$total = mysql_query("SELECT * FROM bots_responses WHERE bot_id = '$bot'");
-$total = mysql_num_rows($total);
+$total = Db::query("SELECT * FROM bots_responses WHERE bot_id = '$bot'");
+$total = $total->rowCount();
 ?>
 <?php
 
@@ -304,8 +304,8 @@ $contesta = $_POST['contesta'];
 $modo = $_POST['modo'];
 
 
-	$user_info = @mysql_query("SELECT * FROM users WHERE id='".$_POST["habbo"]."'");
-	if($rew = mysql_fetch_assoc($user_info))
+	$user_info = @Db::query("SELECT * FROM users WHERE id='".$_POST["habbo"]."'");
+	if($rew = $user_info->fetch(PDO::FETCH_ASSOC))
 	
 		$name = $rew['username'];
 
@@ -323,8 +323,8 @@ echo "<b><font color='#009900'>Lo Sentimos, No pueden Haber Campos Vacios.</font
 
 else {
 		
-		$check_bot = mysql_query("SELECT * FROM bots_responses WHERE bot_id='$bot_res'");
-				if(mysql_num_rows($check_bot) > 20)
+		$check_bot = Db::query("SELECT * FROM bots_responses WHERE bot_id='$bot_res'");
+				if($check_bot->rowCount() > 20)
 		{
 			$error.= "¡Solo se Permite 20 Respuestas por BOT!<br /><br />";
 		}
@@ -332,7 +332,7 @@ else {
 		
 		
 
-mysql_query("INSERT INTO bots_responses (bot_id, keywords, response_text, mode) VALUES ('$bot_res', '$dice', '$contesta', '$modo')");
+Db::query("INSERT INTO bots_responses (bot_id, keywords, response_text, mode) VALUES ('$bot_res', '$dice', '$contesta', '$modo')");
 
 
 
@@ -363,10 +363,10 @@ if (isset($_POST['select-bot'])) {
 <hr><br><center><b style="font-size:15px; color:#000000;">Editar Respuestas</b></center><br /><br />
 <?php
 $color = '#FFFFFF';
- $query=mysql_query("SELECT * FROM bots_responses WHERE bot_id = '$bot' ORDER BY ID DESC");
+ $query=Db::query("SELECT * FROM bots_responses WHERE bot_id = '$bot' ORDER BY ID DESC");
 $cuantos2 =$data['valor'];
 
-while ($data=mysql_fetch_array($query)){ 
+while ($data=$query->fetch(PDO::FETCH_ASSOC)){ 
 
 if ($color == '#FFFFFF'){
 	

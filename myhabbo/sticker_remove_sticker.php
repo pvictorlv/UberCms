@@ -17,7 +17,7 @@ if ($getItem->rowCount() > 0) {
     db::query("UPDATE site_inventory_items SET isWaiting = '0' WHERE userId = '" . USER_ID . "' AND id = ? AND isWaiting = '1' LIMIT 1", $data['link']);
 }
 if ($getAlreadyItem->rowCount() > 0) {
-    //$row = mysql_fetch_assoc($getAlreadyItem);
+    //$row = $getAlreadyItem->fetch(PDO::FETCH_ASSOC));
     db::query("DELETE FROM homes_items WHERE owner_id = '" . USER_ID . "' AND id = ? LIMIT 1", $stickerId);
     db::query("UPDATE site_inventory_items SET isWaiting = '0' WHERE userId = '" . USER_ID . "' AND id = ? AND isWaiting = '1' LIMIT 1", $data['link']);
 }

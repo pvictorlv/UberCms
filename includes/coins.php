@@ -62,6 +62,6 @@ if($price=='1'){
 //Inserta coins
 $sql = "UPDATE users SET coins = coins+$coins WHERE id = '$username'";
 echo $sql;
-mysql_query($sql);
+Db::query($sql);
 
 ?>

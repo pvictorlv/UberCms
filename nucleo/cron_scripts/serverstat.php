@@ -5,11 +5,11 @@ if (!defined('UBER') || !UBER)
 	exit;
 }
 
-$curStat = mysql_result(db::query("SELECT status FROM server_status LIMIT 1"), 0);
+$curStat = ->fetchColumn(db::query("SELECT status FROM server_status LIMIT 1"), 0);
 
 if ($curStat == "1")
 {
-	$stamp = mysql_result(db::query("SELECT stamp FROM server_status LIMIT 1"), 0);
+	$stamp = ->fetchColumn(db::query("SELECT stamp FROM server_status LIMIT 1"), 0);
 	$diff = time() - $stamp;
 
 	if ($diff >= 300)

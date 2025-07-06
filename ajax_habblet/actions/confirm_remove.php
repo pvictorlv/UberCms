@@ -10,13 +10,13 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['ta
 	$targetIds = $gtfo->cleanWord($_POST['targetAccountId']);
 	
 	if($core->GetGroupPerm($groupId) >= 2) {
-		$check = mysql_num_rows(db::query("SELECT null FROM groups_memberships WHERE groupid = '".$groupId."' AND userid = '".$targetIds."' LIMIT 1"));
+		$check = ->rowCount(db::query("SELECT null FROM groups_memberships WHERE groupid = ?' AND userid = '".$targetIds."' LIMIT 1"));
 		
 		if($check > 0) {
-		$data = mysql_fetch_array(db::query("SELECT name FROM groups_details WHERE id = '".$groupId."' LIMIT 1"));
+		$data = ->fetch(PDO::FETCH_ASSOC)db::query("SELECT name FROM groups_details WHERE id = ?' LIMIT 1"));
 			?>
 <p>
-�Seguro que quieres sacar del grupo <?php echo $data['name']; ?> a <?php echo $users->id2name($targetIds); ?>?
+�Seguro que quieres sacar del grupo <?php echo $data['name']; ?> a <?php echo $users->id2name($targetIds); ?>?"
 </p>
 
 <p>

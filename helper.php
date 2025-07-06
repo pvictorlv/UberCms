@@ -12,15 +12,15 @@ $id = FilterText($_GET['id']);
 <div id="faq-category-content" class="clearfix" >
 
 <?php if(isset($_GET['id'])){
-$sql = mysql_query("SELECT * FROM cms_faq WHERE id = '".$id."' LIMIT 1");
-$row = mysql_fetch_assoc($sql);
+$sql = Db::query("SELECT * FROM cms_faq WHERE id = '".$id."' LIMIT 1");
+$row = $sql->fetch(PDO::FETCH_ASSOC);
 ?>
 <p class="faq-category-description"><?php echo HoloText($row['content']); ?></p>
 <?php
-$sql = mysql_query("SELECT * FROM cms_faq WHERE catid = '".$id."' AND type = 'item'");
+$sql = Db::query("SELECT * FROM cms_faq WHERE catid = '".$id."' AND type = 'item'");
 $i = 0;
 	
-	while($row = mysql_fetch_assoc($sql)){
+	while($row = $sql->fetch(PDO::FETCH_ASSOC)){
 	$i++;
 	if($i == 1){ $selected = "selected"; } else { $selected = ""; }
 	if($i !== 1){ $faqitem = "$(\"faq-item-content-".$row['id']."\").hide();"; }
@@ -40,14 +40,14 @@ $i = 0;
 	<?php }
 
 }elseif(isset($_POST['query'])){
-$sql = mysql_query("SELECT * FROM cms_faq WHERE type = 'item' AND title LIKE '%".$query."%' OR content LIKE '%".$query."%'");
-$count = mysql_num_rows($sql);
+$sql = Db::query("SELECT * FROM cms_faq WHERE type = 'item' AND title LIKE '%".$query."%' OR content LIKE '%".$query."%'");
+$count = $sql->rowCount();
 if($count == 0){;
 	echo $loc['no.search.faq'];
 }else{
-	while($itemrow = mysql_fetch_assoc($sql)){
-	$sql2 = mysql_query("SELECT * FROM cms_faq WHERE id = '".$itemrow['catid']."' LIMIT 1");
-	$catrow = mysql_fetch_assoc($sql2);
+	while($itemrow = $sql->fetch(PDO::FETCH_ASSOC)){
+	$sql2 = Db::query("SELECT * FROM cms_faq WHERE id = '".$itemrow['catid']."' LIMIT 1");
+	$catrow = $sql2->fetch(PDO::FETCH_ASSOC);
 	$cat = $catrow['title'];
 		echo "<h4 id=\"faq-item-header-".$itemrow['id']."\" class=\"faq-item-header faq-toggle \"><span class=\"faq-toggle \" id=\"faq-header-text-".$itemrow['id']."\">".$itemrow['title']."</span><span class=\"item-category\"> - ".$cat."</span></h4>
 	<div id=\"faq-item-content-".$itemrow['id']."\" class=\"faq-item-content clearfix\">

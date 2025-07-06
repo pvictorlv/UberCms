@@ -11,13 +11,18 @@
 
 require_once "../global.php";
 
-$sql = mysql_query("SELECT * FROM groups_details WHERE id = '".$_POST['groupId']."' LIMIT 1");
-$row = mysql_fetch_assoc($sql);
-$groupid = ($_POST['groupId']);
+// Sanitize and validate input
+$groupId = filter_input(INPUT_POST, 'groupId', FILTER_VALIDATE_INT);
+if (!$groupId) {
+    exit('Invalid group ID');
+}
+
+$sql = Db::query("SELECT * FROM groups_details WHERE id = ? LIMIT 1", $groupId);
+$row = $sql->fetch(PDO::FETCH_ASSOC);
 
 if($row['topics'] == "1" || $row['topics'] == "0") {
-$check = mysql_query("SELECT * FROM groups_memberships WHERE userid = '".USER_ID."' AND groupid = '".$groupid."' LIMIT 1");
-if(mysql_num_rows($check) > 0) { 
+$check = Db::query("SELECT * FROM groups_memberships WHERE userid = ? AND groupid = ? LIMIT 1", USER_ID, $groupId);
+if($check->rowCount() > 0) { 
 ?>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="group-postlist-list" id="group-postlist-list">
 <tbody><tr>
@@ -76,7 +81,7 @@ if(mysql_num_rows($check) > 0) {
         bbcodeToolbar.addColorSelect("Colores", colors, false);
     </script>
 	    <br /><br/>
-        <a class="new-button red-button cancel-icon" href="/groups/<?php echo $groupid; ?>/id/discussions"><b><span></span>Cancelar</b><i></i></a>
+        <a class="new-button red-button cancel-icon" href="/groups/<?php echo $groupId; ?>/id/discussions"><b><span></span>Cancelar</b><i></i></a>
         <a id="topic-form-save" class="new-button green-button save-icon" href="#"><b><span></span>Guardar</b><i></i></a>
         </td>
         </tr>
@@ -88,8 +93,8 @@ if(mysql_num_rows($check) > 0) {
 <div id="new-post-preview" style="display:none;">
 </div>
 <?php } }else if($row['topics'] == 2) {
-$check = mysql_query("SELECT * FROM groups_memberships WHERE userid = '".$my_id."' AND groupid = '".$groupid."' AND member_rank = '2' LIMIT 1");
-if(mysql_num_rows($check) > 0) { 
+$check = Db::query("SELECT * FROM groups_memberships WHERE userid = ? AND groupid = ? AND member_rank = ? LIMIT 1", USER_ID, $groupId, 2);
+if($check->rowCount() > 0) { 
 ?>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="group-postlist-list" id="group-postlist-list">
 <tr>
@@ -146,7 +151,7 @@ if(mysql_num_rows($check) > 0) {
         bbcodeToolbar.addColorSelect("Color", colors, false);
     </script>
 	    <br /><br/>
-        <a class="new-button red-button cancel-icon" href="/groups/<?php echo $groupid; ?>/id/discussions"><b><span></span>Cancelar</b><i></i></a>
+        <a class="new-button red-button cancel-icon" href="/groups/<?php echo $groupId; ?>/id/discussions"><b><span></span>Cancelar</b><i></i></a>
         <a id="topic-form-save" class="new-button green-button save-icon" href="#"><b><span></span>Guardar</b><i></i></a>
         </td>
         </tr>

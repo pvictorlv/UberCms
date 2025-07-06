@@ -50,7 +50,7 @@ require_once "top.php";
 	    <td><strong><img src="http://i54.tinypic.com/2ql5opz.gif" width="17" height="17" /></strong> IP del referido</td>
 </thead>';
 
-		while ($page = mysql_fetch_assoc($getPages))
+		while ($page = $getPages->fetch(PDO::FETCH_ASSOC)))
 		{
 	echo '<tr>';
 	echo '<td>' . $page['id'] . '</td>';
@@ -82,7 +82,7 @@ require_once "top.php";
 
 $get = db::query("SELECT * FROM users_referidos ORDER BY ip_referida ASC");
 
-while ($user = mysql_fetch_assoc($get))
+while ($user = $get->fetch(PDO::FETCH_ASSOC)))
 {
 	echo '<tr>';
 	echo '<td>' . $user['id'] . '</td>';

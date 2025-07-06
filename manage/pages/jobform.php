@@ -10,7 +10,7 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_housekeeping_sitemanagement
 	exit;
 }
 
-$newOrderNum = intval(mysql_result(db::query("SELECT MAX(order_num) FROM site_app_form LIMIT 1"), 0)) + 1;
+$newOrderNum = intval(->fetchColumn(db::query("SELECT MAX(order_num) FROM site_app_form LIMIT 1"), 0)) + 1;
 
 if (isset($_GET['doDel']))
 {
@@ -157,7 +157,7 @@ $getElements = db::query("SELECT * FROM site_app_form ORDER BY order_num ASC");
 
 echo '<ol style="margin-left: 20px;">';
 
-while ($el = mysql_fetch_assoc($getElements))
+while ($el = $getElements->fetch(PDO::FETCH_ASSOC)))
 {
 	echo '<li>';
 	

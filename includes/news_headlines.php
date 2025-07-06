@@ -20,17 +20,17 @@ if (!defined("IN_HOLOCMS")) { header("Location:".PATH.""); exit; }
 
 $notices = 0;
 
-$news_1_query = mysql_query("SELECT id, title, date, topstory, short_story FROM cms_news WHERE priority = '1' AND type = 'article' ORDER BY id DESC LIMIT 1");
-$news_2_query = mysql_query("SELECT id, title, date, topstory, short_story FROM cms_news WHERE priority = '1' AND type = 'article' ORDER BY id DESC LIMIT 1,2");
-$news_3_query = mysql_query("SELECT id, title, date, topstory, short_story FROM cms_news WHERE priority = '1' AND type = 'article' ORDER BY id DESC LIMIT 2,3");
-$news_4_query = mysql_query("SELECT id, title, date, topstory, short_story FROM cms_news WHERE priority = '0' AND type = 'article' ORDER BY id DESC LIMIT 1");
-$news_5_query = mysql_query("SELECT id, title, date, topstory, short_story FROM cms_news WHERE priority = '0' AND type = 'article' ORDER BY id DESC LIMIT 1,2");
+$news_1_query = Db::query("SELECT id, title, date, topstory, short_story FROM cms_news WHERE priority = '1' AND type = 'article' ORDER BY id DESC LIMIT 1");
+$news_2_query = Db::query("SELECT id, title, date, topstory, short_story FROM cms_news WHERE priority = '1' AND type = 'article' ORDER BY id DESC LIMIT 1,2");
+$news_3_query = Db::query("SELECT id, title, date, topstory, short_story FROM cms_news WHERE priority = '1' AND type = 'article' ORDER BY id DESC LIMIT 2,3");
+$news_4_query = Db::query("SELECT id, title, date, topstory, short_story FROM cms_news WHERE priority = '0' AND type = 'article' ORDER BY id DESC LIMIT 1");
+$news_5_query = Db::query("SELECT id, title, date, topstory, short_story FROM cms_news WHERE priority = '0' AND type = 'article' ORDER BY id DESC LIMIT 1,2");
 
-$news_1_row = mysql_fetch_assoc($news_1_query);
-$news_2_row = mysql_fetch_assoc($news_2_query);
-$news_3_row = mysql_fetch_assoc($news_3_query);
-$news_4_row = mysql_fetch_assoc($news_4_query);
-$news_5_row = mysql_fetch_assoc($news_5_query);
+$news_1_row = $news_1_query->fetch(PDO::FETCH_ASSOC);
+$news_2_row = $news_2_query->fetch(PDO::FETCH_ASSOC);
+$news_3_row = $news_3_query->fetch(PDO::FETCH_ASSOC);
+$news_4_row = $news_4_query->fetch(PDO::FETCH_ASSOC);
+$news_5_row = $news_5_query->fetch(PDO::FETCH_ASSOC);
 
 $news_1_title = HoloText($news_1_row['title']);
 $news_1_snippet = HoloText($news_1_row['short_story']);

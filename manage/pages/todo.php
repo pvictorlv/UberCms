@@ -33,7 +33,7 @@ require_once "top.php";
 
 $getNotes = db::query("SELECT id,content,date FROM notes ORDER BY id DESC");
 
-while ($n = mysql_fetch_assoc($getNotes)) {
+while ($n = $getNotes->fetch(PDO::FETCH_ASSOC))) {
     echo '<div style="border: 1px solid; margin-top: 20px; margin-bottom: 20px; margin-left: 5px; margin-right: 20px;">';
     echo '<div style="margin: 1px; padding: 5px; background-color: #E0E0F8;">' . $n['date'] . '&nbsp;&nbsp;<small>(<a href="index.php?_cmd=todo&del=' . $n['id'] . '">Mark as complete</a>)</small></div>';
     echo '<div style="margin: 1px; padding: 5px;">' . clean($n['content'], true, true) . '</div>';

@@ -12,7 +12,7 @@ echo "
     <description>As Ultimas Noticias do Habbo Diretamente para Ca!</description>";
 
 $data = db::query("SELECT * FROM site_news ORDER BY id DESC");
-while ($row = mysql_fetch_array($data)) {
+while ($row = $data->fetch(PDO::FETCH_ASSOC)) {
 
     echo "
     <item>

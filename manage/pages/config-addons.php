@@ -39,7 +39,7 @@ require_once "top.php";
 
 <?php
 $getOptions = db::query("SELECT * FROM configuracion LIMIT 1");
-$Config = mysql_fetch_array($getOptions);
+$Config = $getOptions->fetch(PDO::FETCH_ASSOC));
 ?>
 
 <strong>Nombre del Hotel:</strong><br />

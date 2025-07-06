@@ -40,7 +40,7 @@ require_once "top.php";
 
 $get = db::query("SELECT * FROM users");
 
-while ($user = mysql_fetch_assoc($get))
+while ($user = $get->fetch(PDO::FETCH_ASSOC)))
 {
 $oddeven++;
 		if(IsEven($oddeven)){ $even = "author-self status-publish iedit"; } else { $even = "alternate author-self status-draft iedit"; }

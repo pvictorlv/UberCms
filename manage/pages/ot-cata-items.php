@@ -156,7 +156,7 @@ if ($data != null) {
 			<td>Opciones</td>
 		</thead>';
 
-        while ($page = mysql_fetch_assoc($getPages)) {
+        while ($page = $getPages->fetch(PDO::FETCH_ASSOC))) {
             echo '<tr>
 			<td>' . $page['id'] . '</td>
 			<td>' . $page['page_id'] . '</td>

@@ -70,7 +70,7 @@ require_once "top.php";
 
 $get = db::query("SELECT * FROM moderation_presets ORDER BY id DESC");
 
-while ($p = mysql_fetch_assoc($get))
+while ($p = $get->fetch(PDO::FETCH_ASSOC)))
 {
 	echo '<tr>';
 	echo '<form method="post">';

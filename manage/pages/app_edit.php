@@ -11,11 +11,11 @@ if (!HK_LOGGED_IN || !$users->hasFuse(USER_ID, 'fuse_housekeeping_moderation'))
 }
 if (isset($_GET['key'])){
 $key = filter($_GET['key']);
-$check = mysql_query("SELECT * FROM applications WHERE id = '$key' LIMIT 1") or die(mysql_error());
-	$exists = mysql_num_rows($check);
+$check = Db::query("SELECT * FROM applications WHERE id = '$key' LIMIT 1")
+	$exists = $check->rowCount();
 
 	
-		$rare = mysql_fetch_assoc($check);
+		$rare = $check->fetch(PDO::FETCH_ASSOC);
 		$editor_mode = true;
 db::query("UPDATE applications SET `appstatus` = '1'");
 }	

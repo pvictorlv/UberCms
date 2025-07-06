@@ -22,22 +22,22 @@ require_once('../../global.php');
 $groupid = HoloText($_POST['groupId']);
 if(!is_numeric($groupid)){ exit; }
 
-$check = mysql_query("SELECT member_rank FROM groups_memberships WHERE userid = '".USER_ID."' AND groupid = '".$groupid."' AND member_rank >= 1 AND is_pending = '0' LIMIT 1") or die(mysql_error());
-$is_member = mysql_num_rows($check);
+$check = Db::query("SELECT member_rank FROM groups_memberships WHERE userid = '".USER_ID."' AND groupid = '".$groupid."' AND member_rank >= 1 AND is_pending = '0' LIMIT 1")
+$is_member = ->rowCount($check);
 
 if($is_member > 0){
-	$my_membership = mysql_fetch_assoc($check);
+	$my_membership = ->fetch(PDO::FETCH_ASSOC)$check);
 	$member_rank = $my_membership['member_rank'];
 } else {
 	echo "Lo sentimos, pero no puedes editar este Grupo.\n\n<p>\n<a href=\"/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";
 	exit;
 }
 
-$check = mysql_query("SELECT * FROM groups_details WHERE id = '".$groupid."' LIMIT 1") or die(mysql_error());
-$valid = mysql_num_rows($check);
+$check = Db::query("SELECT * FROM groups_details WHERE id = ?' LIMIT 1")
+$valid = ->rowCount($check);
 
 if($valid > 0){
-	$groupdata = mysql_fetch_assoc($check);
+	$groupdata = ->fetch(PDO::FETCH_ASSOC)$check);
 	$ownerid = $groupdata['ownerid'];
 } else {
 	echo "Lo sentimos, pero no puedes editar este Grupo.\n\n<p>\n<a href=\"/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";
@@ -65,7 +65,7 @@ if(strlen($name) > 25){
 } elseif(strlen($name) < 1){
 	echo "Por favor, escribe un nombre para el Grupo.\n\n<p>\n<a href=\"".PATH."/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";	
 } else {
-	mysql_query("UPDATE groups_details SET name = '".$name."', description = '".$description."', roomid = '".$roomId."', type = '".$type."', pane = '".$forum_type."', topics = '".$topics_type."' WHERE id = '".$groupid."' AND ownerid = '".$my_id."' LIMIT 1") or die(mysql_error());
+	Db::query("UPDATE groups_details SET name = '".$name."', description = '".$description."', roomid = '".$roomId."', type = '".$type."', pane = '".$forum_type."', topics = '".$topics_type."' WHERE id = ?' AND ownerid = '".$my_id."' LIMIT 1")
 	echo "¡Se ha editado el Grupo con éxito!\n\n<p>\n<a href=\"".PATH."/groups/".$groupid."/id\" class=\"new-button\"><b>OK</b><i></i></a>\n</p>\n\n<div class=\"clear\"></div>";
 }
  

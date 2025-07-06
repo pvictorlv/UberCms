@@ -16,7 +16,7 @@ $groupId = FilterText($_POST['groupId'], true);
 $valid_url = ereg("^[A-Za-z0-9_-]{3,}$", $url);
 
 $check = query("SELECT * FROM users_groups WHERE id = '" . $groupId . "' LIMIT 1");
-$exist = mysql_num_rows($check);
+$exist = $check->rowCount();
 
 if($exist > 0)
 {

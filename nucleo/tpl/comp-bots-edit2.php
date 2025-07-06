@@ -10,15 +10,15 @@ $bot = $_POST['select-bot'];
 	
 }
 
-$total = @mysql_query("SELECT * FROM bots_speech WHERE bot_id = '$bot'");
-$total = mysql_num_rows($total);
+$total = @Db::query("SELECT * FROM bots_speech WHERE bot_id = '$bot'");
+$total = $total->rowCount();
 ?>
 
 <?php
-$query = mysql_query("SELECT * FROM users WHERE id = '".USER_ID."'");
+$query = Db::query("SELECT * FROM users WHERE id = '".USER_ID."'");
 
 $saldo = 0;
-while ($data = mysql_fetch_array($query)){
+while ($data = $query->fetch(PDO::FETCH_ASSOC)){
 
 $saldo = $data['credits'];
 }
@@ -31,9 +31,9 @@ $modo = $_POST['modo'];
 
 
 
-$query = mysql_query("SELECT * FROM bots_speech WHERE bot_id = '$bot_res'");
-if (mysql_num_rows($query) < 30){
-$data = mysql_fetch_array($query);
+$query = Db::query("SELECT * FROM bots_speech WHERE bot_id = '$bot_res'");
+if ($query->rowCount() < 30){
+$data = $query->fetch(PDO::FETCH_ASSOC);
 
 $response_id = $_POST['response_id'];
 $eliminar = $_POST['eliminar'];
@@ -45,10 +45,10 @@ echo "<b><font color='#009900'>Lo Sentimos, No pueden Haber Campos Vacios.</font
 
 else {
 
-mysql_query("UPDATE bots_speech SET text = '$dice', shout = '$modo' WHERE id = '$response_id'");
+Db::query("UPDATE bots_speech SET text = '$dice', shout = '$modo' WHERE id = '$response_id'");
 
 if ($eliminar == 1){
-mysql_query("DELETE FROM bots_speech WHERE id = '$response_id'");
+Db::query("DELETE FROM bots_speech WHERE id = '$response_id'");
  }
 header("Location: /bots/editar");
 }
@@ -75,8 +75,8 @@ $dice = $_POST['dice'];
 $modo = $_POST['modo'];
 
 
-	$user_info = @mysql_query("SELECT * FROM users WHERE id='".$_POST["habbo"]."'");
-	if($rew = mysql_fetch_assoc($user_info))
+	$user_info = @Db::query("SELECT * FROM users WHERE id='".$_POST["habbo"]."'");
+	if($rew = $user_info->fetch(PDO::FETCH_ASSOC))
 	
 		$name = $rew['username'];
 
@@ -86,8 +86,8 @@ echo "<b><font color='#009900'>Lo Sentimos, No pueden Haber Campos Vacios.</font
 
 else {
 		
-		$check_bot = mysql_query("SELECT * FROM bots_speech WHERE bot_id='$bot_res'");
-				if(mysql_num_rows($check_bot) > 20)
+		$check_bot = Db::query("SELECT * FROM bots_speech WHERE bot_id='$bot_res'");
+				if($check_bot->rowCount() > 20)
 		{
 			$error.= "¡Solo se Permite 20 Frases por BOT!<br /><br />";
 		}
@@ -95,7 +95,7 @@ else {
 		
 		
 
-mysql_query("INSERT INTO bots_speech (bot_id, text, shout) VALUES ('$bot_res', '$dice', '$modo')");
+Db::query("INSERT INTO bots_speech (bot_id, text, shout) VALUES ('$bot_res', '$dice', '$modo')");
 
 
 
@@ -124,10 +124,10 @@ if (isset($_POST['select-bot'])) {
 <hr><br><center><b style="font-size:15px; color:#000000;">Editar Frases</b></center><br /><br />
 <?php
 $color = '#FFFFFF';
- $query=mysql_query("SELECT * FROM bots_speech WHERE bot_id = '$bot' ORDER BY ID DESC");
+ $query=Db::query("SELECT * FROM bots_speech WHERE bot_id = '$bot' ORDER BY ID DESC");
 $cuantos2 =$data['valor'];
 
-while ($data=mysql_fetch_array($query)){ 
+while ($data=$query->fetch(PDO::FETCH_ASSOC)){ 
 
 if ($color == '#FFFFFF'){
 	

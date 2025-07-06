@@ -76,7 +76,7 @@ Requerimientos:<br />
 
 $get = db::query("SELECT * FROM site_app_openings");
 
-while ($opening = mysql_fetch_assoc($get))
+while ($opening = $get->fetch(PDO::FETCH_ASSOC)))
 {
 	echo '<h2>';
 	echo '<a href="#"><b style="font-size: 135%;">' . clean($opening['name']) . '</b></a><br />' . clean($opening['text_descr']) . '&nbsp;';

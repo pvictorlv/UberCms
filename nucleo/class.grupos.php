@@ -2,7 +2,7 @@
 
 function restoreWaitingItems($userId)
 	{
-		mysql_query("UPDATE site_inventory_items SET isWaiting = '0' WHERE userId = '" . $userId . "'");
+		Db::query("UPDATE site_inventory_items SET isWaiting = '0' WHERE userId = '" . $userId . "'");
 	}
 
 function CleanText($str, $filterHTML = true)
@@ -100,12 +100,12 @@ function textInJS($str, $clean = false){
 
 function GetUserGroup($userId){
 
-$check = mysql_query("SELECT groupid FROM groups_memberships WHERE userid = '".$userId."' AND is_current = '1' LIMIT 1") or die(mysql_error());
-$has_fave = mysql_num_rows($check);
+$check = Db::query("SELECT groupid FROM groups_memberships WHERE userid = '".$userId."' AND is_current = '1' LIMIT 1")
+$has_fave = $check->rowCount();
 
 	if($has_fave > 0){
 
-		$row = mysql_fetch_assoc($check);
+		$row = $check->fetch(PDO::FETCH_ASSOC);
 		$groupid = $row['groupid'];
 
 		return $groupid;
@@ -120,15 +120,15 @@ $has_fave = mysql_num_rows($check);
 function GetUserBadge($strName)
 { 
 
-	$check = mysql_query("SELECT id FROM users WHERE (id = '".FilterText($strName)."' OR username = '".FilterText($strName)."') AND badge_status = '1' LIMIT 1") or die(mysql_error());
-	$exists = mysql_num_rows($check);
+	$check = Db::query("SELECT id FROM users WHERE (id = '".FilterText($strName)."' OR username = '".FilterText($strName)."') AND badge_status = '1' LIMIT 1")
+	$exists = $check->rowCount();
 
 		if($exists > 0){
-			$usrrow = mysql_fetch_assoc($check);
-			$check = mysql_query("SELECT * FROM user_badges WHERE user_id = '".$usrrow['id']."' LIMIT 1") or die(mysql_error());
-			$hasbadge = mysql_num_rows($check);
+			$usrrow = $check->fetch(PDO::FETCH_ASSOC);
+			$check = Db::query("SELECT * FROM user_badges WHERE user_id = '".$usrrow['id']."' LIMIT 1")
+			$hasbadge = $check->rowCount();
 			if($hasbadge > 0){
-				$badgerow = mysql_fetch_assoc($check);
+				$badgerow = $check->fetch(PDO::FETCH_ASSOC);
 				return $badgerow['badge_id'];
                 } else {
 				return false;
@@ -141,8 +141,8 @@ function GetUserBadge($strName)
 function IsUserOnline($intUID, $inWeb = false)
 {
 
-$result = mysql_query("SELECT online FROM users WHERE id = '".FilterText($intUID)."' LIMIT 1") or die(mysql_error());
-$row = mysql_fetch_assoc($result);
+$result = Db::query("SELECT online FROM users WHERE id = '".FilterText($intUID)."' LIMIT 1")
+$row = $result->fetch(PDO::FETCH_ASSOC);
 $time_compare = (time() - 501);
 
 if($inWeb == false)
@@ -185,14 +185,14 @@ $str = str_replace("\\r\\n","<br>",$str);
 
 function getHC($id)
 	{
-		$sql = mysql_query("SELECT * FROM user_subscriptions WHERE subscription_id = 'habbo_club' AND user_id = '".$id."' LIMIT 1");
+		$sql = Db::query("SELECT * FROM user_subscriptions WHERE subscription_id = 'habbo_club' AND user_id = '".$id."' LIMIT 1");
 
-		if (mysql_num_rows($sql) == 0)
+		if ($sql->rowCount() == 0)
 		{
 			return 0;
 		}
 
-		$data = mysql_fetch_assoc($sql);
+		$data = $sql->fetch(PDO::FETCH_ASSOC);
 		$diff = $data['timestamp_expire'] - time();
 		
 		if ($diff <= 0)
@@ -206,14 +206,14 @@ function getHC($id)
 
 	function getVIP($id)
 	{
-		$sql = mysql_query("SELECT * FROM user_subscriptions WHERE subscription_id = 'habbo_vip' AND user_id = '".$id."' LIMIT 1");
+		$sql = Db::query("SELECT * FROM user_subscriptions WHERE subscription_id = 'habbo_vip' AND user_id = '".$id."' LIMIT 1");
 
-		if (mysql_num_rows($sql) == 0)
+		if ($sql->rowCount() == 0)
 		{
 			return 0;
 		}
 		
-		$data = mysql_fetch_assoc($sql);
+		$data = $sql->fetch(PDO::FETCH_ASSOC);
 		$diff = $data['timestamp_expire'] - time();
 		
 		if ($diff <= 0)

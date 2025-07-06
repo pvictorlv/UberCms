@@ -17,9 +17,9 @@ if (isset($_GET['u']) && is_numeric($_GET['u']))
 	$u = intval($_GET['u']);
 	$getData = db::query("SELECT * FROM site_news WHERE id = '" . $u . "' LIMIT 1");
 	
-	if (mysql_num_rows($getData) > 0)
+	if ($getData->rowCount() > 0)
 	{
-		$data = mysql_fetch_assoc($getData);
+		$data = $getData->fetch(PDO::FETCH_ASSOC));
 	}
 }
 
@@ -92,7 +92,7 @@ foreach ($data as $key => $value)
 
 $getOptions = db::query("SELECT * FROM site_news_categories ORDER BY caption ASC");
 
-while ($option = mysql_fetch_assoc($getOptions))
+while ($option = $getOptions->fetch(PDO::FETCH_ASSOC)))
 {
 	echo '<option value="' . intval($option['id']) . '" ' . (($option['id'] == $data['category_id']) ? 'selected' : '') . '>' . clean($option['caption']) . '</option>';
 }

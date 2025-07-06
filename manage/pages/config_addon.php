@@ -38,7 +38,7 @@ if($Addon == 'Chat'){
 
 <?php
 $getOptions = db::query("SELECT * FROM configuracion LIMIT 1");
-$Config = mysql_fetch_array($getOptions);
+$Config = $getOptions->fetch(PDO::FETCH_ASSOC));
 ?>
 <h1>Configuraci�n del Chat</h1>
 <form method="post">

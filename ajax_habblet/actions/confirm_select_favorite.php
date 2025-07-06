@@ -4,7 +4,7 @@ $require_login = true;
 require_once('../../global.php');
 ?>
 <p>
-¿Estas seguro de hacer este Grupo tu favorito?
+¿Estas seguro de hacer este Grupo tu favorito?"
 </p>
 
 

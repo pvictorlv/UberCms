@@ -29,18 +29,18 @@ if(isset($_POST["stickers"]))
 				$vardata = explode(':', $var_data);
 				$xyz = explode(',', $vardata[1]);
 				
-				$sql = mysql_query("SELECT skin FROM site_inventory_items WHERE userId = '" . USER_ID . "' AND id = '" . mysql_real_escape_string($vardata[0]) ."' AND isWaiting = '1' LIMIT 1");
-				if(mysql_num_rows($sql) > 0)
+				$sql = Db::query("SELECT skin FROM site_inventory_items WHERE userId = '" . USER_ID . "' AND id = '" . mysql_real_escape_string($vardata[0]) ."' AND isWaiting = '1' LIMIT 1");
+				if($sql->rowCount() > 0)
 					{
-						$row = mysql_fetch_array($sql);
+						$row = ->fetch(PDO::FETCH_ASSOC)$sql);
 						
-						mysql_query("INSERT INTO groups_items (id, group_id, type, x, y, z, data, skin, owner_id, link) VALUES (NULL, '".$startSessionEditGroup."', 'sticker', '".mysql_real_escape_string($xyz[0])."', '".mysql_real_escape_string($xyz[1])."', '".mysql_real_escape_string($xyz[2])."', '".$row['skin']."', '', '".USER_ID."', '".mysql_real_escape_string($vardata[0])."');");
-//						mysql_query("UPDATE site_inventory_items SET isWaiting = '0' WHERE id = '".mysql_real_escape_string($vardata[0])."' AND userId = '".USER_ID."' LIMIT 1;");
+						Db::query("INSERT INTO groups_items (id, group_id, type, x, y, z, data, skin, owner_id, link) VALUES (NULL, '".$startSessionEditGroup."', 'sticker', '".mysql_real_escape_string($xyz[0])."', '".mysql_real_escape_string($xyz[1])."', '".mysql_real_escape_string($xyz[2])."', '".$row['skin']."', '', '".USER_ID."', '".mysql_real_escape_string($vardata[0])."');");
+//						Db::query("UPDATE site_inventory_items SET isWaiting = '0' WHERE id = '".mysql_real_escape_string($vardata[0])."' AND userId = '".USER_ID."' LIMIT 1;");
 						//echo 'ok';
 					}
 				else
 					{
-						mysql_query("UPDATE groups_items SET x = '".mysql_real_escape_string($xyz[0])."', y = '".mysql_real_escape_string($xyz[1])."', z = '".mysql_real_escape_string($xyz[2])."' WHERE id = '".mysql_real_escape_string($vardata[0])."' AND group_id = '".$startSessionEditGroup."' LIMIT 1");
+						Db::query("UPDATE groups_items SET x = '".mysql_real_escape_string($xyz[0])."', y = '".mysql_real_escape_string($xyz[1])."', z = '".mysql_real_escape_string($xyz[2])."' WHERE id = '".mysql_real_escape_string($vardata[0])."' AND group_id = '".$startSessionEditGroup."' LIMIT 1");
 						//echo 'else';
 					}
 			}
@@ -62,18 +62,18 @@ if(isset($_POST["stickienotes"]))
 				$vardatastickienotes = explode(':', $var_datastickienotes);
 				$xyzstickienotes = explode(',', $vardatastickienotes[1]);
 				
-				$sqlstickienotes = mysql_query("SELECT skin FROM site_inventory_items WHERE userId = '" . USER_ID . "' AND id = '" . mysql_real_escape_string($vardatastickienotes[0]) ."' AND isWaiting = '1' LIMIT 1");
+				$sqlstickienotes = Db::query("SELECT skin FROM site_inventory_items WHERE userId = '" . USER_ID . "' AND id = '" . mysql_real_escape_string($vardatastickienotes[0]) ."' AND isWaiting = '1' LIMIT 1");
 				
-				if(mysql_num_rows($sqlstickienotes) > 0)
+				if($sqlstickienotes->rowCount() > 0)
 					{
-						$rowstickienotes = mysql_fetch_assoc($sqlstickienotes);
+						$rowstickienotes = ->fetch(PDO::FETCH_ASSOC)$sqlstickienotes);
 						
-						mysql_query("INSERT INTO groups_items (id, group_id, type, x, y, z, data, skin, owner_id) VALUES (NULL, '".$startSessionEditGroup."', 'sticker', '".mysql_real_escape_string($xyzstickienotes[0])."', '".mysql_real_escape_string($xyzstickienotes[1])."', '".mysql_real_escape_string($xyzstickienotes[2])."', '".$rowstickienotes['skin']."', '', '".USER_ID."');");
-//						mysql_query("UPDATE site_inventory_items SET isWaiting = '0' WHERE id = '".mysql_real_escape_string($vardatastickienotes[0])."' AND userId = '".USER_ID."' LIMIT 1");
+						Db::query("INSERT INTO groups_items (id, group_id, type, x, y, z, data, skin, owner_id) VALUES (NULL, '".$startSessionEditGroup."', 'sticker', '".mysql_real_escape_string($xyzstickienotes[0])."', '".mysql_real_escape_string($xyzstickienotes[1])."', '".mysql_real_escape_string($xyzstickienotes[2])."', '".$rowstickienotes['skin']."', '', '".USER_ID."');");
+//						Db::query("UPDATE site_inventory_items SET isWaiting = '0' WHERE id = '".mysql_real_escape_string($vardatastickienotes[0])."' AND userId = '".USER_ID."' LIMIT 1");
 					}
 				else
 					{
-						mysql_query("UPDATE groups_items SET x = '".mysql_real_escape_string($xyzstickienotes[0])."', y = '".mysql_real_escape_string($xyzstickienotes[1])."', z = '".mysql_real_escape_string($xyzstickienotes[2])."' WHERE id = '".mysql_real_escape_string($vardatastickienotes[0])."' AND group_id = '".$startSessionEditGroup."' LIMIT 1");
+						Db::query("UPDATE groups_items SET x = '".mysql_real_escape_string($xyzstickienotes[0])."', y = '".mysql_real_escape_string($xyzstickienotes[1])."', z = '".mysql_real_escape_string($xyzstickienotes[2])."' WHERE id = '".mysql_real_escape_string($vardatastickienotes[0])."' AND group_id = '".$startSessionEditGroup."' LIMIT 1");
 					}
 			}
 	
@@ -94,18 +94,18 @@ if(isset($_POST["stickienotes"]))
 				$vardatawidgets = explode(':', $var_datawidgets);
 				$xyzwidgets = explode(',', $vardatawidgets[1]);
 				
-				$sqlwidgets = mysql_query("SELECT skin FROM site_inventory_items WHERE userId = '" . USER_ID . "' AND id = '" . mysql_real_escape_string($vardatawidgets[0]) ."' AND isWaiting = '1' LIMIT 1");
+				$sqlwidgets = Db::query("SELECT skin FROM site_inventory_items WHERE userId = '" . USER_ID . "' AND id = '" . mysql_real_escape_string($vardatawidgets[0]) ."' AND isWaiting = '1' LIMIT 1");
 				
-				if(mysql_num_rows($sqlwidgets) > 0)
+				if($sqlwidgets->rowCount() > 0)
 					{
-						$rowwidgets = mysql_fetch_assoc($sqlwidgets);
+						$rowwidgets = ->fetch(PDO::FETCH_ASSOC)$sqlwidgets);
 						
-						//mysql_query("INSERT INTO groups_items (id, group_id, type, x, y, z, data, skin, owner_id) VALUES (NULL, '".USER_ID."', 'sticker', '".mysql_real_escape_string($xyzwidgets[0])."', '".mysql_real_escape_string($xyzwidgets[1])."', '".mysql_real_escape_string($xyzwidgets[2])."', '".$rowwidgets['skin']."', '', '".USER_ID."');");
-//						mysql_query("UPDATE site_inventory_items SET isWaiting = '0' WHERE id = '".mysql_real_escape_string($vardatawidgets[0])."' AND userId = '".USER_ID."' LIMIT 1");
+						//Db::query("INSERT INTO groups_items (id, group_id, type, x, y, z, data, skin, owner_id) VALUES (NULL, '".USER_ID."', 'sticker', '".mysql_real_escape_string($xyzwidgets[0])."', '".mysql_real_escape_string($xyzwidgets[1])."', '".mysql_real_escape_string($xyzwidgets[2])."', '".$rowwidgets['skin']."', '', '".USER_ID."');");
+//						Db::query("UPDATE site_inventory_items SET isWaiting = '0' WHERE id = '".mysql_real_escape_string($vardatawidgets[0])."' AND userId = '".USER_ID."' LIMIT 1");
 					}
 				else
 					{
-						mysql_query("UPDATE groups_items SET x = '".mysql_real_escape_string($xyzwidgets[0])."', y = '".mysql_real_escape_string($xyzwidgets[1])."', z = '".mysql_real_escape_string($xyzwidgets[2])."' WHERE id = '".mysql_real_escape_string($vardatawidgets[0])."' AND group_id = '".$startSessionEditGroup."' LIMIT 1");
+						Db::query("UPDATE groups_items SET x = '".mysql_real_escape_string($xyzwidgets[0])."', y = '".mysql_real_escape_string($xyzwidgets[1])."', z = '".mysql_real_escape_string($xyzwidgets[2])."' WHERE id = '".mysql_real_escape_string($vardatawidgets[0])."' AND group_id = '".$startSessionEditGroup."' LIMIT 1");
 					}
 			}
 	
@@ -119,16 +119,16 @@ if(isset($_POST["stickienotes"]))
 		
 			if(is_numeric($bg[0]))
 			{
-				$sql = mysql_query("SELECT userId from site_inventory_items WHERE id = '".$bg[0]."'");
-				$data = mysql_fetch_array($sql);
+				$sql = Db::query("SELECT userId from site_inventory_items WHERE id = ?'");
+				$data = ->fetch(PDO::FETCH_ASSOC)$sql);
 				//echo $bg[0];
 					
-					if(mysql_num_rows($sql) > 0)
+					if($sql->rowCount() > 0)
 					{
 						if($data['userId'] == USER_ID)
 						{
 					
-							mysql_query("UPDATE groups SET bgimage = '".$bg[1]."' WHERE home_id = '".$startSessionEditGroup."'");
+							Db::query("UPDATE groups SET bgimage = '".$bg[1]."' WHERE home_id = ?'");
 							//echo 'ok';
 						}
 					}

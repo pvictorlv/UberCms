@@ -13,7 +13,7 @@ require_once('../../global.php');
 
 ?>
 <p>
-¿Estas seguro que quieres dejar a este Grupo como tu favorito?
+¿Estas seguro que quieres dejar a este Grupo como tu favorito?"
 </p>
 
 <p>

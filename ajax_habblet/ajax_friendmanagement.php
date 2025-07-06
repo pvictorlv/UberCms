@@ -1,19 +1,23 @@
 ﻿<?php
 session_start();
 require_once("../global.php");
-$getID = db::query("SELECT * FROM users WHERE username = '".USER_NAME."'");
-$b = mysql_fetch_assoc($getID);
+$getID = Db::query("SELECT * FROM users WHERE username = ?", USER_NAME);
+$b = $getID->fetch(PDO::FETCH_ASSOC);
 $my_id = $b['id'];
 if(isset($_GET['pageNumber'])){
 
-$page = FilterText($_GET['pageNumber']);
-$pagesize = FilterText($_GET['pageSize']);
-$category = FilterText($_GET['categoryId']);
+$page = filter_input(INPUT_GET, 'pageNumber', FILTER_VALIDATE_INT);
+$pagesize = filter_input(INPUT_GET, 'pageSize', FILTER_VALIDATE_INT);
+$category = filter_input(INPUT_GET, 'categoryId', FILTER_VALIDATE_INT);
+
+if (!$page || !$pagesize) {
+    exit('Invalid parameters');
+}
 
 if(!empty($category)){
 
-$sql_category = mysql_query("SELECT * FROM messenger_friendships WHERE category = '".$category."'") or die(mysql_error());
-$friends_category = mysql_num_rows($sql_category);
+$sql_category = Db::query("SELECT * FROM messenger_friendships WHERE category = ?", $category);
+$friends_category = $sql_category->rowCount();
 
 }else{
 
@@ -51,8 +55,8 @@ if($friends_category > 0){
 		$pageminus = $page - 1;
 		echo "<a href=\"#\" class=\"friend-list-page\" id=\"page-".$pageminus."\">&lt;&lt;</a> |";
 		}
-		$afriendscount = mysql_query("SELECT COUNT(*) FROM messenger_friendships WHERE (user_one_id = '".$my_id."') AND category = '".$category."'") or die(mysql_error());
-		$friendscount = mysql_result($afriendscount, 0);
+		$afriendscount = Db::query("SELECT COUNT(*) FROM messenger_friendships WHERE user_one_id = ? AND category = ?", $my_id, $category);
+		$friendscount = $afriendscount->fetchColumn();
 		$pages = ceil($friendscount / $pagesize);
 		if($pages == 1){
 		echo "1";
@@ -96,9 +100,9 @@ if($friends_category > 0){
 		   $i = 0;
 		   $offset = $pagesize * $page;
 		   $offset = $offset - $pagesize;
-		   $getem = mysql_query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$my_id."' AND category = '".$category."' LIMIT ".$pagesize." OFFSET ".$offset."") or die(mysql_error());
+		   $getem = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id = ?' AND category = '".$category."' LIMIT ".$pagesize." OFFSET ".$offset."")
 
-		   while ($row = mysql_fetch_assoc($getem)) {
+		   while ($row = $getem->fetch(PDO::FETCH_ASSOC)) {
 		           $i++;
 
 		           if($i%2==1){
@@ -108,10 +112,10 @@ if($friends_category > 0){
 		           }
 
 
-		           		$friendsql = mysql_query("SELECT * FROM users WHERE id = '".$row['user_two_id']."'");
+		           		$friendsql = Db::query("SELECT * FROM users WHERE id = ?'");
 
 
-		           $friendrow = mysql_fetch_assoc($friendsql);
+		           $friendrow = $friendsql->fetch(PDO::FETCH_ASSOC);
 				   ?>
 		    <tr class="<?php echo $even; ?>">
 				<td><input type="checkbox" name="friendList" value="<?php echo $friendrow['id']; ?>" /></td>
@@ -131,11 +135,11 @@ if($friends_category > 0){
 <select id="category-list-select" name="category-list">
     <option value="0">Amigos</option>
 	<?php
-	$get_categorys = mysql_query("SELECT * FROM messenger_categorys WHERE owner_id = '".$my_id."'") or die(mysql_error());
-	if(mysql_num_rows($get_categorys) > 0){
-		while($crow = mysql_fetch_assoc($get_categorys)){
-	$get_category = mysql_query("SELECT * FROM messenger_categorys WHERE id = '".$crow['id']."' LIMIT 1") or die(mysql_error());
-	$row = mysql_fetch_assoc($get_category);
+	$get_categorys = Db::query("SELECT * FROM messenger_categorys WHERE owner_id = ?'")
+	if($get_categorys->rowCount() > 0){
+		while($crow = $get_categorys->fetch(PDO::FETCH_ASSOC)){
+	$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ?' LIMIT 1")
+	$row = $get_category->fetch(PDO::FETCH_ASSOC);
 	?>
 	<option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
 	<?php } } ?>
@@ -153,11 +157,11 @@ $search = $_POST['searchString'];
 $pagesize = $_POST['pageSize'];
 $page = 1;
 
-$sql = mysql_query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$my_id."'");
-		while ($row = mysql_fetch_assoc($sql)) {
-					$friendsql = mysql_query("SELECT * FROM users WHERE id = '".$row['user_two_id']."' AND username LIKE '%".$search."%'");
+$sql = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id = ?'");
+		while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+					$friendsql = Db::query("SELECT * FROM users WHERE id = ?' AND username LIKE '%".$search."%'");
 		}
-if(mysql_num_rows($friendsql) > 0){
+if($friendsql->rowCount() > 0){
 ?>
             <div id="friend-list" class="clearfix">
 <div id="friend-list-header-container" class="clearfix">
@@ -190,14 +194,14 @@ if(mysql_num_rows($friendsql) > 0){
 		}
 		$i = 0;
 	    $list = 0;
-		$sql = mysql_query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$my_id."'") or die(mysql_error());
-		while ($row = mysql_fetch_assoc($sql)) {
+		$sql = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id = ?'")
+		while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
 			   $i++;
 
 
-					$friendsql = mysql_query("SELECT * FROM users WHERE id = '".$row['user_two_id']."' AND username LIKE '%".$search."%'");
+					$friendsql = Db::query("SELECT * FROM users WHERE id = ?' AND username LIKE '%".$search."%'");
 
-	   $list = $list + mysql_num_rows($friendsql);
+	   $list = $list + $friendsql->rowCount();
 		}
 
 		$pages = ceil($list / $pagesize);
@@ -244,16 +248,16 @@ if(mysql_num_rows($friendsql) > 0){
            <?php
 		   $i = 0;
 		   $n = 0;
-		   $getem = mysql_query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$my_id."'") or die(mysql_error());
+		   $getem = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id = ?'")
 
-		   while ($row = mysql_fetch_assoc($getem)) {
+		   while ($row = $getem->fetch(PDO::FETCH_ASSOC)) {
 		           $i++;
 
 
-		           		$friendsql = mysql_query("SELECT * FROM users WHERE id = '".$row['user_two_id']."' AND username LIKE '%".$search."%'");
+		           		$friendsql = Db::query("SELECT * FROM users WHERE id = ?' AND username LIKE '%".$search."%'");
 
 
-		           $friendrow = mysql_fetch_assoc($friendsql);
+		           $friendrow = $friendsql->fetch(PDO::FETCH_ASSOC);
 
 		           if(!empty($friendrow['username'])){
 
@@ -284,11 +288,11 @@ if(mysql_num_rows($friendsql) > 0){
 <select id="category-list-select" name="category-list">
     <option value="0">Amigos</option>
 	<?php
-	$get_categorys = mysql_query("SELECT * FROM messenger_categorys WHERE owner_id = '".$my_id."'") or die(mysql_error());
-	if(mysql_num_rows($get_categorys) > 0){
-		while($crow = mysql_fetch_assoc($get_categorys)){
-	$get_category = mysql_query("SELECT * FROM messenger_categorys WHERE id = '".$crow['id']."' LIMIT 1") or die(mysql_error());
-	$row = mysql_fetch_assoc($get_category);
+	$get_categorys = Db::query("SELECT * FROM messenger_categorys WHERE owner_id = ?'")
+	if($get_categorys->rowCount() > 0){
+		while($crow = $get_categorys->fetch(PDO::FETCH_ASSOC)){
+	$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ?' LIMIT 1")
+	$row = $get_category->fetch(PDO::FETCH_ASSOC);
 	?>
 	<option value="<?php echo $row['id']; ?>"><?php echo $row['username']; ?></option>
 	<?php } } ?>

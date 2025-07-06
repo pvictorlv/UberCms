@@ -27,26 +27,26 @@ $widgetid = FilterText($_POST['widgetId']);
 }
 
 if($search == ""){
-$sql = mysql_query("SELECT groupid FROM cms_homes_stickers WHERE id = '".$widgetid."' LIMIT 1");
-$row1 = mysql_fetch_assoc($sql);
+$sql = Db::query("SELECT groupid FROM cms_homes_stickers WHERE id = '".$widgetid."' LIMIT 1");
+$row1 = $sql->fetch(PDO::FETCH_ASSOC);
 $groupid = $row1['groupid'];
 $offset = $page - 1;
 $offset = $offset * 20;
-$sql = mysql_query("SELECT userid,is_current,member_rank FROM groups_memberships WHERE groupid = '".$groupid."' AND is_pending = '0' ORDER BY member_rank ASC LIMIT 20 OFFSET ".$offset);
+$sql = Db::query("SELECT userid,is_current,member_rank FROM groups_memberships WHERE groupid = '".$groupid."' AND is_pending = '0' ORDER BY member_rank ASC LIMIT 20 OFFSET ".$offset);
 ?>
 <div class="avatar-widget-list-container">
 <ul id="avatar-list-list" class="avatar-widget-list">
 <?php
-	while($membership = mysql_fetch_assoc($sql)){
+	while($membership = $sql->fetch(PDO::FETCH_ASSOC)){
 
-	$userrow = mysql_query("SELECT id,name,figure,hbirth FROM users WHERE id = '".$membership['userid']."' LIMIT 1") or die(mysql_error());
-	$found = mysql_num_rows($userrow);
+	$userrow = Db::query("SELECT id,name,figure,hbirth FROM users WHERE id = '".$membership['userid']."' LIMIT 1")
+	$found = $userrow->rowCount();
 	
-	$groupdetails = mysql_fetch_assoc(mysql_query("SELECT * FROM groups_details WHERE id = '".$groupid."' LIMIT 1"));
+	$groupdetails = ->fetch(PDO::FETCH_ASSOC)Db::query("SELECT * FROM groups_details WHERE id = '".$groupid."' LIMIT 1"));
 	$ownerid = $groupdetails['ownerid'];
 
 	if($found > 0){
-		$userrow = mysql_fetch_assoc($userrow);
+		$userrow = $userrow->fetch(PDO::FETCH_ASSOC);
 
 		echo "<li id=\"avatar-list-".$groupid."-".$userrow['id']."\" title=\"".$userrow['name']."\">
 <div class=\"avatar-list-open\">
@@ -85,8 +85,8 @@ echo "</p>
 
 <div id="avatar-list-paging">
 <?php
-$sql = mysql_query("SELECT * FROM groups_memberships WHERE groupid = '".$groupid."' AND is_pending = '0'");
-$count = mysql_num_rows($sql);
+$sql = Db::query("SELECT * FROM groups_memberships WHERE groupid = '".$groupid."' AND is_pending = '0'");
+$count = $sql->rowCount();
 $at = $page - 1;
 $at = $at * 20;
 $at = $at + 1;
@@ -115,26 +115,26 @@ $totalpages = ceil($count / 20);
 <input type="hidden" id="totalPages" value="<?php echo $totalpages; ?>"/>
 </div>
 <?php } else {
-$sql = mysql_query("SELECT groupid FROM cms_homes_stickers WHERE id = '".$widgetid."' LIMIT 1");
-$row1 = mysql_fetch_assoc($sql);
+$sql = Db::query("SELECT groupid FROM cms_homes_stickers WHERE id = '".$widgetid."' LIMIT 1");
+$row1 = $sql->fetch(PDO::FETCH_ASSOC);
 $groupid = $row1['groupid'];
 $offset = $page - 1;
 $offset = $offset * 20;
-$sql = mysql_query("SELECT groups_memberships.userid,groups_memberships.is_current,groups_memberships.member_rank,users.username FROM groups_memberships,users WHERE groups_memberships.userid = users.id AND groupid = '".$groupid."' AND is_pending = '0' AND username LIKE '%".$search."%' ORDER BY member_rank ASC LIMIT 20 OFFSET ".$offset);
+$sql = Db::query("SELECT groups_memberships.userid,groups_memberships.is_current,groups_memberships.member_rank,users.username FROM groups_memberships,users WHERE groups_memberships.userid = users.id AND groupid = '".$groupid."' AND is_pending = '0' AND username LIKE '%".$search."%' ORDER BY member_rank ASC LIMIT 20 OFFSET ".$offset);
 ?>
 <div class="avatar-widget-list-container">
 <ul id="avatar-list-list" class="avatar-widget-list">
 <?php
-while($membership = mysql_fetch_assoc($sql)){
+while($membership = $sql->fetch(PDO::FETCH_ASSOC)){
 
-	$userrow = mysql_query("SELECT id,name,figure,hbirth FROM users WHERE id = '".$membership['userid']."' LIMIT 1") or die(mysql_error());
-	$found = mysql_num_rows($userrow);
+	$userrow = Db::query("SELECT id,name,figure,hbirth FROM users WHERE id = '".$membership['userid']."' LIMIT 1")
+	$found = $userrow->rowCount();
 	
-	$groupdetails = mysql_fetch_assoc(mysql_query("SELECT * FROM groups_details WHERE id = '".$groupid."' LIMIT 1"));
+	$groupdetails = ->fetch(PDO::FETCH_ASSOC)Db::query("SELECT * FROM groups_details WHERE id = '".$groupid."' LIMIT 1"));
 	$ownerid = $groupdetails['ownerid'];
 
 	if($found > 0){
-		$userrow = mysql_fetch_assoc($userrow);
+		$userrow = $userrow->fetch(PDO::FETCH_ASSOC);
 
 		echo "<li id=\"avatar-list-".$groupid."-".$userrow['id']."\" title=\"".$userrow['name']."\">
 <div class=\"avatar-list-open\">
@@ -173,8 +173,8 @@ echo "</p>
 
 <div id="avatar-list-paging">
 <?php
-$sql = mysql_query("SELECT groups_memberships.userid,groups_memberships.is_current,groups_memberships.member_rank,users.username FROM groups_memberships,users WHERE groups_memberships.userid = users.id AND groupid = '".$groupid."' AND is_pending = '0' AND username LIKE '%".$search."%'");
-$count = mysql_num_rows($sql);
+$sql = Db::query("SELECT groups_memberships.userid,groups_memberships.is_current,groups_memberships.member_rank,users.username FROM groups_memberships,users WHERE groups_memberships.userid = users.id AND groupid = '".$groupid."' AND is_pending = '0' AND username LIKE '%".$search."%'");
+$count = $sql->rowCount();
 $at = $page - 1;
 $at = $at * 20;
 $at = $at + 1;

@@ -75,16 +75,16 @@ else if($do == "save")
 			$checkSticker = query("SELECT * FROM site_inventory_items WHERE userId = '" . $myid . "' AND id = '" . $stickerId ."' AND isWaiting = '1' LIMIT 1");
 			$checkAlreadySticker = query("SELECT * FROM site_items WHERE groupId = '" . $groupId . "' AND id = '" . $stickerId ."' AND type = 'sticker' LIMIT 1");
 		
-			if(mysql_num_rows($checkSticker) > 0)
+			if($checkSticker->rowCount() > 0)
 			{
-				$row = mysql_fetch_assoc($checkSticker);
+				$row = $checkSticker->fetch(PDO::FETCH_ASSOC));
 			
 				$Users->newItem(0, $groupId, $position_left, $position_top, $position_z, "", $row['skin'], "", "sticker");
 				$Users->removeWaitingItem($myid, $stickerId);
 			}
-			else if(mysql_num_rows($checkAlreadySticker) > 0)
+			else if($checkAlreadySticker->rowCount() > 0)
 			{
-				$row = mysql_fetch_assoc($checkAlreadySticker);
+				$row = $checkAlreadySticker->fetch(PDO::FETCH_ASSOC));
 				
 				$Users->updateItem($stickerId, 0, $groupId, $position_left, $position_top, $position_z);
 			}

@@ -2,12 +2,12 @@
 session_start();
 require_once("../global.php");
 $sql   = "SELECT id FROM users WHERE id='".USER_ID."'";
-$result= mysql_query($sql);
-$row 	 = mysql_fetch_assoc($result); 
+$result= Db::query($sql);
+$row 	 = $result->fetch(PDO::FETCH_ASSOC); 
 $userid = $row[id];
 $sql   = "SELECT timestamp_expire FROM user_subscriptions WHERE user_id=".USER_ID." AND subscription_id='habbo_vip' ORDER BY timestamp_expire DESC LIMIT 1";
-$result= mysql_query($sql);
-$row 	 = mysql_fetch_assoc($result); 
+$result= Db::query($sql);
+$row 	 = $result->fetch(PDO::FETCH_ASSOC); 
 $expiretime = $row[timestamp_expire];
 $daysLeft = 0;
 if ( $expiretime>time() ){
@@ -26,7 +26,7 @@ $final = '<div class="hc-buy-buttons" id="hc-buy-buttons">
    <div class="hc-buy-column-one">
     <div class="cb habboclub-buyentry"><div class="bt"><div></div></div><div class="i1"><div class="i2"><div class="i3">
      <div class="rounded-container"><div style="background-color: rgb(255, 255, 255);"><div style="margin: 0px 1px; height: 1px; overflow: hidden; background-color: rgb(255, 255, 255);"><div style="height: 1px; overflow: hidden; margin: 0px 1px; background-color: rgb(181, 196, 207);"><div style="height: 1px; overflow: hidden; margin: 0px 1px; background-color: rgb(151, 173, 188);"><div style="height: 1px; overflow: hidden; margin: 0px 1px; background-color: rgb(144, 167, 183);"></div></div></div></div><div style="margin: 0px; height: 1px; overflow: hidden; background-color: rgb(255, 255, 255);"><div style="height: 1px; overflow: hidden; margin: 0px 1px; background-color: rgb(151, 173, 188);"><div style="height: 1px; overflow: hidden; margin: 0px 1px; background-color: rgb(144, 167, 183);"></div></div></div><div style="margin: 0px; height: 1px; overflow: hidden; background-color: rgb(181, 196, 207);"><div style="height: 1px; overflow: hidden; margin: 0px 1px; background-color: rgb(144, 167, 183);"></div></div><div style="margin: 0px; height: 1px; overflow: hidden; background-color: rgb(151, 173, 188);"><div style="height: 1px; overflow: hidden; margin: 0px 1px; background-color: rgb(144, 167, 183);"></div></div></div><h2 class="title rounded-done">
-       &#191;HC o VIP?
+       &#191;HC o VIP?"
      </h2><div style="background-color: rgb(255, 255, 255);"><div style="margin: 0px; height: 1px; overflow: hidden; background-color: rgb(151, 173, 188);"><div style="height: 1px; overflow: hidden; margin: 0px 1px; background-color: rgb(144, 167, 183);"></div></div><div style="margin: 0px; height: 1px; overflow: hidden; background-color: rgb(181, 196, 207);"><div style="height: 1px; overflow: hidden; margin: 0px 1px; background-color: rgb(144, 167, 183);"></div></div><div style="margin: 0px; height: 1px; overflow: hidden; background-color: rgb(255, 255, 255);"><div style="height: 1px; overflow: hidden; margin: 0px 1px; background-color: rgb(151, 173, 188);"><div style="height: 1px; overflow: hidden; margin: 0px 1px; background-color: rgb(144, 167, 183);"></div></div></div><div style="margin: 0px 1px; height: 1px; overflow: hidden; background-color: rgb(255, 255, 255);"><div style="height: 1px; overflow: hidden; margin: 0px 1px; background-color: rgb(181, 196, 207);"><div style="height: 1px; overflow: hidden; margin: 0px 1px; background-color: rgb(151, 173, 188);"><div style="height: 1px; overflow: hidden; margin: 0px 1px; background-color: rgb(144, 167, 183);"></div></div></div></div></div></div>
      <div style="padding: 10px 0 0 10px;">
      '.$text.'<br>'.$text2.'   

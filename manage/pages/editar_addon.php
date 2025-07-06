@@ -6,7 +6,7 @@ require_once "../global.php";
 
 if(isset($_GET['nombre'])){
 $Nombre = $gtfo->cleanWord($_GET['nombre']);
-$GetAddon = mysql_fetch_assoc(mysql_query("SELECT * FROM site_addons WHERE nombre='".$Nombre."'"));
+$GetAddon = ->fetch(PDO::FETCH_ASSOC)Db::query("SELECT * FROM site_addons WHERE nombre='".$Nombre."'"));
 
 if (!defined('IN_HK') || !IN_HK)
 {
@@ -36,9 +36,9 @@ if (isset($_POST['nombre']))
 
 require_once "top.php";
 
-$Verificar11 = mysql_query("SELECT * FROM site_addons WHERE columna = '1' ORDER BY orden");
-$Verificar22 = mysql_query("SELECT * FROM site_addons WHERE columna = '2' ORDER BY orden");
-$Verificar2 = mysql_fetch_assoc($Verificar22);
+$Verificar11 = Db::query("SELECT * FROM site_addons WHERE columna = '1' ORDER BY orden");
+$Verificar22 = Db::query("SELECT * FROM site_addons WHERE columna = '2' ORDER BY orden");
+$Verificar2 = $Verificar22->fetch(PDO::FETCH_ASSOC);
 
 ?>	
 
@@ -56,8 +56,8 @@ $Verificar2 = mysql_fetch_assoc($Verificar22);
 <br />
 
 
-<strong>Ordenes ocupados (Columna 1):</strong> <?php while($Verificar1 = mysql_fetch_assoc($Verificar11)){ echo '<li>'. $Verificar1['orden'].'</li>'; };?><br>
-<strong>Ordenes ocupados (Columna 2):</strong> <?php while($Verificar2 = mysql_fetch_assoc($Verificar22)){ echo '<li>'. $Verificar2['orden'].'</li>'; };?><br>
+<strong>Ordenes ocupados (Columna 1):</strong> <?php while($Verificar1 = $Verificar11->fetch(PDO::FETCH_ASSOC)){ echo '<li>'. $Verificar1['orden'].'</li>'; };?><br>
+<strong>Ordenes ocupados (Columna 2):</strong> <?php while($Verificar2 = $Verificar22->fetch(PDO::FETCH_ASSOC)){ echo '<li>'. $Verificar2['orden'].'</li>'; };?><br>
 <strong>Orden del Addon:</strong><br />
 <select name='orden'>
 <option value='1' <?php if ($GetAddon['orden'] == '1') { echo 'selected';};?>>1</option>
