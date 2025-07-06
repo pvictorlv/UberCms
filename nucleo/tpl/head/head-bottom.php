@@ -19,6 +19,9 @@ try { document.execCommand('BackgroundImageCache', false, true); } catch(e) { }
 body { behavior: url(%www%/js/csshover.htc); }
 </style>
 <![endif]--> 
-<meta name="build" content="%web_build_str%" /> 
+<meta name="build" content="%web_build_str%" />
+
+<link rel="stylesheet" href="%www%/web-gallery/v2/styles/responsive.css" type="text/css"/>
+
 </head>
 

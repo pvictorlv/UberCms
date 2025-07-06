@@ -1,0 +1,61 @@
+.tag-container {
+    width: 710px;
+    margin: 0 auto;
+}
+@media screen and (max-width: 768px) {
+    #register-page {
+        width: 100%;
+    }
+
+    #auth-providers {
+        display: none
+    }
+    .register-container-bottom-end, .create-identity-container-bottom-end {
+        background: white;
+        border-left: 1px solid black;
+    }
+    .register-container {
+        border-right: 1px solid black;
+        border-top-right-radius: 8px;
+    }
+    .register-container-bottom, .create-identity-container-bottom {
+        background: white;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+    #fp-container {
+        min-width: auto;
+    }
+    .tag-container {
+        width: 100%;
+    }
+    #join-now-button-container {
+        position: relative;
+        left: 156px;
+        top: -275px;
+        height: 121px;
+        float: left;
+        z-index: 1;
+    }
+    .logincontainer {
+        position: absolute;
+        right: 19px;
+        top: 48px;
+        z-index: 100;
+    }
+    #frontpage-image {
+        width: 100%;
+        background-size: cover;
+        background-position: right;
+    }
+    #footer {
+
+        width: 100%;
+    }
+    #container {
+        width: 100%;
+    }
+}

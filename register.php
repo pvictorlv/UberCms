@@ -1,4 +1,5 @@
 <?php
+global $tpl, $core, $users, $cron, $groups;
 include "global.php";
 if (LOGGED_IN) {
     header('Location: ' . WWW . "/me");
