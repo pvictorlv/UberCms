@@ -2,6 +2,7 @@
     width: 710px;
     margin: 0 auto;
 }
+
 @media screen and (max-width: 768px) {
     #register-page {
         width: 100%;
@@ -10,14 +11,17 @@
     #auth-providers {
         display: none
     }
+
     .register-container-bottom-end, .create-identity-container-bottom-end {
         background: white;
         border-left: 1px solid black;
     }
+
     .register-container {
         border-right: 1px solid black;
         border-top-right-radius: 8px;
     }
+
     .register-container-bottom, .create-identity-container-bottom {
         background: white;
         border-bottom: 1px solid black;
@@ -26,12 +30,15 @@
         border-bottom-left-radius: 8px;
         border-bottom-right-radius: 8px;
     }
+
     #fp-container {
         min-width: auto;
     }
+
     .tag-container {
         width: 100%;
     }
+
     #join-now-button-container {
         position: relative;
         left: 156px;
@@ -40,22 +47,102 @@
         float: left;
         z-index: 1;
     }
+
     .logincontainer {
         position: absolute;
         right: 19px;
         top: 48px;
         z-index: 100;
     }
+
     #frontpage-image {
         width: 100%;
         background-size: cover;
         background-position: right;
     }
-    #footer {
 
+    #footer {
+        padding: 0 5px;
         width: 100%;
     }
-    #container {
+
+    #register {
+        #container {
+            width: 100%;
+        }
+    }
+
+
+    /* HOME PAGE */
+    #container, #header, #navi2-container, #header-container {
+        min-width: 100%;
+        width: 100% !important;
+    }
+
+    #subnavi {
+        left: 0;
+    }
+
+    #header {
+        background: url(../images/subnavibg.png) no-repeat 0px 0;
+    }
+
+    #header-container, #content-container {
+        padding: 0 5px;
+    }
+
+    #header h1 a, #header h1 span {
+        margin-top: 30px;
+    }
+
+    #to-hotel {
+        position: absolute;
+        top: 48px;
+        right: 195px;
+    }
+
+    #content-container {
         width: 100%;
+    }
+
+    #column1, #column2, #column3 {
+        width: 100%;
+        float: none;
+        margin: 0;
+    }
+
+    #habbos-online {
+        display: none;
+    }
+
+    #subnavi-search, #subnavi-login {
+        position: absolute;
+        top: 84px;
+        text-align: right;
+        left: 168px;
+        right: 0;
+    }
+
+    #motto-container {
+        max-width: 240px;
+        background: white;
+        border: 1px solid black;
+        border-radius: 8px;
+        /*text elipsis*/
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        span {
+            max-width: 120px;
+        }
+        div {
+            width: auto !important;
+            max-width: 230px;
+        }
+
+        input {
+            width: auto !important;
+            max-width: 100px;
+        }
     }
 }

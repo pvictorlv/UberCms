@@ -12,18 +12,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be2cabe0-8dc8-4802-b861-8b2cc06a404a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/web-gallery/v2/styles/responsive.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/haccess.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/class.grupos.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/class.grupos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/class.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/class.tpl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/inc.config.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/inc.config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/groups.php" beforeDir="false" afterPath="$PROJECT_DIR$/groups.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nucleo/tpl/generic-top.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/generic-top.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/head/head-bottom.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/head/head-bottom.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nucleo/tpl/head/head-grupos.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/head/head-grupos.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nucleo/tpl/head/head-init.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/head/head-init.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/page-fp.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/page-fp.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web.config" beforeDir="false" afterPath="$PROJECT_DIR$/web.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-gallery/static/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/static/js/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-gallery/v2/styles/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/v2/styles/responsive.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -430,7 +426,7 @@
       <workItem from="1700504022281" duration="9110000" />
       <workItem from="1707315488724" duration="970000" />
       <workItem from="1708222877063" duration="504000" />
-      <workItem from="1751825555962" duration="2438000" />
+      <workItem from="1751825555962" duration="4730000" />
     </task>
     <servers />
   </component>

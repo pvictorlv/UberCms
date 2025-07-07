@@ -20,6 +20,7 @@ body { behavior: url(%www%/js/csshover.htc); }
 </style>
 <![endif]--> 
 <meta name="build" content="%web_build_str%" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <link rel="stylesheet" href="%www%/web-gallery/v2/styles/responsive.css" type="text/css"/>
 

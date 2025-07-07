@@ -19,4 +19,3 @@
     </script>
     <link rel="shortcut icon" href="%www%/web-gallery/v2/favicon.ico" type="image/vnd.microsoft.icon"/>
     <title>%site_name% - %page_title%</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />

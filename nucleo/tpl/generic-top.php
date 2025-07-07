@@ -47,7 +47,7 @@
             </div>
         </div>
         <script type="text/javascript">
-            L10N.put("purchase.group.title", "Crea un grupo");
+            L10N.put("purchase.group.title", "Criar um grupo");
             document.observe("dom:loaded", function () {
                 $("signout").observe("click", function () {
                     HabboClient.close();
