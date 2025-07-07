@@ -1,10 +1,17 @@
 <?php
 include "../global.php";
+
+if (!LOGGED_IN) {
+    header("Location: " . WWW . "/login.php");
+    exit;
+}
+
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Habbowood</title>
     <script type="text/javascript" src="js/flashobject.js"></script>
+    <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
     <script>
         var name = '<?php echo USER_NAME;?>';
     </script>

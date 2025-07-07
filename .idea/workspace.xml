@@ -12,6 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be2cabe0-8dc8-4802-b861-8b2cc06a404a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/convert.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/convert.js" beforeDir="false" />
@@ -179,7 +180,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\Program Files\PHP\8.3\php.exe" />
   <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
+  "associatedIndex": 7
+
 }]]></component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
@@ -300,11 +302,11 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "security/fix-sql-injection-vulnerabilities",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/inetpub/wwwroot/UberCms",
-    "list.type.of.created.stylesheet": "CSS",
+    "last_opened_file_path": "C:/Users/Paulo/Documents/GitHub/UberCms",
     "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -425,7 +427,7 @@
       <workItem from="1700504022281" duration="9110000" />
       <workItem from="1707315488724" duration="970000" />
       <workItem from="1708222877063" duration="504000" />
-      <workItem from="1751825555962" duration="6576000" />
+
     </task>
     <servers />
   </component>

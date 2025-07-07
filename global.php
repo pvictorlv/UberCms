@@ -128,6 +128,11 @@ function BBCode($str)
     return uberCore::BBcode($str);
 }
 
+function filter($str): string
+{
+   return FilterText($str, true);
+}
+
 function Contains($str, $words, $filter = false)
 {
     if ($filter) {

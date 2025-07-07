@@ -1,159 +1,178 @@
-
 <keys>
 
-<!--
-   KEYS FOR GENERAL USAGE
--->
+    <!--
+       TECLAS PARA USO GERAL
+    -->
 
-<key name="ok">ok</key>
-<key name="cancel">cancel</key>
+    <key name="ok">ok</key>
+    <key name="cancel">cancelar</key>
 
+    <!--
+       TECLAS RELACIONADAS À TELA DE TÍTULO
+    -->
 
-<!--
-   TITLE SCREEN RELATED KEYS
--->
+    <key name="titlescreen_directed_by">Dirigido por</key>
+    <key name="titlescreen_titles">Nome e Elenco</key>
+    <key name="titlescreen_movie_title">\[b]Nome\[/b]</key>
+    <key name="titlescreen_actor_1">\[b]Ator principal\[/b]</key>
+    <key name="titlescreen_actor_2">\[b]Ator 2\[/b]</key>
+    <key name="titlescreen_actor_3">\[b]Ator 3\[/b]</key>
+    <key name="titlescreen_text">\[b]TÍTULO E DESCRIÇÃO\[/b]</key>
+    <key name="titlescreen_type_title">Digite um título (Máx. 25 caracteres)</key>
+    <key name="titlescreen_type_tagline_max">Digite um slogan (Máx. 40 caracteres)</key>
+    <key name="titlescreen_continue_button">\[B]Editar\[/B]</key>
 
+    <key name="titlescreen_casting_text_1">\[B]ATOR PRINCIPAL\[/B]\[br]\[br]\[B]Seu Habbo\[/B] é o Ator
+        Principal.\[br]\[br]Você também pode escolher um ator \[b]ficcional\[/b] (use as setas à esquerda) ou
+        \[b]escolher um HABBO\[/b]
+    </key>
+    <key name="titlescreen_casting_text_2">\[B]ESCOLHER ATOR 2\[/B]\[br]\[br]Você pode escolher um ator
+        \[b]ficcional\[/b] (use as setas à esquerda) ou \[b]escolher um HABBO\[/b]
+    </key>
+    <key name="titlescreen_casting_text_3">\[B]ESCOLHER ATOR 3\[/B]\[br]\[br]Você pode escolher um ator
+        \[b]ficcional\[/b] (use as setas à esquerda) ou \[b]escolher um HABBO\[/b]
+    </key>
 
-<key name="titlescreen_directed_by">Dirigido por</key>
-<key name="titlescreen_titles">Nome e Elenco</key>
-<key name="titlescreen_movie_title">[b]Nome[/b]</key>
-<key name="titlescreen_actor_1">[b]Ator principal[/b]</key>
-<key name="titlescreen_actor_2">[b]Ator 2[/b]</key>
-<key name="titlescreen_actor_3">[b]Ator 3[/b]</key>
-<key name="titlescreen_text">[b]TITULO E DESCRIÇÃO[/b]</key>
-<key name="titlescreen_type_title">Type title here (Max. 25 characters)</key>
-<key name="titlescreen_type_tagline_max">Type tagline here (Max. 40 characters)</key>
-<key name="titlescreen_continue_button">[B]Edit[/B]</key>
+    <key name="titlescreen_casthabbo_button">\[b]Escolher um HABBO\[/b]</key>
+    <key name="titlescreen_character_name">\[br]\[b]NOME DO PERSONAGEM\[/b]\[br]Digite o personagem que deseja que seu
+        ator interprete:
+    </key>
+    <key name="titlescreen_shoot_movie">\[b]Editar filme\[/b]</key>
+    <key name="titlescreen_casthabbo_text">\[b]ESCOLHER UM HABBO\[/b]\[br]\[br]Digite um nome de Habbo e clique em
+        "Escolher"
+    </key>
+    <key name="titlescreen_cancel_button">\[b]Cancelar\[/b]</key>
+    <key name="titlescreen_cast_button">\[b]Escolher\[/b]</key>
 
-<key name="titlescreen_casting_text_1">[B]MAIN ACTOR[/B][br][br][B]Your Habbo[/B] is the Main Actor.[br][br]You can also cast a [b]fictional[/b] actor (select with the arrows on the left) or [b]cast a HABBO[/b]</key>
-<key name="titlescreen_casting_text_2">[B]CAST ACTOR 2[/B][br][br]You can either cast a [b]fictional[/b] actor (select with the arrows on the left) or [b]cast a HABBO[/b]</key>
-<key name="titlescreen_casting_text_3">[B]CAST ACTOR 3[/B][br][br]You can either cast a [b]fictional[/b] actor (select with the arrows on the left) or [b]cast a HABBO[/b]</key>
+    <!--
+       TECLAS RELACIONADAS À ÁREA DO EDITOR
+    -->
 
-<key name="titlescreen_casthabbo_button">[b]Cast a HABBO[/b]</key>
-<key name="titlescreen_character_name">[br][b]CHARACTER NAME[/b][br]Type the character you wish your actor to be:</key>
-<key name="titlescreen_shoot_movie">[b]Edit movie[/b]</key>
-<key name="titlescreen_casthabbo_text">[b]CAST A HABBO[/b][br][br]Type a Habbo name and click "Cast"</key>
-<key name="titlescreen_cancel_button">[b]Cancel[/b]</key>
-<key name="titlescreen_cast_button">[b]Cast[/b]</key>
+    <key name="editor_main_preview">\[b]Pré-visualizar filme\[/b]</key>
+    <key name="editor_main_save">\[b]Salvar\[/b]</key>
+    <key name="editor_main_exit">\[b]Sair\[/b]</key>
+    <key name="editor_main_help">\[b]Ajuda\[/b]</key>
+    <key name="editor_scene_title">\[b]Configuração da Cena\[/b]</key>
+    <key name="editor_scene_set">\[b]Cenário\[/b]</key>
+    <key name="editor_scene_props">\[b]Objetos\[/b]</key>
+    <key name="editor_scene_soundtracks">\[b]Trilhas Sonoras\[/b]</key>
+    <key name="editor_actions_title">\[b]Arrastar &amp; Soltar\[b]</key>
+    <key name="editor_actions_fx">FX</key>
+    <key name="editor_actions_surprises">Surpresas</key>
+    <key name="editor_actions_sounds">Efeitos Sonoros</key>
+    <key name="editor_actions_dialogues">Diálogos</key>
+    <key name="editor_actions_body">Linguagem Corporal</key>
+    <key name="editor_actions_stunts ">Acrobacias - Em breve!</key>
+    <key name="editor_timeline_title">\[b]Linha do Tempo\[/b]</key>
+    <key name="editor_trash">\[b]Lixeira\[/b]</key>
+    <key name="editor_exit">\[b]Sair\[/b]</key>
+    <key name="editor scenes_editmovietitle">\[b]Voltar aos Títulos\[/b]</key>
+    <key name="instructions_continuebtn">\[b]Editar mais\[/b]</key>
+    <key name="instructions_title">\[b]COMO CRIAR UM FILME HABBOWOOD\[/b]</key>
+    <key name="instructions_text">Filmes consistem em uma ou mais cenas. Aqui está um mini-guia para criar um filme com
+        múltiplas cenas:
+    </key>
+    <key name="instructions_text_1">\[b]1. SELECIONE A CONFIGURAÇÃO DA CENA:\[/b] Selecione o cenário, objetos e trilha
+        sonora da primeira cena
+    </key>
+    <key name="instructions_text_2">\[b]2. ADICIONE AÇÕES:\[/b] Selecione elementos de ação (sons, FX, diálogos, etc)
+        para a cena e seus atores e arraste e solte na linha do tempo à direita
+    </key>
+    <key name="instructions_text_3">\[b]3. TRABALHE NA LINHA DO TEMPO:\[/b] A linha do tempo é dividida em quadros e
+        define a ordem das ações. Por exemplo, se quiser que um ator diga "Argh!" e sorria, arraste e solte um balão de
+        fala na linha do tempo do ator, edite para "Argh" e adicione uma ação de sorriso no quadro seguinte. Para
+        deletar uma ação, basta arrastar e soltar na lixeira
+    </key>
+    <key name="instructions_text_4">\[b]4. ADICIONE CENAS:\[/b] Para adicionar uma nova cena (máximo de 10), clique no
+        botão "Adicionar nova cena". Para deletar uma cena, arraste e solte na lixeira. Você pode editar uma cena a
+        qualquer momento: basta selecionar a cena clicando no ícone dela
+    </key>
+    <key name="instructions_text_5">\[b]5. SALVAR &amp; PUBLICAR:\[/b] Faça as correções finais, clique em "Salvar" e siga
+        as instruções para publicar. Depois, você sempre pode voltar e editar seu filme.
+    </key>
+    <key name="instructions_text_6">Como sempre, a prática leva à perfeição, então experimente e divirta-se!</key>
+    <key name="editor scenes_title">\[b]Lista de Cenas do Filme\[/b]</key>
+    <key name="editor scenes_add">\[b]Adicionar uma nova cena\[/b]</key>
+    <key name="scene_default_length_value">7</key>
 
+    <!-- JANELA POP-UP -->
 
-<!--
-   EDITOR AREA RELATED KEYS
--->
+    <key name="save_error_header">\[b]Sair sem salvar?\[/b]</key>
+    <key name="save_error_content">Você não salvou seu filme! Deseja descartar as alterações e sair?</key>
+    <key name="save_error_button_yes">\[b]Sim\[/b]</key>
+    <key name="save_error_button_no">\[b]Não, voltar!\[/b]</key>
+    <key name="movie_saved_header">\[b]Salvo\[/b]</key>
+    <key name="movie_saved_content">Seu filme está salvo!\[br]Agora volte para editar ou prossiga para \[b]publicar\[/b]
+        seu filme:
+    </key>
+    <key name="movie_saved_button_continue">\[b]Voltar para editar\[/b]</key>
+    <key name="movie_saved_button_exit">\[b]PUBLICAR!\[/b]</key>
 
-<key name="editor_main_preview">[b]Preview movie[/b]</key>
-<key name="editor_main_save">[b]Save[/b]</key>
-<key name="editor_main_exit">[b]Exit[/b]</key>
-<key name="editor_main_help">[b]Help[/b]</key>
-<key name="editor_scene_title">[b]Scene Set-up[/b]</key>
-<key name="editor_scene_set">[b]Set[/b]</key>
-<key name="editor_scene_props">[b]Props[/b]</key>
-<key name="editor_scene_soundtracks">[b]Soundtracks[/b]</key>
-<key name="editor_actions_title">[b]Drag&Drop[b]</key>
-<key name="editor_actions_fx">FX</key>
-<key name="editor_actions_surprises">Surprises</key>
-<key name="editor_actions_sounds">Sound FX</key>
-<key name="editor_actions_dialogues">Dialogues</key>
-<key name="editor_actions_body">Body Language</key>
-<key name="editor_actions_stunts ">Stunts - Coming soon!</key>
-<key name="editor_timeline_title">[b]Timeline[/b]</key>
-<key name="editor_trash">[b]Trash Bin[/b]</key>
-<key name="editor_exit">[b]Exit[/b]</key>
-<key name="editor scenes_editmovietitle">[b]Back to Titles[/b]</key>
-<key name="instructions_continuebtn">[b]Edit more[/b]</key>
-<key name="instructions_title">[b]HOW TO CREATE A HABBOWOOD MOVIE[/b]</key>
-<key name="instructions_text">Movies consist of one or more scenes. Here's a mini-guide for creating a multi-scene movie:</key>
-<key name="instructions_text_1">[b]1. SELECT SCENE SET-UP:[/b] Select the first scene's setting, props and soundtrack</key>
-<key name="instructions_text_2">[b]2. ADD ACTIONS:[/b] Select action elements (sounds, FX, dialogues, etc) for the scene and its actors and drag&drop them into the timeline to the right</key>
-<key name="instructions_text_3">[b]3. WORK ON THE TIMELINE:[/b] The timeline is split into frames and defines the order of actions. If, for example, you want an actor to say "Burp!" and smile, then drag&drop a speech bubble in the actor's timeline, edit it with "Burp" and add a smile action to the following frame. To delete an action, simply drag&drop it into the trash bin</key>
-<key name="instructions_text_4">[b]4. ADD SCENES:[/b] To add a new scene (max of 10), click the "Add new scene" button. To delete a scene, simply drag&drop it into the trash bin. You can edit a scene any time: just select the scene by clicking its icon</key>
-<key name="instructions_text_5">[b]5. SAVE & PUBLISH:[/b] Make the final fixes, click "Save" and follow the instructions to proceed to publishing. Later, you can always go back and edit your movie.</key>
-<key name="instructions_text_6">As always, practice builds mastery, so try it out and have fun!</key>
-<key name="editor scenes_title">[b]Movie Scenes List[/b]</key>
-<key name="editor scenes_add">[b]Add a new scene[/b]</key>
-<key name="scene_default_length_value">7</key>
+    <key name="speechbubble_default_text">escreva aqui</key>
 
+    <!-- OPÇÕES DE FIM DE FILME -->
 
-<!-- POPUP WINDOW KEYS -->
+    <key name="end_shoot_movie">\[b]Faça seu próprio filme\[/b]</key>
+    <key name="end_replay_movie">\[b]Reassistir este filme\[/b]</key>
+    <key name="end_share_movie">\[b]Compartilhar este filme\[/b]</key>
+    <key name="end_meet_filmmakers">\[b]Conheça os cineastas Habbo\[/b]</key>
 
-<key name="save_error_header">[b]Exit without saving?[/b]</key>
-<key name="save_error_content">You haven't saved your movie! Do you want to discard the changes and exit?</key>
-<key name="save_error_button_yes">[b]Yes[/b]</key>
-<key name="save_error_button_no">[b]No, go back![/b]</key>
-<key name="movie_saved_header">[b]Saved[/b]</key>
-<key name="movie_saved_content">Your movie is now saved![br]Now go back to editing or proceed to [b]publishing[/b] your movie:</key>
-<key name="movie_saved_button_continue">[b]Back to edit[/b]</key>
-<key name="movie_saved_button_exit">[b]PUBLISH![/b]</key>
+    <!-- TEXTOS DO TÍTULO DO FILME -->
 
+    <key name="titlemovie_as">No papel de:</key>
+    <key name="titlemovie_directed_by">Direção:</key>
 
-<key name="speechbubble_default_text">write here</key>
+    <!-- VALORES PADRÃO PARA NOME E SUBTÍTULO DO FILME -->
 
+    <key name="default_movie_name">Digite o nome</key>
+    <key name="default_movie_subtitle">Digite a descrição</key>
 
-<!-- MOVIE END CHOICES -->
+    <!--
+       LOCALIZAÇÃO DOS NOMES DAS CENAS
+    -->
 
-<key name="end_shoot_movie">[b]Shoot your own movie[/b]</key>
-<key name="end_replay_movie">[b]Replay this movie[/b]</key>
-<key name="end_share_movie">[b]Share this movie[/b]</key>
-<key name="end_meet_filmmakers">[b]Meet the filmaking Habbos[/b]</key>
-
-
-<!-- TITLE MOVIE TEXTS -->
-
-<key name="titlemovie_as">In the role of:</key>
-<key name="titlemovie_directed_by">Director:</key>
-
-<!-- DEFAULT VALUES FOR MOVIE NAME AND SUBTITLE -->
-
-<key name="default_movie_name">Digite o nome</key>
-<key name="default_movie_subtitle">Digite a descrição</key>
-
-<!--
-   SCENE NAME LOCALIZATION
--->
-
-<key name="scenes_club">Club</key>
-<key name="scenes_barber">Hair Salon</key>
-<key name="scenes_fightclub">Fight House</key>
-<key name="scenes_cafe">Cafeteria</key>
-<key name="scenes_beach">Beach</key>
-<key name="scenes_prison">Prison</key>
-<key name="scenes_genericroom1">Room scene 1</key>
-<key name="scenes_genericroom2">Room scene 2</key>
-<key name="scenes_genericroom3">Room scene 3</key>
-<key name="scenes_genericroom4">Room scene 4</key>
-<key name="scenes_street">Street</key>
-<key name="scenes_factory">Factory</key>
-<key name="scenes_car">Speeding Car</key>
-<key name="scenes_winter">Winter</key>
-<key name="scenes_oriental">Martial Arts</key>
-<key name="scenes_plane">Plane</key>
-<key name="scenes_train">Train</key>
-<key name="scenes_rooftop">Rooftop Cafe</key>
-<key name="scenes_cinema">Cinema</key>
-<key name="scenes_boat">Boat</key>
-<key name="scenes_scifi1">Sci-fi Starship</key>
-<key name="scenes_scifi2">Sci-fi Planet</key>
-<key name="scenes_habboween">Habboween</key>
-<key name="scenes_valentine">Valentine</key>
-<key name="scenes_xmas">Xmas</key>
-<key name="scenes_fantasy">Fantasy</key>
-<key name="scenes_exploration">Exploration</key>
-<key name="scenes_lab">Science Lab</key>
-<key name="scenes_police">Police Station</key>
-<key name="scenes_street2">Street Ghetto</key>
-<key name="scenes_poker">Poker Table</key>
-<key name="scenes_western">Western</key>
-<key name="scenes_war">War</key>
-<key name="scenes_school">School</key>
-<key name="scenes_stadium">Stadium</key>
-<key name="scenes_gala">Gala</key>
-<key name="scenes_basketball">Basketball Court</key>
-<key name="scenes_love">Love Scene</key>
-<key name="scenes_concert">Concert</key>
-<key name="scenes_ripoff1">Ripoff 1</key>
-<key name="scenes_ripoff2">Ripoff 2</key>
-<key name="scenes_ripoff3">Ripoff 3</key>
-<key name="scenes_ripoff4">Ripoff 4</key>
-
+    <key name="scenes_club">Clube</key>
+    <key name="scenes_barber">Salão de Cabeleireiro</key>
+    <key name="scenes_fightclub">Casa de Luta</key>
+    <key name="scenes_cafe">Cafeteria</key>
+    <key name="scenes_beach">Praia</key>
+    <key name="scenes_prison">Prisão</key>
+    <key name="scenes_genericroom1">Cena do Quarto 1</key>
+    <key name="scenes_genericroom2">Cena do Quarto 2</key>
+    <key name="scenes_genericroom3">Cena do Quarto 3</key>
+    <key name="scenes_genericroom4">Cena do Quarto 4</key>
+    <key name="scenes_street">Rua</key>
+    <key name="scenes_factory">Fábrica</key>
+    <key name="scenes_car">Carro em Alta Velocidade</key>
+    <key name="scenes_winter">Inverno</key>
+    <key name="scenes_oriental">Artes Marciais</key>
+    <key name="scenes_plane">Avião</key>
+    <key name="scenes_train">Trem</key>
+    <key name="scenes_rooftop">Café no Terraço</key>
+    <key name="scenes_cinema">Cinema</key>
+    <key name="scenes_boat">Barco</key>
+    <key name="scenes_scifi1">Nave Espacial Sci-fi</key>
+    <key name="scenes_scifi2">Planeta Sci-fi</key>
+    <key name="scenes_habboween">Habboween</key>
+    <key name="scenes_valentine">Dia dos Namorados</key>
+    <key name="scenes_xmas">Natal</key>
+    <key name="scenes_fantasy">Fantasia</key>
+    <key name="scenes_exploration">Exploração</key>
+    <key name="scenes_lab">Laboratório Científico</key>
+    <key name="scenes_police">Delegacia de Polícia</key>
+    <key name="scenes_street2">Bairro da Rua</key>
+    <key name="scenes_poker">Mesa de Poker</key>
+    <key name="scenes_western">Velho Oeste</key>
+    <key name="scenes_war">Guerra</key>
+    <key name="scenes_school">Escola</key>
+    <key name="scenes_stadium">Estádio</key>
+    <key name="scenes_gala">Gala</key>
+    <key name="scenes_basketball">Quadra de Basquete</key>
+    <key name="scenes_love">Cena de Amor</key>
+    <key name="scenes_concert">Concerto</key>
+    <key name="scenes_ripoff1">Cópia 1</key>
+    <key name="scenes_ripoff2">Cópia 2</key>
+    <key name="scenes_ripoff3">Cópia 3</key>
+    <key name="scenes_ripoff4">Cópia 4</key>
 
 </keys>
