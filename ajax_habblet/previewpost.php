@@ -21,9 +21,9 @@ require_once('../global.php');
 function SwitchWordFilter($str)
 {
 
-$sql = mysql_query("SELECT word FROM wordfilter") or die(mysql_error());
+$sql = Db::query("SELECT word FROM wordfilter")
 
-	while($row = mysql_fetch_assoc($sql)){
+	while($row = $sql->fetch(PDO::FETCH_ASSOC)){
 	$str = str_replace($row['word'],getServer("wordfilter_censor"),$str);
 	}
 

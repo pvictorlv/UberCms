@@ -12,7 +12,7 @@ require_once('../../global.php');
 
 ?>
 <p>
-¿Estás seguro de querer dejar este Grupo?
+¿Estás seguro de querer dejar este Grupo?"
 </p>
 
 <p>

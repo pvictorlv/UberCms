@@ -9,11 +9,11 @@ if(isset($_POST['searchString']) && !empty($_POST['searchString'])) {
 	$usuario_sql = db::query("SELECT id FROM users WHERE username LIKE '".$searchString."%'");
 	$putId = NULL;
 	$i = 0;
-	while($usuario = mysql_fetch_array($usuario_sql)) {
+	while($usuario = $usuario_sql->fetch(PDO::FETCH_ASSOC)) {
 		$i++;
 		$putId .= 'userid = \''.$usuario['id'].'\'';
 			
-			if($i != mysql_num_rows($usuario_sql)) {
+			if($i != $usuario_sql->rowCount()) {
 				$putId .= ' OR ';
 			}
 	}
@@ -78,27 +78,27 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId'])) {
 			break;
 	}
 	
-	$count = mysql_num_rows(db::query("SELECT userid FROM groups_memberships WHERE groupid = '".$groupId."';"));
+	$count = db::query("SELECT userid FROM groups_memberships WHERE groupid = ?;")->rowCount();
 	$count_real = $count;
-	$count_wait = mysql_num_rows(db::query("SELECT userid FROM groups_memberships WHERE groupid = '".$groupId."' AND is_pending = '1';"));
+	$count_wait = db::query("SELECT userid FROM groups_memberships WHERE groupid = ? AND is_pending = '1';")->rowCount();
 	
 	if(isset($pending) && isset($putId)) {
-		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND (".$putId.") AND is_pending = '1' ORDER BY member_rank LIMIT $limit,20");
-		$count = mysql_num_rows(db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND (".$putId.") AND is_pending = '1'"));
+		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ? AND (".$putId.") AND is_pending = '1' ORDER BY member_rank LIMIT $limit,20");
+		$count = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ? AND (".$putId.") AND is_pending = '1'", $requestGroupId)->rowCount();
 		$test = 'if 1';
 	}
 	elseif(isset($pending) && !isset($putId)) {
-		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND is_pending = '1' ORDER BY member_rank LIMIT $limit,20");
-		$count = mysql_num_rows(db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND is_pending = '1'"));
+		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ? AND is_pending = '1' ORDER BY member_rank LIMIT $limit,20");
+		$count = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ? AND is_pending = '1'")->rowCount();
 		$test = 'elseif 2';
 	}
 	elseif(isset($putId) && !isset($pending)) {
-		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND (".$putId.") ORDER BY member_rank LIMIT $limit,20");
-		$count = mysql_num_rows(db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' AND (".$putId.");"));
+		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ? AND (".$putId.") ORDER BY member_rank LIMIT $limit,20");
+		$count = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ? AND (".$putId.")", $requestGroupId)->rowCount();
 		$test = 'elseif 3';
 	}
 	else {
-		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = '".$groupId."' ORDER BY member_rank LIMIT 20");
+		$sql = db::query("SELECT userid,member_rank FROM groups_memberships WHERE groupid = ?' ORDER BY member_rank LIMIT 20");
 		$test = 'else';
 	}
 	
@@ -112,14 +112,14 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId'])) {
 	header('X-JSON: {"pending":"Lista de espera ('.$count_wait.')","members":"Miembros ('.$count_real.')"}');
 ?>
 <div id="group-memberlist-members-list">
-<?php if(mysql_num_rows($sql) > 0) { ?>
+<?php if($sql->rowCount() > 0) { ?>
 	<form method="post" action="#" onsubmit="return false;">
 		<ul class="habblet-list two-cols clearfix">
 <?php
 $counter = 0;
 $rights = 0;
 $lefts = 0;
-while($data = mysql_fetch_array($sql)) {
+while($data = $sql->fetch(PDO::FETCH_ASSOC)) {
 $counter++;
 if($data['member_rank'] == 3) {
 	$OWNER = true;

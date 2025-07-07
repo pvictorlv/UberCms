@@ -1,10 +1,10 @@
 <?php
 /*=========================================================+
 || # Azure Files of XDRCMS. All rights reserved.
-|| # Copyright © 2012 Xdr.
+|| # Copyright  2012 Xdr.
 |+=========================================================+
 || # Xdr 2012. The power of Proyects.
-|| # Este es un Software de código libre, libre edición.
+|| # Este es un Software de cdigo libre, libre edicin.
 |+=========================================================+
 */
 
@@ -16,7 +16,7 @@ $groupId = FilterText($_POST['groupId'], true);
 $valid_url = ereg("^[A-Za-z0-9_-]{3,}$", $url);
 
 $check = query("SELECT * FROM users_groups WHERE id = '" . $groupId . "' LIMIT 1");
-$exist = mysql_num_rows($check);
+$exist = $check->rowCount();
 
 if($exist > 0)
 {
@@ -24,15 +24,15 @@ if($exist > 0)
 	
 	if($urlExist > 0)
 	{
-		echo "ERROR " . $url . " está reservado para otro Grupo";
+		echo "ERROR " . $url . " est reservado para otro Grupo";
 	}
 	else if(!$valid_url)
 	{
-		echo "ERROR El alias de tu Grupo contiene caracteres inválidos. Sólo son aceptados los del tipo A-z, a-z, 0-9, - y _";
+		echo "ERROR El alias de tu Grupo contiene caracteres invlidos. Slo son aceptados los del tipo A-z, a-z, 0-9, - y _";
 	}
 	else
 	{
-		echo "El alias de tu Grupo va a ser " . SITE . "/groups/" . $url . ". No podrás cambiarlo después.";
+		echo "El alias de tu Grupo va a ser " . SITE . "/groups/" . $url . ". No podrs cambiarlo despus.";
 	}
 }
 

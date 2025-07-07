@@ -82,7 +82,7 @@ function suggestSEO(el)
 
 $getOptions = db::query("SELECT * FROM site_news_categories ORDER BY caption ASC");
 
-while ($option = mysql_fetch_assoc($getOptions))
+while ($option = $getOptions->fetch(PDO::FETCH_ASSOC)))
 {
 	echo '<option value="' . intval($option['id']) . '" ' . (($option['id'] == $_POST['category']) ? 'selected' : '') . '>' . clean($option['caption']) . '</option>';
 }

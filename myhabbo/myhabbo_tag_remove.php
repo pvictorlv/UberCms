@@ -19,12 +19,12 @@ if($Users->userExist($accountId) && !empty($tagId) && is_numeric($tagId))
 }
 
 $getTags = query("SELECT * FROM users_tags WHERE userID = '" . $myid . "'");
-$myTags = mysql_num_rows($getTags);
+$myTags = $getTags->rowCount();
 ?>
 <div id="profile-tags-container">
 	<?php
 	if($myTags > 0) {
-	while($row = mysql_fetch_assoc($getTags)) {
+	while($row = $getTags->fetch(PDO::FETCH_ASSOC))) {
 	?>
     <span class="tag-search-rowholder">
         <a href="<?php echo SITE; ?>/tag/<?php echo $row['tag']; ?>" class="tag"

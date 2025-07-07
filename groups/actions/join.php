@@ -16,15 +16,15 @@ $groupid = FilterText($_GET['groupId']);
 
 if(is_numeric($groupid) && $groupid > 0)
 {
-	$check = mysql_query("SELECT type FROM groups_details WHERE id = '".$groupid."' LIMIT 1") or die(mysql_error());
-	$exists = mysql_num_rows($check);
+	$check = Db::query("SELECT type FROM groups_details WHERE id = '".$groupid."' LIMIT 1")
+	$exists = $check->rowCount();
 
 	if($exists > 0)
 	{
-		$check2 = mysql_query("SELECT groupid FROM groups_memberships WHERE userid = '".USER_ID."' AND groupid = '".$groupid."' LIMIT 1") or die(mysql_errors());
-		$already_member = mysql_num_rows($check2);
+		$check2 = Db::query("SELECT groupid FROM groups_memberships WHERE userid = '".USER_ID."' AND groupid = '".$groupid."' LIMIT 1") or die(mysql_errors());
+		$already_member = $check2->rowCount();
 
-		$memberships = mysql_query("SELECT COUNT(*) FROM groups_memberships WHERE userid = '".USER_ID."' ");
+		$memberships = Db::query("SELECT COUNT(*) FROM groups_memberships WHERE userid = '".USER_ID."' ");
 
 		if($memberships < 19)
 		{
@@ -39,10 +39,10 @@ if(is_numeric($groupid) && $groupid > 0)
 		}
 		else
 		{
-			$groupdata = mysql_fetch_assoc($check);
+			$groupdata = $check->fetch(PDO::FETCH_ASSOC);
 			$type = $groupdata['type'];
 
-			$members = mysql_query("SELECT COUNT(*) FROM groups_memberships WHERE groupid = '".$groupid."' AND is_pending = '0'");
+			$members = Db::query("SELECT COUNT(*) FROM groups_memberships WHERE groupid = '".$groupid."' AND is_pending = '0'");
 
 			if($type == "0" || $type == "3")
 			{
@@ -59,7 +59,7 @@ if(is_numeric($groupid) && $groupid > 0)
 
 <div class="clear"></div>
 					<?php
-					mysql_query("INSERT INTO groups_memberships (userid,groupid,member_rank,is_current,is_pending) VALUES ('".USER_ID."', '$groupid','1','0','0')") or die(mysql_error());
+					Db::query("INSERT INTO groups_memberships (userid,groupid,member_rank,is_current,is_pending) VALUES ('".USER_ID."', '$groupid','1','0','0')")
 					exit;
 				}
 				else
@@ -83,7 +83,7 @@ Lo siento, este Grupo está a tope<br />
 			else if($type == "1")
 			{
 				echo "<p>\nLa petición ha sido enviada con éxito.\n</p>\n\n<p>\n<a href=\"#\" class=\"new-button\" id=\"group-action-ok\"><b>OK</b><i></i></a>\n</p>\n\n\n<div class=\"clear\"></div>";
-				mysql_query("INSERT INTO groups_memberships (userid,groupid,member_rank,is_current,is_pending) VALUES ('".USER_ID."','".$groupid."','1','0','1')") or die(mysql_error());
+				Db::query("INSERT INTO groups_memberships (userid,groupid,member_rank,is_current,is_pending) VALUES ('".USER_ID."','".$groupid."','1','0','1')")
 				exit;
 			}
 			else if($type == "2")

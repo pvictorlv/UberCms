@@ -23,6 +23,6 @@ Has insertado correctamente la Sala - Grupo.
 
 require_once "bottom.php";
 
-mysql_query("INSERT INTO cms_recommended (id_rec,type) VALUES ('". $_POST['id_rec'] ."', '" . $_POST['type'] . "'");
+Db::query("INSERT INTO cms_recommended (id_rec,type) VALUES ('". $_POST['id_rec'] ."', '" . $_POST['type'] . "'");
 
 ?>

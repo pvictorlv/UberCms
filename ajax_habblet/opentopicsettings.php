@@ -7,7 +7,7 @@ require '../global.php';
 if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['topicId']) && is_numeric($_POST['topicId'])) {
 	$groupId = $gtfo->cleanWord($_POST['groupId']);
 	$topicId = $gtfo->cleanWord($_POST['topicId']);
-	$checkTopic = db::query("SELECT type,sticky,title FROM groups_forum_topics WHERE id = '".$topicId."' AND group_id = '".$groupId."' LIMIT 1;");
+	$checkTopic = db::query("SELECT type,sticky,title FROM groups_forum_topics WHERE id = ? AND group_id = '".$groupId."' LIMIT 1;");
 	
 	if($core->GetGroupPerm($groupId) < 2) {
 ?>	
@@ -18,8 +18,8 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['to
 <?php
 die();
 	}	
-	if(mysql_num_rows($checkTopic)) {
-	$TopicData = mysql_fetch_array($checkTopic);
+	if($checkTopic->rowCount()) {
+	$TopicData = $checkTopic->fetch(PDO::FETCH_ASSOC);
 ?>
 <form action="#" method="post" id="topic-settings-form">
 	<div id="topic-name-area">

@@ -37,7 +37,7 @@ if(isset($mes)){
 $meses = addslashes(trim($mes));
 if($meses == "1"){$days = "31";$amount = $price;}elseif($meses == "3"){$days = "90";$amount = $price;}elseif($meses == "6"){$days = "180";$amount = $price;}elseif($meses == "12"){$days = "360";$amount = $price;}else{$error = "El Pack de HC elegido no existe.";echo $error;};
 $getCoins = db::query("SELECT * FROM users WHERE username = '".USER_NAME."'");
-$b = mysql_fetch_assoc($getCoins);
+$b = $getCoins->fetch(PDO::FETCH_ASSOC);
 $coins1 = $b['credits'];
 $id = $b['id'];
 if($coins1>=$amount){
@@ -45,9 +45,9 @@ $final = $coins1-$amount;
 $vip_end = time() + ($days*24*3600);
 $vip_ini = time();
 $check  = db::query("SELECT user_id, timestamp_expire FROM user_subscriptions WHERE user_id=".$id." AND subscription_id='habbo_club' ORDER BY timestamp_expire DESC LIMIT 1");
-$total_records = mysql_num_rows($check);
+$total_records = $check->rowCount();
 if ($total_records>0){
-$row = mysql_fetch_assoc($check);
+$row = $check->fetch(PDO::FETCH_ASSOC);
 $current_exp = $row['timestamp_expire'];
 if($current_exp > time()){
 $vip_end = $vip_end + ($current_exp - time());}};
@@ -70,7 +70,7 @@ if(isset($mes)){
 $meses = addslashes(trim($mes));
 if($meses == "1"){$days = "31";$amount = $price;}elseif($meses == "3"){$days = "90";$amount = $price;}elseif($meses == "6"){$days = "180";$amount = $price;}elseif($meses == "12"){$days = "360";$amount = $price;}else{$error = "El Pack de VIP elegido no existe.";echo $error;};
 $getCoins = db::query("SELECT * FROM users WHERE username = '".USER_NAME."'");
-$b = mysql_fetch_assoc($getCoins);
+$b = $getCoins->fetch(PDO::FETCH_ASSOC);
 $coins1 = $b['coins'];
 $id = $b['id'];
 if($coins1>=$amount){
@@ -78,9 +78,9 @@ $final = $coins1-$amount;
 $vip_end = time() + ($days*24*3600);
 $vip_ini = time();
 $check  = db::query("SELECT user_id, timestamp_expire FROM user_subscriptions WHERE user_id=".$id." AND subscription_id='habbo_vip' ORDER BY timestamp_expire DESC LIMIT 1");
-$total_records = mysql_num_rows($check);
+$total_records = $check->rowCount();
 if ($total_records>0){
-$row = mysql_fetch_assoc($check);
+$row = $check->fetch(PDO::FETCH_ASSOC);
 $current_exp = $row['timestamp_expire'];
 if($current_exp > time()){
 $vip_end = $vip_end + ($current_exp - time());}};

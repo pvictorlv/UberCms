@@ -5,7 +5,7 @@ define('MUST_LOG', true);
 require_once "../global.php";
 if(isset($_GET['nombre'])){
 $Nombre = $gtfo->cleanWord($_GET['nombre']);
-mysql_query("DELETE FROM site_addons WHERE nombre ='".$Nombre."'");
+Db::query("DELETE FROM site_addons WHERE nombre ='".$Nombre."'");
 header("Location: " . WWW . "/manage/index.php?_cmd=addons-me");
 }
 ?>

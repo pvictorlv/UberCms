@@ -17,9 +17,9 @@ if (isset($_POST['username']))
 	$username = filter($_POST['username']);
 	$get = db::query("SELECT id FROM users WHERE username = '" . $username . "' LIMIT 1");
 	
-	if (mysql_num_rows($get) == 1)
+	if ($get->rowCount() == 1)
 	{
-		$id = intval(mysql_result($get, 0));
+		$id = intval($get->fetchColumn(, 0));
 		$ticket = $core->GenerateTicket();
 		
 		db::query("UPDATE users SET auth_ticket = '" . $ticket . "' WHERE id = '" . $id . "' LIMIT 1");

@@ -44,7 +44,7 @@ if (!isset($_SESSION['OT_PAGE_CAT']))
 	}
 }
 
-$newOrderId = mysql_result(db::query("SELECT order_num FROM catalog_pages WHERE parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' ORDER BY order_num DESC"), 0) + 1;
+$newOrderId = db::query("SELECT order_num FROM catalog_pages WHERE parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' ORDER BY order_num DESC")->fetchColumn() + 1;
 
 if (!isset($_GET['sq']))
 {
@@ -56,7 +56,7 @@ if (isset($_GET['new']))
 	db::query("INSERT INTO catalog_pages (parent_id,caption,icon_color,icon_image,visible,enabled,coming_soon,order_num,page_layout,page_text_details,page_headline) VALUES ('" . $_SESSION['OT_PAGE_CAT'] . "','', '0', '1', '1', '1', '0', '" . $newOrderId . "', 'default_3x3','Click on an item for more information.','catalog_frontpage_headline2_en')");
 	fMessage('ok', 'New page stub added');
 
-	$newId = mysql_result(db::query("SELECT id FROM catalog_pages ORDER BY id DESC LIMIT 1"), 0);
+	$newId = db::query("SELECT id FROM catalog_pages ORDER BY id DESC LIMIT 1")->fetchColumn();
 
 	header("Location: ./index.php?_cmd=ot-pages&edit=" . $newId);
 	exit;
@@ -83,13 +83,13 @@ if (isset($_GET['edit']))
 	$i = intval($_GET['edit']);
 	$get = db::query("SELECT * FROM catalog_pages WHERE id = '" . $i . "' AND parent_id = '" . $_SESSION['OT_PAGE_CAT'] . "' LIMIT 1");
 
-	if (mysql_num_rows($get) == 0)
+	if ($get->rowCount() == 0)
 	{
 		fMessage('error', 'Oops! Invalid item.');
 	}
 	else
 	{
-		$data = mysql_fetch_assoc($get);
+		$data = $get->fetch(PDO::FETCH_ASSOC));
 
 		if (isset($_POST['caption']))
 		{
@@ -158,7 +158,7 @@ require_once "top.php";
 
 echo '<h1>Administrar pagina de catalogo</h1>';
 
-echo '<br />Editar categoria:<b>' . mysql_result(db::query("SELECT caption FROM catalog_pages WHERE id = '" . $_SESSION['OT_PAGE_CAT'] . "' LIMIT 1"), 0) . '</b> (<a href="index.php?_cmd=ot-pages&unsetCat">Cambio</a>)';
+echo '<br />Editar categoria:<b>' . ->fetchColumn(db::query("SELECT caption FROM catalog_pages WHERE id = '" . $_SESSION['OT_PAGE_CAT'] . "' LIMIT 1"), 0) . '</b> (<a href="index.php?_cmd=ot-pages&unsetCat">Cambio</a>)';
 echo '<br /><br /><hr /><br />';
 
 if ($data != null)
@@ -210,7 +210,7 @@ echo '<table width="100%" border="1" style="text-align: center;">
 </thead>
 <form method="post">';
 
-while ($page = mysql_fetch_assoc($getPages))
+while ($page = $getPages->fetch(PDO::FETCH_ASSOC)))
 {
 	echo '<tr>
 	<td>' . $page['id'] . '</td>

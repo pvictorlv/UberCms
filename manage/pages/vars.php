@@ -45,7 +45,7 @@ echo '</tr>';
 
 $get = db::query("SELECT * FROM external_variables");
 
-while ($text = mysql_fetch_assoc($get))
+while ($text = $get->fetch(PDO::FETCH_ASSOC)))
 {
 	echo '<tr><form method="post">';
 	echo '<input type="hidden" name="edit-no" value="' . clean($text['skey']) . '">';

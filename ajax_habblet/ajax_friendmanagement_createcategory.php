@@ -4,7 +4,7 @@
 session_start();
 require_once("../global.php");
 $getID = db::query("SELECT * FROM users WHERE username = '".USER_NAME."'");
-$b = mysql_fetch_assoc($getID);
+$b = $getID->fetch(PDO::FETCH_ASSOC);
 $my_id = $b['id'];
 
 $category_name = HoloText($_POST['name']);
@@ -12,7 +12,7 @@ $security_time = $_SESSION['create_category'] + (1);
 
 if(!empty($category_name) && (empty($_SESSION['create_category']) || $security_time < time())){
 
-mysql_query("INSERT INTO messenger_categorys (name,owner_id) VALUES ('".$category_name."','".$my_id."')") or die(mysql_error());
+Db::query("INSERT INTO messenger_categorys (name,owner_id) VALUES (?,?)", $category_name, $my_id);
 $_SESSION['create_category'] = time();
 
 }
@@ -23,11 +23,11 @@ $_SESSION['create_category'] = time();
 
 <div class="category-default category-item selected-category" id="category-item-0">Amigos</div>
 <?php
-$get_categorys = mysql_query("SELECT * FROM messenger_categorys WHERE owner_id = '".$my_id."'") or die(mysql_error());
-	if(mysql_num_rows($get_categorys) > 0){
-	while($crow = mysql_fetch_assoc($get_categorys)){
-$get_category = mysql_query("SELECT * FROM messenger_categorys WHERE id = '".$crow['id']."' LIMIT 1") or die(mysql_error());
-$row = mysql_fetch_assoc($get_category);
+$get_categorys = Db::query("SELECT * FROM messenger_categorys WHERE owner_id = ?", $my_id);
+	if($get_categorys->rowCount() > 0){
+	while($crow = $get_categorys->fetch(PDO::FETCH_ASSOC)){
+$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ? LIMIT 1", $crow['id']);
+$row = $get_category->fetch(PDO::FETCH_ASSOC);
 ?>
     <div id="category-item-<?php echo $row['id']; ?>" class="category-item ">
         <div class="category-name" id="category-<?php echo $row['id']; ?>">

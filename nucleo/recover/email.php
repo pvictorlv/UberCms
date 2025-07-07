@@ -2,7 +2,7 @@
 if(isset($_POST['forgot_pass'])){
         $login = filter($_POST['login']);
 $result = db::query("SELECT * FROM users WHERE username='$login'");
-while($l = mysql_fetch_array($result)) {
+while($l = $result->fetch(PDO::FETCH_ASSOC))) {
         $login = $l['username'];
         $senha = $l['password'];
         $email = $l['mail'];

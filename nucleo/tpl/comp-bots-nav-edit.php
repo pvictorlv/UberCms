@@ -1,8 +1,8 @@
 <?php 
-$query = mysql_query("SELECT * FROM users WHERE id = '".USER_ID."'");
+$query = Db::query("SELECT * FROM users WHERE id = '".USER_ID."'");
 
 $saldo = 0;
-while ($data = mysql_fetch_array($query)){
+while ($data = $query->fetch(PDO::FETCH_ASSOC)){
 
 $saldo = $data['credits'];
 }
@@ -23,12 +23,12 @@ $saldo = $data['credits'];
 		<form method="post" action="/bots?editar">
 <?php 
 
-$query2 = mysql_query("SELECT * FROM bots_effects WHERE user_id ='".USER_ID."'");
-while ($data2 = mysql_fetch_array($query2))
+$query2 = Db::query("SELECT * FROM bots_effects WHERE user_id ='".USER_ID."'");
+while ($data2 = $query2->fetch(PDO::FETCH_ASSOC))
 $effect_name=$data2['nombre'];
 
-$query = mysql_query("SELECT * FROM bots WHERE owner ='".USER_ID."'");
-while ($data = mysql_fetch_array($query))
+$query = Db::query("SELECT * FROM bots WHERE owner ='".USER_ID."'");
+while ($data = $query->fetch(PDO::FETCH_ASSOC))
 
 
 { ?>
@@ -39,7 +39,7 @@ while ($data = mysql_fetch_array($query))
             <td><input type="radio" name="select-bot" value="<?php echo $data['id'] ?>" onchange="this.form.submit()">
 <input name="habbo" type="hidden" id="habbo" value="%habboName%" /></td>
 			<td><?php echo $data['name'] ?></td>
-            <td><?php $room=$data['room_id'];$room_info = @mysql_query("SELECT * FROM rooms WHERE id='$room'");if($row = mysql_fetch_assoc($room_info)){$sala = $row['caption'];}?><?php echo $sala; ?></td>
+            <td><?php $room=$data['room_id'];$room_info = @Db::query("SELECT * FROM rooms WHERE id='$room'");if($row = $room_info->fetch(PDO::FETCH_ASSOC)){$sala = $row['caption'];}?><?php echo $sala; ?></td>
             <td><?php $effect=$data['effect'];if ($effect == 0){$efecto= 'Ninguno'; }if ($effect >= 1){$efecto= $effect_name; }?> <?php echo $efecto; ?></td>
         </tr><br>
 <?php } ?></form>
@@ -60,8 +60,8 @@ Recuerda Que solo se Pueden usar en BOT`S.
             <td><b>Nombre</b></td>
             <td><b>ID</b></td>
         </tr>
-<?php $query = mysql_query("SELECT * FROM bots_effects WHERE user_id ='".USER_ID."'");
-while ($data = mysql_fetch_array($query)){ ?>
+<?php $query = Db::query("SELECT * FROM bots_effects WHERE user_id ='".USER_ID."'");
+while ($data = $query->fetch(PDO::FETCH_ASSOC)){ ?>
 <tr>
             <td><img src="<?php echo $data['imagen'] ?>"></td> 
             <td><?php echo $data['nombre'] ?></td>

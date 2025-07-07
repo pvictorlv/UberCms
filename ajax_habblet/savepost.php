@@ -22,8 +22,8 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['to
 	$_GET['page'] = $page;
 
 	$sql_group = db::query("SELECT * FROM groups_details WHERE id = '" . $group__id . "' LIMIT 1");
-	if(!mysql_num_rows($sql_group)) { die(); }
-	$row_group = mysql_fetch_array($sql_group);
+	if(!$sql_group->rowCount()) { die(); }
+	$row_group = $sql_group->fetch(PDO::FETCH_ASSOC);
 	
 	$resp = recaptcha_check_answer ('6Le-aQoAAAAAAKaqhlUT0lAQbjqokPqmj0F1uvQm', $_SERVER["REMOTE_ADDR"], $_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]);
 		
@@ -32,14 +32,14 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['to
 			header('X-JSON: {"captchaError":"true"}');
 			die();
 		}
-	$GroupData = db::query("SELECT forumType,perso_link FROM groups_details WHERE id = '".$groupId."' LIMIT 1;");
-	if(mysql_num_rows($GroupData)) {
-		$TopicData = db::query("SELECT type,user_id FROM groups_forum_topics WHERE id = '".$topicId."' LIMIT 1");
-		if(mysql_num_rows($TopicData)) {
+	$GroupData = db::query("SELECT forumType,perso_link FROM groups_details WHERE id = ? LIMIT 1;");
+	if($GroupData->rowCount()) {
+		$TopicData = db::query("SELECT type,user_id FROM groups_forum_topics WHERE id = ? LIMIT 1");
+		if($TopicData->rowCount()) {
 			$group_rank = $core->GetGroupPerm($groupId);
 			
-			$GroupData = mysql_fetch_array($GroupData);
-			$forumType = mysql_fetch_array($TopicData);
+			$GroupData = $GroupData->fetch(PDO::FETCH_ASSOC);
+			$forumType = $TopicData->fetch(PDO::FETCH_ASSOC);
 			
 			if($forumType['user_id']) {
 				define('IS_CREATOR', true);
@@ -69,7 +69,7 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['to
 			if($GroupData['forumType'] && !$users->IsMember(USER_ID, $groupId)) {
 				
 			} elseif(!$forumType['type']) {
-				db::query("INSERT INTO groups_forum_replies (user_id, content, date, topic_id, group_id) VALUES ('".USER_ID."', '".$message."', '".time()."', '".$topicId."', '".$groupId."')");
+				Db::query("INSERT INTO groups_forum_replies (user_id, content, date, topic_id, group_id) VALUES (?, ?, ?, ?, ?)", USER_ID, $message, time(), $topicId, $groupId);
 ?>
 <div class="postlist-header clearfix">
 							<?php if($checkTopicArray['type']) { ?>
@@ -85,7 +85,7 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['to
 								<a href="#" id="edit-topic-settings" class="edit-topic-settings-link">Editar Ajustes &raquo;</a>
 								<input type="hidden" id="settings_dialog_header" value="Editar Ajustes"/>
 							<?php }
-	$count = mysql_num_rows(db::query("SELECT null FROM groups_forum_replies WHERE topic_id = '".$topicId."';"));
+	$count = db::query("SELECT null FROM groups_forum_replies WHERE topic_id = ?;")->rowCount();
 	$n = $count;
 	$x = 0;
 		while($n >= 0)
@@ -156,22 +156,22 @@ if(isset($_POST['groupId']) && is_numeric($_POST['groupId']) && isset($_POST['to
 							</div>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="group-postlist-list" id="group-postlist-list">
 <?php 
-$GetTopic = db::query("SELECT id,user_id,date,type,title FROM groups_forum_topics WHERE id = '".$topicId."' LIMIT 1;");
+$GetTopic = db::query("SELECT id,user_id,date,type,title FROM groups_forum_topics WHERE id = ? LIMIT 1;");
 
-if(mysql_num_rows($GetTopic)) {
+if($GetTopic->rowCount()) {
 	$i = 0;
-	$dataTopic = mysql_fetch_array($GetTopic);
+	$dataTopic = $GetTopic->fetch(PDO::FETCH_ASSOC);
 	$first_username = $users->id2name($dataTopic['user_id']);
-	$FirstUserData = mysql_fetch_array(db::query("SELECT look,motto FROM users where id = '".$dataTopic['user_id']."' LIMIT 1;"));
+	$FirstUserData = db::query("SELECT look,motto FROM users where id = '".$dataTopic['user_id']."' LIMIT 1;")->fetch(PDO::FETCH_ASSOC);
 				}
 
-	$GetReplies = db::query("SELECT id,user_id,content,date,is_edited,is_first FROM groups_forum_replies WHERE topic_id = '".$topicId."' LIMIT ".$limit.",10;");
+	$GetReplies = db::query("SELECT id,user_id,content,date,is_edited,is_first FROM groups_forum_replies WHERE topic_id = ? LIMIT ".$limit.",10;");
 
 
-if(mysql_num_rows($GetReplies)) {
-	while($dataReplies = mysql_fetch_array($GetReplies)) {
+if($GetReplies->rowCount()) {
+	while($dataReplies = $GetReplies->fetch(PDO::FETCH_ASSOC)) {
 	$first_username = $users->id2name($dataReplies['user_id']);
-	$FirstUserData = mysql_fetch_array(db::query("SELECT look,motto FROM users where id = '".$dataReplies['user_id']."' LIMIT 1;"));
+	$FirstUserData = db::query("SELECT look,motto FROM users where id = '".$dataReplies['user_id']."' LIMIT 1;")->fetch(PDO::FETCH_ASSOC);
 ?>
 <tr class="post-list-index-<?php if(IsEven($i)) { echo 'even'; } else { echo 'odd'; } ?>">
 	<td class="post-list-row-container">
@@ -183,7 +183,7 @@ if(mysql_num_rows($GetReplies)) {
 				<?php } else { ?>
 				<img alt="online" src="http://images.xukys-hotel.com/web-gallery/images/myhabbo/habbo_online_anim.gif"/>
 				<?php } 
-				$GetCountMsgOnReplies = mysql_fetch_array(db::query("SELECT COUNT(id) AS count FROM groups_forum_replies WHERE user_id = '" . $dataReplies['user_id'] . "'"));
+				$GetCountMsgOnReplies = db::query("SELECT COUNT(id) AS count FROM groups_forum_replies WHERE user_id = ?", $dataReplies['user_id'])->fetch(PDO::FETCH_ASSOC);
 				$AllCount             = $GetCountMsgOnReplies['count'];
 				?>
 		<div class="post-list-posts post-list-creator-info">Mensaje: <?php echo $AllCount; ?></div>
@@ -389,7 +389,7 @@ Discussions.captchaPublicKey = "6Le-aQoAAAAAABnHRzXH_W-9-vx4B8oSP3_L5tb0";
 <?php
 
 		} elseif($forumType['type'] && $group_rank >= 2) {
-		db::query("INSERT INTO groups_forum_replies (user_id, content, date, topic_id, group_id) VALUES ('".USER_ID."', '".$message."', '".time()."', '".$topicId."', '".$groupId."')");
+		db::query("INSERT INTO groups_forum_replies (user_id, content, date, topic_id, group_id) VALUES (?, ?, ?, ?, ?)", USER_ID, $message, time(), $topicId, $groupId);
 ?>			
 <div class="postlist-header clearfix">
 							<?php if($checkTopicArray['type']) { ?>
@@ -405,7 +405,7 @@ Discussions.captchaPublicKey = "6Le-aQoAAAAAABnHRzXH_W-9-vx4B8oSP3_L5tb0";
 								<a href="#" id="edit-topic-settings" class="edit-topic-settings-link">Editar Ajustes &raquo;</a>
 								<input type="hidden" id="settings_dialog_header" value="Editar Ajustes"/>
 							<?php }
-	$count = mysql_num_rows(db::query("SELECT null FROM groups_forum_replies WHERE topic_id = '".$topicId."';"));
+	$count = db::query("SELECT null FROM groups_forum_replies WHERE topic_id = ?;")->rowCount();
 	$n = $count;
 	$x = 0;
 		while($n >= 0)
@@ -475,22 +475,22 @@ Discussions.captchaPublicKey = "6Le-aQoAAAAAABnHRzXH_W-9-vx4B8oSP3_L5tb0";
 							</div>
 <table border="0" cellpadding="0" cellspacing="0" width="100%" class="group-postlist-list" id="group-postlist-list">
 <?php 
-$GetTopic = db::query("SELECT id,user_id,date,type,title FROM groups_forum_topics WHERE id = '".$topicId."' LIMIT 1;");
+$GetTopic = db::query("SELECT id,user_id,date,type,title FROM groups_forum_topics WHERE id = ? LIMIT 1;");
 
-if(mysql_num_rows($GetTopic)) {
+if($GetTopic->rowCount()) {
 	$i = 0;
-	$dataTopic = mysql_fetch_array($GetTopic);
+	$dataTopic = $GetTopic->fetch(PDO::FETCH_ASSOC);
 	$first_username = $users->id2name($dataTopic['user_id']);
-	$FirstUserData = mysql_fetch_array(db::query("SELECT look,motto FROM users where id = '".$dataTopic['user_id']."' LIMIT 1;"));
+	$FirstUserData = db::query("SELECT look,motto FROM users where id = '".$dataTopic['user_id']."' LIMIT 1;")->fetch(PDO::FETCH_ASSOC);
 				}
 
-	$GetReplies = db::query("SELECT id,user_id,content,date,is_edited,is_first FROM groups_forum_replies WHERE topic_id = '".$topicId."' LIMIT ".$limit.",10;");
+	$GetReplies = db::query("SELECT id,user_id,content,date,is_edited,is_first FROM groups_forum_replies WHERE topic_id = ? LIMIT ".$limit.",10;");
 
 
-if(mysql_num_rows($GetReplies)) {
-	while($dataReplies = mysql_fetch_array($GetReplies)) {
+if($GetReplies->rowCount()) {
+	while($dataReplies = $GetReplies->fetch(PDO::FETCH_ASSOC)) {
 	$first_username = $users->id2name($dataReplies['user_id']);
-	$FirstUserData = mysql_fetch_array(db::query("SELECT look,motto FROM users where id = '".$dataReplies['user_id']."' LIMIT 1;"));
+	$FirstUserData = db::query("SELECT look,motto FROM users where id = '".$dataReplies['user_id']."' LIMIT 1;")->fetch(PDO::FETCH_ASSOC);
 ?>
 <tr class="post-list-index-<?php if(IsEven($i)) { echo 'even'; } else { echo 'odd'; } ?>">
 	<td class="post-list-row-container">
@@ -502,9 +502,9 @@ if(mysql_num_rows($GetReplies)) {
 				<?php } else { ?>
 				<img alt="online" src="http://images.xukys-hotel.com/web-gallery/images/myhabbo/habbo_online_anim.gif"/>
 				<?php } 
-				$GetCountMsgOnTopics = mysql_fetch_array(db::query("SELECT COUNT(id) AS first_count FROM groups_forum_topics WHERE user_id = '".$dataReplies['user_id']."'"));
+				$GetCountMsgOnTopics = db::query("SELECT COUNT(id) AS first_count FROM groups_forum_topics WHERE user_id = ?", $dataTopic['user_id'])->fetch(PDO::FETCH_ASSOC);
 				$first = $GetCountMsgOnTopics['first_count'];
-				$GetCountMsgOnReplies = mysql_fetch_array(db::query("SELECT COUNT(id) AS second_count FROM groups_forum_replies WHERE user_id = '".$dataReplies['user_id']."'"));
+				$GetCountMsgOnReplies = db::query("SELECT COUNT(id) AS second_count FROM groups_forum_replies WHERE user_id = ?", $dataTopic['user_id'])->fetch(PDO::FETCH_ASSOC);
 				$second = $GetCountMsgOnReplies['second_count'];
 				$AllCount = $first+$second;
 				?>

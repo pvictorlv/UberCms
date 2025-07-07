@@ -133,6 +133,7 @@ class uberTpl
                 $this->AddIncludeFile(new IncludeFile('text/css', '%www%/web-gallery/v2/styles/tooltips.css', 'stylesheet'));
                 break;
         }
+
     }
 
     public function AddGeneric($tplName)

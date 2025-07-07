@@ -81,7 +81,7 @@ require_once "top.php";
 $getNews = db::query("SELECT * FROM site_promo ORDER BY timestamp DESC");
 $i = 1;
 
-while ($n = mysql_fetch_assoc($getNews))
+while ($n = $getNews->fetch(PDO::FETCH_ASSOC)))
 {
 	$highlight = '#fff';
 
@@ -94,7 +94,7 @@ $oddeven++;
 	<td>' . $n['id'] . '</td>
 	<td>' . clean($n['title']) . '</td>
 	<td>' . clean($n['snippet']) . '</td>
-	<td>' . clean(mysql_result(db::query("SELECT caption FROM site_promo_categories WHERE id = '" . $n['category_id'] . "' LIMIT 1"), 0)) . '</td>
+	<td>' . clean(->fetchColumn(db::query("SELECT caption FROM site_promo_categories WHERE id = '" . $n['category_id'] . "' LIMIT 1"), 0)) . '</td>
 	<td>' . $n['datestr'] . '</td>
 	<td>
 		<input class="button-secondary" type="button" value="Ver" onclick="document.location = \'' . WWW . '/promo/' . $n['id'] . '-' . $n['seo_link'] . '\';">&nbsp;

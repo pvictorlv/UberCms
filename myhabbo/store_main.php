@@ -58,7 +58,7 @@ $coins = $users->GetUserVar(USER_ID, 'credits', false);
                     <ul id="webstore-item-list">
                         <?php $s = 0;
                         for ($n = 0; $n <= 20; $n++) {
-                            while ($row = mysql_fetch_assoc($getStickers)) {
+                            while ($row = $getStickers->fetch(PDO::FETCH_ASSOC))) {
                                 $s++;
                                 $n++; ?>
                                 <li id="webstore-item-<?php echo $row['id']; ?>" title="">

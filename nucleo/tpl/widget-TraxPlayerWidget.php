@@ -50,7 +50,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
 
                             $sql = db::query("SELECT * FROM soundmachine_songs WHERE machineid = '1' LIMIT 1");
                             $n = 0;
-                            while ($songrow = mysql_fetch_assoc($sql)) {
+                            while ($songrow = $sql->fetch(PDO::FETCH_ASSOC)) {
                                 $n++;
                                 if ($songrow['id'] <> "") {
                                     echo "<option value=\"" . $songrow['id'] . "\">" . trim(nl2br(($songrow['title']))) . "</option>\n";
@@ -62,8 +62,8 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                     </select>
                 </div>
                 <?php
-                $sql1 = mysql_query("SELECT * FROM soundmachine_songs WHERE userid = '" . USER_ID . "' LIMIT 1");
-                $songrow1 = mysql_fetch_assoc($sql1);
+                $sql1 = Db::query("SELECT * FROM soundmachine_songs WHERE userid = '" . USER_ID . "' LIMIT 1");
+                $songrow1 = $sql1->fetch(PDO::FETCH_ASSOC);
                 ?>
 
 

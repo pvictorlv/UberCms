@@ -42,12 +42,12 @@ function time_stamp($session_time){$time_difference = time() - $session_time ;$s
 	$net = '';
 	$m = 0;
 $getID = db::query("SELECT * FROM users WHERE username = '".USER_NAME."'");
-$b = mysql_fetch_assoc($getID);
+$b = $getID->fetch(PDO::FETCH_ASSOC);
 $userid = $b['id'];
-$amigosdehabbo = mysql_query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$userid."'");
+$amigosdehabbo = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id = ?'");
 $array = array();
 $i = "0";
-while ($friends = mysql_fetch_assoc($amigosdehabbo)){
+while ($friends = $amigosdehabbo->fetch(PDO::FETCH_ASSOC)){
 	$i++;
 $array[$i] = $friends['user_two_id'];	
 	
@@ -56,8 +56,8 @@ $array[$i] = $friends['user_two_id'];
 
       while (list($clave, $valor) = each($array)) {
 		  
-		  		$buscarhabbo = mysql_query("SELECT * FROM users WHERE id = '".$valor."'");
-while ($mefriend = mysql_fetch_assoc($buscarhabbo)){
+		  		$buscarhabbo = Db::query("SELECT * FROM users WHERE id = ?'");
+while ($mefriend = $buscarhabbo->fetch(PDO::FETCH_ASSOC)){
 	if ($i%2==1){$highlight = 'even';}else{$highlight = 'odd';}; $i++;
 		if(empty($mefriend['last_online'])){	
 		$acceso = "Nunca";}else{$acceso = @date("d/m/Y h:iA", $mefriend['last_online']);};
@@ -72,9 +72,9 @@ while ($mefriend = mysql_fetch_assoc($buscarhabbo)){
 };};
 
 	/*
-		$buscarhabbo = mysql_query("SELECT * FROM users WHERE id = '".$friends['user_two_id']."' ORDER BY ".$short." DESC LIMIT ".$pag2.", ".$pagesize."");
+		$buscarhabbo = Db::query("SELECT * FROM users WHERE id = ?' ORDER BY ".$short." DESC LIMIT ".$pag2.", ".$pagesize."");
 
-	while ($mefriend = mysql_fetch_assoc($buscarhabbo)){
+	while ($mefriend = $buscarhabbo->fetch(PDO::FETCH_ASSOC)){
 	if ($i%2==1){$highlight = 'even';}else{$highlight = 'odd';}; $i++;
 		if(empty($mefriend['last_online'])){	
 		$acceso = "Nunca";}else{$acceso = @date("d/m/Y h:iA", $mefriend['last_online']);};

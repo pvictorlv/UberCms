@@ -113,7 +113,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                                             <img id="tag-img-added" border="0" class="tag-none-link"
                                                  src="%www%/web-gallery/images/buttons/tags/tag_button_added.gif"/></span>
                                             <?php
-                                        } //mysql_num_rows($query) > 0
+                                        } //$query->rowCount() > 0
                                         elseif (db::query("SELECT user_id FROM users_tags WHERE tag = ? AND user_id != '" . USER_ID . "' AND user_id = '" . $data['user_id'] . "' LIMIT 1", $data['tag'])->rowCount() > 0) {
                                             ?>
                                             <img border="0" class="tag-add-link"
@@ -121,7 +121,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                                                  onmouseout="this.src='%www%/web-gallery/images/buttons/tags/tag_button_add.gif'"
                                                  src="%www%/web-gallery/images/buttons/tags/tag_button_add.gif"/></span>
                                             <?php
-                                        } //mysql_num_rows(db::query("SELECT user_id FROM users_tags WHERE tag = '" . $data['tag'] . "' AND user_id != '" . USER_ID . "' AND user_id = '" . $data['user_id'] . "' LIMIT 1")) > 0
+                                        } //->rowCount(db::query("SELECT user_id FROM users_tags WHERE tag = '" . $data['tag'] . "' AND user_id != '" . USER_ID . "' AND user_id = '" . $data['user_id'] . "' LIMIT 1")) > 0
                                     } //LOGGED_IN
                                     else {
                                         ?>
@@ -131,8 +131,8 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                                     }
                                     ?>
                                     <?php
-                                } //$data = mysql_fetch_array($sql)
-                            } //mysql_num_rows($sql) > 0
+                                } //$data = $sql->fetch(PDO::FETCH_ASSOC))
+                            } //$sql->rowCount() > 0
                             else {
                                 echo 'Ainda não tem nenhuma etiqueta';
                             }

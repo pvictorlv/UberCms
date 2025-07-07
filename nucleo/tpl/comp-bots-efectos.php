@@ -1,8 +1,8 @@
 <?php
-$query = mysql_query("SELECT * FROM user_historial WHERE user_id = '".USER_ID."'");
+$query = Db::query("SELECT * FROM user_historial WHERE user_id = '".USER_ID."'");
 
 $saldo = 0;
-while ($data = mysql_fetch_array($query)){
+while ($data = $query->fetch(PDO::FETCH_ASSOC)){
 
 if ($data['tipo'] == 'sumar'){
 
@@ -15,20 +15,20 @@ $saldo -= $data['valor'];
 
 if (isset($_POST['rare'])){
 
-$rare = mysql_real_escape_string(htmlentities($_POST['rare']));
+$rare = htmlspecialchars(htmlentities($_POST['rare']));
 
 if (is_numeric($rare)){
 
-$me = mysql_real_escape_string(USER_NAME);
-$query = mysql_query("SELECT * FROM users WHERE username = '".$me."'");
-while ($data = mysql_fetch_array($query)){
+$me = htmlspecialchars(USER_NAME);
+$query = Db::query("SELECT * FROM users WHERE username = '".$me."'");
+while ($data = $query->fetch(PDO::FETCH_ASSOC)){
 $vip = $data['vip'];
 }
-$query = mysql_query("SELECT * FROM site_tienda WHERE tipo = 'rare' AND valor = '$rare'");
+$query = Db::query("SELECT * FROM site_tienda WHERE tipo = 'rare' AND valor = '$rare'");
 
-if (mysql_num_rows($query) > 0){
+if ($query->rowCount() > 0){
 
-$data = mysql_fetch_array($query);
+$data = $query->fetch(PDO::FETCH_ASSOC);
 $id = USER_ID;
 $tranferencia = 'Efecto BOT Comprado';
 $valor_rare = $data['precio'];
@@ -38,11 +38,11 @@ $id_item = $data['valor'];
 
 if ($valor_rare <= $saldo) {
 
-mysql_query("INSERT INTO user_historial (user_id, tipo, texto, valor, fecha) VALUES ('$id', 'restar', '$tranferencia', '$valor_rare', '".time()."')");
+Db::query("INSERT INTO user_historial (user_id, tipo, texto, valor, fecha) VALUES ('$id', 'restar', '$tranferencia', '$valor_rare', '".time()."')");
 
 
-$query55 = mysql_query("SELECT comprados FROM site_tienda WHERE tipo='rare' AND valor ='$rare'") or die(mysql_error()); 
-$dataj = mysql_fetch_assoc($query55); 
+$query55 = Db::query("SELECT comprados FROM site_tienda WHERE tipo='rare' AND valor ='$rare'") 
+$dataj = $query55->fetch(PDO::FETCH_ASSOC); 
 
 $id2 = $dataj['comprados'];
 $cantidad = "1";
@@ -50,8 +50,8 @@ $cantidad = "1";
 $autoid = $id2 + $cantidad;
 
 
-mysql_query("UPDATE site_tienda SET comprados = '$autoid' WHERE valor = '$rare' AND tipo = 'rare'");
-mysql_query("INSERT INTO `bots_effects`(`user_id`, `effect`, `nombre`, `imagen`) values ('".$id."', '$rare','$nombre','$imagen')") or die(mysql_error());
+Db::query("UPDATE site_tienda SET comprados = '$autoid' WHERE valor = '$rare' AND tipo = 'rare'");
+Db::query("INSERT INTO `bots_effects`(`user_id`, `effect`, `nombre`, `imagen`) values ('".$id."', '$rare','$nombre','$imagen')")
 
 header("Location: /bots/efectos?exito");
 
@@ -87,8 +87,8 @@ alert('No eres Premium o El articulo que estas intentando comprar, sobrepasa tu 
 
 
 <?php
-$total = mysql_query("SELECT * FROM site_tienda WHERE tipo ='rare' AND otro ='bot_effect'");
-$total = mysql_num_rows($total);
+$total = Db::query("SELECT * FROM site_tienda WHERE tipo ='rare' AND otro ='bot_effect'");
+$total = $total->rowCount();
 ?>
 <div class="cbb clearfix red ">
 <h2 class="title"><span style="float: left;">Efectos Para BOTS</span> <span style="float: right; font-weight: normal; font-size: 75%;">(<?php echo $total ?> disponibles)</span></h2>
@@ -97,10 +97,10 @@ $total = mysql_num_rows($total);
 
 <?php
 $color = '#FFFFFF';
- $query=mysql_query("SELECT * FROM site_tienda WHERE tipo ='rare' AND otro ='bot_effect' ORDER BY ID DESC");
+ $query=Db::query("SELECT * FROM site_tienda WHERE tipo ='rare' AND otro ='bot_effect' ORDER BY ID DESC");
 $cuantos2 =$data['valor'];
 
-while ($data=mysql_fetch_array($query)){ 
+while ($data=$query->fetch(PDO::FETCH_ASSOC)){ 
 
 if ($color == '#FFFFFF'){
 	

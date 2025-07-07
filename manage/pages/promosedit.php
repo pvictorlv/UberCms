@@ -59,7 +59,7 @@ require_once "top.php";
 
 $getItems = db::query("SELECT * FROM site_promos");
 
-while ($item = mysql_fetch_assoc($getItems))
+while ($item = $getItems->fetch(PDO::FETCH_ASSOC)))
 {
 	echo '<tr>
 	<form method="post">

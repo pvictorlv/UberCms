@@ -83,14 +83,14 @@ if(isset($_POST['badge_id']))
 			
 			if(isset($price) && isset($id))
 			{
-				$data = mysql_fetch_array(db::query("SELECT vip_points,vip FROM users WHERE id = '".USER_ID."' LIMIT 1;"));
+				$data = db::query("SELECT vip_points,vip FROM users WHERE id = '".USER_ID."' LIMIT 1;")->fetch(PDO::FETCH_ASSOC);
 				if($data['vip'] == 0)
 				{
 					die('<center><font color="red">No eres VIP, para poder comprar placas debes ser VIP.</font></center>');
 				}
 				if($data['vip_points'] > $price)
 				{
-					$count = mysql_num_rows(db::query("SELECT badge_id FROM user_badges WHERE user_id = '".USER_ID."' AND badge_id = '".$id."' LIMIT 1;"));
+					$count = ->rowCount(db::query("SELECT badge_id FROM user_badges WHERE user_id = '".USER_ID."' AND badge_id = '".$id."' LIMIT 1;"));
 					if($count > 0)
 					{
 						die('<center><font color="red">Ya cuentas con esta placa, por favor elige otra.</font></center>');

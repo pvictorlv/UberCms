@@ -86,9 +86,9 @@ if (isset($_GET['switchId']))
 {
 	$get = db::query("SELECT enabled FROM room_ads WHERE ad_image_orig = '" . filter($_GET['switchId']) . "' LIMIT 1");
 	
-	if (mysql_num_rows($get) >= 1)
+	if ($get->rowCount() >= 1)
 	{
-		$enabled = mysql_result($get, 0);
+		$enabled = $get, 0->fetchColumn();
 		
 		$set = "0";
 		
@@ -149,10 +149,10 @@ if ($handle = opendir(CWD . '/ads'))
 		$dbData = null;
 		$dbGet = db::query("SELECT * FROM room_ads WHERE ad_image_orig = '" . $file . "' LIMIT 1");
 		
-		if (mysql_num_rows($dbGet) >= 1)
+		if ($dbGet->rowCount() >= 1)
 		{
 			$hasDbEntry = true;
-			$dbData = mysql_fetch_assoc($dbGet);
+			$dbData = $dbGet->fetch(PDO::FETCH_ASSOC);
 		}
 
 		echo '<tr>

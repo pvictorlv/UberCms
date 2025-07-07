@@ -24,11 +24,11 @@ $verify = query_rows("SELECT null FROM users_groups_memberships WHERE userID = '
 if($verify > 0)
 {
 	$checkGroup = query("SELECT * FROM users_groups WHERE id = '" . $groupId . "' LIMIT 1");
-	$existGroup = mysql_num_rows($checkGroup);
+	$existGroup = $checkGroup->rowCount();
 	
 	if($existGroup > 0)
 	{
-		$row = mysql_fetch_assoc($checkGroup);
+		$row = $checkGroup->fetch(PDO::FETCH_ASSOC));
 	}
 	else
 	{

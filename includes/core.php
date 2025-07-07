@@ -78,14 +78,14 @@ if(empty($dbhost) || empty($dbuser) || empty($dbpass) || empty($dbname))
 } 
 else
 {
-	@mysql_connect($dbhost, $dbuser, $dbpass)or die(writeError("�Ha sucedido un error fatal!", "No ha sido posible la conexi�n a la Base de datos. Por favor si eres el due�o del Hotel revisa la configuraci�n."));
-	@mysql_select_db($dbname)or die(writeError("�Ha sucedido un error fatal!", "No ha sido posible la conexi�n a la Base de datos. Por favor si eres el due�o del Hotel revisa la configuraci�n."));
+	@// mysql_connect($dbhost, $dbuser, $dbpass)or die(writeError("�Ha sucedido un error fatal!", "No ha sido posible la conexi�n a la Base de datos. Por favor si eres el due�o del Hotel revisa la configuraci�n."));
+	@// mysql_select_db($dbname)or die(writeError("�Ha sucedido un error fatal!", "No ha sido posible la conexi�n a la Base de datos. Por favor si eres el due�o del Hotel revisa la configuraci�n."));
 }
 
 ########## DECLARACI�N DE VARIABLES GLOBALES ####################################
 
-$cms_sytem = mysql_query("SELECT * FROM cms_system") or die(mysql_error());
-$cms_row = mysql_fetch_assoc($cms_sytem);
+$cms_sytem = Db::query("SELECT * FROM cms_system")
+$cms_row = $cms_sytem->fetch(PDO::FETCH_ASSOC);
 
 $sitename = $cms_row["sitename"];
 $shortname = $cms_row["shortname"];
@@ -128,16 +128,16 @@ $time_compare = (time() - 501);
 
 function getConfig($value)
 {
-	$sql = mysql_query("SELECT ".$value." FROM cms_system LIMIT 1") or die(mysql_error());
-	$row = mysql_fetch_assoc($sql);
+	$sql = Db::query("SELECT ".$value." FROM cms_system LIMIT 1")
+	$row = $sql->fetch(PDO::FETCH_ASSOC);
 	
 	return $row[$value];
 }
 
 function getSystem($value)
 {
-	$sql = mysql_query("SELECT ".$value." FROM server_status LIMIT 1") or die(mysql_error());
-	$row = mysql_fetch_assoc($sql);
+	$sql = Db::query("SELECT ".$value." FROM server_status LIMIT 1")
+	$row = $sql->fetch(PDO::FETCH_ASSOC);
 	
 	return $row[$value];
 }
@@ -145,16 +145,16 @@ function getSystem($value)
 
 function getPub($value)
 {
-	$sql = mysql_query("SELECT ".$value." FROM cms_pubs LIMIT 1") or die(mysql_error());
-	$row = mysql_fetch_assoc($sql);
+	$sql = Db::query("SELECT ".$value." FROM cms_pubs LIMIT 1")
+	$row = $sql->fetch(PDO::FETCH_ASSOC);
 	
 	return $row[$value];
 }
 
 function getRpx($value, $exist=false)
 {
-	$sql = mysql_query("SELECT ".$value." FROM cms_rpx LIMIT 1") or die(mysql_error());
-	$row = mysql_fetch_assoc($sql);
+	$sql = Db::query("SELECT ".$value." FROM cms_rpx LIMIT 1")
+	$row = $sql->fetch(PDO::FETCH_ASSOC);
 	
 	if($exist == true)
 	{
@@ -168,8 +168,8 @@ function getRpx($value, $exist=false)
 
 function getServer($value, $switch = false){
 
-	$sql = mysql_query("SELECT sval FROM system_config WHERE skey = '".$value."' LIMIT 1") or die(mysql_error());
-	$row = mysql_fetch_assoc($sql);
+	$sql = Db::query("SELECT sval FROM system_config WHERE skey = '".$value."' LIMIT 1")
+	$row = $sql->fetch(PDO::FETCH_ASSOC);
 
 	if($switch !== true){
 		return $row['sval'];
@@ -183,8 +183,8 @@ function getServer($value, $switch = false){
 
 function getAds($value)
 {
-	$sql = mysql_query("SELECT ".$value." FROM room_ads LIMIT 1") or die(mysql_error());
-	$row = mysql_fetch_assoc($sql);
+	$sql = Db::query("SELECT ".$value." FROM room_ads LIMIT 1")
+	$row = $sql->fetch(PDO::FETCH_ASSOC);
 	
 	return $row[$value];
 }
@@ -305,21 +305,21 @@ function getMonth($number)
 function showfriendsOnline($my_id, $show_names = false)
 {
 
-	$get_myfriends = mysql_query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$my_id."' OR user_two_id = '".$my_id."'") or die(mysql_error());
+	$get_myfriends = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$my_id."' OR user_two_id = '".$my_id."'")
 	$time_compare = (time() - 501);
 	$counter = 0;
 	$users = "";
 	
-	while ($row = mysql_fetch_array($get_myfriends)){
+	while ($row = $get_myfriends->fetch(PDO::FETCH_ASSOC)){
 	
 	if($row['user_one_id'] == $my_id){
-	$get_friend = mysql_query("SELECT username FROM users WHERE id = '".$row['user_two_id']."' AND online >= ".$time_compare." LIMIT 1");
+	$get_friend = Db::query("SELECT username FROM users WHERE id = '".$row['user_two_id']."' AND online >= ".$time_compare." LIMIT 1");
 	} else {
-	$get_friend = mysql_query("SELECT username FROM users WHERE id = '".$row['user_one_id']."' AND online >= ".$time_compare." LIMIT 1");
+	$get_friend = Db::query("SELECT username FROM users WHERE id = '".$row['user_one_id']."' AND online >= ".$time_compare." LIMIT 1");
 	}
 	
-	$row2 = mysql_fetch_assoc($get_friend);	
-	$friend_exist = mysql_num_rows($get_friend);
+	$row2 = $get_friend->fetch(PDO::FETCH_ASSOC);	
+	$friend_exist = $get_friend->rowCount();
 	
 	if($friend_exist > 0){
 	$counter++;
@@ -341,19 +341,19 @@ function showfriendsOnline($my_id, $show_names = false)
 function showfriendsOffline($my_id)
 {
 
-	$get_myfriends = mysql_query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$my_id."' OR user_two_id = '".$my_id."'") or die(mysql_error());
+	$get_myfriends = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$my_id."' OR user_two_id = '".$my_id."'")
 	$time_compare = (time() - 501);
 	$counter = 0;
 	
-	while ($row = mysql_fetch_array($get_myfriends)){
+	while ($row = $get_myfriends->fetch(PDO::FETCH_ASSOC)){
 	if($row['user_one_id'] == $my_id){
-	$get_friend = mysql_query("SELECT username FROM users WHERE id = '".$row['user_two_id']."' AND online < ".$time_compare." LIMIT 1");
+	$get_friend = Db::query("SELECT username FROM users WHERE id = '".$row['user_two_id']."' AND online < ".$time_compare." LIMIT 1");
 	} else {
-	$get_friend = mysql_query("SELECT username FROM users WHERE id = '".$row['user_one_id']."' AND online < ".$time_compare." LIMIT 1");
+	$get_friend = Db::query("SELECT username FROM users WHERE id = '".$row['user_one_id']."' AND online < ".$time_compare." LIMIT 1");
 	}
 	
-	$row2 = mysql_fetch_assoc($get_friend);	
-	$friend_exist = mysql_num_rows($get_friend);
+	$row2 = $get_friend->fetch(PDO::FETCH_ASSOC);	
+	$friend_exist = $get_friend->rowCount();
 	
 	if($friend_exist > 0){
 	$counter++;
@@ -368,12 +368,12 @@ function showfriendsOffline($my_id)
 function showtags($my_id)
 {
 
-	$get_tags = mysql_query("SELECT * FROM users_tags WHERE user_id = '".$my_id."'") or die(mysql_error());
-	$get_total = mysql_num_rows($get_tags);
+	$get_tags = Db::query("SELECT * FROM users_tags WHERE user_id = '".$my_id."'")
+	$get_total = $get_tags->rowCount();
 	$tags = "";
 	$total_tags = 1;
 	
-	while ($row = mysql_fetch_array($get_tags)){
+	while ($row = $get_tags->fetch(PDO::FETCH_ASSOC)){
 	if($total_tags == $get_total){
 	$final = "";
 	} else {
@@ -392,10 +392,10 @@ function showtags($my_id)
 function IsFriend($myid, $userid)
 {
 
-	$get = mysql_query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$myid."' AND user_two_id = '".$userid."' LIMIT 1") or die(mysql_error());
-	$get2 = mysql_query("SELECT * FROM messenger_friendships WHERE user_one_id= '".$userid."' AND user_two_id = '".$myid."' LIMIT 1") or die(mysql_error());
+	$get = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$myid."' AND user_two_id = '".$userid."' LIMIT 1")
+	$get2 = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id= '".$userid."' AND user_two_id = '".$myid."' LIMIT 1")
 	
-	if(mysql_num_rows($get) > 0 || mysql_num_rows($get2) > 0){
+	if($get->rowCount() > 0 || $get2->rowCount() > 0){
 	return true;
 	} else {
 	return false;
@@ -408,8 +408,8 @@ if(!session_is_registered(username) && $_COOKIE['remember'] == "remember")
 	$cname = FilterText($_COOKIE['rusername']);
 	$cpass = FilterText($_COOKIE['rpassword']);
 
-	$csql = mysql_query("SELECT password FROM users WHERE username = '".$cname."' OR mail = '".$cname."' LIMIT 1") or die(mysql_error());
-	$cnum = mysql_num_rows($csql);
+	$csql = Db::query("SELECT password FROM users WHERE username = '".$cname."' OR mail = '".$cname."' LIMIT 1")
+	$cnum = $csql->rowCount();
 	
 	setcookie("remember", "", time()-60*60*24*100);
 	setcookie("rusername", "", time()-60*60*24*100);
@@ -417,7 +417,7 @@ if(!session_is_registered(username) && $_COOKIE['remember'] == "remember")
 
 	if($cnum > 0)
 	{
-		$crow = mysql_fetch_assoc($csql);
+		$crow = $csql->fetch(PDO::FETCH_ASSOC);
 		$correct_pass = $crow['password'];
 
 		if(HoloHash($cpass) == $correct_pass)
@@ -543,9 +543,9 @@ if(session_is_registered('username'))
 	$rawname = FilterText($_SESSION['username']);
 	$rawpass = HoloHash($_SESSION['password']);
 
-	$usersql = mysql_query("SELECT * FROM users WHERE username = '".$rawname."' AND password = '".$rawpass."' LIMIT 1");
-	$myrow = mysql_fetch_assoc($usersql);
-	$password_correct = mysql_num_rows($usersql);
+	$usersql = Db::query("SELECT * FROM users WHERE username = '".$rawname."' AND password = '".$rawpass."' LIMIT 1");
+	$myrow = $usersql->fetch(PDO::FETCH_ASSOC);
+	$password_correct = $usersql->rowCount();
 
 	if($password_correct !== 1)
 	{
@@ -571,7 +571,7 @@ if(session_is_registered('username'))
 		$web_online = time(); 
 	}
 
-	mysql_query("UPDATE users SET web_online = '".$web_online."', ip_last = '".MY_IP."' WHERE id = '".$my_id."' LIMIT 1") or die(mysql_error());
+	Db::query("UPDATE users SET web_online = '".$web_online."', ip_last = '".MY_IP."' WHERE id = '".$my_id."' LIMIT 1")
 	
 	$my_rank = $myrow['rank'];
 	$my_id = $myrow['id'];
@@ -619,9 +619,9 @@ if(session_is_registered('email') && !$_SESSION['already_login'])
 	$rawemail = FilterText($_SESSION['email']);
 	$rawpass = HoloHash($_SESSION['password']);
 
-	$usersql = mysql_query("SELECT * FROM users WHERE mail = '".$rawemail."' AND password = '".$rawpass."' ORDER BY id LIMIT 1");
-	$myrow = mysql_fetch_assoc($usersql);
-	$password_correct = mysql_num_rows($usersql);
+	$usersql = Db::query("SELECT * FROM users WHERE mail = '".$rawemail."' AND password = '".$rawpass."' ORDER BY id LIMIT 1");
+	$myrow = $usersql->fetch(PDO::FETCH_ASSOC);
+	$password_correct = $usersql->rowCount();
 
 	if($password_correct !== 1)
 	{
@@ -658,9 +658,9 @@ else
 
 if($_SESSION['rpx'] == "facebook")
 {
-	$usersql = mysql_query("SELECT * FROM users WHERE rpxid = '".$fid."' AND rpx_type = 'facebook' ORDER BY id LIMIT 1");
-	$exist = mysql_num_rows($usersql);
-	$myrow = mysql_fetch_assoc($usersql);
+	$usersql = Db::query("SELECT * FROM users WHERE rpxid = '".$fid."' AND rpx_type = 'facebook' ORDER BY id LIMIT 1");
+	$exist = $usersql->rowCount();
+	$myrow = $usersql->fetch(PDO::FETCH_ASSOC);
 	
 	if($exist == 0)
 	{
@@ -696,9 +696,9 @@ else
 
 if($_SESSION['rpx'] == "rpx"){
 
-	$usersql = mysql_query("SELECT * FROM users WHERE rpxid = '".textInJS($profile['displayName'])."' AND rpx_type = 'rpx' ORDER BY id LIMIT 1");
-	$exist = mysql_num_rows($usersql);
-	$myrow = mysql_fetch_assoc($usersql);
+	$usersql = Db::query("SELECT * FROM users WHERE rpxid = '".textInJS($profile['displayName'])."' AND rpx_type = 'rpx' ORDER BY id LIMIT 1");
+	$exist = $usersql->rowCount();
+	$myrow = $usersql->fetch(PDO::FETCH_ASSOC);
 	
 	if($exist == 0){
 
@@ -744,15 +744,15 @@ elseif(getConfig("hotel_status") == "2" && $my_rank > 4)
 function GetUserBadge($strName)
 { 
 
-	$check = mysql_query("SELECT id FROM users WHERE (id = '".FilterText($strName)."' OR username = '".FilterText($strName)."') LIMIT 1") or die(mysql_error());
-	$exists = mysql_num_rows($check);
+	$check = Db::query("SELECT id FROM users WHERE (id = '".FilterText($strName)."' OR username = '".FilterText($strName)."') LIMIT 1")
+	$exists = $check->rowCount();
 
 		if($exists > 0){
-			$usrrow = mysql_fetch_assoc($check);
-			$check = mysql_query("SELECT * FROM user_badges WHERE user_id = '".$usrrow['id']."' AND iscurrent = '1' LIMIT 1") or die(mysql_error());
-			$hasbadge = mysql_num_rows($check);
+			$usrrow = $check->fetch(PDO::FETCH_ASSOC);
+			$check = Db::query("SELECT * FROM user_badges WHERE user_id = '".$usrrow['id']."' AND iscurrent = '1' LIMIT 1")
+			$hasbadge = $check->rowCount();
 			if($hasbadge > 0){
-				$badgerow = mysql_fetch_assoc($check);
+				$badgerow = $check->fetch(PDO::FETCH_ASSOC);
 				return $badgerow['badgeid'];
                 } else {
 				return false;
@@ -766,12 +766,12 @@ function GetUserBadge($strName)
 
 function GetUserGroup($my_id){
 
-$check = mysql_query("SELECT groupid FROM groups_memberships WHERE userid = '".$my_id."' AND is_current = '1' LIMIT 1") or die(mysql_error());
-$has_fave = mysql_num_rows($check);
+$check = Db::query("SELECT groupid FROM groups_memberships WHERE userid = '".$my_id."' AND is_current = '1' LIMIT 1")
+$has_fave = $check->rowCount();
 
 	if($has_fave > 0){
 
-		$row = mysql_fetch_assoc($check);
+		$row = $check->fetch(PDO::FETCH_ASSOC);
 		$groupid = $row['groupid'];
 
 		return $groupid;
@@ -787,17 +787,17 @@ $has_fave = mysql_num_rows($check);
 
 function GetUserGroupBadge($my_id){
 
-$check = mysql_query("SELECT groupid FROM groups_memberships WHERE userid = '".$my_id."' AND is_current = '1' LIMIT 1") or die(mysql_error());
-$has_badge = mysql_num_rows($check);
+$check = Db::query("SELECT groupid FROM groups_memberships WHERE userid = '".$my_id."' AND is_current = '1' LIMIT 1")
+$has_badge = $check->rowCount();
 
 	if($has_badge > 0){
 
-		$row = mysql_fetch_assoc($check);
+		$row = $check->fetch(PDO::FETCH_ASSOC);
 		$groupid = $row['groupid'];
 
-		$check = mysql_query("SELECT badge FROM groups_details WHERE id = '".$groupid."' LIMIT 1") or die(mysql_error());
+		$check = Db::query("SELECT badge FROM groups_details WHERE id = '".$groupid."' LIMIT 1")
 
-		$row = mysql_fetch_assoc($check);
+		$row = $check->fetch(PDO::FETCH_ASSOC);
 		$badge = $row['badge'];
 
 		return $badge;
@@ -812,14 +812,14 @@ $has_badge = mysql_num_rows($check);
 
 	function getClubDays($id)
 	{
-		$sql = mysql_query("SELECT timestamp_activated, timestamp_expire FROM user_subscriptions WHERE user_id = '".$id."' LIMIT 1");
+		$sql = Db::query("SELECT timestamp_activated, timestamp_expire FROM user_subscriptions WHERE user_id = '".$id."' LIMIT 1");
 
-		if (mysql_num_rows($sql) == 0)
+		if ($sql->rowCount() == 0)
 		{
 			return 0;
 		}
 		
-		$data = mysql_fetch_assoc($sql);
+		$data = $sql->fetch(PDO::FETCH_ASSOC);
 		$diff = $data['timestamp_expire'] - time();
 		
 		if ($diff <= 0)
@@ -834,14 +834,14 @@ $has_badge = mysql_num_rows($check);
 
 	function getHC($id)
 	{
-		$sql = mysql_query("SELECT * FROM user_subscriptions WHERE subscription_id = 'habbo_club' AND user_id = '".$id."' LIMIT 1");
+		$sql = Db::query("SELECT * FROM user_subscriptions WHERE subscription_id = 'habbo_club' AND user_id = '".$id."' LIMIT 1");
 
-		if (mysql_num_rows($sql) == 0)
+		if ($sql->rowCount() == 0)
 		{
 			return 0;
 		}
 
-		$data = mysql_fetch_assoc($sql);
+		$data = $sql->fetch(PDO::FETCH_ASSOC);
 		$diff = $data['timestamp_expire'] - time();
 		
 		if ($diff <= 0)
@@ -857,14 +857,14 @@ $has_badge = mysql_num_rows($check);
 
 	function getVIP($id)
 	{
-		$sql = mysql_query("SELECT * FROM user_subscriptions WHERE subscription_id = 'habbo_vip' AND user_id = '".$id."' LIMIT 1");
+		$sql = Db::query("SELECT * FROM user_subscriptions WHERE subscription_id = 'habbo_vip' AND user_id = '".$id."' LIMIT 1");
 
-		if (mysql_num_rows($sql) == 0)
+		if ($sql->rowCount() == 0)
 		{
 			return 0;
 		}
 		
-		$data = mysql_fetch_assoc($sql);
+		$data = $sql->fetch(PDO::FETCH_ASSOC);
 		$diff = $data['timestamp_expire'] - time();
 		
 		if ($diff <= 0)
@@ -881,24 +881,24 @@ $has_badge = mysql_num_rows($check);
 
 function GiveHC($user_id, $months){
 
-$sql = mysql_query("SELECT * FROM user_subscriptions WHERE user_id = '".$user_id."' LIMIT 1") or die(mysql_error());
-$valid = mysql_num_rows($sql);
+$sql = Db::query("SELECT * FROM user_subscriptions WHERE user_id = '".$user_id."' LIMIT 1")
+$valid = $sql->rowCount();
 
     if($valid > 0){
 	
-        mysql_query("UPDATE users SET rank = '2' WHERE rank = '1' AND id = '".$user_id."' LIMIT 1") or die(mysql_error());
-        mysql_query("UPDATE user_subscriptions SET timestamp_expire = timestamp_expire + '".$seconds."' WHERE user_id = '".$user_id."' LIMIT 1") or die(mysql_error());
+        Db::query("UPDATE users SET rank = '2' WHERE rank = '1' AND id = '".$user_id."' LIMIT 1")
+        Db::query("UPDATE user_subscriptions SET timestamp_expire = timestamp_expire + '".$seconds."' WHERE user_id = '".$user_id."' LIMIT 1")
 		
         if(getBadge($user_id, "ACH_BasicClub1") == false){
-            mysql_query("INSERT INTO user_badges (user_id,badge_id,iscurrent) VALUES ('".$user_id."','ACH_BasicClub1','1')") or die(mysql_error());
+            Db::query("INSERT INTO user_badges (user_id,badge_id,iscurrent) VALUES ('".$user_id."','ACH_BasicClub1','1')")
 	    } else if(getBadge($user_id, "ACH_BasicClub2") == false){
-            mysql_query("UPDATE user_badges SET badge_id = 'ACH_BasicClub2' WHERE badge_id = 'ACH_BasicClub1' AND user_id = '".$user_id."'") or die(mysql_error());
+            Db::query("UPDATE user_badges SET badge_id = 'ACH_BasicClub2' WHERE badge_id = 'ACH_BasicClub1' AND user_id = '".$user_id."'")
 }
 
               
 		
     } else {
-        mysql_query("INSERT INTO user_subscriptions (user_id,subscription_id,timestamp_activated,timestamp_expire) VALUES ('".$user_id."','habbo_club','".time()."','".time()."')") or die(mysql_error());
+        Db::query("INSERT INTO user_subscriptions (user_id,subscription_id,timestamp_activated,timestamp_expire) VALUES ('".$user_id."','habbo_club','".time()."','".time()."')")
         GiveHC($user_id, $sec);
     }
 
@@ -908,22 +908,22 @@ $valid = mysql_num_rows($sql);
 
 function GiveVIP($user_id, $months){
 
-$sql = mysql_query("SELECT * FROM user_subscriptions WHERE user_id = '".$user_id."' LIMIT 1") or die(mysql_error());
-$valid = mysql_num_rows($sql);
+$sql = Db::query("SELECT * FROM user_subscriptions WHERE user_id = '".$user_id."' LIMIT 1")
+$valid = $sql->rowCount();
 
     if($valid > 0){
 	
-        mysql_query("UPDATE users SET rank = '2' WHERE rank = '1' AND id = '".$user_id."' LIMIT 1") or die(mysql_error());
-        mysql_query("UPDATE user_subscriptions SET timestamp_expire = timestamp_expire + '".$seconds."' WHERE user_id = '".$user_id."' LIMIT 1") or die(mysql_error());
+        Db::query("UPDATE users SET rank = '2' WHERE rank = '1' AND id = '".$user_id."' LIMIT 1")
+        Db::query("UPDATE user_subscriptions SET timestamp_expire = timestamp_expire + '".$seconds."' WHERE user_id = '".$user_id."' LIMIT 1")
 		
         if(getBadge($user_id, "ACH_VipClub1") == false){
-            mysql_query("INSERT INTO user_badges (user_id,badge_id,iscurrent) VALUES ('".$user_id."','ACH_VipClub1','1')") or die(mysql_error());
+            Db::query("INSERT INTO user_badges (user_id,badge_id,iscurrent) VALUES ('".$user_id."','ACH_VipClub1','1')")
 	    } else if(getBadge($user_id, "ACH_BasicClub2") == false){
-            mysql_query("UPDATE user_badges SET badge_id = 'ACH_VipClub2' WHERE badge_id = 'ACH_VipClub1' AND user_id = '".$user_id."'") or die(mysql_error());;
+            Db::query("UPDATE user_badges SET badge_id = 'ACH_VipClub2' WHERE badge_id = 'ACH_VipClub1' AND user_id = '".$user_id."'");
         }
 		
     } else {
-        mysql_query("INSERT INTO user_subscriptions (user_id,subscription_id,timestamp_activated,timestamp_expire) VALUES ('".$user_id."','habbo_vip','".time()."','".time()."')") or die(mysql_error());
+        Db::query("INSERT INTO user_subscriptions (user_id,subscription_id,timestamp_activated,timestamp_expire) VALUES ('".$user_id."','habbo_vip','".time()."','".time()."')")
         GiveHC($user_id, $sec);
     }
 
@@ -937,7 +937,7 @@ if($no_refresh == true)
 
 if(LOGGED_IN == TRUE)
 {	
-	mysql_query("UPDATE users SET web_online = '".$web_online."', ip_last = '".MY_IP."' WHERE id = '".$my_id."' LIMIT 1") or die(mysql_error());
+	Db::query("UPDATE users SET web_online = '".$web_online."', ip_last = '".MY_IP."' WHERE id = '".$my_id."' LIMIT 1")
 }
 
 ####################################################################################
@@ -968,8 +968,8 @@ if($config['rea_time'] > 0 && LOGGED_IN == TRUE)
 function IsUserOnline($intUID, $inWeb = false)
 {
 
-$result = mysql_query("SELECT online, web_online FROM users WHERE id = '".FilterText($intUID)."' OR username = '".FilterText($intUID)."' LIMIT 1") or die(mysql_error());
-$row = mysql_fetch_assoc($result);
+$result = Db::query("SELECT online, web_online FROM users WHERE id = '".FilterText($intUID)."' OR username = '".FilterText($intUID)."' LIMIT 1")
+$row = $result->fetch(PDO::FETCH_ASSOC);
 $time_compare = (time() - 501);
 
 if($inWeb == false)
@@ -987,14 +987,14 @@ else
 
 	function getBanUser($name)
 	{
-		$sql = mysql_query("SELECT * FROM bans WHERE bantype = 'user' AND value = '".$name."' LIMIT 1");
+		$sql = Db::query("SELECT * FROM bans WHERE bantype = 'user' AND value = '".$name."' LIMIT 1");
 
-		if (mysql_num_rows($sql) == 0)
+		if ($sql->rowCount() == 0)
 		{
 			return false;
 		}
 
-		$data = mysql_fetch_assoc($sql);
+		$data = $sql->fetch(PDO::FETCH_ASSOC);
 		$diff = $data['expire'] - time();
 		
 		if ($diff <= 0)
@@ -1010,12 +1010,12 @@ else
 
 function getBanReason($my_id, $ip="", $date=false)
 {
-	$check = mysql_query("SELECT * FROM bans WHERE bantype = 'user' AND value = '".$myrow['username']."' LIMIT 1") or die(mysql_error());
-	$is_banned = mysql_num_rows($check);
+	$check = Db::query("SELECT * FROM bans WHERE bantype = 'user' AND value = '".$myrow['username']."' LIMIT 1")
+	$is_banned = $check->rowCount();
 
 	if($is_banned > 0)
 	{
-		$bandata = mysql_fetch_assoc($check);
+		$bandata = $check->fetch(PDO::FETCH_ASSOC);
 		
 		if(!$date)
 		{
@@ -1031,20 +1031,20 @@ function getBanReason($my_id, $ip="", $date=false)
 ####################################################################################
 
 function mysql_evaluate($query, $default_value="undefined") {
-	$result = mysql_query($query) or die(mysql_error());
+	$result = Db::query($query)
 
-	if(mysql_num_rows($result) < 1){
+	if($result->rowCount() < 1){
 		return $default_value;
 	} else {
-		return mysql_result($result, 0);
+		return $result, 0->fetchColumn();
 	}
 }
 
 ####################################################################################
 
 function FilterText($str, $advanced=false, $bbcode=false) {
-	if($advanced == true){ return mysql_real_escape_string($str); }
-	$str = mysql_real_escape_string(htmlspecialchars($str));
+	if($advanced == true){ return htmlspecialchars($str); }
+	$str = htmlspecialchars(htmlspecialchars($str));
 	return $str;
 }
 
@@ -1295,7 +1295,7 @@ for($i=1;$i<$code;$i++)
 function UpdateSSO($my_id)
 {
 	$myticket = GenerateRandom();
-	mysql_query("UPDATE users SET auth_ticket = '".$myticket."' WHERE id = '".$my_id."' LIMIT 1") or die(mysql_error());
+	Db::query("UPDATE users SET auth_ticket = '".$myticket."' WHERE id = '".$my_id."' LIMIT 1")
 	return $myticket;
 }
 
@@ -1304,8 +1304,8 @@ function UpdateSSO($my_id)
 function SweardsWordFilter($str)
 {
 
-$sql = mysql_query("SELECT * FROM system_wordfilter WHERE word LIKE '%".$str."%'") or die(mysql_error());
-$exist = mysql_num_rows($sql);
+$sql = Db::query("SELECT * FROM system_wordfilter WHERE word LIKE '%".$str."%'")
+$exist = $sql->rowCount();
 
 if($exist > 0){ return true; } else { return false; }
 }
@@ -1315,9 +1315,9 @@ if($exist > 0){ return true; } else { return false; }
 function SwitchWordFilter($str)
 {
 
-$sql = mysql_query("SELECT word FROM system_wordfilter") or die(mysql_error());
+$sql = Db::query("SELECT word FROM system_wordfilter")
 
-	while($row = mysql_fetch_assoc($sql)){
+	while($row = $sql->fetch(PDO::FETCH_ASSOC)){
 	$str = str_replace($row['word'],getServer("wordfilter_censor"),$str);
 	}
 
@@ -1365,8 +1365,8 @@ if(LOGGED_IN == FALSE && $require_login == true)
 
 function userData($key, $value)
 {
-	$sql = mysql_query("SELECT ".$key." FROM users WHERE username = '".$value."' OR id = '".$value."' LIMIT 1") or die(mysql_error());
-	$row = mysql_fetch_assoc($sql);
+	$sql = Db::query("SELECT ".$key." FROM users WHERE username = '".$value."' OR id = '".$value."' LIMIT 1")
+	$row = $sql->fetch(PDO::FETCH_ASSOC);
 	
 	return $row[$key];
 }
@@ -1375,8 +1375,8 @@ function userData($key, $value)
 
 function userRPXData($key, $value)
 {
-	$sql = mysql_query("SELECT ".$key." FROM users WHERE rpxid = '".$value."' LIMIT 1") or die(mysql_error());
-	$row = mysql_fetch_assoc($sql);
+	$sql = Db::query("SELECT ".$key." FROM users WHERE rpxid = '".$value."' LIMIT 1")
+	$row = $sql->fetch(PDO::FETCH_ASSOC);
 	
 	return $row[$key];
 }
@@ -1385,15 +1385,15 @@ function userRPXData($key, $value)
 
 function newTransaction($uid, $date, $amount, $desc)
 {
-	mysql_query("INSERT INTO cms_transactions (userid,date,amount,descr) VALUES ('".$uid."','".$date."','".$amount."','".$desc."')") or die(mysql_error());
+	Db::query("INSERT INTO cms_transactions (userid,date,amount,descr) VALUES ('".$uid."','".$date."','".$amount."','".$desc."')")
 }
 
 ####################################################################################
 
 function getBadge($myid, $badge)
 {
-	$check = mysql_query("SELECT badge_id FROM user_badges WHERE user_id = '".$myid."' AND badge_id = '".$badge."' LIMIT 1") or die(mysql_error());
-	$exist = mysql_num_rows($check);
+	$check = Db::query("SELECT badge_id FROM user_badges WHERE user_id = '".$myid."' AND badge_id = '".$badge."' LIMIT 1")
+	$exist = $check->rowCount();
 	
 		if($exist > 0) { return true; } else { return false; }
 }
@@ -1402,16 +1402,16 @@ function getBadge($myid, $badge)
 
 function newBadge($uid, $code, $replace=false, $oldcode="")
 {
-	$sql = mysql_query("SELECT * FROM users WHERE id = '".$uid."' LIMIT 1") or die(mysql_error());
-	$exist = mysql_num_rows($sql);
+	$sql = Db::query("SELECT * FROM users WHERE id = '".$uid."' LIMIT 1")
+	$exist = $sql->rowCount();
 	
 	if($exist > 0 && $replace == false)
 	{
-		mysql_query("INSERT INTO user_badges (user_id, badge_id) VALUES ('".$uid."', '".$code."')") or die(mysql_error());
+		Db::query("INSERT INTO user_badges (user_id, badge_id) VALUES ('".$uid."', '".$code."')")
 	}
 	else if($exist > 0 && $replace == true)
 	{
-		mysql_query("UPDATE user_badges SET badge_id = '".$code."' WHERE badge_id = '".$oldcode."' AND user_id = '".$uid."' LIMIT 1") or die(mysql_error());
+		Db::query("UPDATE user_badges SET badge_id = '".$code."' WHERE badge_id = '".$oldcode."' AND user_id = '".$uid."' LIMIT 1")
 	}
 	
 	@SendMUSData('UPRS' . $uid); 
@@ -1454,7 +1454,7 @@ function mgmBadge($uid)
 if(getConfig('time_lotery') == "0")
 {
 	$date = time() + (1 * 60 * 60);
-	mysql_query("UPDATE cms_system SET time_lotery = '".$date."' LIMIT 1") or die(mysql_error());
+	Db::query("UPDATE cms_system SET time_lotery = '".$date."' LIMIT 1")
 
 } else {
 	$date = getConfig('time_lotery');
@@ -1464,31 +1464,31 @@ if(time() > $date)
 {
 	$date = getConfig('time_lotery') + (1 * 60 * 60);
 
-	$win1 = mysql_query("SELECT userid FROM cms_lotery ORDER BY RAND() LIMIT 1") or die(mysql_error());
-	$wrow1 = mysql_fetch_assoc($win1);
-	$win2 = mysql_query("SELECT userid FROM cms_lotery ORDER BY RAND() LIMIT 1") or die(mysql_error());
-	$wrow2 = mysql_fetch_assoc($win2);
+	$win1 = Db::query("SELECT userid FROM cms_lotery ORDER BY RAND() LIMIT 1")
+	$wrow1 = $win1->fetch(PDO::FETCH_ASSOC);
+	$win2 = Db::query("SELECT userid FROM cms_lotery ORDER BY RAND() LIMIT 1")
+	$wrow2 = $win2->fetch(PDO::FETCH_ASSOC);
 
-	if(mysql_num_rows($win1) > 0)
+	if($win1->rowCount() > 0)
 	{
-		mysql_query("UPDATE users SET credits = credits + 200, activity_points = activity_points + 150 WHERE id = '".$wrow1['userid']."'") or die(mysql_error());
-		mysql_query("INSERT INTO cms_alerts (userid, template, alert) VALUES ('".$wrow1['userid']."', '2', '�Has gando la loteria! �Felicidades! Has obtenido con �xito tu premio.')") or die(mysql_error());
+		Db::query("UPDATE users SET credits = credits + 200, activity_points = activity_points + 150 WHERE id = '".$wrow1['userid']."'")
+		Db::query("INSERT INTO cms_alerts (userid, template, alert) VALUES ('".$wrow1['userid']."', '2', '�Has gando la loteria! �Felicidades! Has obtenido con �xito tu premio.')")
 		
 		@SendMUSData('UPRC' . $wrow1['userid']); 
 		@SendMUSData('HKTM' . $wrow1['userid'] . chr(2) . "¡Has ganado la loteria! Felicidades ;D");
 	}
 	
-	if(mysql_num_rows($win2) > 0)
+	if($win2->rowCount() > 0)
 	{
-		mysql_query("UPDATE users SET credits = credits + 200, activity_points = activity_points + 150 WHERE id = '".$wrow2['userid']."'") or die(mysql_error());
-		mysql_query("INSERT INTO cms_alerts (userid, template, alert) VALUES ('".$wrow2['userid']."', '2', '�Has gando la loteria! �Felicidades! Has obtenido con �xito tu premio.')") or die(mysql_error());
+		Db::query("UPDATE users SET credits = credits + 200, activity_points = activity_points + 150 WHERE id = '".$wrow2['userid']."'")
+		Db::query("INSERT INTO cms_alerts (userid, template, alert) VALUES ('".$wrow2['userid']."', '2', '�Has gando la loteria! �Felicidades! Has obtenido con �xito tu premio.')")
 		
 		@SendMUSData('UPRC' . $wrow2['userid']); 
 		@SendMUSData('HKTM' . $wrow2['userid'] . chr(2) . "¡Has ganado la loteria! Felicidades ;D");
 	}
 
-	mysql_query("UPDATE cms_system SET time_lotery = '".$date."' LIMIT 1") or die(mysql_error());
-	mysql_query("TRUNCATE TABLE `cms_lotery`;") or die(mysql_error());
+	Db::query("UPDATE cms_system SET time_lotery = '".$date."' LIMIT 1")
+	Db::query("TRUNCATE TABLE `cms_lotery`;")
 }
 
 $time_tolotery = $date - time();

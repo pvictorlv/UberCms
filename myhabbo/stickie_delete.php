@@ -8,7 +8,7 @@ if (isset($_SESSION['startSessionEditHome']) && $_SESSION['startSessionEditHome'
             $sql = db::query("SELECT home_id FROM homes_items WHERE id = '" . $stickieId . "' LIMIT 1");
             $data = $sql->fetch(2);
 
-            if (mysql_num_rows($sql) > 0) {
+            if ($sql->rowCount() > 0) {
                 if ($data['home_id'] == $_SESSION['startSessionEditHome']) {
                     db::query("DELETE FROM homes_items WHERE id = '" . $stickieId . "' LIMIT 1");
                     echo "SUCCESS";
@@ -31,7 +31,7 @@ if (isset($_SESSION['startSessionEditHome']) && $_SESSION['startSessionEditHome'
             $sql = db::query("SELECT group_id FROM groups_items WHERE id = '" . $stickieId . "' LIMIT 1");
             $data = $sql->fetch(2);
 
-            if (mysql_num_rows($sql) > 0) {
+            if ($sql->rowCount() > 0) {
                 if ($data['group_id'] == $_SESSION['startSessionEditGroup']) {
                     db::query("DELETE FROM groups_items WHERE id = '" . $stickieId . "' LIMIT 1");
                     echo "SUCCESS";

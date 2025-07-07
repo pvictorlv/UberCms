@@ -13,11 +13,11 @@ require_once('../../global.php');
 
 $groupid = FilterText($_GET['groupId']);
 
-$check = mysql_query("SELECT * FROM groups_details WHERE id = '".$groupid."' LIMIT 1") or die(mysql_error());
-$exist = mysql_num_rows($check);
+$check = Db::query("SELECT * FROM groups_details WHERE id = '".$groupid."' LIMIT 1")
+$exist = $check->rowCount();
 
 if($exist > 0)
-	$row = mysql_fetch_assoc($check);
+	$row = $check->fetch(PDO::FETCH_ASSOC);
 else
 	exit;
 ?>
@@ -127,15 +127,15 @@ else
 
     <div id="room-settings" style="display: none;">
 <?php 
-$sql = mysql_query("SELECT id,caption,description FROM rooms WHERE owner = '".$name."' ");
-$groupdetails = mysql_query("SELECT * FROM groups_details WHERE id = '".$groupid."' LIMIT 1");
-$group = mysql_fetch_assoc($groupdetails);
+$sql = Db::query("SELECT id,caption,description FROM rooms WHERE owner = '".$name."' ");
+$groupdetails = Db::query("SELECT * FROM groups_details WHERE id = '".$groupid."' LIMIT 1");
+$group = $groupdetails->fetch(PDO::FETCH_ASSOC);
 $i = 1; ?>
 <label>Selecciona una Sala para el grupo:</label>
 
 <div id="room-settings-id" class="group-settings-pane-wide group-settings-selection">
     <ul><li><input type="radio" name="roomId" value="0" <?php if($group['roomid'] == "0" || $group['roomid'] == "" || $group['roomid'] == " ") { echo "checked=\"checked\""; } ?> /><div>Sin Sala</div></li>
-	<?php while($row = mysql_fetch_assoc($sql)) {
+	<?php while($row = $sql->fetch(PDO::FETCH_ASSOC)) {
 		        $i++;
 		?>
     	<li class="<?php if($System->isEven($i) == "even") { echo "even"; } else { echo "odd"; } ?>">

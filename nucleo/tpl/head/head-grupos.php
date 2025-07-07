@@ -43,6 +43,6 @@ if (typeof HabboClient != "undefined") { HabboClient.windowName = "uberClientWnd
 <link rel="stylesheet" href="%www%/styles/assets/stickers.css?v=5a9f5cbe379ca65e6417720f48df0510" type="text/css"/>
 <script src="%www%/web-gallery/static/js/homeedit.js" type="text/javascript"></script>
 <script src="%www%/web-gallery/static/js/homeview.js" type="text/javascript"></script>
-<link rel="stylesheet" href="http://images.xukys-hotel.com/habboweb/63_1dc60c6d6ea6e089c6893ab4e0541ee0/730/web-gallery/static/styles/lightwindow.css" type="text/css"/>
+<link rel="stylesheet" href="%www%/web-gallery/static/styles/lightwindow.css" type="text/css"/>
 <script src="%www%/web-gallery/static/js/homeauth.js" type="text/javascript"></script>
-<link rel="stylesheet" href="http://images.xukys-hotel.com/habboweb/63_1dc60c6d6ea6e089c6893ab4e0541ee0/730/web-gallery/static/styles/group.css" type="text/css"/>
+<link rel="stylesheet" href="%www%/web-gallery/static/styles/group.css" type="text/css"/>

@@ -34,7 +34,7 @@ $getOptions2 = db::query("SELECT * FROM site_addons_comunidad WHERE columna='2' 
 
 <strong>Columna 1:</strong>
 <br><br>
-<?php while($Config = mysql_fetch_array($getOptions)){
+<?php while($Config = $getOptions->fetch(PDO::FETCH_ASSOC))){
 if($Config['activado'] == '1'){
 echo '<strong><font color="green">' . $Config['nombre'] . '</font></strong>  ';}
 else{ echo '<br><strong><font color="red">' . $Config['nombre'] . '</font></strong>  ';}
@@ -49,7 +49,7 @@ if($Config['nombre'] == 'Chat' | $Config['nombre'] == 'Xat'){echo ' <a href="ind
 <br>
 <strong>Columna 2:</strong>
 <br><br>
-<?php while($Config = mysql_fetch_array($getOptions2)){
+<?php while($Config = $getOptions2->fetch(PDO::FETCH_ASSOC))){
 if($Config['activado'] == '1'){
 echo '<strong><font color="green">' . $Config['nombre'] . '</font></strong>  ';}
 else{ echo '<br><strong><font color="red">' . $Config['nombre'] . '</font></strong>  ';}

@@ -104,7 +104,7 @@
                    style="background-image: url('%www%/images/front_page_hotel_with_habbos.png')">
                     <div id="partner-logo"></div>
                 </a>
-                <div style="width: 710px; margin: 0 auto;">
+                <div  class="tag-container">
 
 
                     <div id="pretagline" class="roundedrect">

@@ -36,7 +36,7 @@ $getTags = query("SELECT * FROM users_groups_tags WHERE groupID = '" . $groupId 
 ?>
 <div id="profile-tags-container">
 	<?php
-	while($row = mysql_fetch_assoc($getTags)) { 
+	while($row = $getTags->fetch(PDO::FETCH_ASSOC)) { 
 	?>
     <span class="tag-search-rowholder">
         <a href="<?php echo SITE; ?>/tag/<?php echo $row['tag']; ?>" class="tag"

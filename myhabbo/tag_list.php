@@ -6,10 +6,10 @@ include '../global.php';
 <div id="profile-tags-container">
 <?php
 	$accountId = $gtfo->cleanWord($_POST['accountId']);
-	$sql = mysql_query("SELECT * FROM users_tags WHERE user_id = '".$accountId."'");
-	if(mysql_num_rows($sql) > 0)
+	$sql = Db::query("SELECT * FROM users_tags WHERE user_id = '".$accountId."'");
+	if($sql->rowCount() > 0)
 	{
-	while($data = mysql_fetch_array($sql))
+	while($data = $sql->fetch(PDO::FETCH_ASSOC))
 	{
 
 ?>
@@ -17,8 +17,8 @@ include '../global.php';
         <a href="http://xukys-hotel.com/tag/<?php echo fixText($data['tag'], true, false, true, false, false); ?>" class="tag"><?php echo fixText($data['tag'], true, false, true, false, false); ?></a><div class="tag-id" style="display:none"><?php echo $data['id']; ?></div><?php if(USER_ID == $data['user_id']) { ?><img border="0" class="tag-delete-link" onmouseover="this.src='<?php echo WWW; ?>/web-gallery/images/buttons/tags/tag_button_delete_hi.gif'" onmouseout="this.src='<?php echo WWW; ?>/web-gallery/images/buttons/tags/tag_button_delete.gif'" src="<?php echo WWW; ?>/web-gallery/images/buttons/tags/tag_button_delete.gif"><?php } ?>
     </span>
 <?php
-	$query = mysql_query("SELECT user_id FROM users_tags WHERE tag = '".$data['tag']."' AND user_id = '".USER_ID."' AND user_id != '".$data['user_id']."' LIMIT 1");
-	if(mysql_num_rows($query) > 0)
+	$query = Db::query("SELECT user_id FROM users_tags WHERE tag = '".$data['tag']."' AND user_id = '".USER_ID."' AND user_id != '".$data['user_id']."' LIMIT 1");
+	if($query->rowCount() > 0)
 	{
 
 ?>

@@ -6,7 +6,7 @@ require_once('../global.php');
 $songid = FilterText($_POST['songId']);
 $id = FilterText($_POST['widgetId']);
 
-mysql_query("UPDATE homes_stickers SET var = '".$songid."' WHERE id = '".$id."'");?>
+Db::query("UPDATE homes_stickers SET var = '".$songid."' WHERE id = '".$id."'");?>
 
 <embed type="application/x-shockwave-flash"
 src="/web-gallery/flash/traxplayer/traxplayer.swf" name="traxplayer" quality="high"

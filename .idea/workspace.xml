@@ -14,11 +14,12 @@
     <list default="true" id="be2cabe0-8dc8-4802-b861-8b2cc06a404a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/global.php" beforeDir="false" afterPath="$PROJECT_DIR$/global.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habbowood/loader.php" beforeDir="false" afterPath="$PROJECT_DIR$/habbowood/loader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habbowood/movie.php" beforeDir="false" afterPath="$PROJECT_DIR$/habbowood/movie.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/habbowood/xml/locale.xml" beforeDir="false" afterPath="$PROJECT_DIR$/habbowood/xml/locale.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/haccess.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/convert.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/convert.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/habbletAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/habbletAjax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage/pages/vouchers.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/vouchers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-tops.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-tops.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-gallery/v2/styles/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/v2/styles/responsive.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +49,13 @@
   </component>
   <component name="ExportToHTMLSettings">
     <option name="OUTPUT_DIRECTORY" value="C:\inetpub\wwwroot\habblexcms\exportToHTML" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -173,6 +181,7 @@
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\Program Files\PHP\8.3\php.exe" />
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 7
+
 }]]></component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
@@ -418,7 +427,7 @@
       <workItem from="1700504022281" duration="9110000" />
       <workItem from="1707315488724" duration="970000" />
       <workItem from="1708222877063" duration="504000" />
-      <workItem from="1751766383863" duration="1903000" />
+
     </task>
     <servers />
   </component>

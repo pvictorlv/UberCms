@@ -34,8 +34,8 @@ require_once "top.php";
   <td class='tablesubheader' width='10%' align='center'>Ver</td>
  </tr>
 <?php
-$get_rares = mysql_query("SELECT id,username,appstatus,age,country,timezone,realname,modname,time,experience,message1,message2,message3,users,visitoripaddy FROM applications ORDER BY appstatus DESC") or die(mysql_error());
-while($row = mysql_fetch_assoc($get_rares)){
+$get_rares = Db::query("SELECT id,username,appstatus,age,country,timezone,realname,modname,time,experience,message1,message2,message3,users,visitoripaddy FROM applications ORDER BY appstatus DESC")
+while($row = $get_rares->fetch(PDO::FETCH_ASSOC)){
 
 if($row['appstatus'] == 1) { $vs="Leida"; }
 else if($row['appstatus'] == 0) { $vs="Sin leer"; }

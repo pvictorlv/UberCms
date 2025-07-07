@@ -36,8 +36,8 @@
                 <?php
                 $id = FilterText($_GET['id']);
 
-$sql = mysql_query("SELECT * FROM cms_faq WHERE type = 'cat' ORDER BY id ASC") or die(mysql_error());
-while($row = mysql_fetch_assoc($sql)){
+$sql = Db::query("SELECT * FROM cms_faq WHERE type = 'cat' ORDER BY id ASC")
+while($row = $sql->fetch(PDO::FETCH_ASSOC)){
 ?>
                 <li><a href="%www%/help/<?php echo $row['id']; ?>" name=""><span class="faq-link <?php if($id == $row['id'] || $id == "".$row['id'].".php/".$row['id'].""){ ?>selected<?php } ?>"><?php echo HoloText($row['title']); ?></span></a></li>
                 <?php } ?>

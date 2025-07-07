@@ -144,7 +144,7 @@ if (isset($_GET['do']) && $_GET['do'] == "edit" && LOGGED_IN) {
         $_SESSION['group_edit_id'] = $groupid;
         $_SESSION['user_group_edit_id'] = "'.USER_ID.'";
         $check = db::query("SELECT * FROM cms_homes_group_linker WHERE userid = '" . USER_ID . "' LIMIT 1");
-        $linkers = mysql_num_rows($check);
+        $linkers = $check->rowCount();
 
         if ($linkers > 0) {
             db::query("UPDATE cms_homes_group_linker SET active = '1', groupid = '" . $groupid . "' WHERE userid = '" . USER_ID . "' LIMIT 1");

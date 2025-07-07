@@ -19,7 +19,7 @@ echo '<p><a href="http://hotel-uk.habbo.com/gamedata/furnidata?hash=x">http://ho
 $whatWeKnow = Array();
 $getWhatWeKnow = db::query("SELECT item_name FROM furniture");
 
-while ($g = mysql_fetch_assoc($getWhatWeKnow))
+while ($g = $getWhatWeKnow->fetch(PDO::FETCH_ASSOC)))
 {
 	$whatWeKnow[] = $g['item_name'];
 }

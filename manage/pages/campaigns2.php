@@ -83,7 +83,7 @@ body {
 
 $getItems = db::query("SELECT * FROM site_hotcampaigns ORDER BY order_id ASC");
 
-while ($item = mysql_fetch_assoc($getItems))
+while ($item = $getItems->fetch(PDO::FETCH_ASSOC)))
 {
 	echo '<tr>
 	<form method="post">

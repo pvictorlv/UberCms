@@ -2,14 +2,14 @@
 session_start();
 require_once("../global.php");
 $getID = db::query("SELECT * FROM users WHERE username = '".USER_NAME."'");
-$b = mysql_fetch_assoc($getID);
+$b = $getID->fetch(PDO::FETCH_ASSOC);
 $my_id = $b['id'];
 $category_id = FilterText($_POST['categoryId']);
 
 if(!empty($category_id) && is_numeric($category_id)){
 
-mysql_query("DELETE FROM messenger_categorys WHERE id = '".$category_id."' LIMIT 1") or die(mysql_error());
-mysql_query("UPDATE messenger_friendships SET category = '0' WHERE user_one_id = '".$my_id."' AND category = '".$category_id."'") or die(mysql_error());
+Db::query("DELETE FROM messenger_categorys WHERE id = ? LIMIT 1")
+Db::query("UPDATE messenger_friendships SET category = '0' WHERE user_one_id = ? AND category = '".$category_id."'")
 
 }
 ?>
@@ -19,11 +19,11 @@ mysql_query("UPDATE messenger_friendships SET category = '0' WHERE user_one_id =
 
 <div class="category-default category-item selected-category" id="category-item-0">Amigos</div>
 <?php
-$get_categorys = mysql_query("SELECT * FROM messenger_categorys WHERE owner_id = '".$my_id."'") or die(mysql_error());
-	if(mysql_num_rows($get_categorys) > 0){
-	while($crow = mysql_fetch_assoc($get_categorys)){
-$get_category = mysql_query("SELECT * FROM messenger_categorys WHERE id = '".$crow['id']."' LIMIT 1") or die(mysql_error());
-$row = mysql_fetch_assoc($get_category);
+$get_categorys = Db::query("SELECT * FROM messenger_categorys WHERE owner_id = ?'")
+	if($get_categorys->rowCount() > 0){
+	while($crow = $get_categorys->fetch(PDO::FETCH_ASSOC)){
+$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ? LIMIT 1")
+$row = $get_category->fetch(PDO::FETCH_ASSOC);
 ?>
     <div id="category-item-<?php echo $row['id']; ?>" class="category-item ">
         <div class="category-name" id="category-<?php echo $row['id']; ?>">

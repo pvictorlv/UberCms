@@ -83,7 +83,7 @@ if (isset($searchResults)) {
 	</tr>
 	<tbody>';
 
-    while ($result = mysql_fetch_assoc($searchResults)) {
+    while ($result = $searchResults->fetch(PDO::FETCH_ASSOC))) {
         if (strlen($result['hour']) < 2) {
             $result['hour'] = '0' . $result['hour'];
         }

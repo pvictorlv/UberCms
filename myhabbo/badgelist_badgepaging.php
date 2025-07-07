@@ -18,10 +18,10 @@ if(isset($_POST['pageNumber']) && isset($_POST['widgetId']))
 	$widgetId = $gtfo->cleanWord($_POST['widgetId']);
 	$reqacc = $gtfo->cleanWord($_POST['_mypage_requested_account']);
 	
-	$data = mysql_fetch_array(db::query("SELECT home_id FROM homes_items WHERE id = '".$widgetId."' LIMIT 1"));
+	$data = db::query("SELECT home_id FROM homes_items WHERE id = '".$widgetId."' LIMIT 1")->fetch(PDO::FETCH_ASSOC);
 	$user_id = $data['home_id'];
 	
-	$count = mysql_num_rows(mysql_query("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '".$user_id."'"));
+	$count = ->rowCount(Db::query("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '".$user_id."'"));
 	$n = $count;
 	$x = 0;
 		while($n >= 0)
@@ -61,13 +61,13 @@ if(isset($_POST['pageNumber']) && isset($_POST['widgetId']))
 				break;
 		}
 
-	$sql = mysql_query("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '".$user_id."' LIMIT ".$limit.",16");
+	$sql = Db::query("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '".$user_id."' LIMIT ".$limit.",16");
 	$desde = $limit;
-	$hasta = mysql_num_rows($sql) + $limit;
+	$hasta = $sql->rowCount() + $limit;
 ?>
   <ul class="clearfix" style="height: 180px; ">
 	<?php
-	while($data = mysql_fetch_array($sql))
+	while($data = $sql->fetch(PDO::FETCH_ASSOC))
 	{
 	?>
             <li style="background-image: url(http://images.xukys-hotel.com/c_images/album1584/<?php echo $data['badge_id']; ?>.gif)"></li>

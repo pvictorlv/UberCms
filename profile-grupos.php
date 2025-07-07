@@ -16,9 +16,9 @@ $menu_id = "home";
 <base href="<?=$config['cms_base'];?>" />
 <link href="images/css/header.css" rel="stylesheet" type="text/css" />
 <link href="images/css/me.css" rel="stylesheet" type="text/css" />
-<?  $is_exist = mysql_query("Select * from `users` where username = '".mysql_real_escape_string($_GET['name'])."' ");
-if(mysql_num_rows($is_exist)){
-$drt = mysql_fetch_array($is_exist);
+<?  $is_exist = Db::query("Select * from `users` where username = '".htmlspecialchars($_GET['name'])."' ");
+if($is_exist->rowCount()){
+$drt = $is_exist->fetch(PDO::FETCH_ASSOC);
 $prname = "Perfil de ".$drt['username'];
 }else{ $prname = "Perfil no encontrado"; } ?>
 <title><?=$config['cms_name']; ?> - <? echo $prname; ?></title>
@@ -71,15 +71,15 @@ a:active {
 
 <body><? include("top.php"); ?>
 <br><br>
-<? $is_exist = mysql_query("Select * from `users` where username = '".mysql_real_escape_string($_GET['name'])."' ");
-if(mysql_num_rows($is_exist)){
-$drt = mysql_fetch_array($is_exist);
+<? $is_exist = Db::query("Select * from `users` where username = '".htmlspecialchars($_GET['name'])."' ");
+if($is_exist->rowCount()){
+$drt = $is_exist->fetch(PDO::FETCH_ASSOC);
 
 if($drt['profile'] == "0"){
 if($drt['username'] == $_SESSION['username']){ $access = true; }else{ $access = false; }
 }elseif($drt['profile'] == "1"){
-$ch = mysql_query("Select * from `messenger_friendships` where user_one_id = '".$sys->UserInfo($username,"id")."'  and user_two_id = '".$drt['id']."' ");
-if(mysql_num_rows($ch) ||  $drt['username'] == $_SESSION['username']){ $access = true; }else{ $access = false; }
+$ch = Db::query("Select * from `messenger_friendships` where user_one_id = '".$sys->UserInfo($username,"id")."'  and user_two_id = '".$drt['id']."' ");
+if($ch->rowCount() ||  $drt['username'] == $_SESSION['username']){ $access = true; }else{ $access = false; }
 }elseif($dt['profile'] == "2"){ $access = true; }else{ $access = true; }
 if($access == true){
  ?>
@@ -108,12 +108,12 @@ if(isset($_GET['tag']) || isset($_GET['name']) || isset($_POST['name'])){
 	$error = true;
 	}
 
-	$user_sql = mysql_query("SELECT * FROM users WHERE username = '".$searchname."' LIMIT 1") or die(mysql_error());
-	$user_exists = mysql_num_rows($user_sql);
+	$user_sql = Db::query("SELECT * FROM users WHERE username = '".$searchname."' LIMIT 1")
+	$user_exists = $user_sql->rowCount();
 
 	if($user_exists == "1"){
 	$error = false;
-	$user_row = mysql_fetch_assoc($user_sql);
+	$user_row = $user_sql->fetch(PDO::FETCH_ASSOC);
 	$pagename = "User Profile - ".$user_row['username']."";
 		if($user_row['rank'] == "6"){
 		$drank = "Administrator";
@@ -139,12 +139,12 @@ if(isset($_GET['tag']) || isset($_GET['name']) || isset($_POST['name'])){
 	$error = true;
 	}
 
-	$user_sql = mysql_query("SELECT * FROM users WHERE id = '".$searchid."' LIMIT 1") or die(mysql_error());
-	$user_exists = mysql_num_rows($user_sql);
+	$user_sql = Db::query("SELECT * FROM users WHERE id = '".$searchid."' LIMIT 1")
+	$user_exists = $user_sql->rowCount();
 
 	if($user_exists == "1"){
 	$error = false;
-	$user_row = mysql_fetch_assoc($user_sql);
+	$user_row = $user_sql->fetch(PDO::FETCH_ASSOC);
 	$pagename = "User Profile - ".$user_row['username']."";
 		if($user_row['rank'] == "6"){
 		$drank = "Administrator";
@@ -166,7 +166,7 @@ $error = true;
 if(isset($_GET['do']) && $_GET['do'] == "edit" && $logged_in){
 	if($user_row['username'] == $name){
 	$edit_mode = true;
-	mysql_query("UPDATE cms_homes_group_linker SET active = '0' WHERE userid = '".$my_id."' LIMIT 1") or die(mysql_error());
+	Db::query("UPDATE cms_homes_group_linker SET active = '0' WHERE userid = '".$my_id."' LIMIT 1")
 	} else {
 		echo'<script language="JavaScript" type="text/javascript">
 
@@ -200,13 +200,13 @@ $pageid = "myprofile";
 $pageid = "profile";
 }
 
-$bg_fetch = mysql_query("SELECT data FROM cms_homes_stickers WHERE type = '4' AND userid = '".$user_row['id']."' AND groupid = '-1' LIMIT 1");
-$bg_exists = mysql_num_rows($bg_fetch);
+$bg_fetch = Db::query("SELECT data FROM cms_homes_stickers WHERE type = '4' AND userid = '".$user_row['id']."' AND groupid = '-1' LIMIT 1");
+$bg_exists = $bg_fetch->rowCount();
 
 	if($bg_exists < 1){ // if there's no background override for this user set it to the standard
 		$bg = "b_bg_pattern_abstract2";
 	} else {
-		$bg = mysql_fetch_array($bg_fetch);
+		$bg = $bg_fetch->fetch(PDO::FETCH_ASSOC);
 		$bg = "b_" . $bg[0];
 	}
 
@@ -245,9 +245,9 @@ include('templates/community/header.php');
                 <div id="playground-outer">
                   <div id="playground">
                     <?php
-$get_em = mysql_query("SELECT id,type,x,y,z,data,skin,subtype,var FROM cms_homes_stickers WHERE userid = '".$user_row['id']."' AND groupid = '-1' AND type < 4 LIMIT 200") or die(mysql_error());
+$get_em = Db::query("SELECT id,type,x,y,z,data,skin,subtype,var FROM cms_homes_stickers WHERE userid = '".$user_row['id']."' AND groupid = '-1' AND type < 4 LIMIT 200")
 $_SESSION['profile_id'] = $user_row['id'];
-while ($row = mysql_fetch_array($get_em, MYSQL_NUM)) {
+while ($row = $get_em, MYSQL_NUM->fetch(PDO::FETCH_ASSOC)) {
 
 	switch($row[1]){
 	default: $type = "sticker"; break;
@@ -319,10 +319,10 @@ Event.observe(\"".$type."-".$row[0]."-edit\", \"click\", function(e) { openEditm
 <div class=\"groups-list-container\">
 <ul class=\"groups-list\">";
 
-$get_groups = mysql_query("SELECT * FROM groups_memberships WHERE userid = '".$user_row['id']."' AND is_pending = '0'") or die(mysql_error());
-while($membership_row = mysql_fetch_assoc($get_groups)){
-	$get_groupdata = mysql_query("SELECT * FROM groups_details WHERE id = '".$membership_row['groupid']."' LIMIT 1") or die(mysql_error());
-	$grouprow = mysql_fetch_assoc($get_groupdata);
+$get_groups = Db::query("SELECT * FROM groups_memberships WHERE userid = '".$user_row['id']."' AND is_pending = '0'")
+while($membership_row = $get_groups->fetch(PDO::FETCH_ASSOC)){
+	$get_groupdata = Db::query("SELECT * FROM groups_details WHERE id = '".$membership_row['groupid']."' LIMIT 1")
+	$grouprow = $get_groupdata->fetch(PDO::FETCH_ASSOC);
 
 	echo "	<li title=\"".$grouprow['name']."\" id=\"groups-list-".$row[0]."-".$grouprow['id']."\">
 		<div class=\"groups-list-icon\"><a href=\"groups/".$grouprow['id']."/id\"><img src='./habbo-imaging/badge?badge=".$grouprow['badge']."'/></a></div>
@@ -362,9 +362,9 @@ document.observe(\"dom:loaded\", function() {
 
 		$found_profile = true;
 		
-		$info = mysql_query("SELECT * FROM users WHERE username = '".$searchname."' LIMIT 1") or die(mysql_error());
-		$userdata = mysql_fetch_assoc($info);
-		$valid = mysql_num_rows($info);
+		$info = Db::query("SELECT * FROM users WHERE username = '".$searchname."' LIMIT 1")
+		$userdata = $info->fetch(PDO::FETCH_ASSOC);
+		$valid = $info->rowCount();
 
 			if($valid > 0){
 			echo "<div class=\"movable widget ProfileWidget\" id=\"widget-".$row[0]."\" style=\" left: ".$row[2]."px; top: ".$row[3]."px; z-index: ".$row[4].";\">
@@ -401,8 +401,8 @@ echo "
 			<img alt=\"".$userdata['username']."\" src=\"http://www.habbo.es/habbo-imaging/avatarimage?figure=".$userdata['look']."&size=b&direction=4&head_direction=4&gesture=sml\" />
 	</div>";
 	if($userdata['id'] != $my_id && $logged_in == true){ 
-	$sql = mysql_query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$my_id."' AND user_two_id = '".$userdata['id']."'");
-	$rows = mysql_num_rows($sql);
+	$sql = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$my_id."' AND user_two_id = '".$userdata['id']."'");
+	$rows = $sql->rowCount();
 	if($rows < 1){
 	?>
                     <div class="profile-friend-request clearfix"> <a href="./myhabbo/friends_add.php?id=<?php echo $userdata['id']; ?>" class="new-button" id="add-friend" style="float: left"><b>A&ntilde;adir como amigo</b><i></i></a></div>
@@ -412,14 +412,14 @@ echo "
     <div id=\"profile-tag-list\">
 <div id=\"profile-tags-container\">\n";
 
-$get_tags = mysql_query("SELECT * FROM users_tags WHERE user_id = '".$userdata['id']."' ORDER BY id LIMIT 20") or die(mysql_error());
-$rows = mysql_num_rows($get_tags);
+$get_tags = Db::query("SELECT * FROM users_tags WHERE user_id = '".$userdata['id']."' ORDER BY id LIMIT 20")
+$rows = $get_tags->rowCount();
 
-	$num = mysql_num_rows($get_tags);
+	$num = $get_tags->rowCount();
 	if($num > 0){
 
 		if($userdata['id'] == $my_id && $logged_in){
-			while ($row1 = mysql_fetch_assoc($get_tags)){
+			while ($row1 = $get_tags->fetch(PDO::FETCH_ASSOC)){
 
 
 				printf("    <span class=\"tag-search-rowholder\">
@@ -428,7 +428,7 @@ $rows = mysql_num_rows($get_tags);
         /></span>", $row1['tag'], $row1['tag'], $row1['tag'], $row1['tag']);
 			}
 		} elseif($logged_in){
-			while ($row1 = mysql_fetch_assoc($get_tags)){
+			while ($row1 = $get_tags->fetch(PDO::FETCH_ASSOC)){
 
 
 				printf("    <span class=\"tag-search-rowholder\">
@@ -437,7 +437,7 @@ $rows = mysql_num_rows($get_tags);
         /></span>", $row1['tag'], $row1['tag'], $row1['tag'], $row1['tag']);
 			}
 		} else {
-			while ($row1 = mysql_fetch_assoc($get_tags)){
+			while ($row1 = $get_tags->fetch(PDO::FETCH_ASSOC)){
 
 
 				printf("    <span class=\"tag-search-rowholder\">
@@ -500,8 +500,8 @@ if($userdata['id'] == $my_id){
 </div></div>";
 	}
 	} elseif($subtype == "GuestbookWidget"){
-	$sql = mysql_query("SELECT * FROM cms_guestbook WHERE widget_id = '".$row['0']."' ORDER BY id DESC");
-	$count = mysql_num_rows($sql);
+	$sql = Db::query("SELECT * FROM cms_guestbook WHERE widget_id = '".$row['0']."' ORDER BY id DESC");
+	$count = $sql->rowCount();
 
 		$status = "public";
 
@@ -522,9 +522,9 @@ if($userdata['id'] == $my_id){
                                 <?php } else { ?>
                                 <?php 
 			$i = 0;
-			while ($row1 = mysql_fetch_assoc($sql)) {
+			while ($row1 = $sql->fetch(PDO::FETCH_ASSOC)) {
 				$i++;
-				$userrow = mysql_fetch_assoc(mysql_query("SELECT * FROM users WHERE id = '".$row1['userid']."' LIMIT 1"));
+				$userrow = Db::query("SELECT * FROM users WHERE id = '".$row1['userid']."' LIMIT 1")->fetch(PDO::FETCH_ASSOC);
 				if($my_id == $row1['userid']){
 					$owneronly = "<img src=\"./web-gallery/images/myhabbo/buttons/delete_entry_button.gif\" id=\"gbentry-delete-".$row1['id']."\" class=\"gbentry-delete\" style=\"cursor:pointer\" alt=\"\"/><br/>";
 				} elseif($user_row['id'] == $my_id) {
@@ -584,8 +584,8 @@ if($userdata['id'] == $my_id){
                         <div class="widget-body">
                           <div class="widget-content">
                             <?php
-	$bbsql = mysql_query("SELECT * FROM users WHERE id = '".$user_row['id']."' LIMIT 1");
-	$bbrow = mysql_fetch_assoc($bbsql);
+	$bbsql = Db::query("SELECT * FROM users WHERE id = '".$user_row['id']."' LIMIT 1");
+	$bbrow = $bbsql->fetch(PDO::FETCH_ASSOC);
 	if($bbrow['bb_playedgames'] == "0"){
 		echo "You have not played any games yet.";
 	}else{ ?>
@@ -610,8 +610,8 @@ if($userdata['id'] == $my_id){
                     </div>
                     <?php
 	} elseif($subtype == "FriendsWidget"){ 
-	$sql = mysql_query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$user_row['id']."' ");
-	$count = mysql_num_rows($sql);
+	$sql = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$user_row['id']."' ");
+	$count = $sql->rowCount();
 	?>
                     <div class="movable widget FriendsWidget" id="widget-<?php echo $row['0']; ?>" style=" left: <?php echo $row['2']; ?>px; top: <?php echo $row['3']; ?>px; z-index: <?php echo $row['4']; ?>;">
                       <div class="w_skin_<?php echo $row['6']; ?>">
@@ -663,13 +663,13 @@ if($edit_mode == true){ ?>
                               <select name="trax-select-options-temp" id="trax-select-options-temp">
                                 <option value="">- Choose song -</option>
                                 <?php
-	$mysql = mysql_query("SELECT * FROM furniture WHERE ownerid = '".$user_row['id']."'");
+	$mysql = Db::query("SELECT * FROM furniture WHERE ownerid = '".$user_row['id']."'");
 	$i = 0;
-	while($machinerow = mysql_fetch_assoc($mysql)){
+	while($machinerow = $mysql->fetch(PDO::FETCH_ASSOC)){
 		$i++;
-		$sql = mysql_query("SELECT * FROM soundmachine_songs WHERE machineid = '".$machinerow['id']."'");
+		$sql = Db::query("SELECT * FROM soundmachine_songs WHERE machineid = '".$machinerow['id']."'");
 		$n = 0;
-		while($songrow = mysql_fetch_assoc($sql)){
+		while($songrow = $sql->fetch(PDO::FETCH_ASSOC)){
 			$n++;
 			if($songrow['id'] <> ""){ echo "		<option value=\"".$songrow['id']."\">".trim(nl2br(HoloText($songrow['title'])))."</option>\n"; }
 		}
@@ -679,8 +679,8 @@ if($edit_mode == true){ ?>
                             <?php }elseif($songselected == false){ ?>
                             You do not have a selected Trax song.
                             <?php }else{
-$sql1 = mysql_query("SELECT * FROM soundmachine_songs WHERE id = '".$row['8']."' LIMIT 1");
-$songrow1 = mysql_fetch_assoc($sql); ?>
+$sql1 = Db::query("SELECT * FROM soundmachine_songs WHERE id = '".$row['8']."' LIMIT 1");
+$songrow1 = $sql->fetch(PDO::FETCH_ASSOC); ?>
                             <div id="traxplayer-content" style="text-align:center;"></div>
                             <embed type="application/x-shockwave-flash"
 src="<?php echo $path; ?>web-gallery/flash/traxplayer/traxplayer.swf" name="traxplayer" quality="high"
@@ -694,8 +694,8 @@ wmode="transparent" flashvars="songUrl=<?php echo $path; ?>myhabbo/trax_song.php
                       </div>
                     </div>
      <?php } elseif($subtype == "BadgesWidget"){
-	$sql = mysql_query("SELECT * FROM user_badges WHERE user_id = '".$user_row['id']."' ORDER BY badge_id ASC");
-	$count = mysql_num_rows($sql);
+	$sql = Db::query("SELECT * FROM user_badges WHERE user_id = '".$user_row['id']."' ORDER BY badge_id ASC");
+	$count = $sql->rowCount();
 	?>
 <div class="movable widget BadgesWidget" id="widget-<?php echo $row['0']; ?>" style=" left: <?php echo $row['2']; ?>px; top: <?php echo $row['3']; ?>px; z-index: <?php echo $row['4']; ?>;">
 <div class="w_skin_<?php echo $row['6']; ?>">
@@ -732,13 +732,13 @@ wmode="transparent" flashvars="songUrl=<?php echo $path; ?>myhabbo/trax_song.php
 
 if($found_profile !== true){
 
-$info = mysql_query("SELECT * FROM users WHERE username = '".$searchname."' LIMIT 1") or die(mysql_error());
-$userdata = mysql_fetch_assoc($info);
-$valid = mysql_num_rows($info);
+$info = Db::query("SELECT * FROM users WHERE username = '".$searchname."' LIMIT 1")
+$userdata = $info->fetch(PDO::FETCH_ASSOC);
+$valid = $info->rowCount();
 
 	if($valid > 0){
 
-	mysql_query("INSERT INTO cms_homes_stickers (userid,type,subtype,x,y,z,skin) VALUES ('".$userdata['id']."','2','1','25','25','5','defaultskin')") or die(mysql_error());
+	Db::query("INSERT INTO cms_homes_stickers (userid,type,subtype,x,y,z,skin) VALUES ('".$userdata['id']."','2','1','25','25','5','defaultskin')")
 ?>
                     <div class="movable widget FriendsWidget" id="widget-<?php echo $row['0']; ?>" style=" left: <?php echo $row['2']; ?>px; top: <?php echo $row['3']; ?>px; z-index: <?php echo $row['4']; ?>;"> <?php echo "<div class=\"w_skin_defaultskin\">
 	<div class=\"widget-corner\" id=\"widget-".$row['id']."-handle\">
@@ -776,14 +776,14 @@ echo "
     <div id=\"profile-tag-list\">
 <div id=\"profile-tags-container\">\n";
 
-$get_tags = mysql_query("SELECT * FROM users_tags WHERE user_id= '".$userdata['id']."' ORDER BY id LIMIT 20") or die(mysql_error());
-$rows = mysql_num_rows($get_tags);
+$get_tags = Db::query("SELECT * FROM users_tags WHERE user_id= '".$userdata['id']."' ORDER BY id LIMIT 20")
+$rows = $get_tags->rowCount();
 
-	$num = mysql_num_rows($get_tags);
+	$num = $get_tags->rowCount();
 	if($num > 0){
 
 		if($userdata['id'] == $my_id && $logged_in){
-			while ($row = mysql_fetch_assoc($get_tags)){
+			while ($row = $get_tags->fetch(PDO::FETCH_ASSOC)){
 
 
 				printf("    <span class=\"tag-search-rowholder\">
@@ -792,7 +792,7 @@ $rows = mysql_num_rows($get_tags);
         /></span>", $row['tag'], $row['tag'], $row['tag'], $row['tag']);
 			}
 		} elseif($logged_in){
-			while ($row = mysql_fetch_assoc($get_tags)){
+			while ($row = $get_tags->fetch(PDO::FETCH_ASSOC)){
 
 
 				printf("    <span class=\"tag-search-rowholder\">
@@ -801,7 +801,7 @@ $rows = mysql_num_rows($get_tags);
         /></span>", $row['tag'], $row['tag'], $row['tag'], $row['tag']);
 			}
 		} else {
-			while ($row = mysql_fetch_assoc($get_tags)){
+			while ($row = $get_tags->fetch(PDO::FETCH_ASSOC)){
 
 
 				printf("    <span class=\"tag-search-rowholder\">

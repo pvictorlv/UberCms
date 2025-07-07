@@ -2,7 +2,7 @@
 session_start();
 require_once("../global.php");
 $getID = db::query("SELECT * FROM users WHERE username = '".USER_NAME."'");
-$b = mysql_fetch_assoc($getID);
+$b = $getID->fetch(PDO::FETCH_ASSOC);
 $my_id = $b['id'];
 
 $friend_id = HoloText($_POST['friendList']);
@@ -19,7 +19,7 @@ $categoryid = "0";
 
 if(is_numeric($friend_id) && is_numeric($move_category)){
 
-mysql_query("UPDATE messenger_friendships SET category = '".$move_category."' WHERE user_two_id = '".$friend_id."' AND user_one_id = '".$my_id."' LIMIT 1") or die(mysql_error());
+Db::query("UPDATE messenger_friendships SET category = '".$move_category."' WHERE user_two_id = ? AND user_one_id = '".$my_id."' LIMIT 1")
 
 }
 ?>
@@ -51,8 +51,8 @@ mysql_query("UPDATE messenger_friendships SET category = '".$move_category."' WH
 		$pageminus = $page - 1;
 		echo "<a href=\"#\" class=\"friend-list-page\" id=\"page-".$pageminus."\">&lt;&lt;</a> |";
 		}
-		$afriendscount = mysql_query("SELECT COUNT(*) FROM messenger_friendships WHERE user_one_id = '".$my_id."' AND category = '".$categoryid."'") or die(mysql_error());
-		$friendscount = mysql_result($afriendscount, 0);
+		$afriendscount = Db::query("SELECT COUNT(*) FROM messenger_friendships WHERE user_one_id = ? AND category = '".$categoryid."'")
+		$friendscount = $afriendscount, 0->fetchColumn();
 		$pages = ceil($friendscount / $pagesize);
 		if($pages == 1){
 		echo "1";
@@ -97,9 +97,9 @@ mysql_query("UPDATE messenger_friendships SET category = '".$move_category."' WH
 		   $offset = $pagesize * $page;
 		   $offset = $offset - $pagesize;
 		   $offset = $offser + 30;
-		   $getem = mysql_query("SELECT * FROM messenger_friendships WHERE user_one_id = '".$my_id."' AND category = '".$categoryid."' LIMIT ".$pagesize." OFFSET ".$offset."") or die(mysql_error());
+		   $getem = Db::query("SELECT * FROM messenger_friendships WHERE user_one_id = ? AND category = '".$categoryid."' LIMIT ".$pagesize." OFFSET ".$offset."")
 
-		   while ($row = mysql_fetch_assoc($getem)) {
+		   while ($row = $getem->fetch(PDO::FETCH_ASSOC)) {
 		           $i++;
 
 		           if($i%2==1){
@@ -108,10 +108,10 @@ mysql_query("UPDATE messenger_friendships SET category = '".$move_category."' WH
 		               $even = "even";
 		           }
 
-		           		$friendsql = mysql_query("SELECT * FROM users WHERE id = '".$row['user_two_id']."'");
+		           		$friendsql = Db::query("SELECT * FROM users WHERE id = ?'");
 
 
-		           $friendrow = mysql_fetch_assoc($friendsql);
+		           $friendrow = $friendsql->fetch(PDO::FETCH_ASSOC);
 				   ?>
 		    <tr class="<?php echo $even; ?>">
 				<td><input type="checkbox" name="friendList" value="<?php echo $friendrow['id']; ?>" /></td>
@@ -131,11 +131,11 @@ mysql_query("UPDATE messenger_friendships SET category = '".$move_category."' WH
 <select id="category-list-select" name="category-list">
     <option value="0">Amigos</option>
 	<?php
-	$get_categorys = mysql_query("SELECT * FROM messenger_categorys WHERE owner_id = '".$my_id."'") or die(mysql_error());
-	if(mysql_num_rows($get_categorys) > 0){
-		while($crow = mysql_fetch_assoc($get_categorys)){
-	$get_category = mysql_query("SELECT * FROM messenger_categorys WHERE id = '".$crow['id']."' LIMIT 1") or die(mysql_error());
-	$row = mysql_fetch_assoc($get_category);
+	$get_categorys = Db::query("SELECT * FROM messenger_categorys WHERE owner_id = ?'")
+	if($get_categorys->rowCount() > 0){
+		while($crow = $get_categorys->fetch(PDO::FETCH_ASSOC)){
+	$get_category = Db::query("SELECT * FROM messenger_categorys WHERE id = ? LIMIT 1")
+	$row = $get_category->fetch(PDO::FETCH_ASSOC);
 	?>
 	<option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
 	<?php } } ?>
