@@ -13,12 +13,11 @@
   <component name="ChangeListManager">
     <list default="true" id="be2cabe0-8dc8-4802-b861-8b2cc06a404a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/groups.php" beforeDir="false" afterPath="$PROJECT_DIR$/groups.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/generic-top.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/generic-top.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/head/head-bottom.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/head/head-bottom.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/head/head-grupos.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/head/head-grupos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/head/head-init.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/head/head-init.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-gallery/static/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/static/js/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/convert.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/convert.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/habbletAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/habbletAjax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage/pages/vouchers.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/vouchers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-tops.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-tops.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web-gallery/v2/styles/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/v2/styles/responsive.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -426,7 +425,7 @@
       <workItem from="1700504022281" duration="9110000" />
       <workItem from="1707315488724" duration="970000" />
       <workItem from="1708222877063" duration="504000" />
-      <workItem from="1751825555962" duration="4730000" />
+      <workItem from="1751825555962" duration="6576000" />
     </task>
     <servers />
   </component>

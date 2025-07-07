@@ -73,18 +73,39 @@
     }
 
 
+    #navi2 {
+        ul {
+            width: 100%;
+        }
+    }
+
     /* HOME PAGE */
     #container, #header, #navi2-container, #header-container {
-        min-width: 100%;
+        min-width: unset;
         width: 100% !important;
+
+        border-bottom-right-radius: 7px;
     }
 
     #subnavi {
+        width: 100%;
         left: 0;
+
+    }
+
+    #subnavi-user {
+
+        background: white;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+
+        ul {
+            height: 30px;
+        }
     }
 
     #header {
-        background: url(../images/subnavibg.png) no-repeat 0px 0;
+        background: transparent;
     }
 
     #header-container, #content-container {
@@ -98,7 +119,7 @@
     #to-hotel {
         position: absolute;
         top: 48px;
-        right: 195px;
+        right: 10px;
     }
 
     #content-container {
@@ -132,9 +153,11 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+
         span {
             max-width: 120px;
         }
+
         div {
             width: auto !important;
             max-width: 230px;
@@ -144,5 +167,44 @@
             width: auto !important;
             max-width: 100px;
         }
+    }
+
+    /*    news */
+    body#news #column2, body#tags #column2 {
+        width: 100%;
+        float: none;
+        margin: 0;
+    }
+    .article-body {
+        textarea {
+            width: 97%;
+        }
+    }
+    body#news #column1, body#tags #column1 {
+        width: 100%;
+        float: none;
+        margin: 0;
+    }
+
+    /* credits */
+    body#newcredits #column1, body#cbs2credits #column1 {
+        width: 100%;
+        float: none;
+        margin: 0;
+    }
+
+    .method-group.online {
+        background: #fcf9ec url(../images/newcredits/onlinemoney_crop.png) 26px 100% no-repeat;
+    }
+    .method-group.online .method, .method-group.online .method.idx0 .summary, .method-group.online .method.idx0 h2 {
+        margin: 0;
+        padding: 0.5rem;
+    }
+    #content .pixelblue .i3  {
+        width: unset;
+    }
+
+    #column {
+        width: 100%;
     }
 }

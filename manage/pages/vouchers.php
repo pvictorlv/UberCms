@@ -17,7 +17,7 @@ if (isset($_POST['v-code'])) {
     } else if (!is_numeric($vValue) || intval($vValue) <= 0 || intval($vValue) > 5000) {
         fMessage('error', 'Valor inválido de créditos. Deve ser um número entre 1 a 5000.');
     } else {
-        db::query("INSERT INTO credit_vouchers (code,value) VALUES ('" . $vCode . "','" . intval($vValue) . "')");
+        db::query("INSERT INTO credit_vouchers (code,value) VALUES (?,?)", $vCode, $vValue);
         fMessage('ok', 'Voucher is now live and redeemable.');
     }
 }

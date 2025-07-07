@@ -76,8 +76,8 @@
                         <tr>
                             <?php
 
-                            $q = db::query("SELECT * FROM users WHERE rank < 4 ORDER BY time_online DESC LIMIT 5");
-                            $time = 60; // 60*60*24
+                            $q = db::query("SELECT look,username,online_seconds FROM users_stats us INNER JOIN users u on u.id = us.id WHERE rank < 4 ORDER BY online_seconds DESC LIMIT 5");
+                            $time = 60*60; // 60*60*24
 
                             while ($row = $q->fetch(2)) {
                             ?>
@@ -90,7 +90,7 @@
                                     align="left"></td>
                             <td width="195px"><a
                                     href="/home/<?php echo $row['username']; ?>"><b><?php echo $row['username']; ?></b></a><br/>
-                                <?php echo round($row['time_online'] / $time); ?> Hora(s) online
+                                <?php echo round($row['online_seconds'] / $time); ?> Hora(s) online
                             </td>
                         </tr>
 
