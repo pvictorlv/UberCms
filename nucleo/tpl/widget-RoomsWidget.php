@@ -92,7 +92,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                                             <div class="room_name"><?php echo $room['caption']; ?></div>
                                             <img id="room-<?php echo $room['id']; ?>-report"
                                                  class="report-button report-r" alt="report"
-                                                 src="%www%/web-gallery/images/myhabbo/buttons/report_button.gif"
+                                                 src="<?php echo WWW ?>/web-gallery/images/myhabbo/buttons/report_button.gif"
                                                  style="display: none;"/>
 
                                             <div class="clear"></div>

@@ -43,7 +43,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
 
                     <img alt="<?php
                     echo $status;
-                    ?>" src="%www%/web-gallery/images/myhabbo/profile/habbo_<?php
+                    ?>" src="<?php echo WWW ?>/web-gallery/images/myhabbo/profile/habbo_<?php
                     echo $status;
                     ?>.gif"/>
                     <div class="birthday text">
@@ -73,7 +73,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                     <img id="motto-<?php
                     echo $userData['id'];
                     ?>-report" class="report-button report-m" alt="report"
-                         src="%www%/web-gallery/images/myhabbo/buttons/report_button.gif" style="display: none;">
+                         src="<?php echo WWW ?>/web-gallery/images/myhabbo/buttons/report_button.gif" style="display: none;">
                     <div class="clear"></div>
                 </div>
 
@@ -88,7 +88,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                                 while ($data = $sql->fetch(2)) {
                                     ?>
                                     <span class="tag-search-rowholder">
-                                    <a href="%www%/tag/<?php
+                                    <a href="<?php echo WWW ?>/tag/<?php
                                     echo fixText($data['tag'], true, false, true, false, false);
                                     ?>" class="tag"><?php
                                         echo fixText($data['tag'], true, false, true, false, false);
@@ -99,9 +99,9 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                                     if (LOGGED_IN) {
                                         if (USER_ID == $data['user_id']) {
                                             ?><img border="0" class="tag-delete-link"
-                                                   onmouseover="this.src='%www%/web-gallery/images/buttons/tags/tag_button_delete_hi.gif'"
-                                                   onmouseout="this.src='%www%/web-gallery/images/buttons/tags/tag_button_delete.gif'"
-                                                   src="%www%/web-gallery/images/buttons/tags/tag_button_delete.gif"/></span><?php
+                                                   onmouseover="this.src='<?php echo WWW ?>/web-gallery/images/buttons/tags/tag_button_delete_hi.gif'"
+                                                   onmouseout="this.src='<?php echo WWW ?>/web-gallery/images/buttons/tags/tag_button_delete.gif'"
+                                                   src="<?php echo WWW ?>/web-gallery/images/buttons/tags/tag_button_delete.gif"/></span><?php
                                         } //USER_ID == $data['user_id']
                                     } //LOGGED_IN
                                     ?>
@@ -111,22 +111,22 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                                         if ($query->rowCount() > 0) {
                                             ?>
                                             <img id="tag-img-added" border="0" class="tag-none-link"
-                                                 src="%www%/web-gallery/images/buttons/tags/tag_button_added.gif"/></span>
+                                                 src="<?php echo WWW ?>/web-gallery/images/buttons/tags/tag_button_added.gif"/></span>
                                             <?php
                                         } //$query->rowCount() > 0
                                         elseif (db::query("SELECT user_id FROM users_tags WHERE tag = ? AND user_id != '" . USER_ID . "' AND user_id = '" . $data['user_id'] . "' LIMIT 1", $data['tag'])->rowCount() > 0) {
                                             ?>
                                             <img border="0" class="tag-add-link"
-                                                 onmouseover="this.src='%www%/web-gallery/images/buttons/tags/tag_button_add_hi.gif'"
-                                                 onmouseout="this.src='%www%/web-gallery/images/buttons/tags/tag_button_add.gif'"
-                                                 src="%www%/web-gallery/images/buttons/tags/tag_button_add.gif"/></span>
+                                                 onmouseover="this.src='<?php echo WWW ?>/web-gallery/images/buttons/tags/tag_button_add_hi.gif'"
+                                                 onmouseout="this.src='<?php echo WWW ?>/web-gallery/images/buttons/tags/tag_button_add.gif'"
+                                                 src="<?php echo WWW ?>/web-gallery/images/buttons/tags/tag_button_add.gif"/></span>
                                             <?php
                                         } //->rowCount(db::query("SELECT user_id FROM users_tags WHERE tag = '" . $data['tag'] . "' AND user_id != '" . USER_ID . "' AND user_id = '" . $data['user_id'] . "' LIMIT 1")) > 0
                                     } //LOGGED_IN
                                     else {
                                         ?>
                                         <img border="0" class="tag-none-link"
-                                             src="%www%/web-gallery/images/buttons/tags/tag_button_dim.gif"></span>
+                                             src="<?php echo WWW ?>/web-gallery/images/buttons/tags/tag_button_dim.gif"></span>
                                         <?php
                                     }
                                     ?>
@@ -138,7 +138,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                             }
                             ?>
                             <img id="tag-img-added" border="0" class="tag-none-link"
-                                 src="%www%/web-gallery/images/buttons/tags/tag_button_added.gif" style="display:none"/>
+                                 src="<?php echo WWW ?>/web-gallery/images/buttons/tags/tag_button_added.gif" style="display:none"/>
                         </div>
 
                         <script type="text/javascript">
@@ -155,9 +155,9 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                             <div class="content-red">
                                 <div class="content-red-body">
                                     <span id="tag-limit-message"><img
-                                                src="%www%/web-gallery/images/register/icon_error.gif"> Você alcançou o limite de etiquetas, remova algumas antes de continuar.</span>
+                                                src="<?php echo WWW ?>/web-gallery/images/register/icon_error.gif"> Você alcançou o limite de etiquetas, remova algumas antes de continuar.</span>
                                     <span id="tag-invalid-message"><img
-                                                src="%www%/web-gallery/images/register/icon_error.gif"> Etiqueta inválida</span>
+                                                src="<?php echo WWW ?>/web-gallery/images/register/icon_error.gif"> Etiqueta inválida</span>
                                 </div>
                             </div>
                             <div class="content-red-bottom">

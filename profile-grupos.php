@@ -694,7 +694,7 @@ wmode="transparent" flashvars="songUrl=<?php echo $path; ?>myhabbo/trax_song.php
                       </div>
                     </div>
      <?php } elseif($subtype == "BadgesWidget"){
-	$sql = Db::query("SELECT * FROM user_badges WHERE user_id = '".$user_row['id']."' ORDER BY badge_id ASC");
+	$sql = Db::query("SELECT * FROM users_badges WHERE user_id = '".$user_row['id']."' ORDER BY badge_id ASC");
 	$count = $sql->rowCount();
 	?>
 <div class="movable widget BadgesWidget" id="widget-<?php echo $row['0']; ?>" style=" left: <?php echo $row['2']; ?>px; top: <?php echo $row['3']; ?>px; z-index: <?php echo $row['4']; ?>;">

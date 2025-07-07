@@ -1,23 +1,24 @@
 <?php
+global  $qryId;
 
 if ($bypass == true) {
     $page = '1';
     $search = "";
 } else {
     include '../global.php';
-    $page = filter($_POST['pageNumber']);
+    $page = intval($_POST['pageNumber']);
     $search = filter($_POST['searchString']);
-    $widgetid = filter($_POST['widgetId']);
+    $widgetid = intval($_POST['widgetId']);
 }
 
 if ($search == "") {
 
-    $sql = db::query("SELECT userid FROM cms_homes_stickers WHERE id = '" . $widgetid . '\' LIMIT 1');
+    $sql = db::query("SELECT owner_id FROM homes_items WHERE id = ? LIMIT 1", $widgetid);
     $row1 = $sql->fetch(2);
-    $user = $row1['userid'];
+    $user = $row1['owner_id'];
     $offset = $page - 1;
     $offset *= 20;
-    $sql = db::query("SELECT * FROM messenger_friendships WHERE user_one_id = '" . $user . '\' OR user_two_id = \'' . $user . '\' LIMIT 20 OFFSET ' . $offset);
+    $sql = db::query("SELECT * FROM messenger_friendships WHERE user_one_id = ? OR user_two_id = ? LIMIT 20 OFFSET " . $offset, $qryId, $qryId);
     ?>
     <div class="avatar-widget-list-container">
         <ul id="avatar-list-list" class="avatar-widget-list">
@@ -28,7 +29,7 @@ if ($search == "") {
                 } else {
                     $friendid = $friendrow['user_one_id'];
                 }
-                $friend = db::query("SELECT username,look,account_created FROM users WHERE id = '" . $friendid . '\' LIMIT 1')->fetch(2);
+                $friend = db::query("SELECT username,look,motto FROM users WHERE id = '" . $friendid . '\' LIMIT 1')->fetch(2);
                 ?>
                 <li id="avatar-list-<?php echo $widgetid; ?>-<?php echo $friendid; ?>"
                     title="<?php echo $friend['username']; ?>">
@@ -36,12 +37,12 @@ if ($search == "") {
                                                      id="avatar-list-open-link-<?php echo $widgetid; ?>-<?php echo $friendid; ?>"
                                                      class="avatar-list-open-link"></a></div>
                     <div class="avatar-list-avatar"><img
-                            src="http://avatar-retro.com/habbo-imaging/avatarimage?figure=<?php echo $friend['look']; ?>&size=s&direction=2&head_direction=2&gesture=sml"
+                            src="https://habbo.city/habbo-imaging/avatarimage?figure=<?php echo $friend['look']; ?>&size=s&direction=2&head_direction=2&gesture=sml"
                             alt=""/></div>
                     <h4>
-                        <a href="<?php echo PATH; ?>/home/<?php echo $friend['username']; ?>"><?php echo $friend['username']; ?></a>
+                        <a href="<?php echo WWW; ?>/home/<?php echo $friend['username']; ?>"><?php echo $friend['username']; ?></a>
                     </h4>
-                    <p class="avatar-list-birthday"><?php echo $friend['account_created']; ?></p>
+                    <p class="avatar-list-birthday"><?php echo $friend['motto']; ?></p>
                     <p>
 
                     </p></li>
@@ -90,13 +91,13 @@ if ($search == "") {
     </div>
 <?php } else {
 
-    $sql = db::query("SELECT userid FROM cms_homes_stickers WHERE id = '" . $widgetid . '\' LIMIT 1');
+    $sql = db::query("SELECT owner_id FROM homes_items WHERE id = ? LIMIT 1", $widgetid);
     $row1 = $sql->fetch(2);
-    $user = $row1['userid'];
+    $user = $row1['owner_id'];
     $offset = $page - 1;
     $offset *= 10;
-    $sql = db::query("SELECT users.id,users.username,users.look,users.account_created FROM users,messenger_friendships WHERE messenger_friendships.user_one_id = users.id AND messenger_friendships.user_two_id = '" . $user . '\' AND users.username LIKE \'%' . $search . "%' LIMIT 10 OFFSET " . $offset);
-    $sql2 = db::query("SELECT users.id,users.username,users.look,users.account_created FROM users,messenger_friendships WHERE messenger_friendships.user_two_id = users.id AND messenger_friendships.user_one_id = '" . $user . '\' AND users.username LIKE \'%' . $search . "%' LIMIT 10 OFFSET " . $offset);
+    $sql = db::query("SELECT users.id,users.username,users.look,users.motto FROM users,messenger_friendships WHERE messenger_friendships.user_one_id = users.id AND (messenger_friendships.user_two_id = ? OR messenger_friendships.user_one_id = ?) AND users.username LIKE ? LIMIT 10 OFFSET " . $offset, $user, $user, '%' . $search . '%');
+
     ?>
     <div class="avatar-widget-list-container">
         <ul id="avatar-list-list" class="avatar-widget-list">
@@ -109,35 +110,18 @@ if ($search == "") {
                                                      id="avatar-list-open-link-<?php echo $widgetid; ?>-<?php echo $friendrow; ?>"
                                                      class="avatar-list-open-link"></a></div>
                     <div class="avatar-list-avatar"><img
-                            src="http://www.habbo.com/habbo-imaging/avatarimage?figure=<?php echo $friendrow['look']; ?>&size=s&direction=2&head_direction=2&gesture=sml"
+                            src="https://habbo.city/habbo-imaging/avatarimage?figure=<?php echo $friendrow['look']; ?>&size=s&direction=2&head_direction=2&gesture=sml"
                             alt=""/></div>
                     <h4>
-                        <a href="<?php echo PATH; ?>/home/<?php echo $friendrow['username']; ?>"><?php echo $friendrow['username']; ?></a>
+                        <a href="<?php echo WWW; ?>/home/<?php echo $friendrow['username']; ?>"><?php echo $friendrow['username']; ?></a>
                     </h4>
-                    <p class="avatar-list-birthday"><?php echo $friendrow['account_created']; ?></p>
+                    <p class="avatar-list-birthday"><?php echo $friendrow['motto']; ?></p>
                     <p>
 
                     </p></li>
 
             <?php }
-            while ($friendrow = $sql2->fetch(2)) { ?>
-                <li id="avatar-list-<?php echo $widgetid; ?>-<?php echo $friendrow['id']; ?>"
-                    title="<?php echo $friendrow['username']; ?>">
-                    <div class="avatar-list-open"><a href="#"
-                                                     id="avatar-list-open-link-<?php echo $widgetid; ?>-<?php echo $friendrow; ?>"
-                                                     class="avatar-list-open-link"></a></div>
-                    <div class="avatar-list-avatar"><img
-                            src="http://avater-retro.com/habbo-imaging/avatarimage?figure=<?php echo $friendrow['look']; ?>&size=s&direction=2&head_direction=2&gesture=sml"
-                            alt=""/></div>
-                    <h4>
-                        <a href="<?php echo PATH; ?>/home/<?php echo $friendrow['username']; ?>"><?php echo $friendrow['username']; ?></a>
-                    </h4>
-                    <p class="avatar-list-birthday"><?php echo $friendrow['account_created']; ?></p>
-                    <p>
-
-                    </p></li>
-
-            <?php } ?>
+           ?>
         </ul>
 
         <div id="avatar-list-info" class="avatar-list-info">
@@ -149,7 +133,7 @@ if ($search == "") {
 
     <div id="avatar-list-paging">
         <?php
-        $count = $sql->rowCount() + $sql2->rowCount();
+        $count = $sql->rowCount();
         $offset *= 2;
         $at = $page - 1;
         $at *= 20;

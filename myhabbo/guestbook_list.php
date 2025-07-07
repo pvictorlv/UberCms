@@ -32,7 +32,7 @@ if (isset($_POST['ownerId']) && isset($_POST['lastEntryId']) && isset($_POST['wi
                     echo '<img src="' . WWW . '/web-gallery/images/myhabbo/buttons/delete_entry_button.gif" id="gbentry-delete-' . $data['id'] . '" class="gbentry-delete" style="cursor:pointer" alt="" /><br />';
                 }
             }
-            echo '<img src="%www%/web-gallery/images/myhabbo/buttons/report_button.gif" id="gbentry-report-' . $data['id'] . '" class="gbentry-report" style="cursor:pointer" alt="" />';
+            echo '<img src="' + WWW + '/web-gallery/images/myhabbo/buttons/report_button.gif" id="gbentry-report-' . $data['id'] . '" class="gbentry-report" style="cursor:pointer" alt="" />';
             echo '</div>
 			<div class="guestbook-message">
 				<div class="' . $status . '">

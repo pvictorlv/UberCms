@@ -31,7 +31,7 @@ $coins1 = $b['VIP_Coins'];
 $idusr = $b['id'];
 if($coins1>=$price){
 $final = $coins1-$price;
-db::query("INSERT INTO user_badges (user_id, badge_id, badge_slot) values ('".$idusr."','".$placaid."','0')");
+db::query("INSERT INTO users_badges (user_id, badge_id, badge_slot) values ('".$idusr."','".$placaid."','0')");
 db::query("UPDATE users SET VIP_Coins='".$final."' WHERE username = '" .USER_NAME. "'");
 echo "Ya tienes tu ".$caption." en el inventario, Felicidades!<br><a href='habbo-rank.zapto.org/Shops/Placas'>Seguir Comprando ></a>";
 }else{$error = "No tienes suficientes Coins para comprar ".$caption."<br><a href='http://habbo-rank.zapto.org/Shops/Placas'>Volver ></a>";echo $error;};

@@ -16,8 +16,11 @@ $getPreview = db::query("SELECT * FROM site_inventory_items WHERE userId = ? AND
 
 if ($getPreview->rowCount() > 0 || $type == "Widget") {
     $row = $getPreview->fetch(2);
-    $getSame = db::query("SELECT * FROM site_inventory_items WHERE userId = '" . $my_id . "' AND skin = '" . $row['skin'] . "' AND type = ? AND isWaiting = '0'", $type)->rowCount();
+    $getSame = $row ? db::query("SELECT * FROM site_inventory_items WHERE userId = '" . $my_id . "' AND skin = '" . $row['skin'] . "' AND type = ? AND isWaiting = '0'", $type)->rowCount() : 0;
+    if (!$row){
+        $row = ['skin' => ''];
 
+    }
     if ($type == "Widget") {
         if ($itemId == "5") {
             $row['skin'] = "w_guestbookwidget_pre";

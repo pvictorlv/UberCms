@@ -1,9 +1,12 @@
 <?php
-$count = db::query("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '" . USER_ID . "'")->rowCount();
-$sql = db::query("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '" . USER_ID . "' LIMIT 16");
+global $users, $qryId;
+
+
+$count = db::query("SELECT DISTINCT(badge_id) FROM users_badges WHERE user_id = ?", $qryId)->rowCount();
+$sql = db::query("SELECT DISTINCT(badge_id) FROM users_badges WHERE user_id = ? LIMIT 16", $qryId);
 $desde = 1;
 $hasta = 16;
-$getBadges = db::query("SELECT DISTINCT(badge_id) FROM user_badges WHERE user_id = '" . USER_ID . "' LIMIT 0,16")->rowCount();
+$getBadges = db::query("SELECT DISTINCT(badge_id) FROM users_badges WHERE user_id = ? LIMIT 0,16", $qryId)->rowCount();
 $n = $getBadges;
 $x = 0;
 while ($n >= 0) {
@@ -26,7 +29,7 @@ while ($n >= 0) {
                         <?php
                         while ($data = $sql->fetch(2)) {
                             ?>
-                            <li style="background-image: url(http://images.xukys-hotel.com/c_images/album1584/<?php echo $data['badge_id']; ?>.gif)"></li>
+                            <li style="background-image: url(<?php echo WWW ?>/c_images/album1584/<?php echo $data['badge_id']; ?>.gif)"></li>
                             <?php
                         }//Termina while
                         ?>
@@ -51,7 +54,7 @@ while ($n >= 0) {
 
                     <script type="text/javascript">
                         document.observe("dom:loaded", function () {
-                            window.badgesWidget%id% = new BadgesWidget('%habboId%', '%id%');
+                            window.badgesWidgetid = new BadgesWidget('%habboId%', '%id%');
                         });
                     </script>
 

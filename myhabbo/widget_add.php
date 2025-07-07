@@ -20,13 +20,13 @@ if (!LOGGED_IN) {
 }
 
 
-$widgetId = $gtfo->cleanWord($_POST['widgetId']);
+$widgetId = ($_POST['widgetId']);
 
 if (isset($_POST['privileged'])) {
-    $privileged = $gtfo->cleanWord($_POST['privileged']);
+    $privileged = ($_POST['privileged']);
 }
 if (isset($_POST['zindex'])) {
-    $zindex = $gtfo->cleanWord($_POST['zindex']);
+    $zindex = ($_POST['zindex']);
 }
 $my_id = USER_ID;
 $id = USER_ID;
@@ -70,7 +70,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
 <?php if ($widget == "GuestbookWidget") { ?>
 
     <div class="movable widget FriendsWidget" id="widget-<?php echo $row['id']; ?>"
-         style=" left: <?php echo $row['position_left']; ?>px; top: <?php echo $row['position_top']; ?>px; z-index: <?php echo $row['position_z']; ?>;">
+         style=" left: <?php echo $row['x']; ?>px; top: <?php echo $row['y']; ?>px; z-index: <?php echo $row['z']; ?>;">
         <div class="<?php echo $row['skin']; ?>">
             <div class="widget-corner" id="widget-<?php echo $row['id']; ?>-handle">
                 <div class="widget-headline">
@@ -133,7 +133,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
             <div class="widget-corner" id="widget-<?php echo $row['id']; ?>-handle">
                 <div class="widget-headline">
                     <h3>
-                        <img src="http://xukys-hotel.com/web-gallery/images/myhabbo/icon_edit.gif" width="19"
+                        <img src="<?php echo WWW ?>/images/myhabbo/icon_edit.gif" width="19"
                              height="18" class="edit-button" id="widget-<?php echo $row['id']; ?>-edit"/>
                         <script language="JavaScript" type="text/javascript">
                             Event.observe("widget-<?php echo $row['id']; ?>-edit", "click", function (e) {
@@ -141,7 +141,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
                             }, false);
                         </script>
                         <span class="header-left">&nbsp;</span><span
-                                class="header-middle">Placas y Recompensas</span><span
+                                class="header-middle">Emblemas</span><span
                                 class="header-right">&nbsp;</span>
                     </h3>
                 </div>
@@ -151,7 +151,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
                     <div id="badgelist-content">
                         <ul class="clearfix">
                             <?php
-                            $getMyBadges = DB::query("SELECT badge_id FROM user_badges WHERE user_id = '" . $my_id . "' LIMIT 6");
+                            $getMyBadges = DB::query("SELECT badge_id FROM users_badges WHERE user_id = '" . $my_id . "' LIMIT 6");
                             if ($getMyBadges->rowCount() > 0) {
                                 while ($row = $getMyBadges->fetch(2)) {
                                     ?>

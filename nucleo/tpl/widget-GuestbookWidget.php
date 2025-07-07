@@ -1,19 +1,9 @@
 <?php
-global $users;
-if (isset($_GET['qryName'])) {
-    $qryId = $users->name2id(filter($_GET['qryName']));
-} else if (isset($_GET['qryId']) && is_numeric($_GET['qryId'])) {
-    $qryId = (int)filter($_GET['qryId']);
-}
-
-if (!isset($qryId) && LOGGED_IN) {
-    header('Location: ' . WWW . '/home/' . $_SESSION['UBER_USER_N']);
-} else if (!isset($qryId) && !LOGGED_IN) {
-    header('Location: ' . WWW . '/');
-}
+global $users, $qryId;
 
 
-$sql = db::query("SELECT * FROM cms_guestbook_entries WHERE home_id = '" . $qryId . "' ORDER BY id DESC LIMIT 20");
+
+$sql = db::query("SELECT * FROM cms_guestbook_entries WHERE home_id = ? ORDER BY id DESC LIMIT 20", $qryId);
 $count = $sql->rowCount();
 
 ?>
@@ -56,7 +46,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
                                 echo '
 	<li id="guestbook-entry-' . $data['id'] . '" class="guestbook-entry">
 		<div class="guestbook-author">
-                <img src="http://avatar-retro.com/habbo-imaging/avatarimage?figure=' . $users->GetUserVar($data['userid'], 'look') . '&amp;size=s" alt="' . $users->GetUserVar($data['userid'], 'username') . '" title="' . $users->GetUserVar($data['userid'], 'username') . '" />
+                <img src="https://habbo.city/habbo-imaging/avatarimage?figure=' . $users->GetUserVar($data['userid'], 'look') . '&amp;size=s" alt="' . $users->GetUserVar($data['userid'], 'username') . '" title="' . $users->GetUserVar($data['userid'], 'username') . '" />
 		</div>
 			<div class="guestbook-actions">';
                                 if (LOGGED_IN) {

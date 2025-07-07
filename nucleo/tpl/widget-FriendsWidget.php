@@ -1,22 +1,10 @@
 <?php
+global $users, $qryId;
 
-if (isset($_GET['qryName'])) {
-    global $users;
-    $qryId = $users->name2id(filter($_GET['qryName']));
-} else if (isset($_GET['qryId']) && is_numeric($_GET['qryId'])) {
-    $qryId = intval($_GET['qryId']);
-}
-
-if (!isset($qryId) && LOGGED_IN) {
-    header('Location: ' . WWW . '/home/' . $_SESSION['UBER_USER_N']);
-} else if (!isset($qryId) && !LOGGED_IN) {
-    header('Location: ' . WWW . '/');
-}
-
-$sql = db::query("SELECT * FROM messenger_friendships WHERE user_two_id = '" . $user_id . "'");
+$sql = db::query("SELECT * FROM messenger_friendships WHERE user_two_id = ? OR user_one_id = ?", $qryId, $qryId);
 $count = $sql->rowCount();
 
-$get_em = db::query("SELECT * FROM homes_items WHERE owner_id = '" . USER_ID . "' AND type < 4 LIMIT 200");
+$get_em = db::query("SELECT * FROM homes_items WHERE owner_id = ? AND data = 'FriendsWidget' LIMIT 1", $qryId);
 $row = $get_em->fetch(2);
 
 ?>
@@ -26,7 +14,7 @@ $row = $get_em->fetch(2);
         <div class="widget-corner" id="widget-%id%-handle">
             <div class="widget-headline"><h3><?php
                     if (isset($_SESSION['startSessionEditHome'])) {
-                        if ($_SESSION['startSessionEditHome'] == $user_id) {
+                        if ($_SESSION['startSessionEditHome'] == $qryId) {
                             echo '<img src="' . WWW . '/web-gallery/images/myhabbo/icon_edit.gif" width="19" height="18" class="edit-button" id="widget-%id%-edit">
 <script type="text/javascript">
 var editButtonCallback = function(e) { openEditMenu(e, %id%, "widget", "widget-%id%-edit"); };
@@ -59,7 +47,7 @@ Event.observe("widget-%id%-edit", "editButton:click", editButtonCallback);
 
                     <script type="text/javascript">
                         document.observe("dom:loaded", function () {
-                            window.widget<?php echo $row['id']; ?> = new FriendsWidget('<?php echo $user_id ?>', '<?php echo $row['id']; ?>');
+                            window.widget<?php echo $row['id']; ?> = new FriendsWidget('<?php echo $qryId ?>', '<?php echo $row['id']; ?>');
                         });
                     </script>
 

@@ -29,7 +29,6 @@ if ($type == "Note") {
     require_once 'store_inventory_items_notes.php';
     exit;
 } //$type == "Note"
-var_dump($type);
 
 $MyItems = "";
 $getMyItems = db::query("SELECT * FROM site_inventory_items WHERE userId = ? AND type = ? AND isWaiting = '0'", $my_id, $type);

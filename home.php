@@ -41,6 +41,7 @@ if (isset($_SESSION['startSessionEditHome'])) {
     $tpl->SetParam('body_id', 'viewmode');
 }
 $tpl->AddGeneric('head/head-init');
+
 $tpl->AddIncludeSet('homes');
 $tpl->WriteIncludeFiles();
 $tpl->AddGeneric('head/head-myhabbo');
