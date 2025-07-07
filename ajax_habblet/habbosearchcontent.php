@@ -97,7 +97,7 @@ function searchHabbos($tag)
     $dato1 = db::query("SELECT count(id) FROM users WHERE username LIKE ?", "%$tag%")->fetchColumn();
     $dato = $dato1 / 10;
     if (substr($dato, strlen($dato) - 2, strlen($dato) - 1) === ".9" or ".8" or ".7" or ".6" or ".5" or ".4" or ".3" or ".2" or ".1")
-        $dato = substr($dato, 0, -2) + 1;
+        $dato = substr($dato, 0, -2) . 1;
 
     if ($dato != 1) {
         $net .= '<div id="habblet-paging-avatar-habblet-list-container"><p class="paging-navigation" id="avatar-habblet-list-container-list-paging">';

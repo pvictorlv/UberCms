@@ -6,6 +6,19 @@ $my_id = USER_ID;
 
 $type = ucwords(($_POST['type']));
 $type = substr($type, 0, -1);
+if ($type == "backgrounds") {
+    $type = "Background";
+}
+if ($type == "stickers") {
+    $type = "Sticker";
+}
+
+if ($type == "widgets") {
+    $type = "Widget";
+}
+if ($type == "notes") {
+    $type = "Note";
+}
 
 if ($type == "Widget") {
     require_once('store_inventory_items_widgets.php');
@@ -16,6 +29,7 @@ if ($type == "Note") {
     require_once 'store_inventory_items_notes.php';
     exit;
 } //$type == "Note"
+var_dump($type);
 
 $MyItems = "";
 $getMyItems = db::query("SELECT * FROM site_inventory_items WHERE userId = ? AND type = ? AND isWaiting = '0'", $my_id, $type);
@@ -25,7 +39,7 @@ $getMyItems = db::query("SELECT * FROM site_inventory_items WHERE userId = ? AND
         if ($getMyItems->rowCount() > 0) {
             for ($n = 0; $n <= 20; $n++) {
                 while ($row = $getMyItems->fetch(2)) {
-                    if (!Contains($row['skin'], $MyItems)) {
+                    if (!str_contains($MyItems, $row['skin'])) {
                         $n++;
                         $MyItems .= $row['skin'] . ", ";
                         $getSameStickers = db::query("SELECT * FROM site_inventory_items WHERE userId = ? AND skin = '" . $row['skin'] . "' AND type = ? AND isWaiting = '0'", $my_id, $type)->rowCount();

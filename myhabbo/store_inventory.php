@@ -8,6 +8,16 @@ $type = ($_POST['type']);
 $MyStickers = "";
 $getCategorys = db::DoQuery("SELECT * FROM site_items_categorys");
 $getMyStickers = db::query("SELECT * FROM site_inventory_items WHERE userId = ? AND type = 'Sticker'", $my_id);
+
+
+
+if($getMyStickers->rowCount() > 0) {
+    $row = $getMyStickers->fetch(2);
+    header('X-JSON: [["Inventory", "Webstore"], ["' . formatThing(1, $row['skin'], true) . '", "' . formatThing(1, $row['skin'], false) . '", "' . $row['skin'] . '", "Sticker", null, 1]]');
+} else {
+    header('X-JSON: [["Inventory", "Webstore"], []]');
+}
+
 ?>
     <div style="position: relative;">
         <div id="webstore-categories-container">

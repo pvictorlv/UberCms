@@ -13,53 +13,14 @@
   <component name="ChangeListManager">
     <list default="true" id="be2cabe0-8dc8-4802-b861-8b2cc06a404a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AJAX_HABBLET_SECURITY_REPORT.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/GuiaPadres.php" beforeDir="false" afterPath="$PROJECT_DIR$/GuiaPadres.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LaManeraHabbo.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SECURITY_AUDIT_FINAL_REPORT.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SECURITY_FIXES_REPORT.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SYNTAX_FIXES_REPORT.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/help.php" beforeDir="false" afterPath="$PROJECT_DIR$/help.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/linces.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/add.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/del.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/off.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/map/on.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/tag_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/tag_add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/tag_list.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ajax_habblet/habbosearchcontent.php" beforeDir="false" afterPath="$PROJECT_DIR$/ajax_habblet/habbosearchcontent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ajax_habblet/myhabbo_tag_remove.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/global.php" beforeDir="false" afterPath="$PROJECT_DIR$/global.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myhabbo/store_inventory.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_inventory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myhabbo/store_inventory_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_inventory_items.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhabbo/tag_remove.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/tag_remove.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/class.db.mysql.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/class.db.mysql.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-manera.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-manera.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-padres.tpl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-taglist.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-taglist.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-usertags.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-usertags.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/placasgrupos.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/security_audit_full.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/dev/reddit_icons.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/dev/reddit_vector.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/images/background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/images/original.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/images/reddit_icons_small.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/images/reels_bg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/images/reels_bge.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/images/rol_botao.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/images/rol_botao_fechar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/slots.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/slots.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/sounds/reel_stop.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/sounds/win.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/slot5/volter.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sounds/reel_stop.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sounds/win.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/stacktile.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vaciartablas.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-gallery/static/js/fullcontent.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/static/js/fullcontent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ws_script.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-gallery/static/js/groupview.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/static/js/groupview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-gallery/static/js/homeview.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/static/js/homeview.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

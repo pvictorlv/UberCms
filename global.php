@@ -68,6 +68,26 @@ if (isset($_SESSION['UBER_USER_N'], $_SESSION['UBER_USER_H'])) {
 if (!isset($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = base64_encode(openssl_random_pseudo_bytes(32));
 }
+function formatThing($type, $data, $pre) {
+    $str = '';
+    switch($type) {
+        case 1:
+            $str .= 's_';
+            break;
+        case 2:
+            $str .= 'w_';
+            break;
+        case 3:
+            $str .= 'commodity_';
+            break; // =S
+        case 4:
+            $str .= 'b_';
+            break;
+    }
+    $str .= $data;
+    $str = ($pre == true ? $str . '_pre' : '');
+    return $str;
+}
 
 define('FORCE_MAINTENANCE', false);
 $manu_ip = array('177.137.230.90', '103.14.116.25', '177.79.59.42', '148.101.94.123', '177.79.58.126', '201.87.213.118', '177.79.60.231
@@ -133,30 +153,3 @@ function filter($str): string
    return FilterText($str, true);
 }
 
-function Contains($str, $words, $filter = false)
-{
-    if ($filter) {
-        $str = strtolower($str);
-        $words = strtolower($words);
-    }
-
-    if (@strpos($str, $words) === false) {
-        $return = false;
-    } else {
-        $return = true;
-    }
-
-    $getWords = explode(",", str_replace(" ", "", $words));
-
-    foreach ($getWords as $Word) {
-        if (!$return) {
-            if (@strpos($str, $Word) === false) {
-                $return = false;
-            } else {
-                $return = true;
-            }
-        }
-    }
-
-    return $return;
-}

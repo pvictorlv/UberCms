@@ -2327,15 +2327,21 @@ TagWidgetPartial.prototype = {
             Event.stop(d);
             this.errorMessage("valid");
             if (this.parentWidget.tagType == "group") {
-                new Ajax.Updater("profile-tag-list", "/myhabbo/myhabbo_tag_remove.php", {
+                new Ajax.Updater("profile-tag-list", "/myhabbo/tag/remove", {
                     parameters: "groupId=" + encodeURIComponent(this.parentWidget.groupId) + "&tagId=" + encodeURIComponent(c),
-                    evalScripts: true
+                    evalScripts: true,
+                    onSuccess: function (e, g) {
+                        new Ajax.Updater("profile-tag-list", "/habblet/mytagslist")
+                    }
                 })
             } else {
                 if (this.parentWidget.tagType == "avatar") {
-                    new Ajax.Updater("profile-tag-list", "/myhabbo/myhabbo_tag_remove.php", {
+                    new Ajax.Updater("profile-tag-list", "/myhabbo/tag/remove", {
                         parameters: "accountId=" + encodeURIComponent(this.parentWidget.accountId) + "&tagId=" + encodeURIComponent(c),
-                        evalScripts: true
+                        evalScripts: true,
+                        onSuccess: function (e, g) {
+                            new Ajax.Updater("profile-tag-list", "/habblet/mytagslist")
+                        }
                     })
                 }
             }
@@ -2380,7 +2386,7 @@ TagWidgetPartial.prototype = {
             onSuccess: function (d) {
                 var c = d.responseText;
                 if (c == "valid" && $("profile-tags-status-field")) {
-                    new Ajax.Updater("profile-tag-list", "/myhabbo/tag/list", {parameters: "tagMsgCode=" + encodeURIComponent("valid") + "&accountId=" + b})
+                    new Ajax.Updater("profile-tag-list", "/habblet/mytagslist", {parameters: "tagMsgCode=" + encodeURIComponent("valid") + "&accountId=" + b})
                 }
                 this.errorMessage(c)
             }.bind(this)
@@ -2392,7 +2398,7 @@ TagWidgetPartial.prototype = {
             onSuccess: function (d) {
                 var c = d.responseText;
                 if (c == "valid" && $("profile-tags-status-field")) {
-                    new Ajax.Updater("profile-tag-list", "/myhabbo/tag/listgrouptags", {parameters: "tagMsgCode=" + encodeURIComponent("valid") + "&groupId=" + a})
+                    new Ajax.Updater("profile-tag-list", "/habblet/mytagslistgrouptags", {parameters: "tagMsgCode=" + encodeURIComponent("valid") + "&groupId=" + a})
                 }
                 this.errorMessage(c)
             }.bind(this)

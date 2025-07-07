@@ -2215,7 +2215,7 @@ TagWidgetPartial.prototype = {
             parameters: "groupId=" + A + "&tagName=" + encodeURIComponent(C), onSuccess: function (E) {
                 var D = E.responseText;
                 if (D == "valid" && $("profile-tags-status-field")) {
-                    new Ajax.Updater("profile-tag-list", "/myhabbo/tag/listgrouptags", {parameters: "tagMsgCode=" + encodeURIComponent("valid") + "&groupId=" + A})
+                    new Ajax.Updater("profile-tag-list", "/habblet/mytagslistgrouptags", {parameters: "tagMsgCode=" + encodeURIComponent("valid") + "&groupId=" + A})
                 }
                 this.errorMessage(D)
             }.bind(this)
