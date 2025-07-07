@@ -14,11 +14,6 @@ if (!LOGGED_IN)
 	header("Location: " . WWW . "/");
 	exit;
 }
-else if ($users->GetUserVar(USER_ID, 'newbie_status') == "0")
-{
-	header("Location: " . WWW . "/register/welcome");
-	exit;
-}
 
 // Initialize template system
 $tpl->Init();
@@ -27,7 +22,7 @@ $tpl->Init();
 $tpl->SetParam('page_title', 'Guia para padres');
 
 // Generate page header
-$tpl->AddGeneric('head-init');
+$tpl->AddGeneric('head/head-init');
 $tpl->AddIncludeSet('generic');
 $tpl->AddIncludeFile(new IncludeFile('text/css', '%www%/web-gallery/v2/styles/style.css', 'stylesheet'));
 $tpl->AddIncludeFile(new IncludeFile('text/css', '%www%/web-gallery/static/styles/home.css', 'stylesheet'));
@@ -36,8 +31,8 @@ $tpl->AddIncludeFile(new IncludeFile('text/javascript', '%www%/web-gallery/stati
 $tpl->AddIncludeFile(new IncludeFile('text/css', '%www%/web-gallery/v2/styles/lightwindow.css', 'stylesheet'));
 $tpl->AddIncludeFile(new IncludeFile('text/javascript', '%www%/web-gallery/static/js/homeview.js'));
 $tpl->WriteIncludeFiles();
-$tpl->AddGeneric('head-overrides-generic');
-$tpl->AddGeneric('head-bottom');
+$tpl->AddGeneric('head/head-overrides-generic');
+$tpl->AddGeneric('head/head-bottom');
 
 // Generate generic top/navigation/login box
 $tpl->AddGeneric('generic-top');

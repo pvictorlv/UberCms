@@ -17,7 +17,7 @@ switch (strtolower($cmd)) {
 
         if (isset($_POST['tagId']) && isset($_POST['accountId'])) {
             $tagId = (int)filter($_POST['tagId']);
-            db::query("DELETE FROM users_tags WHERE user_id = '" . USER_ID . "' AND id = '" . $tagId . "' LIMIT 1");
+            db::query("DELETE FROM users_tags WHERE user_id = ? AND id = ? LIMIT 1", USER_ID, $tagId);
             $core->Mus('updateTags', USER_ID);
         }
 
@@ -30,10 +30,10 @@ switch (strtolower($cmd)) {
                 die("invalidtag");
             } else if (count(uberUsers::GetUserTags(USER_ID)) >= 20) {
                 die("limitreached");
-            } else if (db::query("SELECT COUNT(*) FROM users_tags WHERE tag = '" . $tagName . "' AND user_id = '" . USER_ID . "'")->rowCount() >= 1) {
+            } else if (db::query("SELECT COUNT(*) FROM users_tags WHERE tag = ? AND user_id = ?", $tagName, USER_ID)->rowCount() >= 1) {
                 die("exists");
             } else {
-                db::query("INSERT INTO users_tags (tag,user_id) VALUES ('" . $tagName . "','" . USER_ID . "')");
+                db::query("INSERT INTO users_tags (tag,user_id) VALUES (?,?)", $tagName, USER_ID);
                 $core->Mus('updateTags', USER_ID);
             }
         }

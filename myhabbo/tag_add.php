@@ -13,8 +13,9 @@ if (isset($_POST['accountId']) && isset($_POST['tagName'])) {
 
         $sql = db::query("SELECT id FROM users WHERE id = '" . $accountId . "' LIMIT 1");
         if ($sql->rowCount() > 0 && !empty($tagName) && strlen($tagName) <= 20) {
-            $getTags = db::query("SELECT NULL FROM users_tags WHERE user_id = '" . $accountId . "'")->rowCount();
-            $alreadyTag = db::query("SELECT NULL FROM users_tags WHERE tag = '" . $tagName . "' AND user_id = '" . $accountId . "'")->rowCount();
+            $getTags = db::query("SELECT id FROM users_tags WHERE user_id = '" . $accountId . "'")->rowCount();
+            $alreadyTag = db::query("SELECT id FROM users_tags WHERE tag = ? AND user_id = '" . $accountId . "'",
+                $tagName)->rowCount();
 
             if ($alreadyTag == 0 && $getTags < 20) {
                 $tagName = strtolower($tagName);
@@ -34,3 +35,14 @@ if (isset($_POST['accountId']) && isset($_POST['tagName'])) {
 
 exit;
 ?>
+
+<script type="text/javascript">
+
+    TagHelper.setTexts({
+        tagLimitText: "Limite de etiquetas atingido, remova alguma antes de continuar.",
+        invalidTagText: "Etiqueta inválida.",
+        buttonText: "OK"
+    });
+    TagHelper.bindEventsToTagLists();
+</script>
+

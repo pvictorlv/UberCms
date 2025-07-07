@@ -12,14 +12,54 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="be2cabe0-8dc8-4802-b861-8b2cc06a404a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/convert.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/convert.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/habbletAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/habbletAjax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manage/pages/vouchers.php" beforeDir="false" afterPath="$PROJECT_DIR$/manage/pages/vouchers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-tops.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-tops.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web-gallery/v2/styles/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/v2/styles/responsive.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AJAX_HABBLET_SECURITY_REPORT.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GuiaPadres.php" beforeDir="false" afterPath="$PROJECT_DIR$/GuiaPadres.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LaManeraHabbo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SECURITY_AUDIT_FINAL_REPORT.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SECURITY_FIXES_REPORT.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SYNTAX_FIXES_REPORT.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/help.php" beforeDir="false" afterPath="$PROJECT_DIR$/help.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helper.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/linces.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/add.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/del.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/off.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/map/on.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myhabbo.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myhabbo/tag_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/tag_add.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myhabbo/tag_list.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myhabbo/tag_remove.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/tag_remove.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nucleo/class.db.mysql.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/class.db.mysql.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-manera.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-manera.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-padres.tpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-taglist.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-taglist.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-usertags.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-usertags.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/placasgrupos.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/security_audit_full.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/dev/reddit_icons.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/dev/reddit_vector.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/images/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/images/original.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/images/reddit_icons_small.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/images/reels_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/images/reels_bge.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/images/rol_botao.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/images/rol_botao_fechar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/slots.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/slots.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/sounds/reel_stop.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/sounds/win.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/slot5/volter.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sounds/reel_stop.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sounds/win.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/stacktile.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vaciartablas.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-gallery/static/js/fullcontent.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/static/js/fullcontent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ws_script.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,10 +219,10 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\Program Files\PHP\8.3\php.exe" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
 
-}]]></component>
+}</component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
@@ -298,27 +338,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Paulo/Documents/GitHub/UberCms",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Paulo/Documents/GitHub/UberCms&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.webide.settings.project.settings.php&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mariadb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\UBER\ajax_habblet" />
@@ -427,7 +467,6 @@
       <workItem from="1700504022281" duration="9110000" />
       <workItem from="1707315488724" duration="970000" />
       <workItem from="1708222877063" duration="504000" />
-
     </task>
     <servers />
   </component>

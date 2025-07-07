@@ -695,7 +695,12 @@ TagHelper.addThisTagToMe = function (b, c, a) {
             }
             if (d == "valid" || d == "") {
                 if (c) {
-                    TagHelper.reloadMyTagsList()
+                    TagHelper.reloadMyTagsList({
+                        onComplete: function () {
+
+                            TagHelper.bindEventsToTagLists();
+                        }
+                    })
                 } else {
                     TagHelper.reloadSearchBox(b, 1)
                 }
@@ -718,7 +723,7 @@ TagHelper.reloadSearchBox = function (a, b) {
 TagHelper.removeThisTagFromMe = function (a, b) {
     new Ajax.Request("/myhabbo/tag/remove", {
         parameters: "accountId=" + encodeURIComponent(TagHelper.loggedInAccountId) + "&tagId=" + encodeURIComponent(b),
-        onSuccess: function (d) {
+        onComplete: function (d) {
             var c = function (e) {
                 $$(".tag-list li").each(function (f) {
                     if (TagHelper.findTagNameForContainer(f) == a) {
@@ -730,8 +735,9 @@ TagHelper.removeThisTagFromMe = function (a, b) {
                         }
                     }
                 })
+                TagHelper.bindEventsToTagLists();
             };
-            TagHelper.reloadMyTagsList({onSuccess: c})
+            TagHelper.reloadMyTagsList({onComplete: c})
         }
     })
 };

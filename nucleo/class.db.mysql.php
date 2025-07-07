@@ -19,7 +19,9 @@ class Db
 
     public static function Scape($string): bool|string
     {
-        return self::$connection->quote($string);
+        $quoted= self::$connection->quote($string);
+        return substr($quoted, 1, -1);
+
     }
     public static function Error($errorString): void
     {

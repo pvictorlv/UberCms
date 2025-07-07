@@ -1,4 +1,3 @@
-<div class="habblet" id="my-tags-list">
 
     <?php
 
@@ -78,7 +77,6 @@
 
     ?>
 
-</div> </div>
 
 <script type="text/javascript">
     <?php if (!isset($habbletmode)) {
