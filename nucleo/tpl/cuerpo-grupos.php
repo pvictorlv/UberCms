@@ -16,9 +16,8 @@
     }
 
     function getSaveEditingActionName() {
-        return 'savehome.php';
+        return '/myhabbo/save/group';
     }
-
     function showEditErrorDialog() {
         var closeEditErrorDialog = function (e) {
             if (e) {
@@ -52,15 +51,16 @@
 <?php
 
 $bg = "";
-$my_membership = db::query("SELECT * FROM groups_members WHERE group_id = ? AND user_id ='" . USER_ID . "'", $_GET['id'])->fetch(2);
+$my_membership = db::query("SELECT * FROM groups_members WHERE group_id = ? AND user_id =?", $_GET['id'], USER_ID)->fetch(2);
 $member_rank = $my_membership['rank'];
-
+var_dump($member_rank);
+$groupid = intval($_GET['id']);
+$is_member = false;
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     $check = db::query("SELECT * FROM groups_data WHERE id = ? LIMIT 1", $_GET['id']);
     $exists = $check->rowCount();
 
     if ($exists > 0) {
-        $groupid = ($_GET['id']);
         $pageid = "profile";
 
         $error = false;
@@ -72,9 +72,9 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         $Miembros = db::query("SELECT COUNT(*) FROM groups_members WHERE group_id = ?", $groupid);
         $Members = $Miembros->fetch(2);
-        $check = db::query("SELECT * FROM groups_members WHERE user_id = '" . USER_ID . "' AND group_id = ? LIMIT 1", $groupid);
+        $check = db::query("SELECT * FROM groups_members WHERE user_id = ? AND group_id = ? LIMIT 1", USER_ID, $groupid);
 
-        if ($check->rowCount() > 0 && LOGGED_IN == TRUE) {
+        if ($check->rowCount() > 0) {
             $my_membership = $check->fetch(2);
 
             $is_member = true;
@@ -132,17 +132,18 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         $error = true;
     }
 } else {
+    var_dump($_GET);
     $error = true;
 }
 
 if (isset($_GET['do']) && $_GET['do'] == "edit" && LOGGED_IN) {
-    if ($is_member == true && $member_rank > 1) {
+    if ($is_member && $member_rank > 1) {
         unset($_SESSION["Ajax"]["Update"]);
         unset($_SESSION['home_edit']);
 
         $_SESSION['group_edit'] = true;
         $_SESSION['group_edit_id'] = $groupid;
-        $_SESSION['user_group_edit_id'] = "'.USER_ID.'";
+        $_SESSION['user_group_edit_id'] = USER_ID;
         $check = db::query("SELECT * FROM cms_homes_group_linker WHERE userid = '" . USER_ID . "' LIMIT 1");
         $linkers = $check->rowCount();
 
@@ -154,11 +155,11 @@ if (isset($_GET['do']) && $_GET['do'] == "edit" && LOGGED_IN) {
 
         restoreWaitingItems("'.USER_ID.'");
 
-        header("location: ./groups/" . $groupid . "/id");
+        header("location: /groups/" . $groupid . "/id");
         exit;
     } else {
         $_SESSION['group_edit'] = false;
-        header("location: ./groups/" . $groupid . "/id");
+        header("location: /groups/" . $groupid . "/id");
         exit;
     }
 
@@ -220,17 +221,18 @@ $bg_exists = $bg_fetch->rowCount();
 <title>Habbo: <?php echo($groupdata['name']); ?></title>
 <?php
 
-$groupid = ($_GET['id']);
+$groupid = intval($_GET['id']);
 $ownerid = $groupdata['owner_id'];
 ?>
 <div id="container">
     <div id="content" style="position: relative" class="clearfix">
         <div id="mypage-wrapper" class="cbb blue">
             <div class="box-tabs-container box-tabs-left clearfix">
-                <?php if ($member_rank > 1 && LOGGED_IN && $edit_mode == false) { ?><a href="%www%/editar_grupos?inicio"
-                                                                                       id="myhabbo-group-tools-button"
-                                                                                       class="new-button dark-button edit-icon"
-                                                                                       style="float:left"><b><span></span>Editar</b><i></i></a><?php } ?>
+                <?php if ($member_rank > 1 && LOGGED_IN && $edit_mode == false) { ?>
+                <a href="%www%/groups/<?php echo $groupid; ?>/id?do=edit"
+                   id="myhabbo-group-tools-button"
+                   class="new-button dark-button edit-icon"
+                   style="float:left"><b><span></span>Editar</b><i></i></a><?php } ?>
                 <?php if ($edit_mode == false) {
                     echo $viewtools;
                 } ?>
@@ -255,7 +257,7 @@ $ownerid = $groupdata['owner_id'];
                     <div id="top-toolbar" class="clearfix">
                         <ul>
                             <li><a href="#" id="inventory-button">Inventario</a></li>
-                            <li><a href="#" id="webstore-button">Tienda</a></li>
+                            <li><a href="#" id="webstore-button">Loja</a></li>
                         </ul>
 
                         <form action="#" method="get" style="width: 50%">
@@ -728,7 +730,7 @@ $ownerid = $groupdata['owner_id'];
 
 
     <?php if ($edit_mode) {
-        include("grupos-edit.tpl"); ?>
+        include("grupos-edit.php"); ?>
     <?php } ?>
 
 

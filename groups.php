@@ -4,6 +4,10 @@ require_once "global.php";
 
 $tpl->Init();
 
+
+$tpl->AddIncludeSet('homes');
+$tpl->WriteIncludeFiles();
+$tpl->AddGeneric('head/head-myhabbo');
 $tpl->AddGeneric('head/head-grupos');
 
 $tpl->AddIncludeFile(new IncludeFile('text/css', '%www%/styles/assets/other.css?v=cd4283662f0b704a80227001a33203ac', 'stylesheet'));

@@ -2,7 +2,7 @@
 
 function restoreWaitingItems($userId)
 {
-    Db::query("UPDATE site_inventory_items SET isWaiting = '0' WHERE userId = '" . $userId . "'");
+    Db::query("UPDATE site_inventory_items SET isWaiting = '0' WHERE userId = ?", $userId);
 }
 
 function CleanText($str, $filterHTML = true)
@@ -193,7 +193,7 @@ function replacee($str)
 
 function getHC($id)
 {
-    $sql = Db::query("SELECT * FROM user_subscriptions WHERE subscription_id = 'habbo_club' AND user_id = '" . $id . "' LIMIT 1");
+    $sql = Db::query("SELECT * FROM users_subscriptions WHERE user_id = ? ORDER BY timestamp_expire desc LIMIT 1", $id);
 
     if ($sql->rowCount() == 0) {
         return 0;

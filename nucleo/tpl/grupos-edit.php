@@ -28,7 +28,7 @@ else
 ?>
 <?php
 $rango = db::query("SELECT * FROM users WHERE id = '".USER_ID."'");
-$user_rank = mysql_fetch_assoc($rango);
+$user_rank = $rango->fetch(2);
 ?>
 <?php if($edit_mode){ ?>
 
@@ -48,7 +48,7 @@ $user_rank = mysql_fetch_assoc($rango);
 			<option value="5" id="edit-menu-skins-select-notepadskin">Bloc de Notas</option>
 			<option value="2" id="edit-menu-skins-select-speechbubbleskin">Bocadillo de Di�logo</option>
 			<option value="4" id="edit-menu-skins-select-noteitskin">Nota-etiqueta</option>
-<?php if(getHC("'.USER_ID.'") || getVIP("'.USER_ID.'")){ ?>
+<?php if(getHC(USER_ID)){ ?>
 			<option value="8" id="edit-menu-skins-select-hc_pillowskin">HC Bling</option>
 			<option value="7" id="edit-menu-skins-select-hc_machineskin">HC Scifi</option>
 <?php } ?>

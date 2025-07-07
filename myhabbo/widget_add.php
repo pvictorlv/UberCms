@@ -75,7 +75,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
             <div class="widget-corner" id="widget-<?php echo $row['id']; ?>-handle">
                 <div class="widget-headline">
                     <h3>
-                        <img src="http://xukys-hotel.com/web-gallery/images/myhabbo/icon_edit.gif" width="19"
+                        <img src="<?php echo WWW ?>/web-gallery/images/myhabbo/icon_edit.gif" width="19"
                              height="18" class="edit-button" id="widget-<?php echo $row['id']; ?>-edit"/>
                         <script language="JavaScript" type="text/javascript">
                             Event.observe("widget-<?php echo $row['id']; ?>-edit", "click", function (e) {
@@ -206,7 +206,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
             <div class="widget-corner" id="widget-<?php echo $row['id']; ?>-handle">
                 <div class="widget-headline">
                     <h3>
-                        <img src="http://xukys-hotel.com/web-gallery/images/myhabbo/icon_edit.gif" width="19"
+                        <img src="<?php echo WWW ?>/web-gallery/images/myhabbo/icon_edit.gif" width="19"
                              height="18" class="edit-button" id="widget-<?php echo $row['id']; ?>-edit"/>
                         <script language="JavaScript" type="text/javascript">
                             Event.observe("widget-<?php echo $row['id']; ?>-edit", "click", function (e) {
@@ -234,10 +234,10 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
 
                                 </ul>
                             </div>
-                            0 votos en total
+                            0 votos no total
 
                             <br/>
-                            (0 Habbos han votado 0 o m�s)
+                            (0 Habbos votaram)
                         </div>
 
                     </div>
@@ -256,7 +256,7 @@ header("X-JSON: {\"id\":\"" . $row['id'] . "\"}");
             <div class="widget-corner" id="widget-<?php echo $row['id']; ?>-handle">
                 <div class="widget-headline">
                     <h3>
-                        <img src="http://xukys-hotel.com/web-gallery/images/myhabbo/icon_edit.gif" width="19"
+                        <img src="<?php echo WWW ?>/web-gallery/images/myhabbo/icon_edit.gif" width="19"
                              height="18" class="edit-button" id="widget-<?php echo $row['id']; ?>-edit"/>
                         <script language="JavaScript" type="text/javascript">
                             Event.observe("widget-<?php echo $row['id']; ?>-edit", "click", function (e) {

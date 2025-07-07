@@ -1,4 +1,4 @@
-ho<?php
+<?php
 require_once 'global.php';
 
 if (isset($_GET['id'])) {

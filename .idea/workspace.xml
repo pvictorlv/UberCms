@@ -13,19 +13,14 @@
   <component name="ChangeListManager">
     <list default="true" id="be2cabe0-8dc8-4802-b861-8b2cc06a404a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home.php" beforeDir="false" afterPath="$PROJECT_DIR$/home.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/avatarlist_friendsearchpaging.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/avatarlist_friendsearchpaging.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/guestbook_list.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/guestbook_list.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/store_inventory_items.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_inventory_items.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myhabbo/store_inventory_preview.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/store_inventory_preview.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/groups.php" beforeDir="false" afterPath="$PROJECT_DIR$/groups.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/myhabbo/widget_add.php" beforeDir="false" afterPath="$PROJECT_DIR$/myhabbo/widget_add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/comp-placas.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/comp-placas.tpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/widget-BadgesWidget.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/widget-BadgesWidget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/widget-FriendsWidget.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/widget-FriendsWidget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/widget-GuestbookWidget.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/widget-GuestbookWidget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/widget-RoomsWidget.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/widget-RoomsWidget.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nucleo/tpl/widget-profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/widget-profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile-grupos.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile-grupos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nucleo/class.grupos.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/class.grupos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nucleo/tpl/cuerpo-grupos.php" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/cuerpo-grupos.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nucleo/tpl/grupos-edit.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/nucleo/tpl/grupos-edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile-grupos.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/startSession.php" beforeDir="false" afterPath="$PROJECT_DIR$/startSession.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web-gallery/static/js/homeedit.js" beforeDir="false" afterPath="$PROJECT_DIR$/web-gallery/static/js/homeedit.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
